@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "norminette.command": "norminette",
+    "norminette.fileregex": ".*\\.[ch]$",
+    "files.associations": {
+        "so_long.h": "c"
+    }
+}
