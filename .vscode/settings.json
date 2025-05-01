@@ -3,6 +3,6 @@
     "norminette.command": "norminette",
     "norminette.fileregex": ".*\\.[ch]$",
     "files.associations": {
-        "so_long.h": "c"
+        "includes/cub3d.h": "c"
     }
 }

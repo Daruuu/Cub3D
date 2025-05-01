@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project(cub3D C)
+project(cub3d C)
 
 set(CMAKE_C_STANDARD 99)
 
 file(GLOB SRCS_DIR srcs/*.c)
+file(GLOB SRCS_INIT_DIR srcs/init/*.c)
+file(GLOB SRCS_PARSER_DIR srcs/parser/*.c)
+
 file(GLOB MINILIBX_DIR minilibx-linux/*.c)
 file(GLOB LIBFT_DIR libft/*.c)
 
@@ -28,16 +31,18 @@ add_custom_target(libmlx ALL
 
 # Añadir el ejecutable
 add_executable(cub3d
-        ${SRCS}/main.c
+        ${SRCS_DIR}/main.c
         ${MINILIBX}
+        ${SRCS_INIT_DIR}
+        ${SRCS_PARSER_DIR}
 )
 
 # Asegurarse de que el target so_long_anaa dependa de libmlx.a
-add_dependencies(cub3D libmlx)
+add_dependencies(cub3d libmlx)
 
 # Enlazar el ejecutable con libmlx.a y las bibliotecas X11 o alternativas para macOS
 if(APPLE)
-    target_link_libraries(so_long_anaa
+    target_link_libraries(cub3d
             ${CMAKE_CURRENT_SOURCE_DIR}/minilibx-linux/libmlx_Darwin.a
             "-framework OpenGL"
             "-framework AppKit"
@@ -48,7 +53,7 @@ if(APPLE)
             "-lXrandr"
     )
 else()
-    target_link_libraries(cub3D
+    target_link_libraries(cub3d
             ${CMAKE_CURRENT_SOURCE_DIR}/minilibx-linux/libmlx.a
             X11
             Xext

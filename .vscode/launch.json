@@ -5,7 +5,7 @@
             "name": "C/C++: gdb debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cub3D",
+            "program": "${workspaceFolder}/cub3d",
             "args": [
                 "assets/maps/.extension"
             ],
