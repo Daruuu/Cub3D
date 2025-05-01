@@ -30,7 +30,6 @@ add_custom_target(libmlx ALL
 add_executable(cub3d
         ${SRCS}/main.c
         ${MINILIBX}
-
 )
 
 # Asegurarse de que el target so_long_anaa dependa de libmlx.a
