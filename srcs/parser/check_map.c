@@ -1,5 +1,5 @@
 #include "../includes/cub3d.h"
-
+/*
 void    free_game(t_game *game)
 {
 	if (game)
@@ -9,16 +9,24 @@ void    free_game(t_game *game)
 		free(game);
 	}
 }
+*/
 
-void    check_empty(char **argv, t_game *game, int ccoins)
+// MAIN FUNCTION PARSINGGGGGGGGG
+
+int	check_correct_parsing_map(char **argv)
 {
-	if (map_format_border_check(argv[1], game->map) == 1)
+	t_parser	*parser;
+
+	parser = NULL;
+
+	if (map_format_border_check(argv[1], &parser) == 1)
 	{
-		free_map2d(game->map);
+		// free_map2d(game->map);
 		free(game->map);
 		free(game);
 		handle_exit(ERROR_INVALID_MAP, 24);
 	}
+	/*
 	else if (items_errors(game->map) == 1)
 	{
 		free_map2d(game->map);
@@ -33,6 +41,6 @@ void    check_empty(char **argv, t_game *game, int ccoins)
 		free(game);
 		handle_exit(ERROR_ITEMS, 21);
 	}
-	else
-		return ;
+	*/
+	return (0);
 }

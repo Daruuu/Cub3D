@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/03 11:28:06 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/03 13:11:57 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		printf("error args\n");
 		//handle_exit(ERROR_INVALID_ARG, 26);
-	/*else
+	else
 	{
-		game = init_game();
+		if(check_correct_parsing_map(argv) != 0 )
+		{
+			printf("invalid mappppp\n");
+			// free here
+		}
+		// game = init_game();
+		/*
 		if (game != NULL)
 		{
 			map_format_border_check(argv[1], game->map);

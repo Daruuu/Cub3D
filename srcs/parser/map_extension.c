@@ -1,5 +1,6 @@
 #include "../includes/cub3d.h"
 
+// done 
 static int	validate_path(char *argv)
 {
 	char	*file_extension;
@@ -7,7 +8,7 @@ static int	validate_path(char *argv)
 	int		len_argv;
 	int		i;
 
-	file_extension = ".ber";
+	file_extension = ".cub";
 	len_file_extension = ft_strlen (file_extension);
 	len_argv = ft_strlen(argv);
 	i = len_file_extension;
@@ -21,7 +22,8 @@ static int	validate_path(char *argv)
 	return (0);
 }
 
-static int	check_first_and_last_line(t_map *map)
+// no setup 
+static int	check_first_and_last_line(t_parser *map)
 {
 	int	j;
 
@@ -42,6 +44,7 @@ static int	check_first_and_last_line(t_map *map)
 	return (0);
 }
 
+// no setup 
 static int	check_laterals_map(t_map *map)
 {
 	int	i;
@@ -70,7 +73,7 @@ static int	check_laterals_map(t_map *map)
 
 /************************VALIDATION MAIN **************************/
 
-int	map_format_border_check(char *path, t_map *map)
+int	map_format_border_check(char *path, t_parser *map)
 {
 	if (validate_path(path) == 0)
 	{
@@ -79,7 +82,5 @@ int	map_format_border_check(char *path, t_map *map)
 		if (check_first_and_last_line(map) == 1 || check_laterals_map(map) == 1)
 			return (1);
 	}
-	else
-		return (0);
 	return (0);
 }

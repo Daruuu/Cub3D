@@ -1,5 +1,5 @@
-#ifndef MACROS_H
-# define MACROS_H
+#ifndef CUB3D_UTILS_H
+# define CUB3D_UTILS_H
 
 /*--------------------Error and free------------------*/
 # define ERROR_INVALID_MAP "error\nInvalid map file\n"
@@ -16,9 +16,13 @@
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'
 # define FLOOR '0'
-# define COINS 'C'
-# define EXIT 'E'
 # define PLAYER 'P'
+
+/*-------------------- ITEMS ASSIGN PLAYER ------------------*/
+# define NORTH  'N'
+# define SOUTH  'S'
+# define WEST   'W'
+# define EAST   'E'
 
 // Direcciones del jugador
 # define LEFT 0

@@ -1,5 +1,6 @@
 #include "../includes/cub3d.h"
 
+//TODO: update this function wit .h
 static	int	check_items(t_map *map)
 {
 	int	x;
