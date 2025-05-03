@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/03 11:28:06 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int	main(int argc, char **argv)
 {
+	printf("map dir: %s\n", argv[1]);
 	if (argc != 2)
-		handle_exit(ERROR_INVALID_ARG, 26);
+		printf("error args\n");
+		//handle_exit(ERROR_INVALID_ARG, 26);
 	/*else
 	{
 		game = init_game();
