@@ -1,23 +1,25 @@
 #include "../includes/cub3d.h"
 
+static int	check_player(char to_find)
+{
+	return (to_find != NORTH && to_find != SOUTH \
+		&& to_find != WEST && to_find != EAST);
+}
+
 //TODO: update this function wit .h
-static	int	check_items(t_map *map)
+static	int	check_items_in_map(t_parser *map_data)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	while (x < map->rows)
+	while (x < map_data->rows)
 	{
 		y = 0;
-		while (y < map->cols)
+		while (y < map_data->columns)
 		{
-			if (map->matrix[x][y] != '1' && map->matrix[x][y] != 'P' \
-				&& map->matrix[x][y] != 'E' && map->matrix[x][y] != 'C' \
-				&& map->matrix[x][y] != '0')
-			{
+			if (check_player(map_data->map[x][y]))
 				return (1);
-			}
 			y++;
 		}
 		x++;
@@ -25,23 +27,27 @@ static	int	check_items(t_map *map)
 	return (0);
 }
 
-void	map_items(t_map *map)
+void	map_items(t_parser *map_data)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = 1;
-	while (i < map->rows - 1)
+	count = 0;
+	while (i < map_data->rows - 1)
 	{
 		j = 1;
-		while (j < map->cols - 1)
+		while (j < map_data->columns - 1)
 		{
-			if (map->matrix[i][j] == 'P')
-				map->player++;
-			else if (map->matrix[i][j] == 'C')
-				map->coins++;
-			else if (map->matrix[i][j] == 'E')
-				map->exit++;
+			if (map_data->map[i][j] == NORTH)
+				count ++;
+			else if (map_data->map[i][j] == SOUTH)
+				count ++;
+			else if (map_data->map[i][j] == WEST)
+				count ++;
+			else if (map_data->map[i][j] == EAST)
+				count ++;
 			j++;
 		}
 		i++;
@@ -49,12 +55,12 @@ void	map_items(t_map *map)
 }
 
 /************************VALIDATION MAIN **************************/
-int	items_errors(t_map *map)
+int	items_errors(t_parser *parser)
 {
-	if (check_items(map) == 1)
+	if (check_items_in_map(parser) == 1)
 		return (1);
-	map_items(map);
-	if (map->coins < 1 || map->exit != 1 || map->player != 1)
-		return (1);
+	map_items(parser);
+	// if (parser->coins < 1 || map->exit != 1 || map->player != 1)
+		// return (1);
 	return (0);
 }

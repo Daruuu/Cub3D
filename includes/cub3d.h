@@ -5,7 +5,7 @@
 # include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# include "macros.h"
+# include "cub3d_utils.h"
 
 typedef struct s_position
 {
