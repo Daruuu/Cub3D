@@ -1,25 +1,23 @@
 #include "../includes/cub3d.h"
 
-static	void	players_init_pos(t_map *map)
+static	void	player_init_pos(t_parser *map_data)
 {
 	int	y;
 	int	x;
 
 	x = 1;
-	while (x < map->rows)
+	while (x < map_data->rows)
 	{
 		y = 1;
-		while (y < map->cols)
+		while (y < map_data->columns)
 		{
-			if (map->matrix[x][y] == 'P')
+			if (ft_strcmp(map_data->map[x][y], NORTH) == 0 \
+				|| ft_strcmp(map_data->map[x][y], SOUTH) == 0 \
+				|| ft_strcmp(map_data->map[x][y], EAST) == 0 \
+				|| ft_strcmp(map_data->map[x][y], WEST) == 0)
 			{
-				map->player_pos.y = y;
-				map->player_pos.x = x;
-			}
-			if (map->matrix[x][y] == 'E')
-			{
-				map->exit_pos.y = y;
-				map->exit_pos.x = x;
+				map_data->position_player.y = y;
+				map_data->position_player.x = x;
 			}
 			y++;
 		}
@@ -27,22 +25,23 @@ static	void	players_init_pos(t_map *map)
 	}
 }
 
-void	flood_fill(t_map *map, int x, int y, int *ccoins)
+void	flood_fill(t_parser *map, int x, int y, int *ccoins)
 {
-	if (x < 0 || y < 0 || y >= map->cols || x >= map->rows)
+	if (x < 0 || y < 0 || y >= map->columns|| x >= map->rows)
 		return ;
-	if (map->matrix[x][y] == '1' || map->matrix[x][y] == 'V' \
-			|| map->matrix[x][y] == 'E')
+	if (map->map[x][y] == '1' || map->map[x][y] == 'V' \
+			|| map->map[x][y] == 'E')
 		return ;
-	if (map->matrix[x][y] == 'C')
+	if (map->map[x][y] == 'C')
 		(*ccoins)++;
-	map->matrix[x][y] = 'V';
+	map->map[x][y] = 'V';
 	flood_fill(map, x + 1, y, ccoins);
 	flood_fill(map, x - 1, y, ccoins);
 	flood_fill(map, x, y + 1, ccoins);
 	flood_fill(map, x, y - 1, ccoins);
 }
 
+/*
 static	void	flood_exit(t_map *map, int x, int y)
 {
 	if (x < 0 || y < 0 || y >= map->cols || x >= map->rows)
@@ -55,7 +54,9 @@ static	void	flood_exit(t_map *map, int x, int y)
 	flood_exit(map, x, y + 1);
 	flood_exit(map, x, y - 1);
 }
+*/
 
+/*
 static	void	copy_map_matrix(t_map *copy_map, t_map *map)
 {
 	int	i;
@@ -79,14 +80,16 @@ static	void	copy_map_matrix(t_map *copy_map, t_map *map)
 		i++;
 	}
 }
+*/
 
-/*******************CHECK_EMPTY FUNCTION*************************************/
+/*******************	CHECK_EMPTY FUNCTION	*******************************/
+
 int	validation_player(int *ccoins, t_map *map)
 {
 	t_map	copy_map;
 	t_map	copy_map2;
 
-	players_init_pos(map);
+	player_init_pos(map);
 	copy_map.rows = map->rows;
 	copy_map.cols = map->cols;
 	copy_map2.rows = map->rows;

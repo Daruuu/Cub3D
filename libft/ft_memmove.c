@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:56:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:00 by dasalaza         ###   ########.fr       */
+/*   Created: 2023/09/09 03:10:11 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/10 03:36:58 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	unsigned int	i;
-	int				signo;
-	int				result;
+#include "libft.h"
 
-	i = 0;
-	signo = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char	*c_dst;
+	char	*c_src;
+
+	c_dst = (char *)dst;
+	c_src = (char *)src;
+	if (!dst && !src)
+		return (NULL);
+	if (c_dst > c_src)
 	{
-		if (str[i] == '-')
-			signo = -1;
-		i++;
+		while (len--)
+			c_dst[len] = c_src[len];
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	else if (c_dst < c_src)
 	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
+		while (len--)
+			*c_dst++ = *c_src++;
 	}
-	return (signo * result);
+	return (dst);
 }

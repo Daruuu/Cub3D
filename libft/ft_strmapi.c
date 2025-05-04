@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:56:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:00 by dasalaza         ###   ########.fr       */
+/*   Created: 2023/09/13 21:49:34 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/13 22:51:16 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	unsigned int	i;
-	int				signo;
-	int				result;
+#include "libft.h"
+/*s  The string on which to iterate.
+(f) The function to apply to each character.*/
 
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*ptr;
+	size_t	size_s;
+	size_t	i;
+
+	if (!s || !f)
+		return (0);
+	size_s = ft_strlen(s);
+	ptr = malloc(sizeof(char) * (size_s + 1));
+	if (!ptr)
+		return (NULL);
 	i = 0;
-	signo = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (i < size_s)
 	{
-		if (str[i] == '-')
-			signo = -1;
+		ptr[i] = f(i, s[i]);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (signo * result);
+	ptr[i] = '\0';
+	return (ptr);
 }

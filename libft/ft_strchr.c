@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:56:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:00 by dasalaza         ###   ########.fr       */
+/*   Created: 2023/09/11 17:24:48 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/15 21:24:21 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+/* localiza un caracter dentro de un puntero char'
+ * return un puntero a la 1ra ocurrencia del caracter c en el string s
+*/
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-	int				signo;
-	int				result;
+	int		i;
 
 	i = 0;
-	signo = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (s[i])
 	{
-		if (str[i] == '-')
-			signo = -1;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (signo * result);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

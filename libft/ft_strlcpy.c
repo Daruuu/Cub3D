@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:56:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:00 by dasalaza         ###   ########.fr       */
+/*   Created: 2023/09/11 17:48:53 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/11 18:16:55 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+static int	ft_new_strlen(const char *src)
 {
-	unsigned int	i;
-	int				signo;
-	int				result;
+	int	i;
 
 	i = 0;
-	signo = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+	while (src[i] != '\0')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	size_src;
+
+	i = 0;
+	size_src = ft_new_strlen(src);
+	if (dstsize == 0)
+		return (size_src);
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		if (str[i] == '-')
-			signo = -1;
+		dst[i] = src[i];
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (signo * result);
+	dst[i] = '\0';
+	return (size_src);
 }

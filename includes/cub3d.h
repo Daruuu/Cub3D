@@ -49,7 +49,7 @@ typedef struct s_map
 
 typedef struct s_game
 {
-
+	t_parser	*paser;
 }   t_game;
 
 

@@ -1,12 +1,11 @@
 #include "../includes/cub3d.h"
 
-static int	check_player(char to_find)
+static int	check_player_exists(char to_find)
 {
-	return (to_find != NORTH && to_find != SOUTH \
-		&& to_find != WEST && to_find != EAST);
+	return (to_find == NORTH || to_find == SOUTH \
+		|| to_find == WEST || to_find == EAST);
 }
 
-//TODO: update this function wit .h
 static	int	check_items_in_map(t_parser *map_data)
 {
 	int	x;
@@ -18,7 +17,7 @@ static	int	check_items_in_map(t_parser *map_data)
 		y = 0;
 		while (y < map_data->columns)
 		{
-			if (check_player(map_data->map[x][y]))
+			if (check_player_exists(map_data->map[x][y]) != 0)
 				return (1);
 			y++;
 		}
@@ -27,7 +26,7 @@ static	int	check_items_in_map(t_parser *map_data)
 	return (0);
 }
 
-void	map_items(t_parser *map_data)
+int map_items(t_parser *map_data)
 {
 	int	i;
 	int	j;
@@ -52,15 +51,17 @@ void	map_items(t_parser *map_data)
 		}
 		i++;
 	}
+	return (count);
 }
 
 /************************VALIDATION MAIN **************************/
-int	items_errors(t_parser *parser)
+
+int	parsing_main(t_parser *parser)
 {
-	if (check_items_in_map(parser) == 1)
+	int	count_items_map;
+
+	count_items_map = map_items(parser);
+	if (check_items_in_map(parser) == 1 || count_items_map > 1)
 		return (1);
-	map_items(parser);
-	// if (parser->coins < 1 || map->exit != 1 || map->player != 1)
-		// return (1);
 	return (0);
 }

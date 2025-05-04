@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:56:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:00 by dasalaza         ###   ########.fr       */
+/*   Created: 2023/09/07 19:47:13 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/10 00:34:35 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	unsigned int	i;
-	int				signo;
-	int				result;
+#include "libft.h"
 
-	i = 0;
-	signo = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+/*devuelve un puntero a la última ocurrencia del carácter c en la cadena s.
+	o NULL si el carácter no se ha encontrado*/
+
+char	*ft_strrchr(const char *s, int c)
+{
+	char	find_c;
+	int		len_s;
+
+	find_c = c;
+	len_s = ft_strlen(s);
+	while (len_s >= 0)
 	{
-		if (str[i] == '-')
-			signo = -1;
-		i++;
+		if (s[len_s] == find_c)
+			return ((char *)&s[len_s]);
+		len_s--;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (signo * result);
+	return (NULL);
 }

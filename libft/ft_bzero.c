@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 18:39:05 by anamedin          #+#    #+#             */
-/*   Updated: 2024/02/18 17:42:55 by anamedin         ###   ########.fr       */
+/*   Created: 2023/09/07 00:27:27 by dasalaza          #+#    #+#             */
+/*   Updated: 2023/09/10 03:59:58 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;
-	unsigned char	*ptr;
+	unsigned char	*pivot_s;
 
 	i = 0;
-	ptr = s;
+	pivot_s = s;
 	while (i < n)
-		ptr[i++] = '\0';
+		pivot_s[i++] = '\0';
 }
