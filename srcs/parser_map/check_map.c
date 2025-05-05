@@ -9,7 +9,7 @@ int	check_correct_parsing_map(char **argv)
 
 	parser = NULL;
 
-	if (map_format_border_check(argv[1], &parser) == 1)
+	if (map_format_border_check(argv[1], parser) == 1)
 	{
 		// free_map2d(game->map);
 		// free(game->map);

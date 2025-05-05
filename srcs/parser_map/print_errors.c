@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-void	handle_error(char *str, int size, t_map *map, t_game *game)
+void	handle_error(char *str, int size, t_parser *map, t_game *game)
 {
 	if (str && size > 0)
 		write(2, str, size);

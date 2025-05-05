@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-static int	validate_path(char *argv)
+int	validate_path_map(char *argv)
 {
 	char	*file_extension;
 	int		len_file_extension;
@@ -70,9 +70,10 @@ static int	check_laterals_map(t_parser *map_info)
 
 /************************VALIDATION MAIN **************************/
 //	TODO: change name: validation_map_format()
+
 int	map_format_border_check(char *path, t_parser *map_info)
 {
-	if (validate_path(path) == 0)
+	if (validate_path_map(path) == 0)
 	{
 		// if (read_map(path, map_info) == 1)
 		// 	return (1);

@@ -4,6 +4,7 @@ static	void	player_init_pos(t_parser *map_data)
 {
 	int	y;
 	int	x;
+	int	c;
 
 	x = 1;
 	while (x < map_data->rows)
@@ -11,13 +12,13 @@ static	void	player_init_pos(t_parser *map_data)
 		y = 1;
 		while (y < map_data->columns)
 		{
-			if (ft_strcmp(map_data->map[x][y], NORTH) == 0 \
-				|| ft_strcmp(map_data->map[x][y], SOUTH) == 0 \
-				|| ft_strcmp(map_data->map[x][y], EAST) == 0 \
-				|| ft_strcmp(map_data->map[x][y], WEST) == 0)
+			c = map_data->map[x][y];
+			if (c == NORTH \
+				|| c == SOUTH || c == EAST || c == WEST)
 			{
 				map_data->position_player.y = y;
 				map_data->position_player.x = x;
+				return ;
 			}
 			y++;
 		}
@@ -56,24 +57,24 @@ static	void	flood_exit(t_map *map, int x, int y)
 }
 */
 
-static	void	copy_map_matrix(t_map *copy_map, t_map *map)
+static	void	copy_map_matrix(t_parser *copy_map, t_parser *map_info)
 {
 	int	i;
 	int	j;
 
-	copy_map->matrix = malloc(sizeof(char *) * map->rows);
-	if (!copy_map->matrix)
-		handle_error("Error: Memory allocation failed\n", 30, map, NULL);
+	copy_map->map = malloc(sizeof(char *) * map_info->rows);
+	if (!copy_map->map)
+		handle_error("Error: Memory allocation failed\n", 30, map_info, NULL);
 	i = 0;
-	while (i < map->rows)
+	while (i < map_info->rows)
 	{
-		copy_map->matrix[i] = malloc(sizeof(char) * map->cols);
-		if (!copy_map->matrix[i])
-			handle_error("Error: Memory allocation failed\n", 30, map, NULL);
+		copy_map->map[i] = malloc(sizeof(char) * map_info->columns);
+		if (!copy_map->map[i])
+			handle_error("Error: Memory allocation failed\n", 30, map_info, NULL);
 		j = 0;
-		while (j < map->cols)
+		while (j < map_info->columns)
 		{
-			copy_map->matrix[i][j] = map->matrix[i][j];
+			copy_map->map[i][j] = map_info->map[i][j];
 			j++;
 		}
 		i++;
@@ -82,7 +83,7 @@ static	void	copy_map_matrix(t_map *copy_map, t_map *map)
 
 /*******************	CHECK_EMPTY FUNCTION	*******************************/
 //TODO: retake in this file 
-int	validation_player(int *ccoins, t_parser *map_info)
+int	validation_player(t_parser *map_info)
 {
 	t_parser	copy_map;
 	t_parser	copy_map2;
@@ -94,7 +95,7 @@ int	validation_player(int *ccoins, t_parser *map_info)
 	copy_map2.columns = map_info->columns;
 	copy_map_matrix(&copy_map, map_info);
 	copy_map_matrix(&copy_map2, map_info);
-	flood_fill(&copy_map, map_info->position_player.x, map_info->position_player.y, ccoins);
+	// flood_fill(&copy_map, map_info->position_player.x, map_info->position_player.y, ccoins);
 	// flood_exit(&copy_map2, map_info->position_player.x, map_info->position_player.y);
 	/*
 	if (*ccoins == map_info->coins \
@@ -106,7 +107,7 @@ int	validation_player(int *ccoins, t_parser *map_info)
 		free_map2d(&copy_map2);
 		return (1);
 	}*/
-	free_map2d(&copy_map);
-	free_map2d(&copy_map2);
+	free_map(&copy_map);
+	free_map(&copy_map2);
 	return (0);
 }

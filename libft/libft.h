@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:28:11 by anamedin          #+#    #+#             */
-/*   Updated: 2025/05/04 19:05:38 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/05 21:00:52 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
 /* OTHERS FUNCTIONS */
-int			ft_strcmp(const char *s1, const char *s2);
+int			ft_strcmp(char *s1, char *s2);
 
 /* ************************************************************************** */
 /*                                 PRINTF                                     */

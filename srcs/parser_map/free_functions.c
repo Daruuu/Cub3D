@@ -25,7 +25,7 @@ void    free_parser_struct(t_parser *parser)
 	if (parser != NULL)
 	{
 		if (parser->map != NULL)
-			free_map2d(parser->map);
+			free_map(parser->map);
 		free(parser);
 	}
     if (parser->north != NULL)
