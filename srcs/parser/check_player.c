@@ -56,7 +56,6 @@ static	void	flood_exit(t_map *map, int x, int y)
 }
 */
 
-/*
 static	void	copy_map_matrix(t_map *copy_map, t_map *map)
 {
 	int	i;
@@ -80,7 +79,6 @@ static	void	copy_map_matrix(t_map *copy_map, t_map *map)
 		i++;
 	}
 }
-*/
 
 /*******************	CHECK_EMPTY FUNCTION	*******************************/
 //TODO: retake in this file 
@@ -97,7 +95,7 @@ int	validation_player(int *ccoins, t_parser *map_info)
 	copy_map_matrix(&copy_map, map_info);
 	copy_map_matrix(&copy_map2, map_info);
 	flood_fill(&copy_map, map_info->position_player.x, map_info->position_player.y, ccoins);
-	flood_exit(&copy_map2, map_info->position_player.x, map_info->position_player.y);
+	// flood_exit(&copy_map2, map_info->position_player.x, map_info->position_player.y);
 	/*
 	if (*ccoins == map_info->coins \
 			&& (copy_map2.matrix[map_info->exit_pos.x][map_info->exit_pos.y] == 'V'))

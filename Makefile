@@ -30,21 +30,21 @@ SRC_PARSER_DIR = ${SRC_DIR}/parser
 OBJ_DIR = obj
 MLX_DIR = minilibx-linux
 LIBFT_DIR = libft
-CUB3D_H = includes/cub3d.h
 
-SRC =	$(SRC_DIR)/main.c \
+CUB3D_H = includes/cub3d.h
+LIBFT = $(LIBFT_DIR)/libft.a
+
+SRC = $(SRC_DIR)/main.c \
 	$(SRC_INIT_DIR)/init_mlx.c \
 	$(SRC_INIT_DIR)/init_structs.c \
 	$(SRC_PARSER_DIR)/check_items.c \
 	$(SRC_PARSER_DIR)/check_map.c \
 	$(SRC_PARSER_DIR)/check_player.c \
-	$(SRC_PARSER_DIR)/check_utils.c \
-	$(SRC_PARSER_DIR)/map_extension.c 
+	$(SRC_PARSER_DIR)/check_utils.c
 
-OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC)))
+#OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC)))
+OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-
-LIBFT = $(LIBFT_DIR)/libft.a
 
 # ==================================== #
 
@@ -53,12 +53,10 @@ all: $(LIBFT) $(MLX_LIB) $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
 
-# $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(CUB3D_H) Makefile
-# 	@mkdir -p $(dir $@)		#extract each dir inside srcs like init
-# 	$(CC) $(CFLAGS) -c $< -o $@
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(CUB3D_H)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
 # ==================================== #
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

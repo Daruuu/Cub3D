@@ -14,25 +14,23 @@ typedef struct s_position
 	int     y;
 }	t_position;
 
-/*
 typedef struct  s_parser
 {
-    char        **map;
-    int         items_map;
-    char        player;
-    int         rows;
-    int         columns;
-    char        *north;
-    char        *south;
-    char        *west;
-    char        *east;
-    char        *floor;
-    char        *ceiling;
-    int         rgb_floor[3];
-    int         rgb_ceil[3];
-    t_position  position_player;
+	char        **map;
+	int         items_map;
+	char        player;
+	int         rows;
+	int         columns;
+	char        *north;
+	char        *south;
+	char        *west;
+	char        *east;
+	char        *floor;
+	char        *ceiling;
+	int         rgb_floor[3];
+	int         rgb_ceil[3];
+	t_position position_player;
 }   t_parser;
-*/
 
 typedef struct s_image
 {
