@@ -18,4 +18,3 @@ void	handle_exit(char *str, int size)
 	write(2, str, size);
 	exit(EXIT_FAILURE);
 }
-

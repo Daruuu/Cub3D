@@ -1,6 +1,5 @@
 #include "../includes/cub3d.h"
 
-// done 
 static int	validate_path(char *argv)
 {
 	char	*file_extension;
@@ -22,47 +21,45 @@ static int	validate_path(char *argv)
 	return (0);
 }
 
-// no setup 
-static int	check_first_and_last_line(t_parser *map)
+static int	check_first_and_last_line(t_parser *map_info)
 {
 	int	j;
 
 	j = 0;
-	while (map->matrix[0][j] != '\0')
+	while (map_info->map[0][j] != '\0')
 	{
-		if (map->matrix[0][j] != '1')
+		if (map_info->map[0][j] != '1')
 			return (1);
 		j++;
 	}
 	j = 0;
-	while (map->matrix[map->rows - 1][j] != '\0')
+	while (map_info->map[map_info->rows - 1][j] != '\0')
 	{
-		if (map->matrix[map->rows - 1][j] != '1')
+		if (map_info->map[map_info->rows - 1][j] != '1')
 			return (1);
 		j++;
 	}
 	return (0);
 }
 
-// no setup 
-static int	check_laterals_map(t_map *map)
+static int	check_laterals_map(t_parser *map_info)
 {
 	int	i;
 
 	i = 0;
-	while (i < map->rows)
+	while (i < map_info->rows)
 	{
-		if (map->matrix[i][0] != '1' \
-			|| map->matrix[i][map->cols - 1] != '1')
+		if (map_info->map[i][0] != '1' \
+			|| map_info->map[i][map_info->columns - 1] != '1')
 		{
 			return (1);
 		}
 		i++;
 	}
 	i = 0;
-	while (i < map->rows)
+	while (i < map_info->rows)
 	{
-		if (map->matrix[i][map->cols - 1] != '1')
+		if (map_info->map[i][map_info->columns - 1] != '1')
 		{
 			return (1);
 		}
@@ -72,14 +69,14 @@ static int	check_laterals_map(t_map *map)
 }
 
 /************************VALIDATION MAIN **************************/
-
-int	map_format_border_check(char *path, t_parser *map)
+//	TODO: change name: validation_map_format()
+int	map_format_border_check(char *path, t_parser *map_info)
 {
 	if (validate_path(path) == 0)
 	{
-		if (read_map(path, map) == 1)
-			return (1);
-		if (check_first_and_last_line(map) == 1 || check_laterals_map(map) == 1)
+		// if (read_map(path, map_info) == 1)
+		// 	return (1);
+		if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
 			return (1);
 	}
 	return (0);

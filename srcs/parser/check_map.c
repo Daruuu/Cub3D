@@ -1,17 +1,7 @@
 #include "../includes/cub3d.h"
-/*
-void    free_game(t_game *game)
-{
-	if (game)
-	{
-		if (game->map != NULL)
-			free_map2d(game->map);
-		free(game);
-	}
-}
-*/
 
 // MAIN FUNCTION PARSINGGGGGGGGG
+//TODO: here call functions from check_extension and check_items
 
 int	check_correct_parsing_map(char **argv)
 {
@@ -22,8 +12,8 @@ int	check_correct_parsing_map(char **argv)
 	if (map_format_border_check(argv[1], &parser) == 1)
 	{
 		// free_map2d(game->map);
-		free(game->map);
-		free(game);
+		// free(game->map);
+		// free(game);
 		handle_exit(ERROR_INVALID_MAP, 24);
 	}
 	/*

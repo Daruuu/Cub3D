@@ -6,7 +6,7 @@
 #    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/05/03 12:14:20 by dasalaza         ###   ########.fr        #
+#    Updated: 2025/05/05 11:15:55 by dasalaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,23 +27,22 @@ SRC_DIR = srcs
 SRC_INIT_DIR = ${SRC_DIR}/init
 SRC_PARSER_DIR = ${SRC_DIR}/parser 
 
-
 OBJ_DIR = obj
 MLX_DIR = minilibx-linux
 LIBFT_DIR = libft
-CUB_3D_H = includes/cub3d.h
+CUB3D_H = includes/cub3d.h
 
 SRC =	$(SRC_DIR)/main.c \
-	# $(SRC_INIT_DIR)/init_mlx.c \
+	$(SRC_INIT_DIR)/init_mlx.c \
 	$(SRC_INIT_DIR)/init_structs.c \
 	$(SRC_PARSER_DIR)/check_items.c \
 	$(SRC_PARSER_DIR)/check_map.c \
 	$(SRC_PARSER_DIR)/check_player.c \
 	$(SRC_PARSER_DIR)/check_utils.c \
-	$(SRC_PARSER_DIR)/map_extension.c \
-	# $(SRC_PARSER_DIR)/print_errors.c
+	$(SRC_PARSER_DIR)/map_extension.c 
 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC)))
+
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -54,10 +53,12 @@ all: $(LIBFT) $(MLX_LIB) $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile $(CUB_3D_H)
-	@mkdir -p $(OBJ_DIR)
+# $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(CUB3D_H) Makefile
+# 	@mkdir -p $(dir $@)		#extract each dir inside srcs like init
+# 	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-
 # ==================================== #
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

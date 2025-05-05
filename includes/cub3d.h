@@ -5,6 +5,7 @@
 # include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
+# include "parser.h"
 # include "cub3d_utils.h"
 
 typedef struct s_position
@@ -13,6 +14,7 @@ typedef struct s_position
 	int     y;
 }	t_position;
 
+/*
 typedef struct  s_parser
 {
     char        **map;
@@ -30,6 +32,7 @@ typedef struct  s_parser
     int         rgb_ceil[3];
     t_position  position_player;
 }   t_parser;
+*/
 
 typedef struct s_image
 {
@@ -52,10 +55,9 @@ typedef struct s_game
 	t_parser	*paser;
 }   t_game;
 
+//  INIT STRUCTS
 
-//  PARSING FUNCTIONS
-
-//  check_map.c
-int             check_correct_parsing_map(char **argv);
+//  init_parser.c
+t_parser        *init_struct_parser(void);
 
 #endif

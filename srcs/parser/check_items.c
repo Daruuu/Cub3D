@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_items.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/05 10:29:45 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/05 12:05:15 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static int	check_player_exists(char to_find)
@@ -26,7 +38,7 @@ static	int	check_items_in_map(t_parser *map_data)
 	return (0);
 }
 
-int map_items(t_parser *map_data)
+static int	count_map_items(t_parser *map_data)
 {
 	int	i;
 	int	j;
@@ -56,12 +68,12 @@ int map_items(t_parser *map_data)
 
 /************************VALIDATION MAIN **************************/
 
-int	parsing_main(t_parser *parser)
+int	validation_items_in_map(t_parser *map_info)
 {
 	int	count_items_map;
 
-	count_items_map = map_items(parser);
-	if (check_items_in_map(parser) == 1 || count_items_map > 1)
+	count_items_map = count_map_items(map_info);
+	if (check_items_in_map(map_info) == 1 || count_items_map > 1)
 		return (1);
 	return (0);
 }
