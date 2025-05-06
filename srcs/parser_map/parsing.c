@@ -1,7 +1,7 @@
 
 #include "../includes/cub3d.h"
 
-
+/*
 void    parsing(char **argv)
 {
     t_parser    *parsing;
@@ -13,4 +13,4 @@ void    parsing(char **argv)
         //pre parsing file .cub
 
     }
-}
+}*/
