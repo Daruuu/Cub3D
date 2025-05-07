@@ -93,7 +93,7 @@ int	read_map(char *path, t_parser *map_info)
 // PASO 1
 int	read_file(char *path, t_parser *map_info)
 {
-	int		i;
+	// int		i;
 	int		file_size;
 	char	*file_map1d;
 

@@ -70,7 +70,7 @@ else()
             ${CMAKE_CURRENT_SOURCE_DIR}/libft/libft.a
             X11
             Xext
-            Xpm
+        #     Xpm
             Xrandr
             m
             z

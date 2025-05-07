@@ -5,12 +5,12 @@
             "name": "C/C++: gdb debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/cub3d",
+            "program": "${workspaceFolder}/build/cub3d",
             "args": [
-                "/maps/correct_maps/matrix.cub"
+                "../maps/correct_maps/matrix.cub"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/build",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -23,11 +23,6 @@
             ],
             "preLaunchTask": "CMake Build",
             "miDebuggerPath": "/usr/bin/gdb",
-            "logging": {
-                "trace": true,
-                "traceResponse": true,
-                "engineLogging": true
-            }
         }
     ]
 }
