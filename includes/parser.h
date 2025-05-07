@@ -35,6 +35,7 @@ void        print_map_2d(t_parser *map_info);
 int         read_map(char *path, t_parser *map_info);
 int         read_file(char *path, t_parser *map_info);
 
+void        fill_parser_info(t_parser *parser);
 
 
 #endif

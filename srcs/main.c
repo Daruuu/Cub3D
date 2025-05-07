@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/07 13:45:46 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:55:09 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 int	main(int argc, char **argv)
 {
 	t_parser	*my_parser;
+	// argv[1] = "maps/correct_maps/matrix.cub";
 
 	printf("map dir: %s\n", argv[1]);
-	if (argc != 2)
+	//check valid file.cub 
+	if (argc != 2 && validate_path_map(argv[1]) != 0)
 	{
 		printf("error args\n");
 		return (1);
@@ -25,16 +27,14 @@ int	main(int argc, char **argv)
 	else
 	{
 		my_parser = init_struct_parser();
-
-		//check valid file.cub 
-		int	condition_1 = read_file(argv[1], my_parser);
-		printf("read_map: [%i]\n", condition_1);
-		if (condition_1 == 0)
+		if (read_file(argv[1], my_parser) == 0)
 		{
+			fill_parser_info(my_parser);
 		}
 	}
 	return (0);
 }
+
 /*
 game = init_game();
 if (game != NULL)

@@ -93,13 +93,11 @@ int	read_map(char *path, t_parser *map_info)
 // PASO 1
 int	read_file(char *path, t_parser *map_info)
 {
-	// int		i;
 	int		file_size;
 	char	*file_map1d;
 
 	file_size = count_file_size(path);
 	printf("FILE SIZE: [%i]\n", file_size);
-
 	if (file_size <= 2)
 		return (1);
 
@@ -108,7 +106,9 @@ int	read_file(char *path, t_parser *map_info)
 		return (1);
 
 	map_info->file_map = ft_split(file_map1d, '\n');
+	printf("************* BEFORE TRIM ****************\n");
 	print_map_2d(map_info);
+	printf("******************************************\n");
 
 	free(file_map1d);
 
@@ -120,31 +120,69 @@ int	read_file(char *path, t_parser *map_info)
 	// handle_exit(ERROR_MEMORY, 35);
 	return (0);
 }
+
 //	PASO 2
 /**
  * TODO: finish this function
  * function to fill N, S, E, W, rows, columns, rgb_floor, rgb_ceil
+ * use trim for each line
  */
 /*
 void	fill_parser_info(t_parser *parser)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		len_file_map;
 	char	*trim_line;
+	// char	**new_file_map;
 
 	i = 0;
+
+	len_file_map = ft_strlen(parser->file_map[1]);
+	printf("----------len file map-----------: [%d]", len_file_map);
+
+	printf("------------- AFTER TRIM --------------\n");
 	if (parser->file_map != NULL)
 	{
+		trim_line = NULL;
 		while (parser->file_map[i] != NULL)
 		{
-			trim_line = ;
-
+			trim_line = ft_strtrim(parser->file_map[i], " ");
+			printf("line [%i]: [%s]\n", i, trim_line);
+			i++;
 		}
+		free(trim_line);
 	}
 	else
 		return ;
 }
 */
+
+void	fill_parser_info(t_parser *parser)
+{
+	int		i;
+	int		len_file_map;
+	char	*trim_line;
+
+	i = 0;
+	if (parser->file_map == NULL)
+		return ;
+
+	len_file_map = 0;
+	while (parser->file_map[len_file_map] != NULL)
+		len_file_map++;
+
+	printf("---------- len file map -----------: [%d]\n", len_file_map);
+	printf("------------- AFTER TRIM --------------\n");
+
+	while (parser->file_map[i] != NULL)
+	{
+		trim_line = ft_strtrim(parser->file_map[i], " ");
+		printf("line [%i]: [%s]\n", i, trim_line);
+		free(trim_line);
+		i++;
+	}
+}
+
 
 /************************MAP EXTENSION FUNCTION **************************/
 
