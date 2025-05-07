@@ -122,8 +122,10 @@ int	read_file(char *path, t_parser *map_info)
 }
 //	PASO 2
 /**
+ * TODO: finish this function
  * function to fill N, S, E, W, rows, columns, rgb_floor, rgb_ceil
  */
+/*
 void	fill_parser_info(t_parser *parser)
 {
 	int	i;
@@ -142,6 +144,7 @@ void	fill_parser_info(t_parser *parser)
 	else
 		return ;
 }
+*/
 
 /************************MAP EXTENSION FUNCTION **************************/
 

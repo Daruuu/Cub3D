@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cub3d",
             "args": [
-                "assets/maps/.extension"
+                "/maps/correct_maps/matrix.cub"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
