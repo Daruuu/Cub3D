@@ -4,11 +4,14 @@ int	ft_open_map(char *path)
 {
 	int	fd;
 
+	if (!path)
+		return (-1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		handle_exit(ERROR_OPEN_FILE, 32);
 	return (fd);
 }
+
 /*
 int	close_window(t_game *game)
 {

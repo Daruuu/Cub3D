@@ -61,7 +61,7 @@ static	char	*read_file_content(char *path, int size)
 
 /************************MAP EXTENSION FUNCTION **************************/
 
-int	read_map(char *path, t_parser *map)
+int	read_map(char *path, t_parser *map_info)
 {
 	int		file_size;
 	char	*map1d;
@@ -72,11 +72,11 @@ int	read_map(char *path, t_parser *map)
 	map1d = read_file_content(path, file_size);
 	if (map1d == NULL)
 		return (1);
-	map->map = ft_split(map1d, '\n');
+	map_info->map = ft_split(map1d, '\n');
 	free(map1d);
-	if (map->map == NULL)
+	if (map_info->map == NULL)
 		handle_exit(ERROR_MEMORY, 35);
-	if (set_map_dimensions(map) == 1 || check_map_dimensions(map) == 1)
+	if (set_map_dimensions(map_info) == 1 || check_map_dimensions(map_info) == 1)
 		return (1);
 	return (0);
 }
