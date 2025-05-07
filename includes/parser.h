@@ -27,4 +27,15 @@ int         ft_open_map(char *path);
 int         set_map_dimensions(t_parser *map_info);
 int         check_map_dimensions(t_parser *map);
 
+void        print_map_2d(t_parser *map_info);
+
+
+
+
+//  parsing_files.c
+int         read_map(char *path, t_parser *map_info);
+int         read_file(char *path, t_parser *map_info);
+
+
+
 #endif

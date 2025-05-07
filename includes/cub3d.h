@@ -16,6 +16,7 @@ typedef struct s_position
 
 typedef struct  s_parser
 {
+	char        **file_map;
 	char        **map;
 	int         items_map;
 	char        player;
