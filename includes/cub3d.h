@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "parser.h"
+# include "init.h"
 # include "cub3d_utils.h"
 
 typedef struct s_position

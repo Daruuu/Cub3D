@@ -157,11 +157,29 @@ void	fill_parser_info(t_parser *parser)
 }
 */
 
+static void	type_of_horientation(char *trim_line, t_parser *map_info)
+{
+	if (ft_strncmp(trim_line, "NO", 2) == 0)
+		map_info->north = ft_strdup(trim_line);
+	else if (ft_strncmp(trim_line, "SO", 2) == 0)
+		map_info->south = ft_strdup(trim_line);
+	else if (ft_strncmp(trim_line, "WE", 2) == 0)
+		map_info->west = ft_strdup(trim_line);
+	else if (ft_strncmp(trim_line, "EA", 2) == 0)
+		map_info->east = ft_strdup(trim_line);
+	else if (ft_strncmp(trim_line, "F ", 2) == 0)
+		map_info->floor = ft_strdup(trim_line);
+	else if (ft_strncmp(trim_line, "C ", 2) == 0)
+		map_info->ceiling = ft_strdup(trim_line);
+	return ;
+}
+
 void	fill_parser_info(t_parser *parser)
 {
 	int		i;
 	int		len_file_map;
 	char	*trim_line;
+	int		len_tmp;
 
 	i = 0;
 	if (parser->file_map == NULL)
@@ -178,10 +196,37 @@ void	fill_parser_info(t_parser *parser)
 	{
 		trim_line = ft_strtrim(parser->file_map[i], " ");
 		printf("line [%i]: [%s]\n", i, trim_line);
+		len_tmp = ft_strlen(trim_line);
+		if (len_tmp > 1)
+		{
+			type_of_horientation(trim_line, parser);
+		}
 		free(trim_line);
 		i++;
 	}
 }
+
+/*
+char	*find_type_horientation(char *trim_line)
+{
+	char	*new_str;
+	int		len_line;
+	int		i;
+
+	len_line = ft_strlen(trim_line);
+	new_str = malloc(sizeof(char *) * len_line + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (i < len_line)
+	{
+		new_str[i] = trim_line[i];
+		i ++;
+	}
+	new_str[i] = '\0';
+	return (new_str);
+}
+*/
 
 
 /************************MAP EXTENSION FUNCTION **************************/

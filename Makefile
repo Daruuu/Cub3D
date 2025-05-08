@@ -6,7 +6,7 @@
 #    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/05/07 12:58:01 by dasalaza         ###   ########.fr        #
+#    Updated: 2025/05/08 12:05:11 by dasalaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_INIT)/init_mlx.c \
 	$(SRC_INIT)/init_parser.c \
 	$(SRC_INIT)/init_structs.c \
+	$(SRC_INIT)/print_structs.c \
 	$(SRC_PARSER_FILE)/parsing_file.c \
 	$(SRC_PARSER_FILE)/parsing_utils.c \
 	$(SRC_PARSER_MAP)/check_extension.c \
