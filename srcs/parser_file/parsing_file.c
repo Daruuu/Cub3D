@@ -17,18 +17,16 @@ static	int	count_file_size(char *path)
 	char	buffer;
 	int		size;
 
-	size = 0;
+	if (!path)
+		return (-1);
 	fd = ft_open_map(path);
-	bytes_read = read(fd, &buffer, 1);
-	if (bytes_read == 0)
+	size = 0;
+	while ((bytes_read = read(fd, &buffer, 1)) > 0)
+		size++;
+	if (bytes_read == -1)
 	{
 		close(fd);
-		return (1);
-	}
-	while (bytes_read > 0)
-	{
-		bytes_read = read(fd, &buffer, 1);
-		size++;
+		return (-1);
 	}
 	close(fd);
 	return (size);
@@ -60,6 +58,7 @@ static	char	*read_file_content(char *path, int size)
 }
 
 // PASO 2
+/*
 int	read_map(char *path, t_parser *map_info)
 {
 	int		file_size;
@@ -89,6 +88,7 @@ int	read_map(char *path, t_parser *map_info)
 		return (1);
 	return (0);
 }
+*/
 
 // PASO 1
 int	read_file(char *path, t_parser *map_info)
