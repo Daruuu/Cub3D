@@ -39,4 +39,8 @@ int         read_file(char *path, t_parser *map_info);
 void        fill_parser_info(t_parser *parser);
 
 
+//  parsing_textures.c
+
+int			check_textures_and_colors(t_parser *parser);
+
 #endif

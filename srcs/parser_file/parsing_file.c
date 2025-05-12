@@ -234,14 +234,10 @@ void	fill_parser_info(t_parser *parser)
 	len_file_map = 0;
 	while (parser->file_map[len_file_map] != NULL)
 		len_file_map ++;
-
 	printf("---------- LEN FILE MAP: -----------: [%d]\n", len_file_map);
-	printf("------------- AFTER TRIM --------------\n");
-
 	while (parser->file_map[i] != NULL)
 	{
 		trim_line = ft_strtrim(parser->file_map[i], " ");
-		// printf("line [%i]: [%s]\n", i, trim_line);
 		len_tmp = (int) ft_strlen(trim_line);
 		if (len_tmp > 1)
 		{
@@ -250,6 +246,14 @@ void	fill_parser_info(t_parser *parser)
 		free(trim_line);
 		i++;
 	}
+	if (check_textures_and_colors(parser) == 1)
+	{
+		ft_printf("***************************Error: invalid elements in map \n");
+		// handle_exit();
+	}
+	else
+		ft_printf("--------------------VALID ELEMENTS IN MAP----------------\n");
+
 }
 
 /*

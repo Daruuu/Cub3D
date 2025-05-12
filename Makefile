@@ -37,6 +37,7 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_INIT)/init_structs.c \
 	$(SRC_INIT)/print_structs.c \
 	$(SRC_PARSER_FILE)/parsing_file.c \
+	$(SRC_PARSER_FILE)/parsing_textures.c \
 	$(SRC_PARSER_FILE)/parsing_utils.c \
 	$(SRC_PARSER_MAP)/check_extension.c \
 	$(SRC_PARSER_MAP)/check_items.c \

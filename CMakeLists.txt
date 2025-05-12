@@ -46,7 +46,8 @@ file(GLOB SRC_FILES
 # ============================= #
 # ===== EJECUTABLE =========== #
 # ============================= #
-add_executable(cub3d ${SRC_FILES})
+add_executable(cub3d ${SRC_FILES}
+        srcs/parser_file/parsing_textures.c)
 
 add_dependencies(cub3d libmlx libft)
 
