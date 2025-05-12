@@ -8,7 +8,8 @@ int	ft_open_map(char *path)
 		return (-1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		handle_exit(ERROR_OPEN_FILE, 32);
+		return (-1);
+		// handle_exit(ERROR_OPEN_FILE);
 	return (fd);
 }
 
@@ -81,4 +82,5 @@ void	print_map_2d(t_parser *map_info)
 		printf("line[%i]: [%s]\n", i, map_info->file_map[i]);
 		i++;
 	}
+	free_parser_map(map_info);
 }

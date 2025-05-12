@@ -1,13 +1,16 @@
 #include "../../includes/cub3d.h"
 
-t_parser    *init_struct_parser(void)
+t_parser	*init_struct_parser(void)
 {
-    t_parser    *parser;
+    t_parser	*parser;
 
-    parser = (t_parser *)malloc(sizeof(t_parser));
+	parser = (t_parser *) malloc(sizeof(t_parser));
+	if (!parser)
+		return (NULL);
     parser->rows = -1;
     parser->columns = -1;
     parser->map = NULL;
+    parser->file_map = NULL;
     parser->north = NULL;
     parser->south = NULL;
     parser->east = NULL;

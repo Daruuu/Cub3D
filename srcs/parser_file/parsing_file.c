@@ -4,9 +4,12 @@ static	char	*allocate_map1d(size_t size)
 {
 	char	*map1d;
 
-	map1d = (char *) malloc(size + 1);
+	if (size > 1)
+	{
+		map1d = (char *) malloc(size + 1);
+	}
 	if (!map1d)
-		handle_exit(ERROR_MEMORY, 35);
+		handle_exit(ERROR_MEMORY);
 	return (map1d);
 }
 
@@ -20,17 +23,54 @@ static	int	count_file_size(char *path)
 	if (!path)
 		return (-1);
 	fd = ft_open_map(path);
+	if (fd == -1)
+		return (-1);
 	size = 0;
 	while ((bytes_read = read(fd, &buffer, 1)) > 0)
 		size++;
 	if (bytes_read == -1)
-	{
-		close(fd);
-		return (-1);
-	}
+		return (close(fd), -1);
 	close(fd);
 	return (size);
 }
+
+/*
+char	*safe_read_map_file(const char *path)
+{
+	int		fd;
+	ssize_t	bytes_read;
+	char	*buffer;
+	int		size;
+
+	if (!path)
+		return (NULL);
+	size = count_file_size(path);
+	if (size <= 0)
+	{
+		// fprintf(stderr, "Error: archivo vacío o ilegible.\n");
+		return (NULL);
+	}
+	buffer = malloc(size + 1);
+	if (!buffer)
+		handle_exit(ERROR_MEMORY);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		free(buffer);
+		handle_exit(ERROR_OPEN_FILE);
+	}
+	bytes_read = read(fd, buffer, size);
+	close(fd);
+	if (bytes_read < 0 || bytes_read < size)
+	{
+		free(buffer);
+		// fprintf(stderr, "Error: lectura incompleta.\n");
+		return (NULL);
+	}
+	buffer[size] = '\0';
+	return buffer;
+}
+*/
 
 static	char	*read_file_content(char *path, int size)
 {
@@ -38,19 +78,21 @@ static	char	*read_file_content(char *path, int size)
 	char	*map1d;
 	ssize_t	bytes_read;
 
+	if (size <= 0)
+		return (NULL);
 	map1d = allocate_map1d(size);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		free(map1d);
-		handle_exit(ERROR_OPEN_FILE, 32);
+		handle_exit(ERROR_OPEN_FILE);
 	}
 	bytes_read = read(fd, map1d, size);
 	if (bytes_read < 0)
 	{
 		free(map1d);
 		close(fd);
-		handle_exit(ERROR_OPEN_FILE, 32);
+		handle_exit(ERROR_OPEN_FILE);
 	}
 	map1d[size] = '\0';
 	close(fd);
@@ -91,33 +133,38 @@ int	read_map(char *path, t_parser *map_info)
 */
 
 // PASO 1
+/**
+ *
+ * @param path check if path have bytes inside .cub
+ * @param map_info first copy of (file .cub)
+ * @return
+ */
+
 int	read_file(char *path, t_parser *map_info)
 {
 	int		file_size;
 	char	*file_map1d;
 
 	file_size = count_file_size(path);
-	printf("FILE SIZE: [%i]\n", file_size);
-	if (file_size <= 2)
+	if (file_size <= 0)
 		return (1);
+	printf("FILE SIZE: [%i]\n", file_size);
 
 	file_map1d = read_file_content(path, file_size);
+	// file_map1d = safe_read_map_file(path);
 	if (!file_map1d)
-		return (1);
-
-	map_info->file_map = ft_split(file_map1d, '\n');
-	printf("************* BEFORE TRIM ****************\n");
-	print_map_2d(map_info);
-	printf("******************************************\n");
-
-	free(file_map1d);
-
-	if (map_info->file_map == NULL)
 	{
+		free(file_map1d);
+		return (1);
+	}
+	map_info->file_map = ft_split(file_map1d, '\n');
+	if (!map_info->file_map)
+	{
+		free(file_map1d);
 		printf("MAP INFO NULL\n");
 		return (1);
 	}
-	// handle_exit(ERROR_MEMORY, 35);
+	free(file_map1d);
 	return (0);
 }
 
@@ -171,7 +218,6 @@ static void	type_of_horientation(char *trim_line, t_parser *map_info)
 		map_info->floor = ft_strdup(trim_line);
 	else if (ft_strncmp(trim_line, "C ", 2) == 0)
 		map_info->ceiling = ft_strdup(trim_line);
-	return ;
 }
 
 void	fill_parser_info(t_parser *parser)
@@ -187,16 +233,16 @@ void	fill_parser_info(t_parser *parser)
 
 	len_file_map = 0;
 	while (parser->file_map[len_file_map] != NULL)
-		len_file_map++;
+		len_file_map ++;
 
-	printf("---------- len file map -----------: [%d]\n", len_file_map);
+	printf("---------- LEN FILE MAP: -----------: [%d]\n", len_file_map);
 	printf("------------- AFTER TRIM --------------\n");
 
 	while (parser->file_map[i] != NULL)
 	{
 		trim_line = ft_strtrim(parser->file_map[i], " ");
-		printf("line [%i]: [%s]\n", i, trim_line);
-		len_tmp = ft_strlen(trim_line);
+		// printf("line [%i]: [%s]\n", i, trim_line);
+		len_tmp = (int) ft_strlen(trim_line);
 		if (len_tmp > 1)
 		{
 			type_of_horientation(trim_line, parser);

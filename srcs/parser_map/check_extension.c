@@ -8,8 +8,8 @@ int	validate_path_map(char *argv)
 	int		i;
 
 	file_extension = ".cub";
-	len_file_extension = ft_strlen (file_extension);
-	len_argv = ft_strlen(argv);
+	len_file_extension = (int) ft_strlen (file_extension);
+	len_argv = (int) ft_strlen(argv);
 	i = len_file_extension;
 	while (i >= 0)
 	{

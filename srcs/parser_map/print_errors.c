@@ -18,14 +18,19 @@ void	handle_error(char *str, int size, t_parser *map, t_game *game)
 	if (str && size > 0)
 		write(2, str, size);
 	if (map != NULL)
-		free_map(map);
+		free_parser_map(map);
 	/*if (game != NULL)
 		free_game(game);*/
 	exit(EXIT_FAILURE);
 }
 
-void	handle_exit(char *str, int size)
+void	handle_exit(char *str)
 {
+	int	size;
+
+	size = 0;
+	while (str[size] != '\0')
+		size++;
 	write(2, str, size);
 	exit(EXIT_FAILURE);
 }

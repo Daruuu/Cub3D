@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_parser	*my_parser;
-	// argv[1] = "maps/correct_maps/matrix.cub";
 
 	//check valid file.cub
 	if (argc != 2 || argv[1] == NULL || validate_path_map(argv[1]) != 0)
@@ -23,11 +22,18 @@ int	main(int argc, char **argv)
 
 	printf("map dir: [%s]\n", argv[1]);
 	my_parser = init_struct_parser();
-	if (read_file(argv[1], my_parser) == 0)
+	if (!my_parser)
+		return (1);
+	int	condition1 = read_file(argv[1], my_parser);
+	if (condition1 == 0)
 	{
 		fill_parser_info(my_parser);
 		printar_parser_struct(my_parser);
 	}
+	else
+		printf("Error: failed to read or parse the map file.\n");
+
+	free_parser_struct(my_parser);
 	return (0);
 }
 

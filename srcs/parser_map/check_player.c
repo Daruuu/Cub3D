@@ -107,7 +107,7 @@ int	validation_player(t_parser *map_info)
 		free_map2d(&copy_map2);
 		return (1);
 	}*/
-	free_map(&copy_map);
-	free_map(&copy_map2);
+	free_parser_map(&copy_map);
+	free_parser_map(&copy_map2);
 	return (0);
 }

@@ -15,12 +15,13 @@ int         map_format_border_check(char *path, t_parser *map_info);
 int         check_correct_parsing_map(char **argv);
 
 //  free_functions.c
-void        free_map(t_parser *map_info);
+void        free_parser_map(t_parser *parser);
+void		free_matrix(char **map);
 void        free_parser_struct(t_parser *parser);
 
 //  print_errors.c
 void        handle_error(char *str, int size, t_parser *map, t_game *game);
-void        handle_exit(char *str, int size);
+void        handle_exit(char *str);
 
 //  parsing_utils.c
 int         ft_open_map(char *path);

@@ -14,7 +14,7 @@ int	check_correct_parsing_map(char **argv)
 		// free_map2d(game->map);
 		// free(game->map);
 		// free(game);
-		handle_exit(ERROR_INVALID_MAP, 24);
+		handle_exit(ERROR_INVALID_MAP);
 	}
 	/*
 	else if (items_errors(game->map) == 1)
