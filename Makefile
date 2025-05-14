@@ -14,6 +14,8 @@
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+HEADER_H = includes/cub3d.h
+
 
 # ========== Configuración general ========== #
 NAME = cub3D
@@ -57,7 +59,7 @@ all: $(LIBFT) $(MLX_LIB) $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER_H)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 

@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	if (condition1 == 0)
 	{
 		fill_parser_info(my_parser);
-		printar_parser_struct(my_parser);
+		print_parser_struct(my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");

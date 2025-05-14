@@ -5,9 +5,7 @@ static	char	*allocate_map1d(size_t size)
 	char	*map1d;
 
 	if (size > 1)
-	{
 		map1d = (char *) malloc(size + 1);
-	}
 	if (!map1d)
 		handle_exit(ERROR_MEMORY);
 	return (map1d);
@@ -100,7 +98,6 @@ static	char	*read_file_content(char *path, int size)
 }
 
 // PASO 2
-/*
 int	read_map(char *path, t_parser *map_info)
 {
 	int		file_size;
@@ -130,7 +127,6 @@ int	read_map(char *path, t_parser *map_info)
 		return (1);
 	return (0);
 }
-*/
 
 // PASO 1
 /**
@@ -149,14 +145,10 @@ int	read_file(char *path, t_parser *map_info)
 	if (file_size <= 0)
 		return (1);
 	printf("FILE SIZE: [%i]\n", file_size);
-
 	file_map1d = read_file_content(path, file_size);
-	// file_map1d = safe_read_map_file(path);
 	if (!file_map1d)
-	{
-		free(file_map1d);
-		return (1);
-	}
+		return (free(file_map1d), 1);
+
 	map_info->file_map = ft_split(file_map1d, '\n');
 	if (!map_info->file_map)
 	{
@@ -167,42 +159,6 @@ int	read_file(char *path, t_parser *map_info)
 	free(file_map1d);
 	return (0);
 }
-
-//	PASO 2
-/**
- * TODO: finish this function
- * function to fill N, S, E, W, rows, columns, rgb_floor, rgb_ceil
- * use trim for each line
- */
-/*
-void	fill_parser_info(t_parser *parser)
-{
-	int		i;
-	int		len_file_map;
-	char	*trim_line;
-	// char	**new_file_map;
-
-	i = 0;
-
-	len_file_map = ft_strlen(parser->file_map[1]);
-	printf("----------len file map-----------: [%d]", len_file_map);
-
-	printf("------------- AFTER TRIM --------------\n");
-	if (parser->file_map != NULL)
-	{
-		trim_line = NULL;
-		while (parser->file_map[i] != NULL)
-		{
-			trim_line = ft_strtrim(parser->file_map[i], " ");
-			printf("line [%i]: [%s]\n", i, trim_line);
-			i++;
-		}
-		free(trim_line);
-	}
-	else
-		return ;
-}
-*/
 
 static void	type_of_horientation(char *trim_line, t_parser *map_info)
 {
@@ -240,50 +196,12 @@ void	fill_parser_info(t_parser *parser)
 		trim_line = ft_strtrim(parser->file_map[i], " ");
 		len_tmp = (int) ft_strlen(trim_line);
 		if (len_tmp > 1)
-		{
 			type_of_horientation(trim_line, parser);
-		}
 		free(trim_line);
 		i++;
 	}
 	if (check_textures_and_colors(parser) == 1)
-	{
 		ft_printf("***************************Error: invalid elements in map \n");
-		// handle_exit();
-	}
 	else
 		ft_printf("--------------------VALID ELEMENTS IN MAP----------------\n");
-
 }
-
-/*
-char	*find_type_horientation(char *trim_line)
-{
-	char	*new_str;
-	int		len_line;
-	int		i;
-
-	len_line = ft_strlen(trim_line);
-	new_str = malloc(sizeof(char *) * len_line + 1);
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	while (i < len_line)
-	{
-		new_str[i] = trim_line[i];
-		i ++;
-	}
-	new_str[i] = '\0';
-	return (new_str);
-}
-*/
-
-
-/************************MAP EXTENSION FUNCTION **************************/
-
-/*
-void	main_parsing_exists(char *av)
-{
-	void (av);
-
-}*/

@@ -71,16 +71,3 @@ int	check_map_dimensions(t_parser *map_info)
 	}
 	return (0);
 }
-
-void	print_map_2d(t_parser *map_info)
-{
-	int	i;
-
-	i = 0;
-	while (map_info->file_map[i] != NULL)
-	{
-		printf("line[%i]: [%s]\n", i, map_info->file_map[i]);
-		i++;
-	}
-	free_parser_map(map_info);
-}

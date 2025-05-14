@@ -7,6 +7,6 @@ typedef struct s_game       t_game;
 
 //  print_structs.c
 
-void    printar_parser_struct(t_parser *parser);
+void    print_parser_struct(t_parser *parser);
 
 #endif

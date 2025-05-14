@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-void    printar_parser_struct(t_parser *parser)
+void    print_parser_struct(t_parser *parser)
 {
     if (parser != NULL)
     {
@@ -13,4 +13,17 @@ void    printar_parser_struct(t_parser *parser)
     }
     else
         printf("parser is NULL\n");
+}
+
+void	print_map_2d(t_parser *map_info)
+{
+	int	i;
+
+	i = 0;
+	while (map_info->file_map[i] != NULL)
+	{
+		printf("line[%i]: [%s]\n", i, map_info->file_map[i]);
+		i++;
+	}
+	free_parser_map(map_info);
 }
