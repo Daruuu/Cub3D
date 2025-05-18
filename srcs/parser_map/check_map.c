@@ -3,11 +3,12 @@
 // MAIN FUNCTION PARSINGGGGGGGGG
 //TODO: here call functions from check_extension and check_items
 
-int	check_correct_parsing_map(char **argv)
+// int	check_correct_parsing_map(char **argv)
+int	check_correct_parsing_map(t_parser *parser)
 {
-	t_parser	*parser;
-
-	parser = NULL;
+	// t_parser	*parser;
+	// parser = NULL;
+	
 
 	if (map_format_border_check(argv[1], parser) == 1)
 	{

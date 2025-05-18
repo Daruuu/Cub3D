@@ -56,7 +56,7 @@ static	void	flood_exit(t_map *map, int x, int y)
 	flood_exit(map, x, y - 1);
 }
 */
-
+/*
 static	void	copy_map_matrix(t_parser *copy_map, t_parser *map_info)
 {
 	int	i;
@@ -80,6 +80,47 @@ static	void	copy_map_matrix(t_parser *copy_map, t_parser *map_info)
 		i++;
 	}
 }
+*/
+//TODO: implementar con find_first_line_map and find_last_map in check_map.c
+static	void	copy_map_matrix(t_parser *parser)
+{
+	int	i;
+	int	j;
+	int	first_line_map;
+	int	last_line_map;
+	int	len_line;
+	
+	first_line_map = find_first_line_map(parser);
+	last_line_map = find_last_and_last_line(parser);
+
+	parser->map = malloc(sizeof(char *) * last_line_map - first_line_map);
+	if (!parser->map)
+		handle_error("Error: Memory allocation failed\n", 30, parser, NULL);
+	i = 0;
+	
+	len_line = 0;
+	while (i)
+	{
+		if (i == first_line_map)
+		{
+			len_line = ft_strlen(parser->file_map[i]);
+			printf("len line: [%i]: [%d]", i, len_line);
+
+			parser->map[i] = malloc(sizeof(char) * len_line);
+			if (!parser->map[i])
+				handle_error("Error: Memory allocation failed\n", 30, parser, NULL);
+			j = 0;
+			while (j < len_line)
+			{
+				parser->file_map[i][j] = parser->map[i][j];
+				j++;
+			}
+			len_line = 0;
+		}
+		i++;
+	}
+}
+
 
 /*******************	CHECK_EMPTY FUNCTION	*******************************/
 //TODO: retake in this file 

@@ -4,6 +4,7 @@ static	char	*allocate_map1d(size_t size)
 {
 	char	*map1d;
 
+	map1d = NULL;
 	if (size > 1)
 		map1d = (char *) malloc(size + 1);
 	if (!map1d)
@@ -121,7 +122,7 @@ int	read_map(char *path, t_parser *map_info)
 	}
 	free(map1d);
 	if (map_info->map == NULL)
-		handle_exit(ERROR_MEMORY, 35);
+		handle_exit(ERROR_MEMORY);
 	//
 	if (set_map_dimensions(map_info) == 1 || check_map_dimensions(map_info) == 1)
 		return (1);
@@ -201,7 +202,7 @@ void	fill_parser_info(t_parser *parser)
 		i++;
 	}
 	if (check_textures_and_colors(parser) == 1)
-		ft_printf("***************************Error: invalid elements in map \n");
+		ft_printf("***************************Error: invalid elements in map************************\n");
 	else
 		ft_printf("--------------------VALID ELEMENTS IN MAP----------------\n");
 }

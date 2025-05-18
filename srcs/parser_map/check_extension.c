@@ -21,25 +21,34 @@ int	validate_path_map(char *argv)
 	return (0);
 }
 
-static int	check_first_and_last_line(t_parser *map_info)
+	//get first line map in file_map
+static int	find_first_line_map(t_parser *map_info)
 {
-	int	j;
+	int i;
 
-	j = 0;
-	while (map_info->map[0][j] != '\0')
+	i = 0;
+	while (map_info->file_map[i])
 	{
-		if (map_info->map[0][j] != '1')
-			return (1);
-		j++;
+		if (ft_strcmp(map_info->file_map[i][0], '1'))
+			return (i);
+		i++;
 	}
-	j = 0;
-	while (map_info->map[map_info->rows - 1][j] != '\0')
+	return (-1);
+}
+
+static int	find_last_and_last_line(t_parser *map_info)
+{
+	int i;
+
+	i = 0;
+	while (map_info->file_map[i])
 	{
-		if (map_info->map[map_info->rows - 1][j] != '1')
-			return (1);
-		j++;
+		if (ft_strcmp(map_info->file_map[i][0], '1'))
+			return (i);
+		i++;
 	}
-	return (0);
+	return (-1);
+
 }
 
 static int	check_laterals_map(t_parser *map_info)
@@ -71,14 +80,37 @@ static int	check_laterals_map(t_parser *map_info)
 /************************VALIDATION MAIN **************************/
 //	TODO: change name: validation_map_format()
 
+char	**extract_map_from_file_map(t_parser *parser)
+{
+	int	first_line_map;
+	int	last_line_map;
+	int	i;
+	
+	first_line_map = find_first_line_map(parser);
+	last_line_map = find_last_and_last_line(parser);
+	i = 0;
+	while (parser->file_map[i] != NULL)
+	{
+		if (i == first_line_map)
+		{
+		}
+	}
+
+
+
+
+}
+
 int	map_format_border_check(char *path, t_parser *map_info)
 {
-	if (validate_path_map(path) == 0)
+	if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
+		return (1);
+	// if (validate_path_map(path) == 0)
 	{
 		// if (read_map(path, map_info) == 1)
 		// 	return (1);
-		if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
-			return (1);
+		// if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
+		// 	return (1);
 	}
 	return (0);
 }

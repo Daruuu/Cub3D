@@ -12,7 +12,7 @@ int         validate_path_map(char *argv);
 int         map_format_border_check(char *path, t_parser *map_info);
 
 //  check_map.c
-int         check_correct_parsing_map(char **argv);
+int         check_correct_parsing_map(t_parser *parser);
 
 //  free_functions.c
 void        free_parser_map(t_parser *parser);
