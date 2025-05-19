@@ -134,8 +134,8 @@ int	validation_player(t_parser *map_info)
 	copy_map.columns = map_info->columns;
 	copy_map2.rows = map_info->rows;
 	copy_map2.columns = map_info->columns;
-	copy_map_matrix(&copy_map, map_info);
-	copy_map_matrix(&copy_map2, map_info);
+	// copy_map_matrix(&copy_map, map_info);
+	// copy_map_matrix(&copy_map2, map_info);
 	// flood_fill(&copy_map, map_info->position_player.x, map_info->position_player.y, ccoins);
 	// flood_exit(&copy_map2, map_info->position_player.x, map_info->position_player.y);
 	/*

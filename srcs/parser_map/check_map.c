@@ -4,12 +4,14 @@
 //TODO: here call functions from check_extension and check_items
 
 // int	check_correct_parsing_map(char **argv)
+/*
 int	check_correct_parsing_map(t_parser *parser)
 {
 	// t_parser	*parser;
 	// parser = NULL;
 	
 
+	/*
 	if (map_format_border_check(argv[1], parser) == 1)
 	{
 		// free_map2d(game->map);
@@ -17,7 +19,6 @@ int	check_correct_parsing_map(t_parser *parser)
 		// free(game);
 		handle_exit(ERROR_INVALID_MAP);
 	}
-	/*
 	else if (items_errors(game->map) == 1)
 	{
 		free_map2d(game->map);
@@ -32,6 +33,6 @@ int	check_correct_parsing_map(t_parser *parser)
 		free(game);
 		handle_exit(ERROR_ITEMS, 21);
 	}
-	*/
 	return (0);
 }
+*/

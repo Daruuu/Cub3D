@@ -22,21 +22,21 @@ int	validate_path_map(char *argv)
 }
 
 	//get first line map in file_map
-static int	find_first_line_map(t_parser *map_info)
+int	find_first_line_map(t_parser *map_info)
 {
 	int i;
 
 	i = 0;
 	while (map_info->file_map[i])
 	{
-		if (ft_strcmp(map_info->file_map[i][0], '1'))
+		if (ft_(map_info->file_map[i][0], '1') == 0)
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-static int	find_last_and_last_line(t_parser *map_info)
+int	find_last_and_last_line(t_parser *map_info)
 {
 	int i;
 
@@ -48,7 +48,6 @@ static int	find_last_and_last_line(t_parser *map_info)
 		i++;
 	}
 	return (-1);
-
 }
 
 static int	check_laterals_map(t_parser *map_info)
@@ -103,8 +102,8 @@ char	**extract_map_from_file_map(t_parser *parser)
 
 int	map_format_border_check(char *path, t_parser *map_info)
 {
-	if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
-		return (1);
+	// if (check_first_and_last_line(map_info) == 1 || check_laterals_map(map_info) == 1)
+	// 	return (1);
 	// if (validate_path_map(path) == 0)
 	{
 		// if (read_map(path, map_info) == 1)
