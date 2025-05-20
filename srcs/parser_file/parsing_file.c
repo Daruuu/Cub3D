@@ -8,7 +8,7 @@ static	char	*allocate_map1d(size_t size)
 	if (size > 1)
 		map1d = (char *) malloc(size + 1);
 	if (!map1d)
-		handle_exit(ERROR_MEMORY);
+		handle_exit(ERROR_MEMORY_ALLOCATION);
 	return (map1d);
 }
 
@@ -47,14 +47,14 @@ static	char	*read_file_content(char *path, int size)
 	if (fd < 0)
 	{
 		free(map1d);
-		handle_exit(ERROR_OPEN_FILE);
+		handle_exit(ERROR_OPEN_FILE_MAP);
 	}
 	bytes_read = read(fd, map1d, size);
 	if (bytes_read < 0)
 	{
 		free(map1d);
 		close(fd);
-		handle_exit(ERROR_OPEN_FILE);
+		handle_exit(ERROR_OPEN_FILE_MAP);
 	}
 	map1d[size] = '\0';
 	close(fd);
@@ -86,7 +86,7 @@ int	read_map(char *path, t_parser *map_info)
 	}
 	free(map1d);
 	if (map_info->map == NULL)
-		handle_exit(ERROR_MEMORY);
+		handle_exit(ERROR_MEMORY_ALLOCATION);
 	//
 	if (set_map_dimensions(map_info) == 1 || check_map_dimensions(map_info) == 1)
 		return (1);

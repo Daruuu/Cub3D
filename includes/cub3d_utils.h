@@ -2,21 +2,31 @@
 # define CUB3D_UTILS_H
 
 /*--------------------Error and free------------------*/
-# define ERROR_INVALID_MAP "error\nInvalid map file\n"
-# define ERROR_MEMORY_ALLOCATION "error: Memory allocation failed\n"
-# define ERROR_INVALID_ARG "Error\nInvalid argument.\n"
-# define ERROR_WALLS "Error\nInvalid walls in map.\n"
-# define ERROR_COINS_EXIT "Error\nInvalid game\n"
-# define ERROR_ITEMS "Error\nInvalid items\n"
+# define INVALID_MAP_SIZE "Error: Invalid size map\n"
+# define ERROR_INVALID_MAP_ROWS "Error: Invalid rows\n"
+# define ERROR_INVALID_MAP_COLS "Error: Invalid columns\n"
+
+# define INVALID_MAP_EXTENSION "Error: Invalid extension map.\n"
+# define ERROR_MEMORY_ALLOCATION "Error: Memory allocation failed\n"
+# define ERROR_INVALID_ARGS "Error: Invalid arguments.\n"
+
+# define ERROR_WALLS_IN_MAP "Error: Invalid WALLS in map.\n"
+# define ERROR_ITEMS_IN_MAP "Error: Invalid ITEM in map.\n"
+
+# define ERROR_ITEM_NORTH "Error: Invalid items NORTH.\n"
+# define ERROR_ITEM_SOUTH "Error: Invalid items SOUTH.\n"
+# define ERROR_ITEM_WEST "Error: Invalid items WEST.\n"
+# define ERROR_ITEM_EAST "Error: Invalid items EAST.\n"
 
 /*--------------------Error and exit------------------*/
-# define ERROR_OPEN_FILE "Error\nFailure to open arg-file.\n"
-# define ERROR_MEMORY "Error\nMemory allocation failure.\n"
+# define ERROR_OPEN_FILE_MAP "Error: Fail OPEN MAP FILE.\n"
+
+/*--------------------Error items in map------------------*/
+# define ERROR_ITEMS_FILE "Error: Fail OPEN MAP FILE.\n"
 
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'
 # define FLOOR '0'
-# define PLAYER 'P'
 
 /*-------------------- ITEMS ASSIGN PLAYER ------------------*/
 # define NORTH  'N'
@@ -60,4 +70,4 @@
 # define KEY_LEFT   65361
 # define KEY_RIGHT  65363
 
-#endif /* MACROS_H */
+#endif

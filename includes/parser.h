@@ -45,7 +45,7 @@ int         ft_open_map(char *path);
 int         set_map_dimensions(t_parser *map_info);
 int         check_map_dimensions(t_parser *map);
 
-void        print_map_2d(t_parser *map_info);
+void        print_map_2d(char** matrix);
 
 
 //  parsing_textures.c

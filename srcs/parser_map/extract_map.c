@@ -1,13 +1,17 @@
-#include "../includes/cub3d.h"
+# include "../includes/cub3d.h"
 
 static int	find_first_line_map(t_parser *map_info)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (map_info->file_map[i])
 	{
-		if (map_info->file_map[i][0] == '1')
+		j = 0;
+		while (map_info->file_map[i][j] == ' ')
+			j++;
+		if (map_info->file_map[i][j] == '1')
 			return (i);
 		i++;
 	}
@@ -17,6 +21,7 @@ static int	find_first_line_map(t_parser *map_info)
 static int	find_last_line_map(t_parser *map_info)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (map_info->file_map[i])
@@ -24,6 +29,9 @@ static int	find_last_line_map(t_parser *map_info)
 	i--;
 	while (i >= 0)
 	{
+		j = 0;
+		while (map_info->file_map[i][j] == ' ')
+			j++;
 		if (map_info->file_map[i][0] == '1')
 			return (i);
 		i--;
@@ -45,7 +53,7 @@ static char	**new_matrix_map(t_parser *parser, int total_lines, int first_line)
 	while (rows < total_lines)
 	{
 		len_line = (int) ft_strlen(parser->file_map[first_line + rows]);
-		printf("len line: [%i]: [%d]", rows, len_line);
+		printf("len line: [%d]: [%d]\n", rows + 1, len_line);
 		new_matrix[rows] = malloc(sizeof(char) * (len_line + 1));
 		if (!new_matrix[rows])
 		{

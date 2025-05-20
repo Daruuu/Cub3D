@@ -15,15 +15,16 @@ void    print_parser_struct(t_parser *parser)
         printf("parser is NULL\n");
 }
 
-void	print_map_2d(t_parser *map_info)
+void	print_map_2d(char** matrix)
 {
 	int	i;
 
 	i = 0;
-	while (map_info->file_map[i] != NULL)
+	while (matrix[i] != NULL)
 	{
-		printf("line[%i]: [%s]\n", i, map_info->file_map[i]);
+		printf("line[%i]: [%s]\n", i, matrix[i]);
 		i++;
 	}
-	free_parser_map(map_info);
+	// free_parser_map(matrix);
+	free_matrix(matrix);
 }
