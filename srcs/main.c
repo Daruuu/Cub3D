@@ -32,10 +32,7 @@ int	main(int argc, char **argv)
 	int	condition1 = read_file(argv[1], my_parser);
 	if (condition1 == 0)
 	{
-		// main parsing function
-		parrsing();
-		fill_parser_info(my_parser);
-		print_parser_struct(my_parser);
+		parsing(argv, my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");

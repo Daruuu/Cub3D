@@ -26,7 +26,7 @@ static int	find_last_line_map(t_parser *map_info)
 	{
 		if (map_info->file_map[i][0] == '1')
 			return (i);
-		i++;
+		i--;
 	}
 	return (-1);
 }

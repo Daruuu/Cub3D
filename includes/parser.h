@@ -29,6 +29,7 @@ void		free_matrix(char **map);
 void        free_parser_struct(t_parser *parser);
 
 //  parsing.c
+void		parsing(char **argv, t_parser *parser);
 
 // ===========================================
 // ============ PARSER FILE ==================
