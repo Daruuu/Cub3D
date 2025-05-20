@@ -1,10 +1,5 @@
 #include "../includes/cub3d.h"
 
-/**
- *
- * @param parser work with file_map
- * @return
- */
 
 int	check_textures_and_colors(t_parser *parser)
 {

@@ -1,6 +1,6 @@
 #include "../includes/cub3d.h"
 
-int	find_first_line_map(t_parser *map_info)
+static int	find_first_line_map(t_parser *map_info)
 {
 	int i;
 
@@ -14,7 +14,7 @@ int	find_first_line_map(t_parser *map_info)
 	return (-1);
 }
 
-int	find_last_line_map(t_parser *map_info)
+static int	find_last_line_map(t_parser *map_info)
 {
 	int i;
 

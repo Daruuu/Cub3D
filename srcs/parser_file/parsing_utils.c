@@ -1,4 +1,4 @@
-#include "../includes/cub3d.h"
+# include "../includes/cub3d.h"
 
 int	ft_open_map(char *path)
 {

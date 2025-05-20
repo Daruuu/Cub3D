@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/18 11:42:10 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:20:27 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ int	main(int argc, char **argv)
 
 	printf("av[0]: [%s]\n", argv[0]);
 	printf("map dir: [%s]\n", argv[1]);
+
 	my_parser = init_struct_parser();
 	if (!my_parser)
 		return (1);
 	int	condition1 = read_file(argv[1], my_parser);
 	if (condition1 == 0)
 	{
+		// main parsing function
+		parrsing();
 		fill_parser_info(my_parser);
 		print_parser_struct(my_parser);
 	}

@@ -33,43 +33,6 @@ static	int	count_file_size(char *path)
 	return (size);
 }
 
-/*
-char	*safe_read_map_file(const char *path)
-{
-	int		fd;
-	ssize_t	bytes_read;
-	char	*buffer;
-	int		size;
-
-	if (!path)
-		return (NULL);
-	size = count_file_size(path);
-	if (size <= 0)
-	{
-		// fprintf(stderr, "Error: archivo vacío o ilegible.\n");
-		return (NULL);
-	}
-	buffer = malloc(size + 1);
-	if (!buffer)
-		handle_exit(ERROR_MEMORY);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		free(buffer);
-		handle_exit(ERROR_OPEN_FILE);
-	}
-	bytes_read = read(fd, buffer, size);
-	close(fd);
-	if (bytes_read < 0 || bytes_read < size)
-	{
-		free(buffer);
-		// fprintf(stderr, "Error: lectura incompleta.\n");
-		return (NULL);
-	}
-	buffer[size] = '\0';
-	return buffer;
-}
-*/
 
 static	char	*read_file_content(char *path, int size)
 {
@@ -99,6 +62,7 @@ static	char	*read_file_content(char *path, int size)
 }
 
 // PASO 2
+// TODO: this function is not using
 int	read_map(char *path, t_parser *map_info)
 {
 	int		file_size;
@@ -202,7 +166,45 @@ void	fill_parser_info(t_parser *parser)
 		i++;
 	}
 	if (check_textures_and_colors(parser) == 1)
-		ft_printf("***************************Error: invalid elements in map************************\n");
+		ft_printf("Error: invalid elements in map\n");
 	else
-		ft_printf("--------------------VALID ELEMENTS IN MAP----------------\n");
+		ft_printf("VALID ELEMENTS IN MAP\n");
 }
+
+/*
+char	*safe_read_map_file(const char *path)
+{
+	int		fd;
+	ssize_t	bytes_read;
+	char	*buffer;
+	int		size;
+
+	if (!path)
+		return (NULL);
+	size = count_file_size(path);
+	if (size <= 0)
+	{
+		// fprintf(stderr, "Error: archivo vacío o ilegible.\n");
+		return (NULL);
+	}
+	buffer = malloc(size + 1);
+	if (!buffer)
+		handle_exit(ERROR_MEMORY);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		free(buffer);
+		handle_exit(ERROR_OPEN_FILE);
+	}
+	bytes_read = read(fd, buffer, size);
+	close(fd);
+	if (bytes_read < 0 || bytes_read < size)
+	{
+		free(buffer);
+		// fprintf(stderr, "Error: lectura incompleta.\n");
+		return (NULL);
+	}
+	buffer[size] = '\0';
+	return buffer;
+}
+*/
