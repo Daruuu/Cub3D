@@ -10,26 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+# include "../includes/cub3d.h"
 
-static int	check_player_exists(char to_find)
+static int	is_player_exists(char c)
 {
-	return (to_find == NORTH || to_find == SOUTH \
-		|| to_find == WEST || to_find == EAST);
+	return (c == NORTH || c == SOUTH || c == WEST || c == EAST);
 }
 
-static	int	check_items_in_map(t_parser *map_data)
+static	int	check_player_in_map(t_parser *map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	while (x < map_data->rows)
+	while (x < map->rows)
 	{
 		y = 0;
-		while (y < map_data->columns)
+		while (y < map->columns)
 		{
-			if (check_player_exists(map_data->map[x][y]) != 0)
+			if (is_player_exists(map->map[x][y]) != 0)
 				return (1);
 			y++;
 		}
@@ -38,7 +37,7 @@ static	int	check_items_in_map(t_parser *map_data)
 	return (0);
 }
 
-static int	count_map_items(t_parser *map_data)
+static int	count_player_positions(t_parser *map_data)
 {
 	int	i;
 	int	j;
@@ -51,13 +50,7 @@ static int	count_map_items(t_parser *map_data)
 		j = 1;
 		while (j < map_data->columns - 1)
 		{
-			if (map_data->map[i][j] == NORTH)
-				count ++;
-			else if (map_data->map[i][j] == SOUTH)
-				count ++;
-			else if (map_data->map[i][j] == WEST)
-				count ++;
-			else if (map_data->map[i][j] == EAST)
+			if (is_player_exists(map_data->map[i][j]))
 				count ++;
 			j++;
 		}
@@ -66,14 +59,54 @@ static int	count_map_items(t_parser *map_data)
 	return (count);
 }
 
+
+static int	check_laterals_map(t_parser *map_data)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_data->rows)
+	{
+		if (map_data->map[i][0] != '1' \
+			|| map_data->map[i][map_data->columns - 1] != '1')
+		{
+			return (1);
+		}
+		i++;
+	}
+	i = 0;
+	while (i < map_data->rows)
+	{
+		if (map_data->map[i][map_data->columns - 1] != '1')
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 /************************VALIDATION MAIN **************************/
 
 int	validation_items_in_map(t_parser *map_info)
 {
-	int	count_items_map;
+	int	player_count;
 
-	count_items_map = count_map_items(map_info);
-	if (check_items_in_map(map_info) == 1 || count_items_map > 1)
+	player_count = count_player_positions(map_info);
+	if (player_count != 1)
+	{
+		printf("error more items than mandatory\n");
 		return (1);
+	}
+	if (check_player_in_map(map_info) == 0)
+	{
+		printf("error: player position NOT exists in map\n");
+		return (1);
+	}
+	if (check_laterals_map(map_info) == 1)
+	{
+		printf("error: invalid laterals in map\n");
+		return (1);
+	}
 	return (0);
 }

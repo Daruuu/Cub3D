@@ -41,14 +41,14 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_PARSER_FILE)/parsing_file.c \
 	$(SRC_PARSER_FILE)/parsing_textures.c \
 	$(SRC_PARSER_FILE)/parsing_utils.c \
-	$(SRC_PARSER_MAP)/check_extension.c \
+	$(SRC_PARSER_MAP)/check_extension_and_player.c \
 	$(SRC_PARSER_MAP)/check_items.c \
-	$(SRC_PARSER_MAP)/check_map.c \
 	$(SRC_PARSER_MAP)/check_player.c \
 	$(SRC_PARSER_MAP)/check_utils.c \
+	$(SRC_PARSER_MAP)/error_handler.c \
+	$(SRC_PARSER_MAP)/extract_map.c \
 	$(SRC_PARSER_MAP)/free_functions.c \
-	$(SRC_PARSER_MAP)/parsing.c \
-	$(SRC_PARSER_MAP)/print_errors.c 
+	$(SRC_PARSER_MAP)/parsing.c
 
 # ========== Archivos objeto ========== #
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC)))

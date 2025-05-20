@@ -9,12 +9,12 @@ typedef struct s_game       t_game;
 
 //  check_extension.c
 int         validate_path_map(char *argv);
-int			find_first_line_map(t_parser *map_info);
-int			find_last_and_last_line(t_parser *map_info);
-int         map_format_border_check(char *path, t_parser *map_info);
+int         map_format_border_check(t_parser *map_info);
 
 //  check_map.c
 int         check_correct_parsing_map(t_parser *parser);
+int			find_first_line_map(t_parser *map_info);
+int			find_last_line_map(t_parser *map_info);
 
 //  free_functions.c
 void        free_parser_map(t_parser *parser);
