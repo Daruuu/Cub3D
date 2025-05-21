@@ -1,6 +1,6 @@
 # include "../includes/cub3d.h"
 
-int	validate_path_map(char *argv)
+static int	validate_extension_map(char *argv)
 {
 	char	*file_extension;
 	int		len_file_extension;
@@ -17,6 +17,45 @@ int	validate_path_map(char *argv)
 			return (1);
 		i--;
 		len_argv--;
+	}
+	return (0);
+}
+static int	has_invalid_chars(char *filename)
+{
+	while (*filename)
+	{
+		if (*filename == '*' || *filename == '?' || *filename == ':' ||
+			*filename == '<' || *filename == '>' || *filename == '|')
+			return (1);
+		filename++;
+	}
+	return (0);
+}
+
+void	validate_map_filename(char *argv)
+{
+	int	len_file_map;
+
+	len_file_map = (int) ft_strlen(argv);
+	if (len_file_map <= 4)
+	{
+		printf(INVALID_LEN_FILE_MAP);
+		return (1);
+	}
+	if (validate_extension_map(argv) != 0)
+	{
+		printf(INVALID_MAP_EXTENSION);
+		return (1);
+	}
+	if (has_invalid_chars(argv) != 0)
+	{
+		printf(ERROR_INVALID_FILENAME_CHARS);
+		return (1);
+	}
+	if (open(argv, O_RDONLY) < 0)
+	{
+		printf(ERROR_OPEN_FILE_MAP);
+		return (1);
 	}
 	return (0);
 }

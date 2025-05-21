@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/20 16:20:27 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:58:10 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	main(int argc, char **argv)
 	t_parser	*my_parser;
 
 	//check valid file.cub
-	if (argc != 2 || argv[1] == NULL || validate_path_map(argv[1]) != 0)
-	{
-		printf("error args\n");
-		// return (printf("error args\n"), 1);
-	}
+	if (argc != 2 || argv[1] == NULL)
+		return (printf(ERROR_INVALID_ARGS), 1);
+
+	if (validate_path_map(argv[1]) != 0)
+		return (printf(INVALID_MAP_EXTENSION), 1);
 
 	printf("av[0]: [%s]\n", argv[0]);
 	printf("map dir: [%s]\n", argv[1]);

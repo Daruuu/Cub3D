@@ -2,13 +2,19 @@
 # define CUB3D_UTILS_H
 
 /*--------------------Error and free------------------*/
+# define ERROR_INVALID_ARGS "Error: Incorrect arguments.\n"
+# define INVALID_LEN_FILE_MAP "Error: Map filename too short.\n"
+# define INVALID_MAP_EXTENSION "Error: Extension invalid, expected '.cub'\n"
+# define ERROR_INVALID_FILENAME_CHARS   "Error: Filename contains invalid characters.\n"
+# define ERROR_OPEN_FILE_MAP "Error: Map file could not be opened.\n"
+
+
+
 # define INVALID_MAP_SIZE "Error: Invalid size map\n"
 # define ERROR_INVALID_MAP_ROWS "Error: Invalid rows\n"
 # define ERROR_INVALID_MAP_COLS "Error: Invalid columns\n"
 
-# define INVALID_MAP_EXTENSION "Error: Invalid extension map.\n"
 # define ERROR_MEMORY_ALLOCATION "Error: Memory allocation failed\n"
-# define ERROR_INVALID_ARGS "Error: Invalid arguments.\n"
 
 # define ERROR_WALLS_IN_MAP "Error: Invalid WALLS in map.\n"
 # define ERROR_ITEMS_IN_MAP "Error: Invalid ITEM in map.\n"
@@ -19,7 +25,6 @@
 # define ERROR_ITEM_EAST "Error: Invalid items EAST.\n"
 
 /*--------------------Error and exit------------------*/
-# define ERROR_OPEN_FILE_MAP "Error: Fail OPEN MAP FILE.\n"
 
 /*--------------------Error items in map------------------*/
 # define ERROR_ITEMS_FILE "Error: Fail OPEN MAP FILE.\n"

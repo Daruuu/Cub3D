@@ -6,7 +6,7 @@
 #    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/05/20 14:45:21 by dasalaza         ###   ########.fr        #
+#    Updated: 2025/05/21 13:51:43 by dasalaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 # ========== Configuración general ========== #
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include #-g -fsanitize=address
 TEST_FLAGS = -fsanitize=address -g -Wall -Wextra -Werror -lm
 
 # ========== Directorios ========== #
