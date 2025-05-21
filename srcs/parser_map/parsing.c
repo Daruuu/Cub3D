@@ -15,5 +15,4 @@ void    parsing(char **argv, t_parser *parser)
 		return ;
 	}
 	print_parser_struct(parser);
-
 }

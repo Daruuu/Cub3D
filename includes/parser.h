@@ -10,7 +10,7 @@ typedef struct s_game       t_game;
 // ===========================================
 
 //  check_extension_and_player.c
-int         validate_path_map(char *argv);
+int			validate_map_filename(char *filename);
 void        get_player_init_pos(t_parser *map_data);
 
 //  check_items.c
@@ -30,6 +30,7 @@ void        free_parser_struct(t_parser *parser);
 
 //  parsing.c
 void		parsing(char **argv, t_parser *parser);
+int			count_file_size(char *path);
 
 // ===========================================
 // ============ PARSER FILE ==================
@@ -37,7 +38,7 @@ void		parsing(char **argv, t_parser *parser);
 
 //  parsing_files.c
 int         read_map(char *path, t_parser *map_info);
-int         read_file(char *path, t_parser *map_info);
+int         read_file(char *path, t_parser *parser);
 void        fill_parser_info(t_parser *parser);
 
 //  parsing_utils.c

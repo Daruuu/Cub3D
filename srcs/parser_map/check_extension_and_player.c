@@ -20,6 +20,7 @@ static int	validate_extension_map(char *argv)
 	}
 	return (0);
 }
+
 static int	has_invalid_chars(char *filename)
 {
 	while (*filename)
@@ -32,29 +33,34 @@ static int	has_invalid_chars(char *filename)
 	return (0);
 }
 
-void	validate_map_filename(char *argv)
+int	validate_map_filename(char *filename)
 {
 	int	len_file_map;
 
-	len_file_map = (int) ft_strlen(argv);
+	len_file_map = ft_strlen(filename);
 	if (len_file_map <= 4)
 	{
 		printf(INVALID_LEN_FILE_MAP);
 		return (1);
 	}
-	if (validate_extension_map(argv) != 0)
+	if (validate_extension_map(filename) != 0)
 	{
 		printf(INVALID_MAP_EXTENSION);
 		return (1);
 	}
-	if (has_invalid_chars(argv) != 0)
+	if (has_invalid_chars(filename) != 0)
 	{
 		printf(ERROR_INVALID_FILENAME_CHARS);
 		return (1);
 	}
-	if (open(argv, O_RDONLY) < 0)
+	if (open(filename, O_RDONLY) < 0)
 	{
 		printf(ERROR_OPEN_FILE_MAP);
+		return (1);
+	}
+	if (count_file_size(filename) <= 0)
+	{
+		printf(ERROR_EMPTY_FILE_MAP);
 		return (1);
 	}
 	return (0);

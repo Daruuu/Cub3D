@@ -7,6 +7,7 @@
 # define INVALID_MAP_EXTENSION "Error: Extension invalid, expected '.cub'\n"
 # define ERROR_INVALID_FILENAME_CHARS   "Error: Filename contains invalid characters.\n"
 # define ERROR_OPEN_FILE_MAP "Error: Map file could not be opened.\n"
+# define ERROR_EMPTY_FILE_MAP "Error: File map is empty.\n"
 
 
 
@@ -27,7 +28,6 @@
 /*--------------------Error and exit------------------*/
 
 /*--------------------Error items in map------------------*/
-# define ERROR_ITEMS_FILE "Error: Fail OPEN MAP FILE.\n"
 
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'

@@ -12,7 +12,7 @@ static	char	*allocate_map1d(size_t size)
 	return (map1d);
 }
 
-static	int	count_file_size(char *path)
+int	count_file_size(char *path)
 {
 	int		fd;
 	ssize_t	bytes_read;
@@ -63,6 +63,7 @@ static	char	*read_file_content(char *path, int size)
 
 // PASO 2
 // TODO: this function is not using
+/*
 int	read_map(char *path, t_parser *map_info)
 {
 	int		file_size;
@@ -92,19 +93,20 @@ int	read_map(char *path, t_parser *map_info)
 		return (1);
 	return (0);
 }
+*/
 
 // PASO 1
 /**
  *
  * @param path check if path have bytes inside .cub
- * @param map_info first copy of (file .cub)
+ * @param parser first copy of (file .cub)
  * @return
  */
 
-int	read_file(char *path, t_parser *map_info)
+int	read_file(char *path, t_parser *parser)
 {
-	int		file_size;
 	char	*file_map1d;
+	int		file_size;
 
 	file_size = count_file_size(path);
 	if (file_size <= 0)
@@ -114,8 +116,8 @@ int	read_file(char *path, t_parser *map_info)
 	if (!file_map1d)
 		return (free(file_map1d), 1);
 
-	map_info->file_map = ft_split(file_map1d, '\n');
-	if (!map_info->file_map)
+	parser->file_map = ft_split(file_map1d, '\n');
+	if (!parser->file_map)
 	{
 		free(file_map1d);
 		printf("MAP INFO NULL\n");
@@ -165,10 +167,10 @@ void	fill_parser_info(t_parser *parser)
 		free(trim_line);
 		i++;
 	}
-	if (check_textures_and_colors(parser) == 1)
-		ft_printf("Error: invalid elements in map\n");
+	if (check_textures_and_colors(parser) == 0)
+		printf("VALID ELEMENTS IN MAP\n");
 	else
-		ft_printf("VALID ELEMENTS IN MAP\n");
+		printf("Error: invalid elements in map\n");
 }
 
 /*

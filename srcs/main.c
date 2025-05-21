@@ -16,23 +16,26 @@ int	main(int argc, char **argv)
 {
 	t_parser	*my_parser;
 
-	//check valid file.cub
 	if (argc != 2 || argv[1] == NULL)
 		return (printf(ERROR_INVALID_ARGS), 1);
-
-	if (validate_path_map(argv[1]) != 0)
-		return (printf(INVALID_MAP_EXTENSION), 1);
 
 	printf("av[0]: [%s]\n", argv[0]);
 	printf("map dir: [%s]\n", argv[1]);
 
+	if (validate_map_filename(argv[1]) != 0)
+		return (1);
+
 	my_parser = init_struct_parser();
 	if (!my_parser)
 		return (1);
-	int	condition1 = read_file(argv[1], my_parser);
-	if (condition1 == 0)
+
+	if (read_file(argv[1], my_parser) == 1)
 	{
 		parsing(argv, my_parser);
+		// printf("---------------------------------\n");
+		// print_map_2d(my_parser->file_map);
+		// printf("---------------------------------\n");
+		// print_map_2d(my_parser->map);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");
