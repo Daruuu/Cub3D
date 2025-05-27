@@ -55,7 +55,6 @@ int	set_map_dimensions(t_parser *map_info)
 	return (0);
 }
 
-
 int	check_map_dimensions(t_parser *map_info)
 {
 	int	i;

@@ -1,6 +1,5 @@
 #include "../includes/cub3d.h"
 
-
 int	check_textures_and_colors(t_parser *parser)
 {
 	if (!parser)
