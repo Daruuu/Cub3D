@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		// printf("---------------------------------\n");
 		// print_map_2d(my_parser->file_map);
 		// printf("---------------------------------\n");
-		print_map_2d(my_parser->map);
+		// print_map_2d(my_parser->map);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");

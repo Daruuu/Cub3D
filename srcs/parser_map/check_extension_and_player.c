@@ -37,7 +37,7 @@ int	validate_map_filename(char *filename)
 {
 	int	len_file_map;
 
-	len_file_map = ft_strlen(filename);
+	len_file_map = (int) ft_strlen(filename);
 	if (len_file_map <= 4)
 	{
 		printf(INVALID_LEN_FILE_MAP);
@@ -53,7 +53,10 @@ int	validate_map_filename(char *filename)
 		printf(ERROR_INVALID_FILENAME_CHARS);
 		return (1);
 	}
-	if (open(filename, O_RDONLY) < 0)
+	int open_file = 0;
+	open_file = open(filename, O_RDONLY);
+	// if (open(filename, O_RDONLY) < 0)
+	if (open_file < 0)
 	{
 		printf(ERROR_OPEN_FILE_MAP);
 		return (1);

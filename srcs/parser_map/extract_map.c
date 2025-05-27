@@ -39,7 +39,7 @@ static int	find_last_line_map(t_parser *map_info)
 	return (-1);
 }
 
-static char	**new_matrix_map(t_parser *parser, int total_lines, int first_line)
+static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 {
 	char	**new_matrix;
 	int		len_line;
@@ -70,6 +70,7 @@ static char	**new_matrix_map(t_parser *parser, int total_lines, int first_line)
 		rows++;
 	}
 	new_matrix[rows] = NULL;
+	parser->rows = rows;
 	return (new_matrix);
 }
 
@@ -84,7 +85,8 @@ void	extract_map_from_file_map(t_parser *parser)
 	if (first_line == -1 || last_line == -1 || last_line < first_line)
 		handle_error("Error: Mapa no válido. No se pudo extraer desde file_map.\n", 30, parser, NULL);
 	total_lines = last_line - first_line + 1;
-	parser->map = new_matrix_map(parser, total_lines, first_line);
+	parser->map = new_matrix_map(parser, first_line, total_lines);
+	parser->columns = get_max_columns(parser->map, parser->rows);
 }
 
 // MAIN FUNCTION PARSINGGGGGGGGG

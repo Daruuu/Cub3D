@@ -121,7 +121,6 @@ void	fill_parser_info(t_parser *parser)
 	len_file_map = 0;
 	while (parser->file_map[len_file_map] != NULL)
 		len_file_map ++;
-	printf("---------- LEN FILE MAP: -----------: [%d]\n", len_file_map);
 	while (parser->file_map[i] != NULL)
 	{
 		trim_line = ft_strtrim(parser->file_map[i], " ");
