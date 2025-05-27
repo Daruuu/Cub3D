@@ -33,6 +33,10 @@
 # define ERROR_ITEM_EAST "Error: Invalid items EAST.\n"
 
 # define ERROR_TABULATION_IN_MAP "Error: A tabulation exist in map.\n"
+
+# define ERROR_MAP_CANT_EXTRACT_FROM_FILE "Error: Invalid map. Can't extract from file.cub\n"
+# define ERROR_MAP_ALLOC_FAILED "Error: Failed to allocate memory for map"
+
 /*--------------------Error and exit------------------*/
 
 /*--------------------Error items in map------------------*/

@@ -83,9 +83,17 @@ void	extract_map_from_file_map(t_parser *parser)
 	first_line = find_first_line_map(parser);
 	last_line = find_last_line_map(parser);
 	if (first_line == -1 || last_line == -1 || last_line < first_line)
-		handle_error("Error: Mapa no válido. No se pudo extraer desde file_map.\n", 30, parser, NULL);
+	{
+		handle_error(ERROR_MAP_CANT_EXTRACT_FROM_FILE, \
+			(int) ft_strlen(ERROR_MAP_CANT_EXTRACT_FROM_FILE), parser, NULL);
+	}
 	total_lines = last_line - first_line + 1;
 	parser->map = new_matrix_map(parser, first_line, total_lines);
+	if (!parser->map)
+	{
+		handle_error(ERROR_MAP_ALLOC_FAILED, \
+			(int) ft_strlen(ERROR_MAP_ALLOC_FAILED), parser, NULL);
+	}
 	parser->columns = get_max_columns(parser->map, parser->rows);
 }
 

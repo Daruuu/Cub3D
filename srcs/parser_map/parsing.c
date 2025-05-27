@@ -74,17 +74,22 @@ int	validate_map_after_extract(t_parser *parser)
 		return (1);
 	}
 	normalize_map_lines(copy_map, parser->rows, parser->columns);
+	printf("++++++++++++++before flood fill\n");
+	print_map_2d(copy_map);
+
+	printf("---------------after flood fill\n");
+	flood_fill(copy_map, parser->rows, parser->columns, 0, 0);
 
 	print_map_2d(copy_map);
+
 	return (0);
 }
 
-// TODO: call all the validations here about parser_file and parser_map
-void    parsing(char **argv, t_parser *parser)
+void	parsing(t_parser *parser)
 {
-	(void) argv;
 	if (!parser->file_map)
 		return ;
+
 	fill_parser_info(parser);
 
 	// TODO: dont know how manage this function
@@ -94,19 +99,11 @@ void    parsing(char **argv, t_parser *parser)
 		printf("INVALID syntax in TEXTURES | FLOOR | CEIL in map\n");
 
 	extract_map_from_file_map(parser);
-	if (!parser->map)
-	{
-		printf("Error: Fail extract map\n");
-		return ;
-	}
-	// TODO: copy the map and validate if exists a island 
-	// or empty positions inside the map
+
+	// TODO: copy the map and validate if exists a island or empty positions inside the map
 	// check how manage tabs inside de file.cub ???
+
 	validate_map_after_extract(parser);
 
 	printf("------------------- -----------------------\n");
-	print_map_2d(parser->map);
-	printf("------------------------------------------\n");
-
-	// print_parser_struct(parser);
 }

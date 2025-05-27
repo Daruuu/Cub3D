@@ -15,6 +15,7 @@
 void	handle_error(char *str, int size, t_parser *map, t_game *game)
 {
 	(void) game;
+	// ft_putstr_fd(str, 2);
 	if (str && size > 0)
 		write(2, str, size);
 	if (map != NULL)

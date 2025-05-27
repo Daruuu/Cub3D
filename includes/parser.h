@@ -16,6 +16,9 @@ void        get_player_init_pos(t_parser *map_data);
 //  check_items.c
 int         validation_items_in_map(t_parser *map_info);
 
+//  check_player.c
+void		flood_fill(char **map, int rows, int cols, int x, int y);
+
 // errors_handler.c
 void        handle_error(char *str, int size, t_parser *map, t_game *game);
 void        handle_exit(char *str);
@@ -30,7 +33,7 @@ void        free_parser_struct(t_parser *parser);
 
 //  parsing.c
 char		**duplicate_map_matrix(t_parser *parser);
-void		parsing(char **argv, t_parser *parser);
+void		parsing(t_parser *parser);
 int			count_file_size(char *path);
 
 // ===========================================

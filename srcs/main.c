@@ -31,11 +31,7 @@ int	main(int argc, char **argv)
 
 	if (read_file(argv[1], my_parser) == 0)
 	{
-		parsing(argv, my_parser);
-		// printf("---------------------------------\n");
-		// print_map_2d(my_parser->file_map);
-		// printf("---------------------------------\n");
-		// print_map_2d(my_parser->map);
+		parsing(my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");

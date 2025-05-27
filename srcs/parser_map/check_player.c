@@ -1,22 +1,62 @@
-#include "../includes/cub3d.h"
+# include "../includes/cub3d.h"
 
 /*
-void	flood_fill(t_parser *map, int x, int y, int *ccoins)
+int	is_surrounded_by_walls(char **map, int x, int y)
 {
-	if (x < 0 || y < 0 || y >= map->columns|| x >= map->rows)
-		return ;
-	if (map->map[x][y] == '1' || map->map[x][y] == 'V' \
-			|| map->map[x][y] == 'E')
-		return ;
-	if (map->map[x][y] == 'C')
-		(*ccoins)++;
-	map->map[x][y] = 'V';
-	flood_fill(map, x + 1, y, ccoins);
-	flood_fill(map, x - 1, y, ccoins);
-	flood_fill(map, x, y + 1, ccoins);
-	flood_fill(map, x, y - 1, ccoins);
+	if (map[x - 1][y] != '1' && map[x - 1][y] != '/')
+		return (0);
+	if (map[x + 1][y] != '1' && map[x + 1][y] != '/')
+		return (0);
+	if (map[x][y - 1] != '1' && map[x][y - 1] != '/')
+		return (0);
+	if (map[x][y + 1] != '1' && map[x][y + 1] != '/')
+		return (0);
+	return (1);
 }
 */
+
+int is_surrounded_by_walls(char **map, int x, int y, int rows, int cols)
+{
+	if (x - 1 < 0 || x + 1 >= rows || y - 1 < 0 || y + 1 >= cols)
+		return (0);
+
+	if (map[x - 1][y] != '1' && map[x - 1][y] != '/')
+		return (0);
+	if (map[x + 1][y] != '1' && map[x + 1][y] != '/')
+		return (0);
+	if (map[x][y - 1] != '1' && map[x][y - 1] != '/')
+		return (0);
+	if (map[x][y + 1] != '1' && map[x][y + 1] != '/')
+		return (0);
+	return (1);
+}
+
+void	flood_fill(char **map, int rows, int cols, int x, int y)
+{
+	if (x < 0 || y < 0 || x >= rows || y >= cols)
+		return ;
+	//	si es pared o ya visitado no continuar
+	if (map[x][y] == '1' || map[x][y] == '/' || map[x][y] == '0')
+		return ;
+
+	if (map[x][y] == FLOOR || map[x][y] == NORTH || map[x][y] == SOUTH
+		|| map[x][y] == WEST || map[x][y] == EAST)
+	{
+		printf("Mapa no cerrado! Fuga detectada en (%d, %d)\n", x, y);
+		exit(1); // o return error code
+	}
+
+	// if (map[x][y] == ' ' && is_surrounded_by_walls(map, x, y, rows, cols))
+	// 	return ;
+
+	map[x][y] = '/';
+
+	flood_fill(map, rows, cols, x + 1, y);
+	flood_fill(map, rows, cols, x - 1, y);
+	flood_fill(map, rows, cols, x, y + 1);
+	flood_fill(map, rows, cols, x, y - 1);
+}
+
 
 /*******************	CHECK_EMPTY FUNCTION	*******************************/
 //TODO: retake in this file

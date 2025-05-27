@@ -117,7 +117,6 @@ void	fill_parser_info(t_parser *parser)
 	i = 0;
 	if (parser->file_map == NULL)
 		return ;
-
 	len_file_map = 0;
 	while (parser->file_map[len_file_map] != NULL)
 		len_file_map ++;
