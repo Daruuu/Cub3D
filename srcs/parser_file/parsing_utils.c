@@ -21,6 +21,23 @@ int	close_window(t_game *game)
 	exit(0);
 }*/
 
+int	get_max_columns(char **map, int rows)
+{
+	int i = 0;
+	int max = 0;
+	int len;
+
+	while (i < rows && map[i])
+	{
+		len = (int) ft_strlen(map[i]);
+		if (len > max)
+			max = len;
+		i ++;
+	}
+	return (max);
+}
+
+
 int	set_map_dimensions(t_parser *map_info)
 {
 	int	i;

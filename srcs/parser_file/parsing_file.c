@@ -33,8 +33,7 @@ int	count_file_size(char *path)
 	return (size);
 }
 
-
-static	char	*read_file_content(char *path, int size)
+char	*read_file_content(char *path, int size)
 {
 	int		fd;
 	char	*map1d;
@@ -61,41 +60,6 @@ static	char	*read_file_content(char *path, int size)
 	return (map1d);
 }
 
-// PASO 2
-// TODO: this function is not using
-/*
-int	read_map(char *path, t_parser *map_info)
-{
-	int		file_size;
-	char	*map1d;
-
-	file_size = count_file_size(path);
-	printf("file size: [%i]\n", file_size);
-
-	if (file_size <= 2)
-		return (1);
-
-	map1d = read_file_content(path, file_size);
-	if (!map1d)
-		return (1);
-	map_info->map = ft_split(map1d, '\n');
-	int	i = 0;
-	while (map_info->map[i] != NULL)
-	{
-		printf("line: [%s]\n", map_info->map[i]);
-		i++;
-	}
-	free(map1d);
-	if (map_info->map == NULL)
-		handle_exit(ERROR_MEMORY_ALLOCATION);
-	//
-	if (set_map_dimensions(map_info) == 1 || check_map_dimensions(map_info) == 1)
-		return (1);
-	return (0);
-}
-*/
-
-// PASO 1
 /**
  *
  * @param path check if path have bytes inside .cub
@@ -167,10 +131,6 @@ void	fill_parser_info(t_parser *parser)
 		free(trim_line);
 		i++;
 	}
-	if (check_textures_and_colors(parser) == 0)
-		printf("VALID ELEMENTS IN MAP\n");
-	else
-		printf("Error: invalid elements in map\n");
 }
 
 /*

@@ -10,7 +10,6 @@
 # define ERROR_EMPTY_FILE_MAP "Error: File map is empty.\n"
 
 
-
 # define INVALID_MAP_SIZE "Error: Invalid size map\n"
 # define ERROR_INVALID_MAP_ROWS "Error: Invalid rows\n"
 # define ERROR_INVALID_MAP_COLS "Error: Invalid columns\n"
@@ -20,11 +19,20 @@
 # define ERROR_WALLS_IN_MAP "Error: Invalid WALLS in map.\n"
 # define ERROR_ITEMS_IN_MAP "Error: Invalid ITEM in map.\n"
 
+# define ERROR_INVALID_NORTH_TEXTURE "Error: Invalid texture NORTH\n"
+# define ERROR_INVALID_SOUTH_TEXTURE "Error: Invalid texture SOUTH\n"
+# define ERROR_INVALID_WEST_TEXTURE "Error: Invalid texture WEST\n"
+# define ERROR_INVALID_EAST_TEXTURE "Error: Invalid texture EAST\n"
+
+# define ERROR_INVALID_FLOOR_TEXTURE "Error: Invalid format of FLOOR\n"
+# define ERROR_INVALID_CEILING_TEXTURE "Error: Invalid format of CEIL\n"
+
 # define ERROR_ITEM_NORTH "Error: Invalid items NORTH.\n"
 # define ERROR_ITEM_SOUTH "Error: Invalid items SOUTH.\n"
 # define ERROR_ITEM_WEST "Error: Invalid items WEST.\n"
 # define ERROR_ITEM_EAST "Error: Invalid items EAST.\n"
 
+# define ERROR_TABULATION_IN_MAP "Error: A tabulation exist in map.\n"
 /*--------------------Error and exit------------------*/
 
 /*--------------------Error items in map------------------*/
