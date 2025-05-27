@@ -31,10 +31,15 @@ void	tearDown(void)
 int	main(void)
 {
 	UNITY_BEGIN();
+	char *path = "../maps/correct_maps/matrix.cub";
+	char	*file_map1d;
+	g_parser = init_struct_parser();
+	file_map1d = read_file_content(path, count_file_size(path));
+	g_parser->file_map = ft_split(file_map1d, '\n');
+	extract_map_from_file_map(g_parser);
 
-	// RUN_TEST(test_has_consecutices_dollars_in_token);
-	// RUN_TEST(test_ft_strjoin);
-	printf("HERE WE ARE TESTING PARSING MAP\n");
+	printf("\nHERE WE ARE TESTING PARSING MAP\n");
+	RUN_TEST(test_copy_map_to_new_matrix_map);
 
 	return (UNITY_END());
 }

@@ -71,6 +71,7 @@ endif()
 add_executable(test
         ${UNIT_C_TESTING}
         ${SRC_FILES}
+        testing/parser_map_parsing.c
 )
 add_dependencies(test libmlx libft)
 

@@ -17,7 +17,6 @@
 # include "unity.h"
 # include "../includes/cub3d.h"
 
-
 #define COLOR_RED     "\x1b[31m"
 #define COLOR_GREEN   "\x1b[32m"
 #define COLOR_YELLOW  "\x1b[33m"
@@ -48,4 +47,6 @@ typedef struct s_test_str_str
 void    init_environment_testing(void);  // Inicializa el entorno para pruebas
 void    clean_environment_testing(void); // Limpia el entorno de pruebas
 
+//	parser_map_parsing.c
+void	test_copy_map_to_new_matrix_map(void);
 #endif
