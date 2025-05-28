@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_utils.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 17:06:02 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 17:06:11 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_UTILS_H
 # define CUB3D_UTILS_H
 
@@ -8,7 +20,6 @@
 # define ERROR_INVALID_FILENAME_CHARS   "Error: Filename contains invalid characters.\n"
 # define ERROR_OPEN_FILE_MAP "Error: Map file could not be opened.\n"
 # define ERROR_EMPTY_FILE_MAP "Error: File map is empty.\n"
-
 
 # define INVALID_MAP_SIZE "Error: Invalid size map\n"
 # define ERROR_INVALID_MAP_ROWS "Error: Invalid rows\n"

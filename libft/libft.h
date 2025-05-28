@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:28:11 by anamedin          #+#    #+#             */
-/*   Updated: 2025/05/05 21:00:52 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:11:11 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 // char			*ft_itoa(int n);
 // char			**ft_split(const char *s, char c);
 // size_t			ft_strlen(char const *str);
-
 
 /* ************************************************************************** */
 /*                                 LIBFT_ALL*/
@@ -82,11 +81,11 @@ int			ft_strcmp(char *s1, char *s2);
 /*                                 PRINTF                                     */
 /* ************************************************************************** */
 
-int				ft_printf(char const *format, ...);
-int				ft_putchar(char c);
-int				ft_putnbr(long n);
-int				ft_print_string(char *str);
-int				ft_hex(unsigned long nbr, const char str);
+int			ft_printf(char const *format, ...);
+int			ft_putchar(char c);
+int			ft_putnbr(long n);
+int			ft_print_string(char *str);
+int			ft_hex(unsigned long nbr, const char str);
 unsigned int	ft_unsignedint(unsigned int n);
 
 /*---------------------------------GETNEXTLINE--------------------------------*/

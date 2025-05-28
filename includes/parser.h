@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 17:06:42 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 17:09:07 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSER_H
 # define PARSER_H
 
-typedef struct s_position   t_position;
-typedef struct s_parser     t_parser;
-typedef struct s_game       t_game;
+typedef struct s_position	t_position;
+typedef struct s_parser		t_parser;
+typedef struct s_game		t_game;
 
 // ===========================================
 // ============== PARSER MAP =================
@@ -11,25 +23,24 @@ typedef struct s_game       t_game;
 
 //  check_extension_and_player.c
 int			validate_map_filename(char *filename);
-void        get_player_init_pos(t_parser *map_data);
+void		get_player_init_pos(t_parser *map_data);
 
 //  check_items.c
-int         validation_items_in_map(t_parser *map_info);
+int			validation_items_in_map(t_parser *map_info);
 
 //  check_player.c
-void		flood_fill(char **map, int rows, int cols, int x, int y);
 
 // errors_handler.c
-void        handle_error(char *str, int size, t_parser *map, t_game *game);
-void        handle_exit(char *str);
+void		handle_error(char *str, int size, t_parser *map, t_game *game);
+void		handle_exit(char *str);
 
 //  extract_map.c
-void        extract_map_from_file_map(t_parser *parser);
+void		extract_map_from_file_map(t_parser *parser);
 
 //  free_functions.c
-void        free_parser_map(t_parser *parser);
+void		free_parser_map(t_parser *parser);
 void		free_matrix(char **map);
-void        free_parser_struct(t_parser *parser);
+void		free_parser_struct(t_parser *parser);
 
 //  parsing.c
 char		**duplicate_map_matrix(t_parser *parser);
@@ -41,19 +52,18 @@ int			count_file_size(char *path);
 // ===========================================
 
 //  parsing_files.c
-int         read_map(char *path, t_parser *map_info);
+int			read_map(char *path, t_parser *map_info);
 char		*read_file_content(char *path, int size);
-int         read_file(char *path, t_parser *parser);
-void        fill_parser_info(t_parser *parser);
+int			read_file(char *path, t_parser *parser);
+void		fill_parser_info(t_parser *parser);
 
 //  parsing_utils.c
-int         ft_open_map(char *path);
+int			ft_open_map(char *path);
 int			get_max_columns(char **map, int rows);
-int         set_map_dimensions(t_parser *map_info);
-int         check_map_dimensions(t_parser *map);
+int			set_map_dimensions(t_parser *map_info);
+int			check_map_dimensions(t_parser *map);
 
-void        print_map_2d(char** matrix);
-
+void		print_map_2d(char **matrix);
 
 //  parsing_textures.c
 
