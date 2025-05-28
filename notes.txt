@@ -73,8 +73,6 @@ int validate_map_filename(char *filename)
 //  FUNCTIONS WITHOUT USING:
 srcs/parsing_file/parsing_file();
 
-    int	set_map_dimensions(t_parser *map_info);
-    int	check_map_dimensions(t_parser *map_info);
 
 
 
@@ -90,6 +88,9 @@ srcs/parser_map/check_items.c
 
     int	validation_items_in_map(t_parser *map_info);
 
+//  now here in check_items.c
+    int	set_map_dimensions(t_parser *map_info);
+    int	check_map_dimensions(t_parser *map_info);
 
 
 

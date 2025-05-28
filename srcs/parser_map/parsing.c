@@ -27,7 +27,7 @@ char	**duplicate_map_matrix(t_parser *parser)
 	while (i < parser->rows)
 	{
 		len_line = (int) ft_strlen(parser->map[i]);
-		printf("len line: [%d]: [%d]\n", i + 1, len_line);
+		// printf("len line: [%d]: [%d]\n", i + 1, len_line);
 		new_matrix[i] = malloc(sizeof(char) * (len_line + 1));
 		if (!new_matrix[i])
 		{
@@ -85,7 +85,8 @@ void	normalize_and_fill_map(t_parser *parser)
 	if (!copy_map)
 		return ;
 	normalize_map_lines(copy_map, parser->rows, parser->columns);
-	// Fill spaces empty with 'V'
+	print_map_2d(parser->map);
+	// Fill spaces empty with '/'
 	i = 0;
 	while (i < parser->rows)
 	{
@@ -98,6 +99,11 @@ void	normalize_and_fill_map(t_parser *parser)
 		}
 		i++;
 	}
+	// free_matrix(parser->map);
+	// parser->map = NULL;
+	// parser->map = copy_map;
+
+	printf("------------------------\n");
 	print_map_2d(copy_map);
 	free_matrix(copy_map);
 }
@@ -115,21 +121,23 @@ int	validate_map_after_extract(t_parser *parser)
 		return (1);
 	}
 	normalize_and_fill_map(parser);
+
+	validation_items_in_map(parser);
 	return (0);
 }
 
-void	parsing(t_parser *parser)
+int parsing(t_parser* parser)
 {
-	if (!parser->file_map)
-		return ;
-	fill_parser_info(parser);
-	// TODO: dont know how manage this function
+	if (!parser || !parser->file_map)
+		return (1);
+
+	parse_lines_of_textures(parser);
 	if (check_textures_and_colors(parser) == 0)
-		printf("VALID syntax in TEXTURES | FLOOR | CEIL in map\n");
+	{
+		extract_map_from_file_map(parser);
+		validate_map_after_extract(parser);
+	}
 	else
-		printf("INVALID syntax in TEXTURES | FLOOR | CEIL in map\n");
-	extract_map_from_file_map(parser);
-	// TODO: copy the map and validate if exists a island or empty positions inside the map
-	// check how manage tabs inside de file.cub ???
-	validate_map_after_extract(parser);
+		return (1);
+	return (0);
 }

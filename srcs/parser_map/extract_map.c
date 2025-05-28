@@ -65,7 +65,7 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 	while (rows < total_lines)
 	{
 		len_line = (int) ft_strlen(parser->file_map[first_line + rows]);
-		printf("len line: [%d]: [%d]\n", rows + 1, len_line);
+		// printf("len line: [%d]: [%d]\n", rows + 1, len_line);
 		new_matrix[rows] = malloc(sizeof(char) * (len_line + 1));
 		if (!new_matrix[rows])
 		{

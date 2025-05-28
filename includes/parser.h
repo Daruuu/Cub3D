@@ -44,7 +44,7 @@ void		free_parser_struct(t_parser *parser);
 
 //  parsing.c
 char		**duplicate_map_matrix(t_parser *parser);
-void		parsing(t_parser *parser);
+int parsing(t_parser* parser);
 int			count_file_size(char *path);
 
 // ===========================================
@@ -55,7 +55,7 @@ int			count_file_size(char *path);
 int			read_map(char *path, t_parser *map_info);
 char		*read_file_content(char *path, int size);
 int			read_file(char *path, t_parser *parser);
-void		fill_parser_info(t_parser *parser);
+void		parse_lines_of_textures(t_parser *parser);
 
 //  parsing_utils.c
 int			ft_open_map(char *path);

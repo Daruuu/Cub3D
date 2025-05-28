@@ -101,6 +101,8 @@ int	read_file(char *path, t_parser *parser)
 
 static void	type_of_horientation(char *trim_line, t_parser *map_info)
 {
+	if (!trim_line || !map_info)
+		return ;
 	if (ft_strncmp(trim_line, "NO", 2) == 0)
 		map_info->north = ft_strdup(trim_line);
 	else if (ft_strncmp(trim_line, "SO", 2) == 0)
@@ -115,26 +117,28 @@ static void	type_of_horientation(char *trim_line, t_parser *map_info)
 		map_info->ceiling = ft_strdup(trim_line);
 }
 
-void	fill_parser_info(t_parser *parser)
+static void	trim_line_and_set_type(char *line, t_parser *parser)
+{
+	char	*trim_line;
+
+	trim_line = ft_strtrim(line, " ");
+	if (!trim_line)
+		return ;
+	if (ft_strlen(trim_line) > 1)
+		type_of_horientation(trim_line, parser);
+	free(trim_line);
+}
+
+void	parse_lines_of_textures(t_parser *parser)
 {
 	int		i;
-	int		len_file_map;
-	char	*trim_line;
-	int		len_tmp;
 
 	i = 0;
-	if (parser->file_map == NULL)
+	if (!parser || !parser->file_map)
 		return ;
-	len_file_map = 0;
-	while (parser->file_map[len_file_map] != NULL)
-		len_file_map ++;
 	while (parser->file_map[i] != NULL)
 	{
-		trim_line = ft_strtrim(parser->file_map[i], " ");
-		len_tmp = (int) ft_strlen(trim_line);
-		if (len_tmp > 1)
-			type_of_horientation(trim_line, parser);
-		free(trim_line);
+		trim_line_and_set_type(parser->file_map[i], parser);
 		i++;
 	}
 }

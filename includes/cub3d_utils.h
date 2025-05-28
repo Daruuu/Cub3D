@@ -21,13 +21,18 @@
 # define ERROR_OPEN_FILE_MAP "Error: Map file could not be opened.\n"
 # define ERROR_EMPTY_FILE_MAP "Error: File map is empty.\n"
 
-# define INVALID_MAP_SIZE "Error: Invalid size map\n"
+# define INVALID_LATERALS_MAP "Error: Invalid map dimensions\n"
+# define INVALID_TOP_BOTTOM_MAP "Error: Invalid border top or bottom\n"
+
 # define ERROR_INVALID_MAP_ROWS "Error: Invalid rows\n"
 # define ERROR_INVALID_MAP_COLS "Error: Invalid columns\n"
 
 # define ERROR_MEMORY_ALLOCATION "Error: Memory allocation failed\n"
 
 # define ERROR_WALLS_IN_MAP "Error: Invalid WALLS in map.\n"
+# define ERROR_PLAYER_NOT_EXIST "Error: Player position NOT exists in map\n"
+# define ERROR_COUNT_PLAYER_INVALID "Error: More than 1 PLAYER in map.\n"
+
 # define ERROR_ITEMS_IN_MAP "Error: Invalid ITEM in map.\n"
 
 # define ERROR_INVALID_NORTH_TEXTURE "Error: Invalid texture NORTH\n"
@@ -55,8 +60,9 @@
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'
 # define FLOOR '0'
+# define FILL_MAP '/'
 
-/*-------------------- ITEMS ASSIGN PLAYER ------------------*/
+/*-------------------- ITEMS ASSIGN PITEM_NORTH LAYER ------------------*/
 # define NORTH  'N'
 # define SOUTH  'S'
 # define WEST   'W'
