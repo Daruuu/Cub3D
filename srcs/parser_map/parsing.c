@@ -39,10 +39,11 @@ char	**duplicate_map_matrix(t_parser *parser)
 // fill all the positions that have spaces with spaces in the matrix.
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 {
-	int   i = 0;
-	int   len;
-	char *new_line;
+	char	*new_line;
+	int		i;
+	int		len;
 
+	i = 0;
 	while (i < rows && map_copy[i])
 	{
 		len = (int) ft_strlen(map_copy[i]);
@@ -50,12 +51,12 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 		{
 			new_line = malloc(sizeof(char) * (max_columns + 1));
 			if (!new_line)
-				return; // Manejo de error si quieres
-			ft_memcpy(new_line, map_copy[i], len);               // Copia lo que había
-			ft_memset(new_line + len, '/', max_columns - len);   // Rellena con '/'
+				return ;
+			ft_memcpy(new_line, map_copy[i], len);
+			ft_memset(new_line + len, '/', max_columns - len);
 			new_line[max_columns] = '\0';
-			free(map_copy[i]);            // Libera la línea antigua
-			map_copy[i] = new_line;       // Sustituye por la nueva
+			free(map_copy[i]);
+			map_copy[i] = new_line;
 		}
 		i++;
 	}
@@ -89,8 +90,7 @@ void	normalize_and_fill_map(t_parser *parser)
 		}
 		i++;
 	}
-
-	print_map_2d(copy_map);  // Para ver el resultado
+	print_map_2d(copy_map);
 	free_matrix(copy_map);
 }
 
@@ -132,5 +132,4 @@ void	parsing(t_parser *parser)
 
 	validate_map_after_extract(parser);
 
-	printf("------------------- -----------------------\n");
 }

@@ -65,3 +65,41 @@ int validate_map_filename(char *filename)
 
 	return (0);
 }
+
+
+// ======= PARSER_FILE =======
+
+
+//  FUNCTIONS WITHOUT USING:
+srcs/parsing_file/parsing_file();
+
+    int	set_map_dimensions(t_parser *map_info);
+    int	check_map_dimensions(t_parser *map_info);
+
+
+
+// ======= PARSER_MAP =======
+
+//  FUNCTIONS WITHOUT USING:
+srcs/parser_map/check_extension_and_player.c
+
+    void	get_player_init_pos(t_parser *map_data);
+
+//  FUNCTIONS WITHOUT USING:
+srcs/parser_map/check_items.c
+
+    int	validation_items_in_map(t_parser *map_info);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

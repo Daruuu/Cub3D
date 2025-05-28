@@ -13,14 +13,6 @@ int	ft_open_map(char *path)
 	return (fd);
 }
 
-/*
-int	close_window(t_game *game)
-{
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	free_game(game);
-	exit(0);
-}*/
-
 int	get_max_columns(char **map, int rows)
 {
 	int i = 0;
@@ -36,7 +28,6 @@ int	get_max_columns(char **map, int rows)
 	}
 	return (max);
 }
-
 
 int	set_map_dimensions(t_parser *map_info)
 {
