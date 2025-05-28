@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:23:52 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:26:40 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 char	**duplicate_map_matrix(t_parser *parser)
@@ -34,7 +46,6 @@ char	**duplicate_map_matrix(t_parser *parser)
 	new_matrix[i] = NULL;
 	return (new_matrix);
 }
-
 
 // fill all the positions that have spaces with spaces in the matrix.
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
@@ -73,11 +84,8 @@ void	normalize_and_fill_map(t_parser *parser)
 	copy_map = duplicate_map_matrix(parser);
 	if (!copy_map)
 		return ;
-
-	// 1. Normalizar primero (convertir tabs, etc.)
 	normalize_map_lines(copy_map, parser->rows, parser->columns);
-
-	// 2. Rellenar espacios vacíos con 'V'
+	// Fill spaces empty with 'V'
 	i = 0;
 	while (i < parser->rows)
 	{
@@ -107,8 +115,6 @@ int	validate_map_after_extract(t_parser *parser)
 		return (1);
 	}
 	normalize_and_fill_map(parser);
-	// printf("++++++++++++++before flood fill\n");
-	// print_map_2d(copy_map);
 	return (0);
 }
 
@@ -116,20 +122,14 @@ void	parsing(t_parser *parser)
 {
 	if (!parser->file_map)
 		return ;
-
 	fill_parser_info(parser);
-
 	// TODO: dont know how manage this function
 	if (check_textures_and_colors(parser) == 0)
 		printf("VALID syntax in TEXTURES | FLOOR | CEIL in map\n");
 	else
 		printf("INVALID syntax in TEXTURES | FLOOR | CEIL in map\n");
-
 	extract_map_from_file_map(parser);
-
 	// TODO: copy the map and validate if exists a island or empty positions inside the map
 	// check how manage tabs inside de file.cub ???
-
 	validate_map_after_extract(parser);
-
 }

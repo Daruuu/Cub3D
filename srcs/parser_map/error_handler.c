@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                     :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:49:01 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/07 10:49:35 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:22:07 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 void	handle_error(char *str, int size, t_parser *map, t_game *game)
 {
 	(void) game;
-	// ft_putstr_fd(str, 2);
 	if (str && size > 0)
 		write(2, str, size);
 	if (map != NULL)
 		free_parser_map(map);
-	/*if (game != NULL)
-		free_game(game);*/
 	exit(EXIT_FAILURE);
 }
 

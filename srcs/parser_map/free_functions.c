@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:47:48 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/07 10:47:55 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:23:46 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_matrix(char **map)
 
 void	free_parser_struct(t_parser *parser)
 {
-	if (!parser )
+	if (!parser)
 		return ;
 	if (parser->file_map)
 		free_matrix(parser->file_map);

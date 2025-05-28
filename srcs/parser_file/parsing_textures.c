@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_textures.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:18:16 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:18:18 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int	check_textures_and_colors(t_parser *parser)
 {
 	if (!parser)
 		return (1);
-	if (!parser->north || !parser->south || !parser->east ||
-		!parser->west || !parser->floor || !parser->ceiling)
+	if (!parser->north || !parser->south || !parser->east \
+			|| !parser->west || !parser->floor || !parser->ceiling)
 		return (1);
 	return (0);
 }

@@ -1,9 +1,21 @@
-# include "../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extract_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:22:14 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:22:59 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 static int	find_first_line_map(t_parser *map_info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map_info->file_map[i])
@@ -20,8 +32,8 @@ static int	find_first_line_map(t_parser *map_info)
 
 static int	find_last_line_map(t_parser *map_info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map_info->file_map[i])

@@ -1,4 +1,16 @@
-# include "../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:18:31 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:19:12 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 int	ft_open_map(char *path)
 {
@@ -15,10 +27,12 @@ int	ft_open_map(char *path)
 
 int	get_max_columns(char **map, int rows)
 {
-	int i = 0;
-	int max = 0;
-	int len;
+	int	i;
+	int	max;
+	int	len;
 
+	i = 0;
+	max = 0;
 	while (i < rows && map[i])
 	{
 		len = (int) ft_strlen(map[i]);

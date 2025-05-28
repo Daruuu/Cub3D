@@ -1,4 +1,16 @@
-# include "../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_extension_and_player.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:20:38 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:21:26 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 static int	validate_extension_map(char *argv)
 {
@@ -25,8 +37,8 @@ static int	has_invalid_chars(char *filename)
 {
 	while (*filename)
 	{
-		if (*filename == '*' || *filename == '?' || *filename == ':' ||
-			*filename == '<' || *filename == '>' || *filename == '|')
+		if (*filename == '*' || *filename == '?' || *filename == ':' \
+			|| *filename == '<' || *filename == '>' || *filename == '|')
 			return (1);
 		filename++;
 	}
@@ -53,10 +65,7 @@ int	validate_map_filename(char *filename)
 		printf(ERROR_INVALID_FILENAME_CHARS);
 		return (1);
 	}
-	int open_file = 0;
-	open_file = open(filename, O_RDONLY);
-	// if (open(filename, O_RDONLY) < 0)
-	if (open_file < 0)
+	if (open(filename, O_RDONLY) < 0)
 	{
 		printf(ERROR_OPEN_FILE_MAP);
 		return (1);

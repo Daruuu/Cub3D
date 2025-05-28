@@ -6,11 +6,11 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:29:45 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/05 16:08:21 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:20:32 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 static int	is_player_exists(char c)
 {
@@ -58,7 +58,6 @@ static int	count_player_positions(t_parser *map_data)
 	}
 	return (count);
 }
-
 
 static int	check_laterals_map(t_parser *map_data)
 {

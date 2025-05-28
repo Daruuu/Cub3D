@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_file.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/28 19:16:15 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/28 19:38:36 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static	char	*allocate_map1d(size_t size)
@@ -15,7 +27,6 @@ static	char	*allocate_map1d(size_t size)
 int	count_file_size(char *path)
 {
 	int		fd;
-	ssize_t	bytes_read;
 	char	buffer;
 	int		size;
 
@@ -25,10 +36,8 @@ int	count_file_size(char *path)
 	if (fd == -1)
 		return (-1);
 	size = 0;
-	while ((bytes_read = read(fd, &buffer, 1)) > 0)
+	while (read(fd, &buffer, 1) > 0)
 		size++;
-	if (bytes_read == -1)
-		return (close(fd), -1);
 	close(fd);
 	return (size);
 }
@@ -79,7 +88,6 @@ int	read_file(char *path, t_parser *parser)
 	file_map1d = read_file_content(path, file_size);
 	if (!file_map1d)
 		return (free(file_map1d), 1);
-
 	parser->file_map = ft_split(file_map1d, '\n');
 	if (!parser->file_map)
 	{
