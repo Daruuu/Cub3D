@@ -37,7 +37,7 @@ char	**duplicate_map_matrix(t_parser *parser)
 
 
 // fill all the positions that have spaces with spaces in the matrix.
-void	normalize_map_lines(char **map_copy, int rows, int max_columns)
+static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 {
 	int   i = 0;
 	int   len;
@@ -61,6 +61,39 @@ void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 	}
 }
 
+void	normalize_and_fill_map(t_parser *parser)
+{
+	char	**copy_map;
+	int		i;
+	int		j;
+
+	if (!parser->map)
+		return ;
+	copy_map = duplicate_map_matrix(parser);
+	if (!copy_map)
+		return ;
+
+	// 1. Normalizar primero (convertir tabs, etc.)
+	normalize_map_lines(copy_map, parser->rows, parser->columns);
+
+	// 2. Rellenar espacios vacíos con 'V'
+	i = 0;
+	while (i < parser->rows)
+	{
+		j = 0;
+		while (j < parser->columns)
+		{
+			if (copy_map[i][j] == ' ')
+				copy_map[i][j] = '/';
+			j++;
+		}
+		i++;
+	}
+
+	print_map_2d(copy_map);  // Para ver el resultado
+	free_matrix(copy_map);
+}
+
 int	validate_map_after_extract(t_parser *parser)
 {
 	char	**copy_map;
@@ -73,15 +106,9 @@ int	validate_map_after_extract(t_parser *parser)
 		free_matrix(copy_map);
 		return (1);
 	}
-	normalize_map_lines(copy_map, parser->rows, parser->columns);
-	printf("++++++++++++++before flood fill\n");
-	print_map_2d(copy_map);
-
-	printf("---------------after flood fill\n");
-	flood_fill(copy_map, parser->rows, parser->columns, 0, 0);
-
-	print_map_2d(copy_map);
-
+	normalize_and_fill_map(parser);
+	// printf("++++++++++++++before flood fill\n");
+	// print_map_2d(copy_map);
 	return (0);
 }
 
