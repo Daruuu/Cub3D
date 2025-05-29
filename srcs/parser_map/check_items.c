@@ -12,34 +12,30 @@
 
 #include "../includes/cub3d.h"
 
-static int	is_player_exists(char c)
+static int	is_player(char c)
 {
-	if (c == NORTH || c == SOUTH || c == WEST || c == EAST)
-		return (1);
-	return (0);
+	return (c == NORTH || c == SOUTH || c == WEST || c == EAST);
 }
 
-static	int	check_player_in_map(t_parser *map)
+static int	is_valid_wall(char c)
 {
-	int	x;
-	int	y;
+	return (c == WALL || c == FILL_MAP);
+}
 
-	x = 0;
-	while (x < map->rows)
+static int	is_valid_player_count(int count, t_position *pos)
+{
+	if (count == 0)
+		return (printf(ERROR_PLAYER_NOT_EXIST), 1);
+	if (count > 1)
 	{
-		y = 0;
-		while (y < map->columns)
-		{
-			if (is_player_exists(map->map[x][y]))
-				return (1);
-			y++;
-		}
-		x++;
+		pos->x = -1;
+		pos->y = -1;
+		return (printf(ERROR_COUNT_PLAYER_INVALID), 1);
 	}
 	return (0);
 }
 
-static int	count_player_positions(t_parser *map_data)
+static int	validate_player(char** map, int rows, int columns, t_position *pos)
 {
 	int	i;
 	int	j;
@@ -47,58 +43,45 @@ static int	count_player_positions(t_parser *map_data)
 
 	i = 1;
 	count = 0;
-	while (i < map_data->rows - 1)
+	while (i < rows)
 	{
 		j = 1;
-		while (j < map_data->columns - 1)
+		while (j < columns)
 		{
-			if (is_player_exists(map_data->map[i][j]) == 1)
+			if (is_player(map[i][j]))
+			{
 				count ++;
+				pos->x = i;
+				pos->y = j;
+			}
 			j++;
 		}
 		i++;
 	}
-	return (count);
+	return (is_valid_player_count(count, pos));
 }
 
-static int	check_laterals_map(t_parser *map_data)
+static int	validate_walls(char** map, int rows, int columns)
 {
 	int	i;
 
 	i = 0;
-	while (i < map_data->rows)
+	while (i < rows)
 	{
-		if (map_data->map[i][0] != WALL \
-			&& map_data->map[i][0] != FILL_MAP)
-		{
-			return (1);
-		}
-		if (map_data->map[i][map_data->columns - 1] != WALL \
-			&& map_data->map[i][map_data->columns - 1] != FILL_MAP)
-		{
-			return (1);
-		}
+		if (!is_valid_wall(map[i][0]) || !is_valid_wall(map[i][columns - 1]))
+			return (0);
 		i++;
 	}
-	return (0);
-}
-
-static int	check_top_bottom_map(t_parser *map_data)
-{
-	int	j;
-
-	j = 0;
-	while (j < map_data->columns)
+	i = 0;
+	while (i < columns)
 	{
-		if (map_data->map[0][j] != WALL || map_data->map[0][j] != FILL_MAP)
-			return (1);
-		if (map_data->map[map_data->rows - 1][j] != WALL \
-			|| map_data->map[map_data->rows - 1][j] != FILL_MAP)
-			return (1);
-		j++;
+		if (!is_valid_wall(map[0][i]) || !is_valid_wall(map[rows - 1][i]))
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
 }
+
 
 int	check_map_dimensions(t_parser *map_info)
 {
@@ -106,9 +89,9 @@ int	check_map_dimensions(t_parser *map_info)
 	int	line;
 
 	i = 0;
-	while (map_info->map[i] != NULL)
+	while (map_info->validation_map[i] != NULL)
 	{
-		line = (int)ft_strlen(map_info->map[i]);
+		line = (int)ft_strlen(map_info->validation_map[i]);
 		if (map_info->columns != line)
 			return (1);
 		i++;
@@ -118,57 +101,17 @@ int	check_map_dimensions(t_parser *map_info)
 
 /************************VALIDATION MAIN **************************/
 
-int	validation_items_in_map(t_parser *map_info)
+int	validate_map(t_parser *parser)
 {
-	int	player_count;
-
-	player_count = count_player_positions(map_info);
-
-	if (player_count != 1)
-		return (printf(ERROR_COUNT_PLAYER_INVALID), 1);
-	if (check_player_in_map(map_info) == 0)
-		return (printf(ERROR_PLAYER_NOT_EXIST), 1);
-	if (check_laterals_map(map_info) == 1)
-		return (printf(ERROR_WALLS_IN_MAP), 1);
-	if (check_map_dimensions(map_info) == 1)
-		return (printf(INVALID_LATERALS_MAP), 1);
-	if (check_top_bottom_map(map_info) == 1)
-		return (printf(INVALID_TOP_BOTTOM_MAP), 1);
-	return (0);
-}
-
-/*
-int	set_map_dimensions(t_parser *map_info)
-{
-	int	i;
-	int	j;
-	int	count_line;
-	int	max_line;
-
-	if (map_info->map[0] == NULL)
+	if (validate_player(parser->validation_map, \
+			parser->rows, parser->columns, &parser->position_player))
 		return (1);
-	i = 0;
-	while (map_info->map[i] != NULL)
-		i++;
-	map_info->rows = i;
-	i = 0;
-	count_line = 0;
-	max_line = 0;
-	while (map_info->map[i] != NULL)
-	{
-		j = 0;
-		count_line = 0;
-		while (map_info->map[i][j] != '\0')
-		{
-			j++;
-			count_line++;
-		}
-		if (count_line > max_line)
-			max_line = count_line;
-		i++;
-	}
-	printf("max linee: [%d]\n", max_line);
-	map_info->columns = max_line;
+	if (!validate_walls(parser->validation_map, parser->rows, \
+		parser->columns))
+		return (printf(ERROR_WALLS_IN_MAP), 1);
+
+	if (check_map_dimensions(parser) == 1)
+		return (printf(INVALID_LATERALS_MAP), 1);
+
 	return (0);
 }
-*/

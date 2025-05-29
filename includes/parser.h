@@ -26,7 +26,7 @@ int			validate_map_filename(char *filename);
 void		get_player_init_pos(t_parser *map_data);
 
 //  check_items.c
-int			validation_items_in_map(t_parser *map_info);
+int			validate_map(t_parser *parser);
 
 //  check_player.c
 

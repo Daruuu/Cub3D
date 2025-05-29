@@ -17,16 +17,16 @@ void	free_parser_map(t_parser *parser)
 	int	i;
 
 	i = 0;
-	if (parser != NULL && parser->map != NULL)
+	if (parser != NULL && parser->original_map != NULL)
 	{
-		while (parser->map[i] != NULL)
+		while (parser->original_map[i] != NULL)
 		{
-			free(parser->map[i]);
+			free(parser->original_map[i]);
 			i++;
 		}
-		free(parser->map);
+		free(parser->original_map);
 	}
-	parser->map = NULL;
+	parser->original_map = NULL;
 }
 
 void	free_matrix(char **map)
@@ -51,8 +51,8 @@ void	free_parser_struct(t_parser *parser)
 		return ;
 	if (parser->file_map)
 		free_matrix(parser->file_map);
-	if (parser->map)
-		free_matrix(parser->map);
+	if (parser->original_map)
+		free_matrix(parser->original_map);
 	if (parser->north != NULL)
 		free(parser->north);
 	if (parser->south != NULL)

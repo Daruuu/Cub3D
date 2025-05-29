@@ -21,8 +21,9 @@ t_parser	*init_struct_parser(void)
 		return (NULL);
 	parser->rows = -1;
 	parser->columns = -1;
-	parser->map = NULL;
 	parser->file_map = NULL;
+	parser->original_map = NULL;
+	parser->validation_map = NULL;
 	parser->north = NULL;
 	parser->south = NULL;
 	parser->east = NULL;

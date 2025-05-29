@@ -23,21 +23,16 @@ char	**duplicate_map_matrix(t_parser *parser)
 	if (!new_matrix)
 		return (NULL);
 	i = 0;
-	printf("parser->rows: [%i]\n", parser->rows);
 	while (i < parser->rows)
 	{
-		len_line = (int) ft_strlen(parser->map[i]);
-		// printf("len line: [%d]: [%d]\n", i + 1, len_line);
+		len_line = (int) ft_strlen(parser->original_map[i]);
 		new_matrix[i] = malloc(sizeof(char) * (len_line + 1));
 		if (!new_matrix[i])
-		{
-			free_matrix(new_matrix);
-			return (NULL);
-		}
+			return (free_matrix(new_matrix), NULL);
 		col = 0;
 		while (col < len_line)
 		{
-			new_matrix[i][col] = parser->map[i][col];
+			new_matrix[i][col] = parser->original_map[i][col];
 			col++;
 		}
 		new_matrix[i][col] = '\0';
@@ -75,17 +70,13 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 
 void	normalize_and_fill_map(t_parser *parser)
 {
-	char	**copy_map;
 	int		i;
 	int		j;
 
-	if (!parser->map)
+	if (!parser->validation_map)
 		return ;
-	copy_map = duplicate_map_matrix(parser);
-	if (!copy_map)
-		return ;
-	normalize_map_lines(copy_map, parser->rows, parser->columns);
-	print_map_2d(parser->map);
+	normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
+	// print_map_2d(parser->original_map);
 	// Fill spaces empty with '/'
 	i = 0;
 	while (i < parser->rows)
@@ -93,36 +84,46 @@ void	normalize_and_fill_map(t_parser *parser)
 		j = 0;
 		while (j < parser->columns)
 		{
-			if (copy_map[i][j] == ' ')
-				copy_map[i][j] = '/';
+			if (parser->validation_map[i][j] == ' ')
+				parser->validation_map[i][j] = '/';
 			j++;
 		}
 		i++;
 	}
-	// free_matrix(parser->map);
-	// parser->map = NULL;
-	// parser->map = copy_map;
-
-	printf("------------------------\n");
-	print_map_2d(copy_map);
-	free_matrix(copy_map);
+	// printf("------------NORMALIZE AND FILE MAP------------\n");
+	// // print_map_2d(parser->validation_map);
+	// printf("----------------------------------------------\n");
 }
 
 int	validate_map_after_extract(t_parser *parser)
 {
-	char	**copy_map;
+	char	**copy_map_validation;
+	int		i;
 
-	if (!parser->map)
+	if (!parser->original_map)
 		return (1);
-	copy_map = duplicate_map_matrix(parser);
-	if (!copy_map)
+	copy_map_validation = duplicate_map_matrix(parser);
+	if (!copy_map_validation)
+		return (free_matrix(copy_map_validation), 1);
+	i = 0;
+	if (parser->validation_map == NULL)
 	{
-		free_matrix(copy_map);
-		return (1);
+		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
+		if (!parser->validation_map)
+			return (1);
+		while (i < parser->rows)
+		{
+			parser->validation_map[i] = ft_strdup(parser->original_map[i]);
+			if (!parser->validation_map[i])
+				return (free_matrix(parser->validation_map), 1);
+			i++;
+		}
+		parser->validation_map[i] = NULL;
 	}
 	normalize_and_fill_map(parser);
+	print_map_2d(parser->validation_map);
 
-	validation_items_in_map(parser);
+	validate_map(parser);
 	return (0);
 }
 

@@ -100,14 +100,15 @@ void	extract_map_from_file_map(t_parser *parser)
 			(int) ft_strlen(ERROR_MAP_CANT_EXTRACT_FROM_FILE), parser, NULL);
 	}
 	total_lines = last_line - first_line + 1;
-	parser->map = new_matrix_map(parser, first_line, total_lines);
-	if (!parser->map)
+	parser->original_map = new_matrix_map(parser, first_line, total_lines);
+	if (!parser->original_map)
 	{
 		handle_error(ERROR_MAP_ALLOC_FAILED, \
 			(int) ft_strlen(ERROR_MAP_ALLOC_FAILED), parser, NULL);
 	}
-	parser->columns = get_max_columns(parser->map, parser->rows);
+	parser->columns = get_max_columns(parser->original_map, parser->rows);
 }
+
 
 // MAIN FUNCTION PARSINGGGGGGGGG
 //TODO: here call functions from check_extension and check_items

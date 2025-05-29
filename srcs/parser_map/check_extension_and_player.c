@@ -90,7 +90,7 @@ void	get_player_init_pos(t_parser *map_data)
 		y = 1;
 		while (y < map_data->columns)
 		{
-			c = map_data->map[x][y];
+			c = map_data->original_map[x][y];
 			if (c == NORTH \
 				|| c == SOUTH || c == EAST || c == WEST)
 			{
