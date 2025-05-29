@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:23:52 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:26:40 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:05:29 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,12 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 
 void	normalize_and_fill_map(t_parser *parser)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	if (!parser->validation_map)
 		return ;
 	normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
-	// print_map_2d(parser->original_map);
-	// Fill spaces empty with '/'
 	i = 0;
 	while (i < parser->rows)
 	{
@@ -90,9 +88,6 @@ void	normalize_and_fill_map(t_parser *parser)
 		}
 		i++;
 	}
-	// printf("------------NORMALIZE AND FILE MAP------------\n");
-	// // print_map_2d(parser->validation_map);
-	// printf("----------------------------------------------\n");
 }
 
 int	validate_map_after_extract(t_parser *parser)
@@ -121,17 +116,14 @@ int	validate_map_after_extract(t_parser *parser)
 		parser->validation_map[i] = NULL;
 	}
 	normalize_and_fill_map(parser);
-	print_map_2d(parser->validation_map);
-
 	validate_map(parser);
 	return (0);
 }
 
-int parsing(t_parser* parser)
+int	parsing(t_parser *parser)
 {
 	if (!parser || !parser->file_map)
 		return (1);
-
 	parse_lines_of_textures(parser);
 	if (check_textures_and_colors(parser) == 0)
 	{

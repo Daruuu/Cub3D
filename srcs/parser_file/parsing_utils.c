@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:18:31 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:19:12 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:00:23 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_open_map(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-		// handle_exit(ERROR_OPEN_FILE);
 	return (fd);
 }
 
@@ -42,4 +41,3 @@ int	get_max_columns(char **map, int rows)
 	}
 	return (max);
 }
-

@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:29:45 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:20:32 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:02:31 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	is_valid_player_count(int count, t_position *pos)
 	return (0);
 }
 
-static int	validate_player(char** map, int rows, int columns, t_position *pos)
+static int	validate_player(char **map, int rows, int columns, t_position *pos)
 {
 	int	i;
 	int	j;
@@ -61,7 +61,7 @@ static int	validate_player(char** map, int rows, int columns, t_position *pos)
 	return (is_valid_player_count(count, pos));
 }
 
-static int	validate_walls(char** map, int rows, int columns)
+static int	validate_walls(char **map, int rows, int columns)
 {
 	int	i;
 
@@ -81,7 +81,6 @@ static int	validate_walls(char** map, int rows, int columns)
 	}
 	return (1);
 }
-
 
 int	check_map_dimensions(t_parser *map_info)
 {
@@ -109,9 +108,7 @@ int	validate_map(t_parser *parser)
 	if (!validate_walls(parser->validation_map, parser->rows, \
 		parser->columns))
 		return (printf(ERROR_WALLS_IN_MAP), 1);
-
 	if (check_map_dimensions(parser) == 1)
 		return (printf(INVALID_LATERALS_MAP), 1);
-
 	return (0);
 }

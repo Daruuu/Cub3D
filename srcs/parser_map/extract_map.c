@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:22:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:22:59 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 01:03:45 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,9 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 	while (rows < total_lines)
 	{
 		len_line = (int) ft_strlen(parser->file_map[first_line + rows]);
-		// printf("len line: [%d]: [%d]\n", rows + 1, len_line);
 		new_matrix[rows] = malloc(sizeof(char) * (len_line + 1));
 		if (!new_matrix[rows])
-		{
-			free_matrix(new_matrix);
-			return (NULL);
-		}
+			return (free_matrix(new_matrix), NULL);
 		col = 0;
 		while (col < len_line)
 		{
