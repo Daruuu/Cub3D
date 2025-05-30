@@ -12,6 +12,7 @@
 
 #include "../includes/cub3d.h"
 
+/*
 char	**duplicate_map_matrix(t_parser *parser)
 {
 	char	**new_matrix;
@@ -41,6 +42,7 @@ char	**duplicate_map_matrix(t_parser *parser)
 	new_matrix[i] = NULL;
 	return (new_matrix);
 }
+*/
 
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 {

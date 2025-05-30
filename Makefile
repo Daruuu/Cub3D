@@ -38,7 +38,6 @@ TESTING_H = testing/testing.h
 # ========== Archivos fuente ========== #
 SRC =	$(SRC_DIR)/main.c \
 	$(SRC_INIT)/init_mlx.c \
-	$(SRC_INIT)/init_parser.c \
 	$(SRC_INIT)/init_structs.c \
 	$(SRC_INIT)/print_structs.c \
 	$(SRC_PARSER_FILE)/parse_file.c \

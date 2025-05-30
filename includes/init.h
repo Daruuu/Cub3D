@@ -21,6 +21,9 @@ typedef struct s_game		t_game;
 // ================= INIT ====================
 // ===========================================
 
+//  init_structs.c
+t_parser	*init_struct_parser(void);
+
 //  print_structs.c
 void		print_parser_struct(t_parser *parser);
 void		print_map_2d(char **matrix);
