@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:16:15 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:38:36 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:34:20 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,48 +97,4 @@ int	read_file(char *path, t_parser *parser)
 	}
 	free(file_map1d);
 	return (0);
-}
-
-static void	type_of_horientation(char *trim_line, t_parser *map_info)
-{
-	if (!trim_line || !map_info)
-		return ;
-	if (ft_strncmp(trim_line, "NO", 2) == 0)
-		map_info->north = ft_strdup(trim_line);
-	else if (ft_strncmp(trim_line, "SO", 2) == 0)
-		map_info->south = ft_strdup(trim_line);
-	else if (ft_strncmp(trim_line, "WE", 2) == 0)
-		map_info->west = ft_strdup(trim_line);
-	else if (ft_strncmp(trim_line, "EA", 2) == 0)
-		map_info->east = ft_strdup(trim_line);
-	else if (ft_strncmp(trim_line, "F ", 2) == 0)
-		map_info->floor = ft_strdup(trim_line);
-	else if (ft_strncmp(trim_line, "C ", 2) == 0)
-		map_info->ceiling = ft_strdup(trim_line);
-}
-
-static void	trim_line_and_set_type(char *line, t_parser *parser)
-{
-	char	*trim_line;
-
-	trim_line = ft_strtrim(line, " ");
-	if (!trim_line)
-		return ;
-	if (ft_strlen(trim_line) > 1)
-		type_of_horientation(trim_line, parser);
-	free(trim_line);
-}
-
-void	parse_lines_of_textures(t_parser *parser)
-{
-	int		i;
-
-	i = 0;
-	if (!parser || !parser->file_map)
-		return ;
-	while (parser->file_map[i] != NULL)
-	{
-		trim_line_and_set_type(parser->file_map[i], parser);
-		i++;
-	}
 }

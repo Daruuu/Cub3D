@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:23:52 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 01:05:29 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:16:05 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 	int		len;
 
 	i = 0;
-	while (i < rows && map_copy[i])
+	while (i < rows && map_copy[i] != NULL)
 	{
 		len = (int) ft_strlen(map_copy[i]);
 		if (len <= max_columns)
@@ -100,7 +100,9 @@ int	validate_map_after_extract(t_parser *parser)
 	{
 		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
 		if (!parser->validation_map)
-			return (1);
+		{
+			return (free_matrix(parser->validation_map), 1);
+		}
 		while (i < parser->rows)
 		{
 			parser->validation_map[i] = ft_strdup(parser->original_map[i]);

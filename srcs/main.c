@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/27 12:17:36 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:24:13 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ int	main(int argc, char **argv)
 
 	if (validate_map_filename(argv[1]) != 0)
 		return (1);
-
 	my_parser = init_struct_parser();
 	if (!my_parser)
 		return (1);
-
 	if (read_file(argv[1], my_parser) == 0)
 	{
 		parsing(my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");
-
 	free_parser_struct(my_parser);
 	return (0);
 }

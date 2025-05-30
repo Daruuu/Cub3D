@@ -6,7 +6,7 @@
 #    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/05/21 13:51:43 by dasalaza         ###   ########.fr        #
+#    Updated: 2025/05/30 14:42:52 by dasalaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 # ========== Configuración general ========== #
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include -g #-fsanitize=address
 TEST_FLAGS = -fsanitize=address -g -Wall -Wextra -Werror -lm
 
 # ========== Directorios ========== #
@@ -41,9 +41,9 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_INIT)/init_parser.c \
 	$(SRC_INIT)/init_structs.c \
 	$(SRC_INIT)/print_structs.c \
-	$(SRC_PARSER_FILE)/parsing_file.c \
-	$(SRC_PARSER_FILE)/parsing_textures.c \
-	$(SRC_PARSER_FILE)/parsing_utils.c \
+	$(SRC_PARSER_FILE)/parse_file.c \
+	$(SRC_PARSER_FILE)/parse_textures.c \
+	$(SRC_PARSER_FILE)/parse_utils.c \
 	$(SRC_PARSER_MAP)/check_extension_and_player.c \
 	$(SRC_PARSER_MAP)/check_items.c \
 	$(SRC_PARSER_MAP)/check_player.c \

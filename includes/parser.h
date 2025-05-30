@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:06:42 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 17:09:07 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:42:06 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,16 @@ int			count_file_size(char *path);
 // ============ PARSER FILE ==================
 // ===========================================
 
-//  parsing_files.c
-int			read_map(char *path, t_parser *map_info);
+//  parse_files.c
 char		*read_file_content(char *path, int size);
 int			read_file(char *path, t_parser *parser);
-void		parse_lines_of_textures(t_parser *parser);
 
-//  parsing_utils.c
+//  parse_utils.c
 int			ft_open_map(char *path);
 int			get_max_columns(char **map, int rows);
-int			set_map_dimensions(t_parser *map_info);
-int			check_map_dimensions(t_parser *map);
 
-void		print_map_2d(char **matrix);
-
-//  parsing_textures.c
-
+//  parse_textures.c
 int			check_textures_and_colors(t_parser *parser);
+void        parse_lines_of_textures(t_parser *parser);
 
 #endif

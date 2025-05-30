@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:47:48 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/28 19:23:46 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:21:05 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	free_parser_struct(t_parser *parser)
 		free_matrix(parser->file_map);
 	if (parser->original_map)
 		free_matrix(parser->original_map);
+	if (parser->validation_map)
+		free_matrix(parser->validation_map);
 	if (parser->north != NULL)
 		free(parser->north);
 	if (parser->south != NULL)
