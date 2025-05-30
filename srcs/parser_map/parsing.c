@@ -42,7 +42,6 @@ char	**duplicate_map_matrix(t_parser *parser)
 	return (new_matrix);
 }
 
-// fill all the positions that have spaces with spaces in the matrix.
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 {
 	char	*new_line;
@@ -92,14 +91,10 @@ void	normalize_and_fill_map(t_parser *parser)
 
 int	validate_map_after_extract(t_parser *parser)
 {
-	char	**copy_map_validation;
-	int		i;
+	int	i;
 
 	if (!parser->original_map)
 		return (1);
-	copy_map_validation = duplicate_map_matrix(parser);
-	if (!copy_map_validation)
-		return (free_matrix(copy_map_validation), 1);
 	i = 0;
 	if (parser->validation_map == NULL)
 	{
@@ -129,6 +124,10 @@ int	parsing(t_parser *parser)
 	{
 		extract_map_from_file_map(parser);
 		validate_map_after_extract(parser);
+		printf("validation map:\n");
+		print_map_2d(parser->validation_map);
+		printf("original map:\n");
+		print_map_2d(parser->original_map);
 	}
 	else
 		return (1);
