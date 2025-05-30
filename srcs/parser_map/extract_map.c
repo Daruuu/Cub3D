@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:22:14 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 01:03:45 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:47:03 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 		new_matrix[rows][col] = '\0';
 		rows++;
 	}
-	new_matrix[rows] = NULL;
-	parser->rows = rows;
-	return (new_matrix);
+	return (new_matrix[rows] = NULL, parser->rows = rows, new_matrix);
 }
 
 void	extract_map_from_file_map(t_parser *parser)

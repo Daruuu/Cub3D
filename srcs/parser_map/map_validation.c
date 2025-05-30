@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_items.c                                      :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:29:45 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 01:02:31 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:01:03 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 static int	is_player(char c)
 {
 	return (c == NORTH || c == SOUTH || c == WEST || c == EAST);
-}
-
-static int	is_valid_wall(char c)
-{
-	return (c == WALL || c == FILL_MAP);
 }
 
 static int	is_valid_player_count(int count, t_position *pos)
@@ -60,45 +55,6 @@ static int	validate_player(char **map, int rows, int columns, t_position *pos)
 	}
 	return (is_valid_player_count(count, pos));
 }
-
-static int	validate_walls(char **map, int rows, int columns)
-{
-	int	i;
-
-	i = 0;
-	while (i < rows)
-	{
-		if (!is_valid_wall(map[i][0]) || !is_valid_wall(map[i][columns - 1]))
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (i < columns)
-	{
-		if (!is_valid_wall(map[0][i]) || !is_valid_wall(map[rows - 1][i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_map_dimensions(t_parser *map_info)
-{
-	int	i;
-	int	line;
-
-	i = 0;
-	while (map_info->validation_map[i] != NULL)
-	{
-		line = (int)ft_strlen(map_info->validation_map[i]);
-		if (map_info->columns != line)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-/************************VALIDATION MAIN **************************/
 
 int	validate_map(t_parser *parser)
 {

@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:23:52 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 14:16:05 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:48:16 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	**duplicate_map_matrix(t_parser *parser)
 		new_matrix[i][col] = '\0';
 		i++;
 	}
-	new_matrix[i] = NULL;
-	return (new_matrix);
+	return (new_matrix[i] = NULL, new_matrix);
 }
 
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
