@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/30 16:03:25 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/05/30 16:04:15 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H 
 # define CUB3D_H
 
@@ -15,7 +27,7 @@ typedef struct s_position
 	int		y;
 }	t_position;
 
-typedef	struct s_parser
+typedef struct s_parser
 {
 	char		**file_map;
 	char		**original_map;
@@ -54,10 +66,5 @@ typedef struct s_game
 {
 	t_parser	*paser;
 }	t_game;
-
-//  INIT STRUCTS
-
-//  init_parser.c
-t_parser		*init_struct_parser(void);
 
 #endif

@@ -57,11 +57,11 @@ int	validate_map_filename(char *filename)
 	}
 	if (has_invalid_chars(filename) != 0)
 	{
-		return (printf(ERROR_INVALID_FILENAME_CHARS), 1);
+		return (printf(ERROR_CHARS_IN_FILENAME), 1);
 	}
 	if (open(filename, O_RDONLY) < 0)
 	{
-		return ((ERROR_OPEN_FILE_MAP), 1);
+		return (printf(ERROR_OPEN_FILE_MAP), 1);
 	}
 	if (count_file_size(filename) <= 0)
 	{

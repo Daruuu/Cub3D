@@ -17,7 +17,7 @@
 # define ERROR_INVALID_ARGS "Error: Incorrect arguments.\n"
 # define INVALID_LEN_FILE_MAP "Error: Map filename too short.\n"
 # define INVALID_MAP_EXTENSION "Error: Extension invalid, expected '.cub'\n"
-# define ERROR_INVALID_FILENAME_CHARS   "Error: Filename contains invalid characters.\n"
+# define ERROR_CHARS_IN_FILENAME "Error: filename.cub contains invalid chars.\n"
 # define ERROR_OPEN_FILE_MAP "Error: Map file could not be opened.\n"
 # define ERROR_EMPTY_FILE_MAP "Error: File map is empty.\n"
 
@@ -50,7 +50,7 @@
 
 # define ERROR_TABULATION_IN_MAP "Error: A tabulation exist in map.\n"
 
-# define ERROR_MAP_CANT_EXTRACT_FROM_FILE "Error: Invalid map. Can't extract from file.cub\n"
+# define ERR_INVALID_MAP_EXTRACT "Error: Invalid map. Can't extract from .cub\n"
 # define ERROR_MAP_ALLOC_FAILED "Error: Failed to allocate memory for map"
 
 /*--------------------Error and exit------------------*/

@@ -90,8 +90,8 @@ void	extract_map_from_file_map(t_parser *parser)
 	last_line = find_last_line_map(parser);
 	if (first_line == -1 || last_line == -1 || last_line < first_line)
 	{
-		handle_error(ERROR_MAP_CANT_EXTRACT_FROM_FILE, \
-			(int) ft_strlen(ERROR_MAP_CANT_EXTRACT_FROM_FILE), parser, NULL);
+		handle_error(ERR_INVALID_MAP_EXTRACT, \
+			(int) ft_strlen(ERR_INVALID_MAP_EXTRACT), parser, NULL);
 	}
 	total_lines = last_line - first_line + 1;
 	parser->original_map = new_matrix_map(parser, first_line, total_lines);

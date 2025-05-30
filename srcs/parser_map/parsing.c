@@ -38,7 +38,8 @@ char	**duplicate_map_matrix(t_parser *parser)
 		new_matrix[i][col] = '\0';
 		i++;
 	}
-	return (new_matrix[i] = NULL, new_matrix);
+	new_matrix[i] = NULL;
+	return (new_matrix);
 }
 
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
@@ -99,9 +100,7 @@ int	validate_map_after_extract(t_parser *parser)
 	{
 		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
 		if (!parser->validation_map)
-		{
 			return (free_matrix(parser->validation_map), 1);
-		}
 		while (i < parser->rows)
 		{
 			parser->validation_map[i] = ft_strdup(parser->original_map[i]);

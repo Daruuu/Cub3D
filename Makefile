@@ -45,12 +45,11 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_PARSER_FILE)/parse_textures.c \
 	$(SRC_PARSER_FILE)/parse_utils.c \
 	$(SRC_PARSER_MAP)/check_extension_and_player.c \
-	$(SRC_PARSER_MAP)/check_items.c \
-	$(SRC_PARSER_MAP)/check_player.c \
-	$(SRC_PARSER_MAP)/check_utils.c \
 	$(SRC_PARSER_MAP)/error_handler.c \
 	$(SRC_PARSER_MAP)/extract_map.c \
 	$(SRC_PARSER_MAP)/free_functions.c \
+	$(SRC_PARSER_MAP)/map_utils.c \
+	$(SRC_PARSER_MAP)/map_validation.c \
 	$(SRC_PARSER_MAP)/parsing.c
 
 # ========== Archivos objeto ========== #
@@ -60,11 +59,10 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC)))
 
 SRC_TESTING = testing/unity.c \
 		   testing/setup_testing.c
-		   
+
 OBJ_TEST = $(patsubst testing/%.c, $(OBJ_DIR)/testing/%.o, $(SRC_TESTING))
 
 OBJ_TESTING = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(subst $(SRC_DIR)/,,$(SRC_TESTING)))
-
 
 # ========== Rules ========== #
 #all: $(NAME)
