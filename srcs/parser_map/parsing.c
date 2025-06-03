@@ -117,6 +117,27 @@ int	validate_map_after_extract(t_parser *parser)
 	return (0);
 }
 
+/**
+ * @brief Executes the full parsing process of the `.cub`.
+ *
+ * 1. Parses texture and color definitions.
+ * 2. Validates texture and color formatting.
+ * 3. Extracts the map section from the file content.
+ * 4. Validates the structure and correctness of the map.
+ *
+ * If any step in the process fails, the function exits and returns an error.
+ *
+ * @param parser A pointer to a `t_parser`.
+ * @see parse_lines_of_textures()
+ * @see check_textures_and_colors()
+ * @see extract_map_from_file_map();
+ *
+ * @return int
+ *         - 0 if the parsing and validation complete successfully.
+ *         - 1 if an error occurs during any phase of the parsing process.
+ *
+ */
+
 int	parsing(t_parser *parser)
 {
 	if (!parser || !parser->file_map)
@@ -126,10 +147,13 @@ int	parsing(t_parser *parser)
 	{
 		extract_map_from_file_map(parser);
 		validate_map_after_extract(parser);
+
+		printf("Map from '.cub'\n parser->file map:\n");
+		print_map_2d(parser->file_map);
+		printf("extract ONLY map from parser->file_map to parser->original_map:\n");
+		print_map_2d(parser->original_map);
 		printf("validation map:\n");
 		print_map_2d(parser->validation_map);
-		printf("original map:\n");
-		print_map_2d(parser->original_map);
 	}
 	else
 		return (1);

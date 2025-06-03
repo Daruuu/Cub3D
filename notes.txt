@@ -94,9 +94,80 @@ srcs/parser_map/check_items.c
 
 
 
+static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
+{
+	char	**matrix;
+	char	*trimmed_line;
+	int		rows;
+
+	matrix = allocate_map_matrix(total_lines);
+	if (!matrix)
+		return (NULL);
+	rows = 0;
+	while (rows < total_lines)
+	{
+		trimmed_line = allocate_trimmed_line(parser->file_map[first_line + rows]);
+		if (!trimmed_line || !copy_line_to_matrix_row(matrix, rows, trimmed_line))
+		{
+			free(trimmed_line);
+			return (free_matrix(matrix), NULL);
+		}
+		free(trimmed_line);
+		rows++;
+	}
+	matrix[rows] = NULL;
+	parser->rows = rows;
+	return (matrix);
+}
 
 
 
+
+static int	copy_line_to_matrix_row(char **new_matrix, char *trimmed_line, int row)
+{
+	int	len_line;
+	int	i;
+
+	len_line = (int) ft_strlen(trimmed_line);
+	new_matrix[row] = malloc(sizeof(char) * (len_line + 1));
+	if (!new_matrix[row])
+		return (0); // error
+	i = 0;
+	while (i < len_line)
+	{
+		new_matrix[row][i] = trimmed_line[i];
+		i++;
+	}
+	new_matrix[row][i] = '\0';
+	return (1); // éxito
+}
+
+static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
+{
+	char	**new_matrix;
+	char	*trimmed_line;
+	int		rows;
+
+	new_matrix = malloc(sizeof(char *) * (total_lines + 1));
+	if (!new_matrix)
+		return (NULL);
+	rows = 0;
+	while (rows < total_lines)
+	{
+		trimmed_line = ft_strtrim(parser->file_map[first_line + rows], " ");
+		if (!trimmed_line || !copy_line_to_matrix_row(new_matrix, trimmed_line, rows))
+		{
+			free(trimmed_line);
+			free_matrix(new_matrix);
+			return (NULL);
+		}
+		free(trimmed_line);
+		rows++;
+	}
+	new_matrix[rows] = NULL;
+	parser->rows = rows;
+	return (new_matrix);
+}
 
 
 

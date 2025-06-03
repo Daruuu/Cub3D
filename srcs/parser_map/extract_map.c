@@ -51,12 +51,30 @@ static int	find_last_line_map(t_parser *map_info)
 	return (-1);
 }
 
+static int	copy_line_to_matrix_row(char **new_matrix, char *trimmed_line, int row)
+{
+	int	len_line;
+	int	i;
+
+	len_line = (int) ft_strlen(trimmed_line);
+	new_matrix[row] = malloc(sizeof(char) * (len_line + 1));
+	if (!new_matrix[row])
+		return (0); // error
+	i = 0;
+	while (i < len_line)
+	{
+		new_matrix[row][i] = trimmed_line[i];
+		i++;
+	}
+	new_matrix[row][i] = '\0';
+	return (1); // éxito
+}
+
 static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 {
 	char	**new_matrix;
-	int		len_line;
+	char	*trimmed_line;
 	int		rows;
-	int		col;
 
 	new_matrix = malloc(sizeof(char *) * (total_lines + 1));
 	if (!new_matrix)
@@ -64,22 +82,40 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 	rows = 0;
 	while (rows < total_lines)
 	{
-		len_line = (int) ft_strlen(parser->file_map[first_line + rows]);
-		new_matrix[rows] = malloc(sizeof(char) * (len_line + 1));
-		if (!new_matrix[rows])
-			return (free_matrix(new_matrix), NULL);
-		col = 0;
-		while (col < len_line)
+		trimmed_line = ft_strtrim(parser->file_map[first_line + rows], " ");
+		if (!trimmed_line || !copy_line_to_matrix_row(new_matrix, trimmed_line, rows))
 		{
-			new_matrix[rows][col] = parser->file_map[first_line + rows][col];
-			col++;
+			free(trimmed_line);
+			free_matrix(new_matrix);
+			return (NULL);
 		}
-		new_matrix[rows][col] = '\0';
+		free(trimmed_line);
 		rows++;
 	}
-	return (new_matrix[rows] = NULL, parser->rows = rows, new_matrix);
+	new_matrix[rows] = NULL;
+	parser->rows = rows;
+	return (new_matrix);
 }
 
+/**
+ * @brief Extracts the map portion from the complete file contents.
+ *
+ * This function locates the starting and ending lines of the map
+ * within the file, validates their order, and stores the extracted
+ * portion in `parser->original_map`.
+ * It also calculates the number of columns based on the widest line.
+ *
+ * If the map cannot be found or memory allocation fails, it triggers
+ * a handled error exit.
+ *
+ * @param parser Pointer to the parser structure containing the file content.
+ *
+ * @see find_first_line_map()
+ * @see find_last_line_map()
+ * @see new_matrix_map()
+ * @see get_max_columns()
+ * @see handle_error()
+ */
 void	extract_map_from_file_map(t_parser *parser)
 {
 	int	first_line;

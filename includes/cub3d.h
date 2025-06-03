@@ -29,7 +29,7 @@ typedef struct s_position
 
 typedef struct s_parser
 {
-	char		**file_map;
+	char		**file_map;		//not modify in the parsing part, extract lines
 	char		**original_map;
 	char		**validation_map;
 	int			items_map;

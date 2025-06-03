@@ -47,6 +47,18 @@ static void	type_of_horientation(char *trim_line, t_parser *map_info)
 		map_info->ceiling = ft_strdup(trim_line);
 }
 
+/**
+ * @brief Trims the line and processes its texture or orientation type.
+ *
+ * This function removes leading and trailing spaces from a given line
+ * and determines its type (NO, SO, WE, EA, F, C)
+ *
+ * @param line A raw line from the map file to be processed.
+ * @param parser Pointer to the parser structure where parsed data is stored.
+ *
+ * @see ft_strtrim()
+ * @see type_of_horientation()
+ */
 static void	trim_line_and_set_type(char *line, t_parser *parser)
 {
 	char	*trim_line;
@@ -59,9 +71,20 @@ static void	trim_line_and_set_type(char *line, t_parser *parser)
 	free(trim_line);
 }
 
+/**
+ * @brief Iterates over all file lines and parses texture.
+ *
+ * This function loops through each line of the map file stored in `parser->file_map`,
+ * trimming and processing each line to extract texture paths and orientation settings.
+ *
+ * @param parser Pointer to the t_parser structure containing the map file lines.
+ *
+ * @see trim_line_and_set_type():
+ * - It relies on `trim_line_and_set_type` to sanitize and categorize the input lines.
+ */
 void	parse_lines_of_textures(t_parser *parser)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!parser || !parser->file_map)
