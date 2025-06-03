@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	my_parser = init_struct_parser();
 	if (!my_parser)
 		return (1);
-	if (read_file(argv[1], my_parser) == 0)
+	if (read_file(my_parser, argv[1]) == 0)
 	{
 		parsing(my_parser);
 		printf("ROWS MAP: %d\n", my_parser->rows);

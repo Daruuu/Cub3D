@@ -32,6 +32,8 @@ void	print_map_2d(char **matrix)
 	int	i;
 
 	i = 0;
+	if (!matrix || !*matrix)
+		return ;
 	while (matrix[i] != NULL)
 	{
 		printf("line[%i]: [%s]\n", i, matrix[i]);

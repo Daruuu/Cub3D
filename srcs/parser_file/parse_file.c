@@ -71,12 +71,12 @@ char	*read_file_content(char *path, int size)
 
 /**
  *
- * @param path check if path have bytes inside .cub
  * @param parser first copy of (file .cub)
+ * @param path check if path have bytes inside .cub
  * @return
  */
 
-int	read_file(char *path, t_parser *parser)
+int	read_file(t_parser *parser, char *path)
 {
 	char	*file_map1d;
 	int		file_size;
@@ -89,6 +89,7 @@ int	read_file(char *path, t_parser *parser)
 	if (!file_map1d)
 		return (free(file_map1d), 1);
 	parser->file_map = ft_split(file_map1d, '\n');
+	// print_map_2d(parser->file_map);
 	if (!parser->file_map)
 	{
 		free(file_map1d);

@@ -23,7 +23,7 @@ typedef struct s_game		t_game;
 
 //  parse_files.c
 char		*read_file_content(char *path, int size);
-int			read_file(char *path, t_parser *parser);
+int			read_file(t_parser *parser, char *path);
 
 //  parse_utils.c
 int			ft_open_map(char *path);
@@ -31,7 +31,7 @@ int			get_max_columns(char **map, int rows);
 
 //  parse_textures.c
 int			check_textures_and_colors(t_parser *parser);
-void		parse_lines_of_textures(t_parser *parser);
+int validate_texture_and_color(t_parser* parser);
 
 // ===========================================
 // ============== PARSER MAP =================

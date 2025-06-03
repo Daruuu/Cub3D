@@ -51,29 +51,29 @@ static int	find_last_line_map(t_parser *map_info)
 	return (-1);
 }
 
-static int	copy_line_to_matrix_row(char **new_matrix, char *trimmed_line, int row)
+int	cp_trim_line_to_matrix(char **matrix, char *trimmed_line, int row)
 {
 	int	len_line;
 	int	i;
 
 	len_line = (int) ft_strlen(trimmed_line);
-	new_matrix[row] = malloc(sizeof(char) * (len_line + 1));
-	if (!new_matrix[row])
-		return (0); // error
+	matrix[row] = malloc(sizeof(char) * (len_line + 1));
+	if (!matrix[row])
+		return (0);
 	i = 0;
 	while (i < len_line)
 	{
-		new_matrix[row][i] = trimmed_line[i];
+		matrix[row][i] = trimmed_line[i];
 		i++;
 	}
-	new_matrix[row][i] = '\0';
-	return (1); // éxito
+	matrix[row][i] = '\0';
+	return (1);
 }
 
 static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 {
 	char	**new_matrix;
-	char	*trimmed_line;
+	char	*trim_line;
 	int		rows;
 
 	new_matrix = malloc(sizeof(char *) * (total_lines + 1));
@@ -82,14 +82,14 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 	rows = 0;
 	while (rows < total_lines)
 	{
-		trimmed_line = ft_strtrim(parser->file_map[first_line + rows], " ");
-		if (!trimmed_line || !copy_line_to_matrix_row(new_matrix, trimmed_line, rows))
+		trim_line = ft_strtrim(parser->file_map[first_line + rows], " ");
+		if (!trim_line || !cp_trim_line_to_matrix(new_matrix, trim_line, rows))
 		{
-			free(trimmed_line);
+			free(trim_line);
 			free_matrix(new_matrix);
 			return (NULL);
 		}
-		free(trimmed_line);
+		free(trim_line);
 		rows++;
 	}
 	new_matrix[rows] = NULL;

@@ -29,7 +29,52 @@ int	check_textures_and_colors(t_parser *parser)
 	return (0);
 }
 
-static void	type_of_horientation(char *trim_line, t_parser *map_info)
+static int	type_of_horientation(t_parser *map_info, char *trim_line,
+								t_assets_counter *counter)
+{
+	if (!trim_line || !map_info || !counter)
+		return (1);
+	if (ft_strncmp(trim_line, "NO", 2) == 0)
+	{
+		if (counter->no++)
+			return (printf("Error: Duplicate NO texture\n"), 1);
+		map_info->north = ft_strdup(trim_line);
+	}
+	else if (ft_strncmp(trim_line, "SO", 2) == 0)
+	{
+		if (counter->so++)
+			return (printf("Error: Duplicate SO texture\n"), 1);
+		map_info->south = ft_strdup(trim_line);
+	}
+	else if (ft_strncmp(trim_line, "WE", 2) == 0)
+	{
+		if (counter->we++)
+			return (printf("Error: Duplicate WE texture\n"), 1);
+		map_info->west = ft_strdup(trim_line);
+	}
+	else if (ft_strncmp(trim_line, "EA", 2) == 0)
+	{
+		if (counter->ea++)
+			return (printf("Error: Duplicate EA texture\n"), 1);
+		map_info->east = ft_strdup(trim_line);
+	}
+	else if (ft_strncmp(trim_line, "F ", 2) == 0)
+	{
+		if (counter->f++)
+			return (printf("Error: Duplicate Floor color\n"), 1);
+		map_info->floor = ft_strdup(trim_line);
+	}
+	else if (ft_strncmp(trim_line, "C ", 2) == 0)
+	{
+		if (counter->c++)
+			return (printf("Error: Duplicate Ceiling color\n"), 1);
+		map_info->ceiling = ft_strdup(trim_line);
+	}
+	return (0);
+}
+
+/*
+static void	type_of_horientation(t_parser *map_info, char *trim_line)
 {
 	if (!trim_line || !map_info)
 		return ;
@@ -46,6 +91,7 @@ static void	type_of_horientation(char *trim_line, t_parser *map_info)
 	else if (ft_strncmp(trim_line, "C ", 2) == 0)
 		map_info->ceiling = ft_strdup(trim_line);
 }
+*/
 
 /**
  * @brief Trims the line and processes its texture or orientation type.
@@ -55,20 +101,25 @@ static void	type_of_horientation(char *trim_line, t_parser *map_info)
  *
  * @param line A raw line from the map file to be processed.
  * @param parser Pointer to the parser structure where parsed data is stored.
+ * @param counter
  *
  * @see ft_strtrim()
  * @see type_of_horientation()
  */
-static void	trim_line_and_set_type(char *line, t_parser *parser)
+static int trim_line_and_set_type(char* line, t_parser* parser,
+								t_assets_counter* counter)
 {
 	char	*trim_line;
+	int		result;
 
 	trim_line = ft_strtrim(line, " ");
 	if (!trim_line)
-		return ;
+		return (1);
+	result = 0;
 	if (ft_strlen(trim_line) > 1)
-		type_of_horientation(trim_line, parser);
+		result = type_of_horientation(parser, trim_line, counter);
 	free(trim_line);
+	return (result);
 }
 
 /**
@@ -82,16 +133,20 @@ static void	trim_line_and_set_type(char *line, t_parser *parser)
  * @see trim_line_and_set_type():
  * - It relies on `trim_line_and_set_type` to sanitize and categorize the input lines.
  */
-void	parse_lines_of_textures(t_parser *parser)
+int validate_texture_and_color(t_parser* parser)
 {
 	int	i;
+	t_assets_counter	counter;
 
-	i = 0;
 	if (!parser || !parser->file_map)
-		return ;
+		return (1);
+	ft_memset(&counter, 0, sizeof(counter));
+	i = 0;
 	while (parser->file_map[i] != NULL)
 	{
-		trim_line_and_set_type(parser->file_map[i], parser);
+		if (trim_line_and_set_type(parser->file_map[i], parser, &counter))
+			return (1);
 		i++;
 	}
+	return (0);
 }

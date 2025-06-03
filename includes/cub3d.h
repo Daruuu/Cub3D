@@ -27,6 +27,17 @@ typedef struct s_position
 	int		y;
 }	t_position;
 
+typedef struct s_assets_counter
+{
+	int no;
+	int so;
+	int we;
+	int ea;
+	int f;
+	int c;
+}	t_assets_counter;
+
+
 typedef struct s_parser
 {
 	char		**file_map;		//not modify in the parsing part, extract lines

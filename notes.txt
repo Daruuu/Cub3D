@@ -172,6 +172,43 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 
 
 
+int	validate_map_after_extract(t_parser *parser)
+{
+	int	i;
+
+	if (!parser->original_map)
+		return (1);
+
+	if (parser->validation_map == NULL)
+	{
+		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
+		if (!parser->validation_map)
+			return (1);
+		i = 0;
+		while (i < parser->rows)
+		{
+			parser->validation_map[i] = ft_strdup(parser->original_map[i]);
+			if (!parser->validation_map[i])
+			{
+				free_matrix(parser->validation_map);
+				return (1);
+			}
+			i++;
+		}
+		parser->validation_map[i] = NULL;
+	}
+
+	normalize_and_fill_map(parser);
+
+	if (validate_map(parser) == 1)
+	{
+		free_matrix(parser->validation_map);
+		parser->validation_map = NULL;
+		return (1);
+	}
+
+	return (0);
+}
 
 
 

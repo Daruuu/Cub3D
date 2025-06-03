@@ -102,7 +102,7 @@ int	validate_map_after_extract(t_parser *parser)
 	{
 		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
 		if (!parser->validation_map)
-			return (free_matrix(parser->validation_map), 1);
+			return (1);// return (free_matrix(parser->validation_map), 1);
 		while (i < parser->rows)
 		{
 			parser->validation_map[i] = ft_strdup(parser->original_map[i]);
@@ -113,7 +113,9 @@ int	validate_map_after_extract(t_parser *parser)
 		parser->validation_map[i] = NULL;
 	}
 	normalize_and_fill_map(parser);
-	validate_map(parser);
+	if (validate_map(parser) == 1)
+		return (free_matrix(parser->validation_map), \
+			parser->validation_map = NULL, 1);
 	return (0);
 }
 
@@ -142,18 +144,26 @@ int	parsing(t_parser *parser)
 {
 	if (!parser || !parser->file_map)
 		return (1);
-	parse_lines_of_textures(parser);
+	// print_map_2d(parser->file_map);
+
+	validate_texture_and_color(parser);
 	if (check_textures_and_colors(parser) == 0)
 	{
 		extract_map_from_file_map(parser);
 		validate_map_after_extract(parser);
 
-		printf("Map from '.cub'\n parser->file map:\n");
-		print_map_2d(parser->file_map);
-		printf("extract ONLY map from parser->file_map to parser->original_map:\n");
-		print_map_2d(parser->original_map);
-		printf("validation map:\n");
-		print_map_2d(parser->validation_map);
+		// printf("-----------------------------------------\n");
+		// printf("Map from '.cub'\n parser->file map:\n");
+		// print_map_2d(parser->file_map);
+		// printf("\n-----------------------------------------\n");
+		//
+		// printf("extract ONLY map from parser->file_map to parser->original_map:\n");
+		// print_map_2d(parser->original_map);
+		// printf("\n-----------------------------------------\n");
+		//
+		// printf("validation map: parser->validation_map\n");
+		// print_map_2d(parser->validation_map);
+		// printf("\n-----------------------------------------\n");
 	}
 	else
 		return (1);
