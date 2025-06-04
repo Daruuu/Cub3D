@@ -77,6 +77,13 @@
 # define ERROR_INVALID_FLOOR_FORMAT     "Error: Invalid format of FLOOR.\n"
 # define ERROR_INVALID_CEILING_FORMAT   "Error: Invalid format of CEIL.\n"
 
+/*------------------ Invalid Texture Extension Errors ------------------*/
+# define ERROR_EXTENSION_NORTH_TEXTURE "Error: NORTH texture must end with .xpm\n"
+# define ERROR_EXTENSION_SOUTH_TEXTURE "Error: SOUTH texture must end with .xpm\n"
+# define ERROR_EXTENSION_EAST_TEXTURE  "Error: EAST texture must end with .xpm\n"
+# define ERROR_EXTENSION_WEST_TEXTURE  "Error: WEST texture must end with .xpm\n"
+
+
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'
 # define FLOOR '0'
@@ -87,6 +94,7 @@
 # define SOUTH  'S'
 # define WEST   'W'
 # define EAST   'E'
+# define EXTENSION_TEXTURE	".xpm"
 
 // Direcciones del jugador
 # define LEFT 0

@@ -8,9 +8,7 @@ static int	is_valid_texture_path(char *path)
 		return (1);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
 		return (1);
-	}
 	close(fd);
 	return (0);
 }
@@ -20,7 +18,7 @@ static int	count_splits(char **splits)
 	int	i;
 
 	if (!splits)
-		return (0);
+		return (0);	//posble error
 	i = 0;
 	while (splits[i])
 		i++;
@@ -39,6 +37,7 @@ void	free_splitss(char **splits)
 		free(splits[i]);
 		i++;
 	}
+	free(splits);
 }
 
 int	is_valid_rgb_format(char *value)
@@ -52,7 +51,10 @@ int	is_valid_rgb_format(char *value)
 		return (1);
 	rgb = ft_split(value, ',');
 	if (!rgb || count_splits(rgb) != 3)
+	{
+		free_splitss(rgb);
 		return (1);
+	}
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);

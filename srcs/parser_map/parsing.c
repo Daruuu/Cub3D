@@ -107,6 +107,33 @@ int	validate_map_after_extract(t_parser *parser)
  *         - 1 if an error occurs during any phase of the parsing process.
  */
 
+static int check_texture_extension_xpm(char *texture_path)
+{
+	int	len;
+
+	if (!texture_path)
+		return (1);
+	len = (int) ft_strlen(texture_path);
+	if (len < 4)
+		return (1);
+	if (ft_strncmp(texture_path + len - 4, EXTENSION_TEXTURE, 4) != 0)
+		return (printf(ERROR_DUPLICATE_NORTH_TEXTURE));
+	return (0);
+}
+
+int	validate_extension_texture_xpm(t_parser* parser)
+{
+	if (check_texture_extension_xpm(parser->north) == 1)
+		return (printf(ERROR_EXTENSION_NORTH_TEXTURE), 1);
+	if (check_texture_extension_xpm(parser->south) == 1)
+		return (printf(ERROR_EXTENSION_SOUTH_TEXTURE), 1);
+	if (check_texture_extension_xpm(parser->east) == 1)
+		 return (printf(ERROR_EXTENSION_EAST_TEXTURE), 1);
+	if (check_texture_extension_xpm(parser->west) == 1)
+		return (printf(ERROR_EXTENSION_WEST_TEXTURE), 1);
+	return (0);
+}
+
 int	parsing(t_parser *parser)
 {
 	if (!parser || !parser->file_map)
@@ -119,6 +146,9 @@ int	parsing(t_parser *parser)
 		return (1);
 
 	if (validate_textures_paths(parser) != 0)
+		return (1);
+
+	if (validate_extension_texture_xpm(parser) != 0)
 		return (1);
 
 	extract_map_from_file_map(parser);

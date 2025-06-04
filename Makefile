@@ -18,7 +18,7 @@ MLX = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 # ========== Configuración general ========== #
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iincludes -I$(MLX_DIR) -I$(LIBFT_DIR) -I/usr/include -g #-fsanitize=address
 
 TEST_FLAGS = -fsanitize=address -g -Wall -Wextra -Werror -lm
 

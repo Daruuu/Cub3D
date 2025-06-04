@@ -252,3 +252,21 @@ static int	set_texture_field(char **field, char *trim_line,
 
 	return (0);
 }
+
+
+
+#include <string.h>  // strlen
+
+int	validate_extension_xpm(char *path)
+{
+	size_t	len;
+
+	if (!path)
+		return (1);
+	len = ft_strlen(path);
+	if (len < 4)
+		return (1);
+	if (ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+		return (1);
+	return (0); // válido
+}
