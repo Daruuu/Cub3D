@@ -27,7 +27,7 @@ typedef struct s_position
 	int		y;
 }	t_position;
 
-typedef struct s_assets_counter
+typedef struct s_assets
 {
 	int no;
 	int so;
@@ -35,7 +35,7 @@ typedef struct s_assets_counter
 	int ea;
 	int f;
 	int c;
-}	t_assets_counter;
+}	t_assets;
 
 
 typedef struct s_parser

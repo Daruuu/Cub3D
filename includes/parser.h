@@ -30,7 +30,7 @@ int			ft_open_map(char *path);
 int			get_max_columns(char **map, int rows);
 
 //  parse_textures.c
-int			check_textures_and_colors(t_parser *parser);
+int			check_total_num_textures_and_colors(t_parser *parser);
 int validate_texture_and_color(t_parser* parser);
 
 // ===========================================

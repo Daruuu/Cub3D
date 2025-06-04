@@ -53,6 +53,15 @@
 # define ERROR_ITEM_WEST               "Error: Invalid items WEST.\n"
 # define ERROR_ITEM_EAST               "Error: Invalid items EAST.\n"
 
+/*-------------------- Duplicate Texture & Color Errors ------------------*/
+# define ERROR_DUPLICATE_NORTH_TEXTURE   "Error: Duplicate NO texture\n"
+# define ERROR_DUPLICATE_SOUTH_TEXTURE   "Error: Duplicate SO texture\n"
+# define ERROR_DUPLICATE_WEST_TEXTURE    "Error: Duplicate WE texture\n"
+# define ERROR_DUPLICATE_EAST_TEXTURE    "Error: Duplicate EA texture\n"
+# define ERROR_DUPLICATE_FLOOR_COLOR     "Error: Duplicate Floor color\n"
+# define ERROR_DUPLICATE_CEILING_COLOR   "Error: Duplicate Ceiling color\n"
+
+
 /*-------------------- Floor & Ceiling Color Errors ------------------*/
 # define ERROR_INVALID_FLOOR_TEXTURE   "Error: Invalid format of FLOOR\n"
 # define ERROR_INVALID_CEILING_TEXTURE "Error: Invalid format of CEIL\n"

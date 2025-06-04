@@ -144,28 +144,27 @@ int	parsing(t_parser *parser)
 {
 	if (!parser || !parser->file_map)
 		return (1);
-	// print_map_2d(parser->file_map);
 
-	validate_texture_and_color(parser);
-	if (check_textures_and_colors(parser) == 0)
-	{
-		extract_map_from_file_map(parser);
-		validate_map_after_extract(parser);
-
-		// printf("-----------------------------------------\n");
-		// printf("Map from '.cub'\n parser->file map:\n");
-		// print_map_2d(parser->file_map);
-		// printf("\n-----------------------------------------\n");
-		//
-		// printf("extract ONLY map from parser->file_map to parser->original_map:\n");
-		// print_map_2d(parser->original_map);
-		// printf("\n-----------------------------------------\n");
-		//
-		// printf("validation map: parser->validation_map\n");
-		// print_map_2d(parser->validation_map);
-		// printf("\n-----------------------------------------\n");
-	}
-	else
+	if (validate_texture_and_color(parser) != 0)
 		return (1);
+
+	if (check_total_num_textures_and_colors(parser) == 0)
+		return (1);
+	extract_map_from_file_map(parser);
+
+	if (validate_map_after_extract(parser) != 0)
+		return (1);
+
+	// printf("-----------------------------------------\n");
+	// printf("Map from '.cub'\n parser->file map:\n");
+	// print_map_2d(parser->file_map);
+	// printf("\n-----------------------------------------\n");
+	//
+	// printf("extract ONLY map from parser->file_map to parser->original_map:\n");
+	// print_map_2d(parser->original_map);
+	// printf("\n-----------------------------------------\n");
+	//
+	// printf("validation map: parser->validation_map\n");
+	// print_map_2d(parser->validation_map);
 	return (0);
 }
