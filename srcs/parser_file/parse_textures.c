@@ -22,40 +22,54 @@
 */
 
 //TODO: improve the logc of this function
+/*
 char	*extract_path_from_line_texture(char *trimmed_line, char *type)
 {
 	char	*line_updated;
 	int		len_line;
 	int		i;
+	int		len_of_type;
 
 	len_line = (int) ft_strlen(trimmed_line);
-	i = 2;
+	i = 0;
 	//	NO
 	if (i < len_line)
 	{
+		len_of_type = (int) ft_strlen(type);
 		if (ft_strncmp(trimmed_line, type, ft_strlen(type)) == 0)
-			i = i + ft_strlen(type);
+			i = len_of_type + 1;
 	}
 	//	NO[x]
 	while (i < len_line)
 	{
 		if (trimmed_line[i] == ' ' || trimmed_line[i] == '\t')
 			i++;
-		if (i < len_line);
+		if (i == len_line)
+			return ("invalid texture");
 	}
 
 	line_updated = NULL;
 	return (line_updated);
 }
+*/
 
-//	TODO: before strdup remove (SO, NO, WE, EA) from the line to only have the
+//	TODO: before strdup remove (SO, NO, WE, EA)
+//	from the line to only have the
 //	the path of the texture.
 static int	set_texture_field(char **field, char *trim_line,
 								int *counter, const char *error_msg)
 {
+	char	*tmp_clean_line;
+
 	if ((*counter)++)
-		return (printf("%s\n", error_msg), 1);
-	*field = ft_strdup(trim_line);
+		return (printf("%s", error_msg), 1);
+
+	tmp_clean_line = ft_strrchr(trim_line, ' ');
+	if (!tmp_clean_line || *(tmp_clean_line + 1) == '\0')
+		return (1);
+	*field = ft_strdup(tmp_clean_line + 1);
+	if (!*field)
+		return (printf(ERROR_MEMORY_ALLOCATION), 1);
 	return (0);
 }
 
@@ -64,16 +78,16 @@ static int	type_of_horientation(t_parser *map_info, char *trim_line,
 {
 	if (!trim_line || !map_info || !counter)
 		return (1);
-	if (ft_strncmp(trim_line, "NO", 2) == 0)
+	if (ft_strncmp(trim_line, "NO ", 3) == 0)
 		return (set_texture_field(&map_info->north, trim_line, &counter->no, \
 			ERROR_DUPLICATE_NORTH_TEXTURE));
-	if (ft_strncmp(trim_line, "SO", 2) == 0)
+	if (ft_strncmp(trim_line, "SO ", 3) == 0)
 		return (set_texture_field(&map_info->south, trim_line, &counter->so, \
 			ERROR_DUPLICATE_SOUTH_TEXTURE));
-	if (ft_strncmp(trim_line, "WE", 2) == 0)
+	if (ft_strncmp(trim_line, "WE ", 3) == 0)
 		return (set_texture_field(&map_info->west, trim_line, &counter->we, \
 			ERROR_DUPLICATE_WEST_TEXTURE));
-	if (ft_strncmp(trim_line, "EA", 2) == 0)
+	if (ft_strncmp(trim_line, "EA ", 3) == 0)
 		return (set_texture_field(&map_info->east, trim_line, &counter->ea, \
 			ERROR_DUPLICATE_EAST_TEXTURE));
 	if (ft_strncmp(trim_line, "F ", 2) == 0)
@@ -106,7 +120,7 @@ static int	trim_line_and_set_type(char *line, t_parser *parser, \
 	int		result;
 
 	trim_line = ft_strtrim(line, " ");
-	printf("+++++++++++++++++= trimmed line: [%s]\n", trim_line);
+	// printf("trimmed line: [%s]\n", trim_line);
 	if (!trim_line)
 		return (1);
 	result = 0;

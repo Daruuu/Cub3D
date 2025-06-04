@@ -210,5 +210,45 @@ int	validate_map_after_extract(t_parser *parser)
 	return (0);
 }
 
+static int  process_line_and_set_type(char *line, t_parser *parser, t_assets *counter)
+{
+	char	*trimmed;
+	int		result;
 
+	if (!line || !parser || !counter)
+		return (1);
 
+	trimmed = ft_strtrim(line, " ");
+	if (!trimmed)
+		return (1);
+
+	// No se procesa si la línea es muy corta
+	if (ft_strlen(trimmed) <= 1)
+	{
+		free(trimmed);
+		return (0);
+	}
+
+	result = type_of_horientation(parser, trimmed, counter);
+	free(trimmed);
+	return (result);
+}
+
+static int	set_texture_field(char **field, char *trim_line,
+								int *counter, const char *error_msg)
+{
+	char	*tmp_clean_line;
+
+	if ((*counter)++)
+		return (printf("%s", error_msg), 1);
+
+	tmp_clean_line = ft_strrchr(trim_line, ' ');
+	if (!tmp_clean_line || *(tmp_clean_line + 1) == '\0')
+		return (printf("Error: texture path missing or malformed: '%s'\n", trim_line), 1);
+
+	*field = ft_strdup(tmp_clean_line + 1);
+	if (!*field)
+		return (printf("Error: memory allocation failed for texture path\n"), 1);
+
+	return (0);
+}

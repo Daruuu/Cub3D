@@ -53,7 +53,7 @@ int			check_map_dimensions(t_parser *map_info);
 
 // errors_handler.c
 void		handle_error(char *str, int size, t_parser *map, t_game *game);
-void		handle_exit(char *str);
+	void		handle_exit(char *str);
 
 //  extract_map.c
 void		extract_map_from_file_map(t_parser *parser);
