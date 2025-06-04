@@ -42,6 +42,7 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_INIT)/print_structs.c \
 	$(SRC_PARSER_FILE)/parse_file.c \
 	$(SRC_PARSER_FILE)/parse_textures.c \
+	$(SRC_PARSER_FILE)/parse_textures_utils.c \
 	$(SRC_PARSER_FILE)/parse_utils.c \
 	$(SRC_PARSER_MAP)/check_extension_and_player.c \
 	$(SRC_PARSER_MAP)/error_handler.c \

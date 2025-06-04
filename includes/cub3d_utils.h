@@ -43,29 +43,39 @@
 /*-------------------- Map Items & Characters ------------------------*/
 # define ERROR_ITEMS_IN_MAP            "Error: Invalid ITEM in map.\n"
 
-/*-------------------- Texture & Orientation Errors ------------------*/
-# define ERROR_INVALID_NORTH_TEXTURE   "Error: Invalid texture NORTH\n"
-# define ERROR_INVALID_SOUTH_TEXTURE   "Error: Invalid texture SOUTH\n"
-# define ERROR_INVALID_WEST_TEXTURE    "Error: Invalid texture WEST\n"
-# define ERROR_INVALID_EAST_TEXTURE    "Error: Invalid texture EAST\n"
-# define ERROR_ITEM_NORTH              "Error: Invalid items NORTH.\n"
-# define ERROR_ITEM_SOUTH              "Error: Invalid items SOUTH.\n"
-# define ERROR_ITEM_WEST               "Error: Invalid items WEST.\n"
-# define ERROR_ITEM_EAST               "Error: Invalid items EAST.\n"
+/*-------------------- Texture Not Found Errors ------------------*/
+# define ERROR_MISSING_NORTH_TEXTURE   "Error: Missing NORTH texture in .cub\n"
+# define ERROR_MISSING_SOUTH_TEXTURE   "Error: Missing SOUTH texture in .cub\n"
+# define ERROR_MISSING_WEST_TEXTURE    "Error: Missing WEST texture in .cub\n"
+# define ERROR_MISSING_EAST_TEXTURE    "Error: Missing EAST texture in .cub\n"
+
+/*-------------------- Color Not Found Errors ------------------*/
+# define ERROR_MISSING_FLOOR_COLOR     "Error: Missing FLOOR color in .cub\n"
+# define ERROR_MISSING_CEILING_COLOR   "Error: Missing CEILING color in .cub\n"
+
+// # define ERROR_ITEM_NORTH              "Error: Invalid items NORTH.\n"
+// # define ERROR_ITEM_SOUTH              "Error: Invalid items SOUTH.\n"
+// # define ERROR_ITEM_WEST               "Error: Invalid items WEST.\n"
+// # define ERROR_ITEM_EAST               "Error: Invalid items EAST.\n"
 
 /*-------------------- Duplicate Texture & Color Errors ------------------*/
 # define ERROR_DUPLICATE_NORTH_TEXTURE   "Error: Duplicate NO texture\n"
 # define ERROR_DUPLICATE_SOUTH_TEXTURE   "Error: Duplicate SO texture\n"
 # define ERROR_DUPLICATE_WEST_TEXTURE    "Error: Duplicate WE texture\n"
 # define ERROR_DUPLICATE_EAST_TEXTURE    "Error: Duplicate EA texture\n"
+
 # define ERROR_DUPLICATE_FLOOR_COLOR     "Error: Duplicate Floor color\n"
 # define ERROR_DUPLICATE_CEILING_COLOR   "Error: Duplicate Ceiling color\n"
 
+/*------------------ Invalid Texture Path Errors ------------------*/
+# define ERROR_ACCESS_NORTH_PATH  "Error: NORTH texture path does not exist.\n"
+# define ERROR_ACCESS_SOUTH_PATH  "Error: SOUTH texture path does not exist.\n"
+# define ERROR_ACCESS_EAST_PATH   "Error: EAST texture path does not exist.\n"
+# define ERROR_ACCESS_WEST_PATH   "Error: WEST texture path does not exist.\n"
 
 /*-------------------- Floor & Ceiling Color Errors ------------------*/
-# define ERROR_INVALID_FLOOR_TEXTURE   "Error: Invalid format of FLOOR\n"
-# define ERROR_INVALID_CEILING_TEXTURE "Error: Invalid format of CEIL\n"
-
+// # define ERROR_INVALID_FLOOR_TEXTURE   "Error: Invalid format of FLOOR\n"
+// # define ERROR_INVALID_CEILING_TEXTURE "Error: Invalid format of CEIL\n"
 
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'

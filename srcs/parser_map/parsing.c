@@ -148,8 +148,12 @@ int	parsing(t_parser *parser)
 	if (validate_texture_and_color(parser) != 0)
 		return (1);
 
-	if (check_total_num_textures_and_colors(parser) == 0)
+	if (check_total_num_textures_and_colors(parser) != 0)
 		return (1);
+
+	if (validate_textures_paths(parser) != 0)
+		return (1);
+
 	extract_map_from_file_map(parser);
 
 	if (validate_map_after_extract(parser) != 0)

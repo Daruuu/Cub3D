@@ -12,23 +12,44 @@
 
 #include "../includes/cub3d.h"
 
-int	check_total_num_textures_and_colors(t_parser *parser)
+/*
+	trimmed line: [NO                  textures/test/north.xpm]
+	trimmed line: [WE textures/test/west.xpm]
+	trimmed line: [EA          textures/test/east.xpm]
+	trimmed line: [SO          textures/test/south.xpm]
+	trimmed line: [C           0,0,0]
+	trimmed line: [F 0,0,0]
+*/
+
+//TODO: improve the logc of this function
+char	*extract_path_from_line_texture(char *trimmed_line, char *type)
 {
-	if (!parser->north)
-		return (printf(ERROR_INVALID_NORTH_TEXTURE), 1);
-	if (!parser->south)
-		return (printf(ERROR_INVALID_SOUTH_TEXTURE), 1);
-	if (!parser->east)
-		return (printf(ERROR_INVALID_EAST_TEXTURE), 1);
-	if (!parser->west)
-		return (printf(ERROR_INVALID_WEST_TEXTURE), 1);
-	if (!parser->floor)
-		return (printf(ERROR_INVALID_FLOOR_TEXTURE), 1);
-	if (!parser->ceiling)
-		return (printf(ERROR_INVALID_CEILING_TEXTURE), 1);
-	return (0);
+	char	*line_updated;
+	int		len_line;
+	int		i;
+
+	len_line = (int) ft_strlen(trimmed_line);
+	i = 2;
+	//	NO
+	if (i < len_line)
+	{
+		if (ft_strncmp(trimmed_line, type, ft_strlen(type)) == 0)
+			i = i + ft_strlen(type);
+	}
+	//	NO[x]
+	while (i < len_line)
+	{
+		if (trimmed_line[i] == ' ' || trimmed_line[i] == '\t')
+			i++;
+		if (i < len_line);
+	}
+
+	line_updated = NULL;
+	return (line_updated);
 }
 
+//	TODO: before strdup remove (SO, NO, WE, EA) from the line to only have the
+//	the path of the texture.
 static int	set_texture_field(char **field, char *trim_line,
 								int *counter, const char *error_msg)
 {
@@ -85,6 +106,7 @@ static int	trim_line_and_set_type(char *line, t_parser *parser, \
 	int		result;
 
 	trim_line = ft_strtrim(line, " ");
+	printf("+++++++++++++++++= trimmed line: [%s]\n", trim_line);
 	if (!trim_line)
 		return (1);
 	result = 0;
