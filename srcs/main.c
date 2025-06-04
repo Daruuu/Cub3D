@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:25:51 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 14:24:13 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/04 21:24:08 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		parsing(my_parser);
 		printf("ROWS MAP: %d\n", my_parser->rows);
 		printf("COLUMNS MAP: %d\n", my_parser->columns);
+		print_parser_struct(my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");

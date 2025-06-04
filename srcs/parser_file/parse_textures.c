@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:18:16 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/06/04 11:54:39 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/04 21:22:56 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static int	type_of_horientation(t_parser *map_info, char *trim_line,
 {
 	if (!trim_line || !map_info || !counter)
 		return (1);
+
 	if (ft_strncmp(trim_line, "NO ", 3) == 0)
 		return (set_texture_field(&map_info->north, trim_line, &counter->no, \
 			ERROR_DUPLICATE_NORTH_TEXTURE));

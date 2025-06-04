@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:06:02 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/06/03 12:12:01 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/04 21:39:13 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@
 # define ERROR_ACCESS_WEST_PATH   "Error: WEST texture path does not exist.\n"
 
 /*-------------------- Floor & Ceiling Color Errors ------------------*/
-// # define ERROR_INVALID_FLOOR_TEXTURE   "Error: Invalid format of FLOOR\n"
-// # define ERROR_INVALID_CEILING_TEXTURE "Error: Invalid format of CEIL\n"
+# define ERROR_INVALID_FLOOR_FORMAT     "Error: Invalid format of FLOOR.\n"
+# define ERROR_INVALID_CEILING_FORMAT   "Error: Invalid format of CEIL.\n"
 
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'

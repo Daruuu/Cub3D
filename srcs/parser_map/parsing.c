@@ -6,43 +6,11 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:23:52 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 15:48:16 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/04 22:11:40 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-/*
-char	**duplicate_map_matrix(t_parser *parser)
-{
-	char	**new_matrix;
-	int		len_line;
-	int		i;
-	int		col;
-
-	new_matrix = malloc(sizeof(char *) * (parser->rows + 1));
-	if (!new_matrix)
-		return (NULL);
-	i = 0;
-	while (i < parser->rows)
-	{
-		len_line = (int) ft_strlen(parser->original_map[i]);
-		new_matrix[i] = malloc(sizeof(char) * (len_line + 1));
-		if (!new_matrix[i])
-			return (free_matrix(new_matrix), NULL);
-		col = 0;
-		while (col < len_line)
-		{
-			new_matrix[i][col] = parser->original_map[i][col];
-			col++;
-		}
-		new_matrix[i][col] = '\0';
-		i++;
-	}
-	new_matrix[i] = NULL;
-	return (new_matrix);
-}
-*/
 
 static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 {
@@ -137,7 +105,6 @@ int	validate_map_after_extract(t_parser *parser)
  * @return int
  *         - 0 if the parsing and validation complete successfully.
  *         - 1 if an error occurs during any phase of the parsing process.
- *
  */
 
 int	parsing(t_parser *parser)
@@ -158,17 +125,5 @@ int	parsing(t_parser *parser)
 
 	if (validate_map_after_extract(parser) != 0)
 		return (1);
-
-	// printf("-----------------------------------------\n");
-	// printf("Map from '.cub'\n parser->file map:\n");
-	// print_map_2d(parser->file_map);
-	// printf("\n-----------------------------------------\n");
-	//
-	// printf("extract ONLY map from parser->file_map to parser->original_map:\n");
-	// print_map_2d(parser->original_map);
-	// printf("\n-----------------------------------------\n");
-	//
-	// printf("validation map: parser->validation_map\n");
-	// print_map_2d(parser->validation_map);
 	return (0);
 }

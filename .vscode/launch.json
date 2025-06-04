@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/cub3d",
             "args": [
-                "../maps/correct_maps/matrix.cub"
+                "../maps/matrix.cub"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:03:25 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 16:04:15 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/04 21:29:58 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_assets
 	int f;
 	int c;
 }	t_assets;
-
 
 typedef struct s_parser
 {
