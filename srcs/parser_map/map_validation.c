@@ -56,6 +56,33 @@ static int	validate_player(char **map, int rows, int columns, t_position *pos)
 	return (is_valid_player_count(count, pos));
 }
 
+int	validate_type_of_characters_in_map(t_parser *parser)
+{
+	int	i;
+	int	j;
+
+	if (!parser->original_map)
+		return (1);
+	i = 0;
+	while (i < parser->rows)
+	{
+		j = 0;
+		while (j < parser->columns)
+		{
+			if (parser->original_map[i][j] != '1' \
+				&& parser->original_map[i][j] != '0' \
+				&& parser->original_map[i][j] != 'N' \
+				&& parser->original_map[i][j] != 'S' \
+				&& parser->original_map[i][j] != 'W' \
+				&& parser->original_map[i][j] != 'E')
+				return (1);
+			j++;
+		}
+		i ++;
+	}
+	return (0);
+}
+
 int	validate_map(t_parser *parser)
 {
 	if (validate_player(parser->validation_map, \

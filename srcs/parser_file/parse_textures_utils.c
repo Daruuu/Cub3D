@@ -95,7 +95,6 @@ int	validate_textures_paths(t_parser *parser)
 		return (printf(ERROR_ACCESS_EAST_PATH), 1);
 	if (is_valid_texture_path(parser->west) == 1)
 		return (printf(ERROR_ACCESS_WEST_PATH), 1);
-	//	add validation format of floor and ceiling
 	if (is_valid_rgb_format(parser->floor) == 1)
 		return (printf(ERROR_INVALID_FLOOR_FORMAT), 1);
 	if (is_valid_rgb_format(parser->ceiling) == 1)

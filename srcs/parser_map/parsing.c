@@ -37,28 +37,6 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 	}
 }
 
-void	normalize_and_fill_map(t_parser *parser)
-{
-	int	i;
-	int	j;
-
-	if (!parser->validation_map)
-		return ;
-	normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
-	i = 0;
-	while (i < parser->rows)
-	{
-		j = 0;
-		while (j < parser->columns)
-		{
-			if (parser->validation_map[i][j] == ' ')
-				parser->validation_map[i][j] = '/';
-			j++;
-		}
-		i++;
-	}
-}
-
 int	validate_map_after_extract(t_parser *parser)
 {
 	int	i;
@@ -70,7 +48,7 @@ int	validate_map_after_extract(t_parser *parser)
 	{
 		parser->validation_map = malloc(sizeof(char *) * (parser->rows + 1));
 		if (!parser->validation_map)
-			return (1);// return (free_matrix(parser->validation_map), 1);
+			return (1);
 		while (i < parser->rows)
 		{
 			parser->validation_map[i] = ft_strdup(parser->original_map[i]);
@@ -80,10 +58,16 @@ int	validate_map_after_extract(t_parser *parser)
 		}
 		parser->validation_map[i] = NULL;
 	}
-	normalize_and_fill_map(parser);
-	if (validate_map(parser) == 1)
-		return (free_matrix(parser->validation_map), \
-			parser->validation_map = NULL, 1);
+	// print_map_2d(parser->validation_map);
+	if (parser->validation_map)
+	{
+		// normalize_and_fill_map(parser);
+		normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
+		printf("AFTER NORMIALIZE:\n");
+		print_map_2d(parser->validation_map);
+		if (validate_map(parser) == 1)
+			return (free_matrix(parser->validation_map), parser->validation_map = NULL, 1);
+	}
 	return (0);
 }
 
@@ -117,7 +101,7 @@ static int check_texture_extension_xpm(char *texture_path)
 	if (len < 4)
 		return (1);
 	if (ft_strncmp(texture_path + len - 4, EXTENSION_TEXTURE, 4) != 0)
-		return (printf(ERROR_DUPLICATE_NORTH_TEXTURE));
+		return (1);
 	return (0);
 }
 
@@ -145,13 +129,19 @@ int	parsing(t_parser *parser)
 	if (check_total_num_textures_and_colors(parser) != 0)
 		return (1);
 
-	if (validate_textures_paths(parser) != 0)
-		return (1);
+	// comment because CLion not accept file .xpm
+	// if (validate_textures_paths(parser) != 0)
+	// 	return (1);
 
 	if (validate_extension_texture_xpm(parser) != 0)
 		return (1);
 
 	extract_map_from_file_map(parser);
+	//	posible error here
+	print_map_2d(parser->original_map);
+	//	TODO: check this function
+	if (validate_type_of_characters_in_map(parser) != 0)
+		return (1);
 
 	if (validate_map_after_extract(parser) != 0)
 		return (1);

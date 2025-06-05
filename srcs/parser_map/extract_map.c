@@ -116,6 +116,13 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
  * @see get_max_columns()
  * @see handle_error()
  */
+/*
+	11111111111111111111111111
+	11111010001000000010001
+	1000N0000000000001 1001
+	10000010000000000010001
+	1111111111111111111111
+ */
 void	extract_map_from_file_map(t_parser *parser)
 {
 	int	first_line;

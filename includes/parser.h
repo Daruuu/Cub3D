@@ -46,6 +46,7 @@ void		get_player_init_pos(t_parser *map_data);
 
 //  map_validation.c
 int			validate_map(t_parser *parser);
+int			validate_type_of_characters_in_map(t_parser *parser);
 
 //  map_utils.c
 int			validate_walls(char **map, int rows, int columns);
