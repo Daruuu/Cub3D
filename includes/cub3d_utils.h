@@ -27,11 +27,12 @@
 # define ERR_INVALID_MAP_EXTRACT       "Error: Invalid map. Can't extract from .cub\n"
 
 /*-------------------- Map Structure & Dimensions --------------------*/
-# define INVALID_LATERALS_MAP          "Error: Invalid map dimensions\n"
-# define INVALID_TOP_BOTTOM_MAP        "Error: Invalid border top or bottom\n"
-# define ERROR_INVALID_MAP_ROWS        "Error: Invalid rows\n"
-# define ERROR_INVALID_MAP_COLS        "Error: Invalid columns\n"
-# define ERROR_TABULATION_IN_MAP       "Error: A tabulation exists in map.\n"
+# define ERROR_INVALID_MAP_CHARACTER	"Error: Map contains invalid character.\n"
+# define INVALID_LATERALS_MAP			"Error: Invalid map dimensions\n"
+# define INVALID_TOP_BOTTOM_MAP			"Error: Invalid border top or bottom\n"
+# define ERROR_INVALID_MAP_ROWS			"Error: Invalid rows\n"
+# define ERROR_INVALID_MAP_COLS			"Error: Invalid columns\n"
+# define ERROR_TABULATION_IN_MAP		"Error: A tabulation exists in map.\n"
 
 /*-------------------- Map Wall & Border Validation ------------------*/
 # define ERROR_WALLS_IN_MAP            "Error: Invalid WALLS in map.\n"

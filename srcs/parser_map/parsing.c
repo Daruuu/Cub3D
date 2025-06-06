@@ -129,7 +129,7 @@ int	parsing(t_parser *parser)
 	if (check_total_num_textures_and_colors(parser) != 0)
 		return (1);
 
-	// comment because CLion not accept file .xpm
+	// TODO: do not remove this 2 lines, because CLion not accept file .xpm
 	// if (validate_textures_paths(parser) != 0)
 	// 	return (1);
 
@@ -137,13 +137,12 @@ int	parsing(t_parser *parser)
 		return (1);
 
 	extract_map_from_file_map(parser);
-	//	posible error here
-	print_map_2d(parser->original_map);
-	//	TODO: check this function
+
 	if (validate_type_of_characters_in_map(parser) != 0)
-		return (1);
+		return (printf(ERROR_INVALID_MAP_CHARACTER), 1);
 
 	if (validate_map_after_extract(parser) != 0)
 		return (1);
+
 	return (0);
 }

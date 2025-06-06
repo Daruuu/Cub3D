@@ -60,6 +60,7 @@ int	validate_type_of_characters_in_map(t_parser *parser)
 {
 	int	i;
 	int	j;
+	int	len_colum;
 
 	if (!parser->original_map)
 		return (1);
@@ -67,10 +68,12 @@ int	validate_type_of_characters_in_map(t_parser *parser)
 	while (i < parser->rows)
 	{
 		j = 0;
-		while (j < parser->columns)
+		len_colum = (int) ft_strlen(parser->original_map[i]);
+		while (j < len_colum)
 		{
 			if (parser->original_map[i][j] != '1' \
 				&& parser->original_map[i][j] != '0' \
+				&& parser->original_map[i][j] != ' ' \
 				&& parser->original_map[i][j] != 'N' \
 				&& parser->original_map[i][j] != 'S' \
 				&& parser->original_map[i][j] != 'W' \
