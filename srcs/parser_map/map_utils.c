@@ -25,17 +25,17 @@ int	validate_walls(char **map, int rows, int columns)
 	while (i < rows)
 	{
 		if (!is_valid_wall(map[i][0]) || !is_valid_wall(map[i][columns - 1]))
-			return (0);
+			return (1);
 		i++;
 	}
 	i = 0;
 	while (i < columns)
 	{
 		if (!is_valid_wall(map[0][i]) || !is_valid_wall(map[rows - 1][i]))
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_map_dimensions(t_parser *map_info)

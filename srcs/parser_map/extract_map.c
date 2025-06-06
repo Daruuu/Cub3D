@@ -59,7 +59,7 @@ int	cp_trim_line_to_matrix(char **matrix, char *trimmed_line, int row)
 	len_line = (int) ft_strlen(trimmed_line);
 	matrix[row] = malloc(sizeof(char) * (len_line + 1));
 	if (!matrix[row])
-		return (0);
+		return (1);
 	i = 0;
 	while (i < len_line)
 	{
@@ -67,9 +67,10 @@ int	cp_trim_line_to_matrix(char **matrix, char *trimmed_line, int row)
 		i++;
 	}
 	matrix[row][i] = '\0';
-	return (1);
+	return (0);
 }
 
+/*
 static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 {
 	char	**new_matrix;
@@ -90,6 +91,35 @@ static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
 			return (NULL);
 		}
 		free(trim_line);
+		rows++;
+	}
+	new_matrix[rows] = NULL;
+	parser->rows = rows;
+	return (new_matrix);
+}
+*/
+
+static char	**new_matrix_map(t_parser *parser, int first_line, int total_lines)
+{
+	char	**new_matrix;
+	// char	*trim_line;
+	int		rows;
+
+	new_matrix = malloc(sizeof(char *) * (total_lines + 1));
+	if (!new_matrix)
+		return (NULL);
+	rows = 0;
+	while (rows < total_lines)
+	{
+		// trim_line = ft_strtrim(parser->file_map[first_line + rows], " ");
+		// if (!trim_line || !cp_trim_line_to_matrix(new_matrix, trim_line, rows))
+		if (cp_trim_line_to_matrix(new_matrix, parser->file_map[first_line + rows], rows) == 1)
+		{
+			// free(trim_line);
+			free_matrix(new_matrix);
+			return (NULL);
+		}
+		// free(trim_line);
 		rows++;
 	}
 	new_matrix[rows] = NULL;
@@ -143,5 +173,8 @@ void	extract_map_from_file_map(t_parser *parser)
 		handle_error(ERROR_MAP_ALLOC_FAILED, \
 			(int) ft_strlen(ERROR_MAP_ALLOC_FAILED), parser, NULL);
 	}
+
+	// print_map_2d(parser->original_map);
+
 	parser->columns = get_max_columns(parser->original_map, parser->rows);
 }

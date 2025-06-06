@@ -12,30 +12,104 @@
 
 #include "../includes/cub3d.h"
 
-static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
+/*
+static void	normalize_map_lines(char **validation_map, int rows, int max_columns)
 {
 	char	*new_line;
 	int		i;
+	int		j;
 	int		len;
 
 	i = 0;
-	while (i < rows && map_copy[i] != NULL)
+	while (i < rows && validation_map[i] != NULL)
 	{
-		len = (int) ft_strlen(map_copy[i]);
+		len = (int) ft_strlen(validation_map[i]);
 		if (len <= max_columns)
 		{
 			new_line = malloc(sizeof(char) * (max_columns + 1));
-			if (!new_line)
-				return ;
-			ft_memcpy(new_line, map_copy[i], len);
-			ft_memset(new_line + len, FILL_MAP, max_columns - len);
+			j = 0;
+			while (j < len)
+			{
+				if (validation_map[i][j] == ' ')
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = validation_map[i][j];
+				j++;
+			}
+			if (i == 0 || i == rows - 1)
+			{
+				while (j < max_columns)
+				{
+					new_line[j] = FILL_MAP;
+					j++;
+				}
+			}
+			// if (!new_line)
+
 			new_line[max_columns] = '\0';
-			free(map_copy[i]);
-			map_copy[i] = new_line;
+			free(validation_map[i]);
+			validation_map[i] = new_line;
 		}
 		i++;
 	}
 }
+*/
+//	TODO: error with empty spaces at start of line.
+
+static void	normalize_map_lines(char **validation_map, int rows, int max_columns)
+{
+	char	*new_line;
+	int		i;
+	int		j;
+	int		len;
+
+	i = 0;
+	while (i < rows && validation_map[i] != NULL)
+	{
+		len = (int) ft_strlen(validation_map[i]);
+		new_line = malloc(sizeof(char) * (max_columns + 1));
+		if (!new_line)
+			return ;
+
+		j = 0;
+		while (j < max_columns)
+		{
+			if (j < len)
+			{
+				if ((i == 0 || i == rows - 1 || j == 0 || j == max_columns - 1) && validation_map[i][j] == ' ')
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = validation_map[i][j];
+			}
+			else
+			{
+				if (i == 0 || i == rows - 1 || j == 0 || j == max_columns - 1)
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = validation_map[i][j];
+			}
+			j++;
+		}
+		new_line[max_columns] = '\0';
+
+		/*
+		int	k;
+		 INVALID LOGIC
+		k = 0;
+		while (k < max_columns && new_line[k] != '1')
+		{
+			if (new_line[k] == ' ')
+				new_line[k] == FILL_MAP;
+			k++;
+		}
+		*/
+
+		free(validation_map[i]);
+		validation_map[i] = new_line;
+		i++;
+	}
+}
+
 
 int	validate_map_after_extract(t_parser *parser)
 {
@@ -58,14 +132,18 @@ int	validate_map_after_extract(t_parser *parser)
 		}
 		parser->validation_map[i] = NULL;
 	}
-	// printf("VALIDATION MAP:\n");
-	// print_map_2d(parser->validation_map);
+
+	printf("================= VALIDATION MAP: =================\n");
+	print_map_2d(parser->validation_map);
+
 	if (parser->validation_map)
 	{
+		printf("ROWS: [%d]\n", parser->rows);
+		printf("COLUMNS: [%d]\n", parser->columns);
 		normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
 
-		// printf("AFTER NORMIALIZE:\n");
-		// print_map_2d(parser->validation_map);
+		printf("***************** AFTER NORMIALIZE VALIDATION MAP: *****************\n");
+		print_map_2d(parser->validation_map);
 
 		if (validate_map(parser) == 1)
 			return (free_matrix(parser->validation_map), parser->validation_map = NULL, 1);

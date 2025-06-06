@@ -270,3 +270,166 @@ int	validate_extension_xpm(char *path)
 		return (1);
 	return (0); // válido
 }
+
+
+
+static void	normalize_map_lines(char **validation_map, int rows, int max_columns)
+{
+	char	*new_line;
+	int		i;
+	int		len;
+	int		j;
+
+	i = 0;
+	while (i < rows && validation_map[i] != NULL)
+	{
+		len = (int) ft_strlen(validation_map[i]);
+		if (len <= max_columns)
+		{
+			new_line = malloc(sizeof(char) * (max_columns + 1));
+			if (!new_line)
+				return ;
+
+			// Copiar y reemplazar espacios por FILL_MAP
+			for (j = 0; j < len; j++)
+				new_line[j] = (validation_map[i][j] == ' ') ? FILL_MAP : validation_map[i][j];
+
+			// Rellenar el resto con FILL_MAP
+			ft_memset(new_line + len, FILL_MAP, max_columns - len);
+			new_line[max_columns] = '\0';
+
+			free(validation_map[i]);
+			validation_map[i] = new_line;
+		}
+		i++;
+	}
+}
+
+
+
+
+
+static void normalize_map_lines(char **validation_map, int rows, int max_columns)
+{
+	char	*new_line;
+	int		i;
+	int		len;
+	int		j;
+
+	i = 0;
+	while (i < rows && validation_map[i] != NULL)
+	{
+		len = (int)ft_strlen(validation_map[i]);
+		if (len <= max_columns)
+		{
+			new_line = malloc(sizeof(char) * (max_columns + 1));
+			if (!new_line)
+				return ;
+
+			// Copiar los caracteres existentes, reemplazando ' ' por FILL_MAP
+			j = 0;
+			while (j < len)
+			{
+				if (validation_map[i][j] == ' ')
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = validation_map[i][j];
+				j++;
+			}
+
+			// Rellenar el resto de la línea con FILL_MAP
+			while (j < max_columns)
+			{
+				new_line[j] = FILL_MAP;
+				j++;
+			}
+			new_line[max_columns] = '\0';
+
+			free(validation_map[i]);
+			validation_map[i] = new_line;
+		}
+		i++;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+static void	normalize_map_lines(char **validation_map, int rows, int max_columns)
+{
+	char	*new_line;
+	int		i;
+	int		j;
+	int		len;
+	int		k;
+
+	i = 0;
+	while (i < rows && validation_map[i] != NULL)
+	{
+		len = (int) ft_strlen(validation_map[i]);
+		new_line = malloc(sizeof(char) * (max_columns + 1));
+		if (!new_line)
+			return ;
+
+		j = 0;
+		while (j < max_columns)
+		{
+			if (j < len)
+			{
+				if ((i == 0 || i == rows - 1 || j == 0 || j == max_columns - 1)
+					&& validation_map[i][j] == ' ')
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = validation_map[i][j];
+			}
+			else
+			{
+				if (i == 0 || i == rows - 1 || j == 0 || j == max_columns - 1)
+					new_line[j] = FILL_MAP;
+				else
+					new_line[j] = ' ';
+			}
+			j++;
+		}
+		new_line[max_columns] = '\0';
+
+		// 🆕 Reemplazar espacios iniciales hasta el primer '1'
+		k = 0;
+		while (k < max_columns && new_line[k] != '1')
+		{
+			if (new_line[k] == ' ')
+				new_line[k] = FILL_MAP;
+			k++;
+		}
+
+		free(validation_map[i]);
+		validation_map[i] = new_line;
+		i++;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

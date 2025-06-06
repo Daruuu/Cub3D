@@ -74,6 +74,7 @@ int	validate_type_of_characters_in_map(t_parser *parser)
 			if (parser->original_map[i][j] != '1' \
 				&& parser->original_map[i][j] != '0' \
 				&& parser->original_map[i][j] != ' ' \
+				&& parser->original_map[i][j] != '\t' \
 				&& parser->original_map[i][j] != 'N' \
 				&& parser->original_map[i][j] != 'S' \
 				&& parser->original_map[i][j] != 'W' \
@@ -91,8 +92,8 @@ int	validate_map(t_parser *parser)
 	if (validate_player(parser->validation_map, \
 			parser->rows, parser->columns, &parser->position_player))
 		return (1);
-	if (!validate_walls(parser->validation_map, parser->rows, \
-		parser->columns))
+	if (validate_walls(parser->validation_map, parser->rows, \
+		parser->columns) == 1)
 		return (printf(ERROR_WALLS_IN_MAP), 1);
 	if (check_map_dimensions(parser) == 1)
 		return (printf(INVALID_LATERALS_MAP), 1);

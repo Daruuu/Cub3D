@@ -21,7 +21,6 @@
 	trimmed line: [F 0,0,0]
 */
 
-//TODO: improve the logc of this function
 /*
 char	*extract_path_from_line_texture(char *trimmed_line, char *type)
 {
@@ -53,9 +52,6 @@ char	*extract_path_from_line_texture(char *trimmed_line, char *type)
 }
 */
 
-//	TODO: before strdup remove (SO, NO, WE, EA)
-//	from the line to only have the
-//	the path of the texture.
 static int	set_texture_field(char **field, char *trim_line,
 								int *counter, const char *error_msg)
 {
@@ -154,7 +150,7 @@ int	validate_texture_and_color(t_parser *parser)
 	i = 0;
 	while (parser->file_map[i] != NULL)
 	{
-		if (trim_line_and_set_type(parser->file_map[i], parser, &counter))
+		if (trim_line_and_set_type(parser->file_map[i], parser, &counter) == 1)
 			return (1);
 		i++;
 	}

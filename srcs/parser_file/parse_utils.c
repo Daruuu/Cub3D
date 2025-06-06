@@ -37,7 +37,7 @@ int	get_max_columns(char **map, int rows)
 		len = (int) ft_strlen(map[i]);
 		if (len > max)
 			max = len;
-		i ++;
+		i++;
 	}
 	return (max);
 }

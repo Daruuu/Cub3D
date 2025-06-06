@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		// printf("ROWS MAP: %d\n", my_parser->rows);
 		// printf("COLUMNS MAP: %d\n", my_parser->columns);
 
-		print_parser_struct(my_parser);
+		// print_parser_struct(my_parser);
 	}
 	else
 		printf("Error: failed to read or parse the map file.\n");
