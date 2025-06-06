@@ -28,8 +28,10 @@ int	main(int argc, char **argv)
 	if (read_file(my_parser, argv[1]) == 0)
 	{
 		parsing(my_parser);
-		printf("ROWS MAP: %d\n", my_parser->rows);
-		printf("COLUMNS MAP: %d\n", my_parser->columns);
+
+		// printf("ROWS MAP: %d\n", my_parser->rows);
+		// printf("COLUMNS MAP: %d\n", my_parser->columns);
+
 		print_parser_struct(my_parser);
 	}
 	else

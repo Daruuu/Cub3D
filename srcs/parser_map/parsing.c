@@ -28,7 +28,7 @@ static void	normalize_map_lines(char **map_copy, int rows, int max_columns)
 			if (!new_line)
 				return ;
 			ft_memcpy(new_line, map_copy[i], len);
-			ft_memset(new_line + len, '/', max_columns - len);
+			ft_memset(new_line + len, FILL_MAP, max_columns - len);
 			new_line[max_columns] = '\0';
 			free(map_copy[i]);
 			map_copy[i] = new_line;
@@ -58,13 +58,15 @@ int	validate_map_after_extract(t_parser *parser)
 		}
 		parser->validation_map[i] = NULL;
 	}
+	// printf("VALIDATION MAP:\n");
 	// print_map_2d(parser->validation_map);
 	if (parser->validation_map)
 	{
-		// normalize_and_fill_map(parser);
 		normalize_map_lines(parser->validation_map, parser->rows, parser->columns);
-		printf("AFTER NORMIALIZE:\n");
-		print_map_2d(parser->validation_map);
+
+		// printf("AFTER NORMIALIZE:\n");
+		// print_map_2d(parser->validation_map);
+
 		if (validate_map(parser) == 1)
 			return (free_matrix(parser->validation_map), parser->validation_map = NULL, 1);
 	}

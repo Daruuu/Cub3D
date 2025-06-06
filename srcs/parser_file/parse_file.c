@@ -89,7 +89,9 @@ int	read_file(t_parser *parser, char *path)
 	if (!file_map1d)
 		return (free(file_map1d), 1);
 	parser->file_map = ft_split(file_map1d, '\n');
-	// print_map_2d(parser->file_map);
+
+	print_map_2d(parser->file_map);
+
 	if (!parser->file_map)
 	{
 		free(file_map1d);
