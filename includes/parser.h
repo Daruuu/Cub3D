@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:06:42 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/05/30 16:02:58 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/08 00:40:57 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void		get_player_init_pos(t_parser *map_data);
 //  map_validation.c
 int			validate_map(t_parser *parser);
 int			validate_type_of_characters_in_map(t_parser *parser);
+
+//  map_validation_utils.c
+void    normalize_map_lines(char **validation_map, int rows, int max_columns);
+int		validate_map_closed(t_parser *parser, char **validation_map);
 
 //  map_utils.c
 int			validate_walls(char **map, int rows, int columns);

@@ -6,7 +6,7 @@
 #    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/06/04 21:43:11 by dasalaza         ###   ########.fr        #
+#    Updated: 2025/06/08 02:42:56 by dasalaza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC =	$(SRC_DIR)/main.c \
 	$(SRC_PARSER_MAP)/free_functions.c \
 	$(SRC_PARSER_MAP)/map_utils.c \
 	$(SRC_PARSER_MAP)/map_validation.c \
+	$(SRC_PARSER_MAP)/map_validations_utils.c \
 	$(SRC_PARSER_MAP)/parsing.c
 
 # ========== Archivos objeto ========== #

@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:06:02 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/06/04 21:39:13 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/06/07 21:57:31 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@
 /*-------------------- ITEMS ASSIGN ------------------*/
 # define WALL '1'
 # define FLOOR '0'
-# define FILL_MAP '/'
+# define FILL_MAP 'X'
 
 /*-------------------- ITEMS ASSIGN PITEM_NORTH LAYER ------------------*/
 # define NORTH  'N'
