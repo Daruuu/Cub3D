@@ -15,7 +15,7 @@
 
 # define UNITY_OUTPUT_COLOR
 # include "unity.h"
-# include "../includes/cub3d.h"
+# include "cub3d.h"
 
 #define COLOR_RED     "\x1b[31m"
 #define COLOR_GREEN   "\x1b[32m"
