@@ -1,0 +1,27 @@
+R 850 500
+
+F 0,0,0
+C 0,0,0
+
+NO ./assets/brick_wall.xpm
+WE ./assets/brick_wall.xpm
+SO ./assets/brick_wall.xpm
+EA ./assets/brick_wall.xpm
+S ./assets/gimp_logo.xpm
+
+HK ./assets/healthkit.xpm
+PORTAL ./assets/portal.xpm
+DOOR ./assets/warn_door.xpm
+GOOMBA ./assets/goomba.xpm
+SKYBOX ./assets/sky_sun.xpm
+FLOOR ./assets/parquet1.xpm
+DASH ./assets/dash.xpm
+GUN ./assets/shotgun_c.xpm
+
+111111111111111
+1S000000D000001
+1011101110111D1
+100010100010001
+100010100010001
+122000000000001
+111111111111111
