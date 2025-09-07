@@ -6,13 +6,13 @@
 /*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:30:39 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:11:48 by cpujades         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:36:19 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_error.h"
 
-void	puterr(char *string)
+static void	puterr(char *string)
 {
 	write(1, string, stringlen(string));
 }
@@ -23,7 +23,7 @@ void	handle_error(t_vars *vars, char *error, char *trace)
 
 	mid = (10 - stringlen(error)) / 2;
 	puterr("Error\n");
-	puterr("\x1B[0m< \x1B[31mERROR\x1B[0m >\n");
+	// puterr("\x1B[0m< \x1B[31mERROR\x1B[0m >\n");
 	while (mid-- > 0)
 		puterr(" ");
 	puterr(error);
