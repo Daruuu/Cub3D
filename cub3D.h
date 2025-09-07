@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                              :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/06 20:49:18 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/07 21:17:48 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/07 21:17:51 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <stdbool.h>
 # include <stdlib.h>

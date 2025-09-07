@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:30:39 by yamir             #+#    #+#             */
-/*   Updated: 2025/09/07 18:36:19 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/07 21:20:32 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_error.h"
+#include "cub_cleaner.h"
 
 static void	puterr(char *string)
 {
