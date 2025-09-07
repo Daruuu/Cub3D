@@ -6,11 +6,20 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/06 20:36:30 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/07 13:01:05 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+/**
+* Updates the game world state:
+*
+* Processes player input (keybinds).
+* Manages timing and delays if bonus mode is enabled.
+* Updates player motion and sprite rendering.
+* Refreshes pathfinding logic for enemies/objects.
+ */
 
 void	update_world(t_vars *vars)
 {
@@ -30,6 +39,15 @@ void	update_world(t_vars *vars)
 	update_motion(&(vars->player), vars);
 	refresh_pathfinding(vars);
 }
+
+/**
+* Renders one frame of the game:
+* If the player is dead, shows the death screen.
+* Otherwise, updates the world, draws floor, skybox, walls (raycasting),
+* sprites, HUD, cursor, and hand.
+* Handles saving mode (--save) and frame timing for bonus mode.
+* Syncs with the display before returning.
+ */
 
 int	render_next_frame(t_vars *vars)
 {
@@ -58,6 +76,15 @@ int	render_next_frame(t_vars *vars)
 	return (0);
 }
 
+/**
+* Prepares rendering resources:
+* Sets the field of view and camera width.
+* Creates the main rendering image.
+* Configures render distance and lighting based on bonus mode and assets.
+* Allocates the depth buffer.
+* Initializes the blur effect for rendering.
+ * @param vars
+ */
 void	setup_render(t_vars *vars)
 {
 	t_shape	shape;
@@ -81,6 +108,13 @@ void	setup_render(t_vars *vars)
 	vars->blur = make_blur_struct(vars->mlx, vars->img, shape);
 }
 
+/**
+* Loads program arguments and configuration:
+* Validates command-line arguments (expects .cub file and optional --save).
+* Enables saving mode if --save is specified.
+* Verifies file extension and loads map configuration.
+* Raises errors for invalid input.
+ */
 void	load_args(int argc, char **argv, t_vars *vars)
 {
 	if (argc >= 2 && argc <= 3)
@@ -99,6 +133,18 @@ void	load_args(int argc, char **argv, t_vars *vars)
 		handle_error(vars, "Usage: cub3D [cub file] [--save]", NULL);
 }
 
+/**
+* Initializes default values and bonus mode.
+* Sets up the graphics library (mlx).
+* Loads arguments and validates configuration.
+* Prepares rendering and checks save mode.
+* Creates the game window, starts ambient sound if available.
+* Hooks input events (keypress, key release, exit).
+* Runs the main game loop with frame rendering.
+ * @param argc
+ * @param argv
+ * @return
+ */
 int	main(int argc, char **argv)
 {
 	t_vars	vars;

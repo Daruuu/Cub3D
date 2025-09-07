@@ -1,10 +1,11 @@
-R 800 600
+R 1080 1000
 NO ./assets/brick_wall.xpm
 SO ./assets/terrain.xpm
 WE ./assets/parquet1.xpm
 EA ./assets/warn_door_wall.xpm
-S ./assets/gimp_logo.xpm
-F 31,48,24
+
+S                     ./assets/gimp_logo.xpm
+F 31,     48,                                   24
 C 34,240,164
 
  111111111111111111111111
