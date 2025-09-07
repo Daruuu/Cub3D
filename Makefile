@@ -172,13 +172,8 @@ FLAGS_BONUS = -I$(PATH_BASS) -L$(PATH_BASS) -lbass \
 
 all: $(NAME)
 
-#.c.o: Makefile cub3D.h
-.c.o:
-	$(CC) $(CFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o ${<:.c=.o} -D LINUX=true
-
-#$(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
-#		make -C $(PATH_MLX)
-#		$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
+%.o:%.c	Makefile $(HDR_FILES)
+		$(CC) $(CFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o ${<:.c=.o} -D LINUX=true
 
 $(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
 		make -C $(PATH_MLX)

@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/07 13:01:05 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/07 23:50:08 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 * Manages timing and delays if bonus mode is enabled.
 * Updates player motion and sprite rendering.
 * Refreshes pathfinding logic for enemies/objects.
+* 16666 : 60 FPS
  */
 
 void	update_world(t_vars *vars)
@@ -26,13 +27,14 @@ void	update_world(t_vars *vars)
 	update_keybinds(vars);
 	if (vars->bonus)
 	{
-		get_delay(true, 16666, !LINUX);
-		while (vars->delay > 16666)
+		// get_delay(true, 16666, !LINUX);
+		get_delay(true, FPS_BONUS, !LINUX);
+		while (vars->delay > FPS_BONUS)
 		{
 			update_motion(&(vars->player), vars);
 			draw_sprites(vars, true);
 			vars->time++;
-			vars->delay -= 16666;
+			vars->delay -= FPS_BONUS;
 			refresh_pathfinding(vars);
 		}
 	}
@@ -69,7 +71,7 @@ int	render_next_frame(t_vars *vars)
 			render_hand(vars);
 		}
 		if (vars->bonus)
-			vars->delay += get_delay(false, 16666, !LINUX);
+			vars->delay += get_delay(false, FPS_BONUS, !LINUX);
 		vars->time++;
 	}
 	mlx_do_sync(vars->mlx);

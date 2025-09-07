@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:34:57 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 20:08:50 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 00:47:17 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	handle_keys(t_player *player, bool bonus)
 
 	ratio = 0.88;
 	if (player->keybinds.rotate_left && !player->keybinds.rotate_right)
-		player->motion_yaw -= 0.012;
+		player->motion_yaw -= 0.009;
 	else if (player->keybinds.rotate_right && !player->keybinds.rotate_left)
-		player->motion_yaw += 0.012;
+		player->motion_yaw += 0.009;
 	else
 		player->motion_yaw *= 0.895;
 	if (player->keybinds.rotate_up && bonus)
@@ -99,6 +99,17 @@ void	update_render(t_player *player, t_vars *vars, bool bonus)
 	}
 }
 
+/**
+ * Updates the player's motion and position:
+ * - Translates input into movement.
+ * - Applies inertia, friction, and gravity.
+ * - Checks and resolves collisions.
+ * - Updates yaw (rotation) and pitch (view angle).
+ * - Handles shooting cooldown.
+ *
+ * @param player Player state (position, motion, orientation).
+ * @param vars   Game context (world, settings, bonus).
+ */
 void	update_motion(t_player *player, t_vars *vars)
 {
 	double	cs;

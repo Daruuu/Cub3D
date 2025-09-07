@@ -35,6 +35,11 @@
 # include "include/cub_walls.h"
 # include "include/bmp_partial_alligned_header.h"
 
+# define FPS60 16666
+# define FPS50 20000
+# define FPS_BONUS 25000	//	using this default
+# define FPS30 33333
+
 typedef struct s_vars
 {
 	void			*mlx;
