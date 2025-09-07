@@ -13,7 +13,7 @@
 #ifndef CUB_HUD_H
 # define CUB_HUD_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_minimap.h"
 # include "cub_xquartz_layer.h"
 

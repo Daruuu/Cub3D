@@ -13,7 +13,7 @@
 #ifndef CUB_CHECKER_H
 # define CUB_CHECKER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_error.h"
 
 void	check_textures_custom(t_vars *vars);

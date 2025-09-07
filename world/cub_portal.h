@@ -13,7 +13,7 @@
 #ifndef CUB_PORTAL_H
 # define CUB_PORTAL_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_cardinal.h"
 # include "cub_portal_list.h"
 # include <stdlib.h>

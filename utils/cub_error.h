@@ -13,7 +13,7 @@
 #ifndef CUB_ERROR_H
 # define CUB_ERROR_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_cleaner.h"
 
 void	handle_error(t_vars *vars, char *error, char *trace);

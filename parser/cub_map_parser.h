@@ -13,7 +13,7 @@
 #ifndef CUB_MAP_PARSER_H
 # define CUB_MAP_PARSER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_map_setter.h"
 # include "../utils/cub_error.h"
 

@@ -14,7 +14,7 @@
 # define CUB_KEYBINDS_H
 
 # include "cub_vec.h"
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../render/cub_raycast.h"
 # include "cub_cleaner.h"
 # include <stdbool.h>

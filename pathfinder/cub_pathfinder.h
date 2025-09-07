@@ -13,7 +13,7 @@
 #ifndef CUB_PATHFINDER_H
 # define CUB_PATHFINDER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_astar.h"
 
 void	refresh_pathfinding(t_vars *vars);

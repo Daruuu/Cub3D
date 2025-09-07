@@ -13,7 +13,7 @@
 #ifndef CUB_RAYCAST_H
 # define CUB_RAYCAST_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../world/cub_cardinal.h"
 # include "../world/cub_portal.h"
 # include "../utils/cub_vec.h"

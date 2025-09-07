@@ -13,7 +13,7 @@
 #ifndef CUB_MAP_SETTER_H
 # define CUB_MAP_SETTER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../world/cub_player.h"
 # include "../utils/cub_error.h"
 # include "../sprites/cub_sprites.h"

@@ -13,7 +13,7 @@
 #ifndef CUB_SPRITE_LIST_H
 # define CUB_SPRITE_LIST_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 void		swap_sprite(t_sprite **prevnext, t_sprite *last);
 void		sprite_sort(t_vars *vars, t_sprite **begin_list);

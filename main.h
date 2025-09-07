@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-# include "cub.h"
+# include "cub3D.h"
 # include "world/cub_player.h"
 # include "render/cub_raycast.h"
 # include "render/cub_floor.h"

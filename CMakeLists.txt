@@ -22,7 +22,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/world
         ${CMAKE_SOURCE_DIR}/mlx
         main.h
-        cub.h
+        cub3D.h
 )
 
 if(BONUS)

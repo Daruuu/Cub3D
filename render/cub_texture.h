@@ -13,7 +13,7 @@
 #ifndef CUB_TEXTURE_H
 # define CUB_TEXTURE_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../utils/cub_cleaner.h"
 
 t_img	make_skybox(t_vars *vars, t_img *img, char *path);

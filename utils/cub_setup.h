@@ -13,7 +13,7 @@
 #ifndef CUB_SETUP_H
 # define CUB_SETUP_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 void	init_void(t_vars *vars);
 void	init_default(t_vars *vars);

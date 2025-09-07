@@ -13,7 +13,7 @@
 #ifndef CUB_CLEANER_H
 # define CUB_CLEANER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../sprites/cub_sprites.h"
 # include "cub_line_reader.h"
 

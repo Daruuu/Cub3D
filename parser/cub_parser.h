@@ -13,7 +13,7 @@
 #ifndef CUB_PARSER_H
 # define CUB_PARSER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "cub_setter.h"
 # include "../render/cub_texture.h"
 

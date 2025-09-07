@@ -13,7 +13,7 @@
 #ifndef CUB_GOOMBA_H
 # define CUB_GOOMBA_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../world/cub_collide.h"
 # include "cub_sprite_list.h"
 # include "cub_doors.h"

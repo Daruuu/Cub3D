@@ -13,7 +13,7 @@
 #ifndef CUB_SETTER_H
 # define CUB_SETTER_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 # include "../utils/cub_error.h"
 
 void	set_resolution(t_vars *vars, char *input);

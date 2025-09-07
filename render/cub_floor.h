@@ -13,7 +13,7 @@
 #ifndef CUB_FLOOR_H
 # define CUB_FLOOR_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 void	setup_floor(t_vars *vars, t_floor_render *f);
 void	draw_floor(t_vars *vars);

@@ -14,7 +14,7 @@
 # define CUB_XQUARTZ_LAYER_H
 
 # include "../utils/cub_utils.h"
-# include "../cub.h"
+# include "../cub3D.h"
 
 int		put_alpha_window(t_vars *vars, t_img *img, int x, int y);
 

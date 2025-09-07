@@ -16,7 +16,7 @@
 # include "../utils/cub_error.h"
 # include "cub_parser.h"
 # include "cub_map_parser.h"
-# include "../cub.h"
+# include "../cub3D.h"
 
 int	load_f(char *filepath, t_vars *vars);
 

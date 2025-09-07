@@ -13,7 +13,7 @@
 #ifndef CUB_MINIMAP_H
 # define CUB_MINIMAP_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 void	draw_minimap(t_vars *vars);
 void	draw_minidot(t_vars *vars);

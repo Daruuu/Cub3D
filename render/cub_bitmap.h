@@ -13,7 +13,7 @@
 #ifndef CUB_BITMAP_H
 # define CUB_BITMAP_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 t_bmp_partial_alligned_header	get_generic_header(int width, int height);
 void							*bad_bzero(void *o, size_t len);

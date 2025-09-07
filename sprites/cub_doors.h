@@ -13,7 +13,7 @@
 #ifndef CUB_DOORS_H
 # define CUB_DOORS_H
 
-# include "../cub.h"
+# include "../cub3D.h"
 
 typedef struct s_door_r
 {
