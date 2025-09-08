@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:22:54 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 09:22:54 by yamir            ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 00:30:16 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CUB_PARSER_H
 
 # include "../cub3D.h"
-# include "cub_setter.h"
 # include "../render/cub_texture.h"
 
 bool	read_argument_sounds(t_vars *vars, t_line *file);

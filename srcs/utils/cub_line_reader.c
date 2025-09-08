@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_line_reader.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:32:26 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 02:20:27 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 00:46:02 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,67 +113,3 @@ int	load_file(char *path, t_line **first, int size)
 		return (free_ret(buf, first));
 	return (finalize_reading(buf, first, size));
 }
-
-//int	load_file(char *path, t_line **first, int size)
-//{
-//	int		file;
-//	char	*buf;
-//	int		read_bytes;
-//	char	c;
-//
-//	read_bytes = 0;
-//	buf = malloc(1);
-//	file = open(path, O_RDONLY);
-//	if (file == -1 || !buf)
-//		return (free_ret(buf, NULL));
-//	buf[0] = 0;
-//	read_bytes = read(file, &c, 1);
-//	while (read_bytes != 0)
-//	{
-//		if (read_bytes == -1 || c == 0)
-//			return (0);
-//		else if (c == '\n')
-//		{
-//			buf = malloc(1);
-//			if (!add_line(first, buf, size) || !buf)
-//				return (free_ret(buf, first));
-//			buf[0] = 0;
-//			size = 0;
-//		}
-//		else
-//			buf = ft_strcat(buf, c, size++);
-//		read_bytes = read(file, &c, 1);
-//	}
-//	if (size > 0)
-//		return (add_line(first, buf, size) || free_ret(buf, first));
-//	return (free_ret(buf, NULL) == 0);
-//}
-
-//int	load_file(char *path, t_line **first, int size)
-//{
-//	int		file;
-//	char	*buf;
-//	int		read_bytes;
-//	char	c;
-//
-//	read_bytes = 0;
-//	buf = malloc(1);
-//	if ((file = open(path, O_RDONLY)) == -1 || !buf)
-//		return (free_ret(buf, NULL));
-//	buf[0] = 0;
-//	while ((read_bytes = read(file, &c, 1)) != 0)
-//		if (read_bytes == -1 || c == 0)
-//			return (0);
-//	else if (c == '\n')
-//	{
-//		if (!add_line(first, buf, size) || !(buf = malloc(1)))
-//			return (free_ret(buf, first));
-//		buf[0] = 0;
-//		size = 0;
-//	}
-//	else
-//		buf = ft_strcat(buf, c, size++);
-//	if (size > 0)
-//		return (add_line(first, buf, size) || free_ret(buf, first));
-//	return (free_ret(buf, NULL) == 0);
-//}

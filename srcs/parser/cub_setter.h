@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_setter.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:23:09 by yamir             #+#    #+#             */
-/*   Updated: 2025/09/08 14:13:11 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 00:30:34 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../cub3D.h"
 # include "../mlx/mlx.h"
-# include "../utils/cub_error.h"
 
 void	set_resolution(t_vars *vars, char *input);
 void	set_texture(t_img *img, t_vars *vars, char *path);
