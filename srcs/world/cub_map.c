@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:34:44 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 20:09:44 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 01:07:40 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

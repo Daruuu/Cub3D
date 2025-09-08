@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_portal2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:35:44 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 00:33:03 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 01:09:49 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
