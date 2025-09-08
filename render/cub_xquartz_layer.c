@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub_xquartz_layer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:28:18 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:39:47 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 14:46:54 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_xquartz_layer.h"
+
+#include "../mlx/mlx.h"
 
 int	put_alpha_window(t_vars *vars, t_img *img, int x, int y)
 {

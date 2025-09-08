@@ -6,11 +6,12 @@
 /*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:33:27 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 00:22:15 by cpujades         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:49:05 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_utils.h"
+#include "../mlx/mlx.h"
 
 t_img	make_image(void *mlx, int w, int h)
 {

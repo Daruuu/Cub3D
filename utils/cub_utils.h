@@ -3,6 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 14:08:41 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub_utils.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:33:19 by yamir             #+#    #+#             */
@@ -13,7 +25,7 @@
 #ifndef CUB_UTILS_H
 # define CUB_UTILS_H
 
-# include <mlx.h>
+// # include <../mlx/mlx.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <math.h>

@@ -6,11 +6,12 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/07 23:50:08 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:32:14 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+#include "mlx/mlx.h"
 
 /**
 * Updates the game world state:

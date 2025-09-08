@@ -6,7 +6,7 @@
 /*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:23:09 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 09:23:09 by yamir            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:13:11 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB_SETTER_H
 
 # include "../cub3D.h"
+# include "../mlx/mlx.h"
 # include "../utils/cub_error.h"
 
 void	set_resolution(t_vars *vars, char *input);

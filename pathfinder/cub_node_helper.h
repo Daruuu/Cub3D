@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_star_cardinal.h                                :+:      :+:    :+:   */
+/*   cub_node_helper.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 12:58:18 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/08 12:45:04 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 12:46:15 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_STAR_CARDINAL_H
-# define CUB_STAR_CARDINAL_H
+#ifndef CUB_NODE_HELPER_H
+#define CUB_NODE_HELPER_H
 
-# include "../utils/cub_vec.h"
-# include "cub_node.h"
-# include "../world/cub_map.h"
-# include <stdbool.h>
-# include <stdlib.h>
-# include <math.h>
+typedef struct s_node	t_node;
 
-t_vec	get_neighbor(int rot, t_vec origin);
-bool	is_empty(t_map *map, t_node *start, t_node *end);
-bool	is_in_map(t_map *map, t_vec pos);
+void		insert_node_in_list(t_node **begin_list, t_node *prev,
+				t_node *node, t_node *last);
 
-#endif
+#endif //CUB_NODE_HELPER_H

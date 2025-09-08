@@ -6,11 +6,13 @@
 /*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:26:54 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/31 23:14:00 by cpujades         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:13:21 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_hud.h"
+// #include "mlx.h"
+# include "../mlx/mlx.h"
 
 /*
 ** Draws the minimap and it's background shadow / blur

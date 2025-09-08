@@ -6,7 +6,7 @@
 /*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:23:40 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/31 22:28:24 by cpujades         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:53:48 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../utils/cub_vec.h"
 # include <stdlib.h>
+# include "cub_node_helper.h"
 
 typedef struct s_node	t_node;
 
@@ -33,7 +34,5 @@ t_node		*find_node(t_node *cur, t_vec pos);
 int			node_path_size(t_node *end);
 void		node_insert(t_node **begin_list, t_node *node);
 t_node		*make_node(t_node *parent, t_vec end, t_vec pos);
-void		insert_node_in_list(t_node **begin_list, t_node *prev,
-				t_node *node, t_node *last);
 
 #endif
