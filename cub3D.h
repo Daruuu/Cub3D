@@ -17,13 +17,13 @@
 # include <stdlib.h>
 # include <math.h>
 
-# include "utils/cub_vec.h"
-# include "utils/cub_rot.h"
-# include "utils/cub_utils.h"
-# include "render/cub_blur.h"
-# include "world/cub_map.h"
-# include "utils/cub_line_reader.h"
-# include "other/cub_sound.h"
+# include "srcs/utils/cub_vec.h"
+# include "srcs/utils/cub_rot.h"
+# include "srcs/utils/cub_utils.h"
+# include "srcs/render/cub_blur.h"
+# include "srcs/world/cub_map.h"
+# include "srcs/utils/cub_line_reader.h"
+# include "srcs/other/cub_sound.h"
 # include "include/cub_sprite_type.h"
 # include "include/cub_cardinal_enum.h"
 # include "include/cub_keybinds_struct.h"
@@ -32,8 +32,8 @@
 # include "include/cub_raycast_struct.h"
 # include "include/cub_mouseover_struct.h"
 # include "include/cub_floor_render.h"
-# include "include/cub_walls.h"
 # include "include/bmp_partial_alligned_header.h"
+# include "include/cub_walls.h"
 
 # define FPS60 16666
 # define FPS50 20000

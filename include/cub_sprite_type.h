@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_sprite_type.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:20:57 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:18:20 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 17:16:56 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

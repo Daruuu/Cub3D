@@ -6,7 +6,7 @@
 /*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:36:02 by yamir             #+#    #+#             */
-/*   Updated: 2025/09/08 15:36:25 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:51:50 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # include <math.h>
 
 # include "cub3D.h"
-# include "world/cub_player.h"
-# include "render/cub_raycast.h"
-# include "render/cub_floor.h"
-# include "render/cub_hud.h"
-# include "render/cub_bitmap.h"
+# include "srcs/world/cub_player.h"
+# include "srcs/render/cub_raycast.h"
+# include "srcs/render/cub_floor.h"
+# include "srcs/render/cub_hud.h"
+# include "srcs/render/cub_bitmap.h"
 
-# include "parser/cub_file.h"
-# include "pathfinder/cub_pathfinder.h"
-# include "utils/cub_error.h"
-# include "utils/cub_checker.h"
-# include "utils/cub_setup.h"
+# include "srcs/parser/cub_file.h"
+# include "srcs/pathfinder/cub_pathfinder.h"
+# include "srcs/utils/cub_error.h"
+# include "srcs/utils/cub_checker.h"
+# include "srcs/utils/cub_setup.h"
 
 int		get_delay(bool startnow, int min, bool mac);
 void	set_bonus(bool *bonus);

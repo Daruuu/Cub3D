@@ -12,6 +12,7 @@
 
 #include "main.h"
 #include "mlx/mlx.h"
+#include "srcs/utils/cub_keybinds.h"
 
 /**
 * Updates the game world state:

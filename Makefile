@@ -27,59 +27,60 @@ ifeq ($(SANITIZE), 1)
 endif
 
 # ===================== PATHS ===================== #
+SRC_DIR		= srcs
 PATH_MLX    = mlx
-PATH_DELAY  = delay
-PATH_BASS   = bass
+PATH_DELAY  = $(SRC_DIR)/delay
+PATH_BASS   = $(SRC_DIR)/bass
 
 # ===================== SOURCES ===================== #
 SRC_CORE = \
-	parser/cub_file.c \
-	parser/cub_map_parser.c \
-	parser/cub_map_setter.c \
-	parser/cub_parser.c \
-	parser/cub_setter.c \
-	pathfinder/cub_astar.c \
-	pathfinder/cub_node.c \
-	pathfinder/cub_node_helper.c \
-	pathfinder/cub_path.c \
-	pathfinder/cub_pathfinder.c \
-	pathfinder/cub_star_cardinal.c \
-	render/cub_bitmap.c \
-	render/cub_blur.c \
-	render/cub_floor.c \
-	render/cub_hud.c \
-	render/cub_minimap.c \
-	render/cub_raycast.c \
-	render/cub_raycast2.c \
-	render/cub_raycast3.c \
-	render/cub_texture.c \
-	render/cub_xquartz_layer.c \
-	sprites/cub_doors.c \
-	sprites/cub_goomba.c \
-	sprites/cub_sprite_list.c \
-	sprites/cub_sprites.c \
-	utils/cub_checker.c \
-	utils/cub_cleaner.c \
-	utils/cub_error.c \
-	utils/cub_keybinds.c \
-	utils/cub_line_reader.c \
-	utils/cub_line_reader_helper.c \
-	utils/cub_rot.c \
-	utils/cub_setup.c \
-	utils/cub_utils.c \
-	utils/cub_utils2.c \
-	utils/cub_utils3.c \
-	utils/cub_utils4.c \
-	utils/cub_utils5.c \
-	utils/cub_vec.c \
-	utils/cub_vec2.c \
-	world/cub_cardinal.c \
-	world/cub_collide.c \
-	world/cub_map.c \
-	world/cub_player.c \
-	world/cub_portal.c \
-	world/cub_portal2.c \
-	world/cub_portal_list.c \
+	$(SRC_DIR)/parser/cub_file.c \
+	$(SRC_DIR)/parser/cub_map_parser.c \
+	$(SRC_DIR)/parser/cub_map_setter.c \
+	$(SRC_DIR)/parser/cub_parser.c \
+	$(SRC_DIR)/parser/cub_setter.c \
+	$(SRC_DIR)/pathfinder/cub_astar.c \
+	$(SRC_DIR)/pathfinder/cub_node.c \
+	$(SRC_DIR)/pathfinder/cub_node_helper.c \
+	$(SRC_DIR)/pathfinder/cub_path.c \
+	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
+	$(SRC_DIR)/pathfinder/cub_star_cardinal.c \
+	$(SRC_DIR)/render/cub_bitmap.c \
+	$(SRC_DIR)/render/cub_blur.c \
+	$(SRC_DIR)/render/cub_floor.c \
+	$(SRC_DIR)/render/cub_hud.c \
+	$(SRC_DIR)/render/cub_minimap.c \
+	$(SRC_DIR)/render/cub_raycast.c \
+	$(SRC_DIR)/render/cub_raycast2.c \
+	$(SRC_DIR)/render/cub_raycast3.c \
+	$(SRC_DIR)/render/cub_texture.c \
+	$(SRC_DIR)/render/cub_xquartz_layer.c \
+	$(SRC_DIR)/sprites/cub_doors.c \
+	$(SRC_DIR)/sprites/cub_goomba.c \
+	$(SRC_DIR)/sprites/cub_sprite_list.c \
+	$(SRC_DIR)/sprites/cub_sprites.c \
+	$(SRC_DIR)/utils/cub_checker.c \
+	$(SRC_DIR)/utils/cub_cleaner.c \
+	$(SRC_DIR)/utils/cub_error.c \
+	$(SRC_DIR)/utils/cub_keybinds.c \
+	$(SRC_DIR)/utils/cub_line_reader.c \
+	$(SRC_DIR)/utils/cub_line_reader_helper.c \
+	$(SRC_DIR)/utils/cub_rot.c \
+	$(SRC_DIR)/utils/cub_setup.c \
+	$(SRC_DIR)/utils/cub_utils.c \
+	$(SRC_DIR)/utils/cub_utils2.c \
+	$(SRC_DIR)/utils/cub_utils3.c \
+	$(SRC_DIR)/utils/cub_utils4.c \
+	$(SRC_DIR)/utils/cub_utils5.c \
+	$(SRC_DIR)/utils/cub_vec.c \
+	$(SRC_DIR)/utils/cub_vec2.c \
+	$(SRC_DIR)/world/cub_cardinal.c \
+	$(SRC_DIR)/world/cub_collide.c \
+	$(SRC_DIR)/world/cub_map.c \
+	$(SRC_DIR)/world/cub_player.c \
+	$(SRC_DIR)/world/cub_portal.c \
+	$(SRC_DIR)/world/cub_portal2.c \
+	$(SRC_DIR)/world/cub_portal_list.c \
 	main.c
 
 SRC_BONUS = \
@@ -87,8 +88,8 @@ SRC_BONUS = \
 	bonus/cub_other_bonus.c
 
 SRC_OPTIONAL = \
-	other/cub_other.c \
-	other/cub_sound.c
+	$(SRC_DIR)/other/cub_other.c \
+	$(SRC_DIR)/other/cub_sound.c
 
 # ===================== OBJECTS ===================== #
 OBJS_CORE     = ${SRC_CORE:.c=.o}
@@ -127,8 +128,8 @@ bonus: $(OBJS_CORE) $(OBJS_BONUS)
 %.o: %.c Makefile cub3D.h
 	@mkdir -p $(dir $@)                     # Crear carpeta para .o
 	@mkdir -p $(DEPDIR)/$(dir $<)          # Crear carpeta para .d
-	$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o $@ -D LINUX=true
-	#$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+	$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+	#$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o $@ -D LINUX=true
 
 # ===================== CLEAN ===================== #
 clean:

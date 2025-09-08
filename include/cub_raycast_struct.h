@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub_raycast_struct.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:20:40 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:14:54 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 17:16:28 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_RAYCAST_STRUCT_H
 # define CUB_RAYCAST_STRUCT_H
 
-# include "../utils/cub_vec.h"
-# include "../utils/cub_utils.h"
+# include "../srcs/utils/cub_vec.h"
+# include "../srcs/utils/cub_utils.h"
 # include "cub_cardinal_enum.h"
 # include "cub_portal_struct.h"
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub_keybinds_struct.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:19:59 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 18:59:20 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 17:15:01 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_KEYBINDS_STRUCT_H
 # define CUB_KEYBINDS_STRUCT_H
 
-# include "../utils/cub_vec.h"
+# include "../srcs/utils/cub_vec.h"
 
 typedef struct s_keybinds
 {

@@ -53,25 +53,25 @@ if(BONUS)
     file(GLOB SRC_FILES
             main.c
             bonus/*.c
-            delay/*.c
-            parser/*.c
-            pathfinder/*.c
-            render/*.c
-            sprites/*.c
-            utils/*.c
-            world/*.c
+            srcs/delay/*.c
+            srcs/parser/*.c
+            srcs/pathfinder/*.c
+            srcs/render/*.c
+            srcs/sprites/*.c
+            srcs/utils/*.c
+            srcs/world/*.c
     )
 else()
     file(GLOB SRC_FILES
             main.c
-            other/*.c
-            delay/*.c
-            parser/*.c
-            pathfinder/*.c
-            render/*.c
-            sprites/*.c
-            utils/*.c
-            world/*.c
+            srcs/other/*.c
+            srcs/delay/*.c
+            srcs/parser/*.c
+            srcs/pathfinder/*.c
+            srcs/render/*.c
+            srcs/sprites/*.c
+            srcs/utils/*.c
+            srcs/world/*.c
     )
 endif()
 

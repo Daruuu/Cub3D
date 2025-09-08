@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_player_struct.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:20:24 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 18:59:53 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 17:16:09 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB_PLAYER_STRUCT_H
 
 # include "cub_keybinds_struct.h"
-# include "../utils/cub_vec.h"
+# include "../srcs/utils/cub_vec.h"
 
 typedef struct s_player
 {
