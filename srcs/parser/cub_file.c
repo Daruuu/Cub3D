@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:22:02 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:29:42 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 00:11:16 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	load_map(t_vars *vars, t_line *file)
 		while (p.x < file->size)
 		{
 			if (!set_map(vars, file->line[p.x], p))
-				handle_error(vars, "Cub is unproperly formated.", file->line);
+				handle_error(vars, ERROR_FORMAT, file->line);
 			p.x++;
 		}
 		p.y++;
 		file = file->next;
 	}
 	if (!is_map_valid(&(vars->map)))
-		handle_error(vars, "Map is not enclosed.", NULL);
+		handle_error(vars, ERROR_MAP_UNCLOSED, NULL);
 	handle_door_rotation(vars);
 	return (0);
 }

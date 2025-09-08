@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:32:55 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 09:32:55 by yamir            ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/08 23:51:50 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	init_default(t_vars *vars)
 	vars->time = 0;
 	vars->bob = 0;
 	vars->shoot = 0;
-	vars->top_color = 0xDB000000;
-	vars->bottom_color = 0xDB000000;
+	vars->top_color = COLOR_UNSET;
+	vars->bottom_color = COLOR_UNSET;
 	vars->player.health = 0;
 	vars->pathfinder.x = -1;
 	vars->should_dim = true;

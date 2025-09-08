@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:22:16 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:30:24 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/09 00:07:43 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	handle_door_rotation(t_vars *vars)
 				&& map_get(&(vars->map), pos.x, pos.y + 1))
 				curr->dead = true;
 			else
-				handle_error(vars, "Invalid door position.", NULL);
+				handle_error(vars, ERROR_INVALID_DOOR_POS, NULL);
 		}
 		curr = curr->next;
 	}

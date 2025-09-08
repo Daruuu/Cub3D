@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/07 21:20:32 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/08 23:52:54 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	handle_error(t_vars *vars, char *error, char *trace)
 	int	mid;
 
 	mid = (10 - stringlen(error)) / 2;
-	puterr("Error\n");
-	// puterr("\x1B[0m< \x1B[31mERROR\x1B[0m >\n");
+	puterr("\x1B[0m< \x1B[31mERROR\x1B[0m >\n");
 	while (mid-- > 0)
 		puterr(" ");
 	puterr(error);

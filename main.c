@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 15:32:14 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/09 00:17:37 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,22 @@ void	setup_render(t_vars *vars)
  */
 void	load_args(int argc, char **argv, t_vars *vars)
 {
-	if (argc >= 2 && argc <= 3)
+	if (argc == 2)
 	{
+		/*
 		if (argc == 3)
 		{
 			vars->bmp = bad_strncmp(argv[2], "--save", 6) == 0;
 			if (!vars->bmp)
 				handle_error(vars, "Unknown options", argv[2]);
 		}
+		*/
 		if (!check_iscub(argv[1]))
-			handle_error(vars, "Unknown file type.", argv[1]);
+			handle_error(vars, ERROR_FILE_TYPE, argv[1]);
 		load_f(argv[1], vars);
 	}
 	else
-		handle_error(vars, "Usage: cub3D [cub file] [--save]", NULL);
+		handle_error(vars, ERROR_USAGE_CUB, NULL);
 }
 
 /**
@@ -157,7 +159,7 @@ int	main(int argc, char **argv)
 	set_bonus(&(vars.bonus));
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
-		handle_error(&vars, "Failed to initialize mlx.", NULL);
+		handle_error(&vars, FAIL_MLX, NULL);
 	load_args(argc, argv, &vars);
 	check_define(&vars);
 	setup_render(&vars);
@@ -167,7 +169,7 @@ int	main(int argc, char **argv)
 		render_and_save(&vars);
 		clean_and_exit(0, &vars);
 	}
-	vars.win = mlx_new_window(vars.mlx, vars.resx, vars.resy, "Cub3D");
+	vars.win = mlx_new_window(vars.mlx, vars.resx, vars.resy, TITLE_WINDOWS);
 	if (vars.sounds.ambient)
 		play_sound_alt(vars.sounds.ambient, true, true);
 	mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
