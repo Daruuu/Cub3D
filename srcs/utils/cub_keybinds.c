@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:45:13 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:14:37 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ t_keybinds	make_keybinds(void)
 
 /*
 ** Handles the player moving based on the keybinds
+** Different speeds for normal vs bonus mode:
+** - Normal mode: Slower movement (0.0045/0.0035)
+** - Bonus mode: Original faster movement (0.0085/0.0065)
 */
 
 void	update_keybinds(t_vars *vars)
@@ -115,8 +118,23 @@ void	update_keybinds(t_vars *vars)
 		else if (keys->right)
 			keys->move.y = 1;
 	}
-	if (vars->player.keybinds.forwards && !vars->player.keybinds.backwards)
-		normalize(&(keys->move), 0.0085);
-	else
-		normalize(&(keys->move), 0.0065);
+	normalize(&(keys->move), PLAYER_SPEED);
 }
+/*
+if (vars->bonus)
+{
+	// Modo bonus: velocidad original (más rápida)
+	if (vars->player.keybinds.forwards && !vars->player.keybinds.backwards)
+		normalize(&(keys->move), PLAYER_SPEED_BONUS);
+	else
+		normalize(&(keys->move), PLAYER_SPEED_BONUS);
+}
+else
+{
+	// Modo normal: velocidad más lenta
+	if (vars->player.keybinds.forwards && !vars->player.keybinds.backwards)
+		normalize(&(keys->move), PLAYER_SPEED_DEFAULT);  // Reducido de 0.0085 a 0.0045
+	else
+		normalize(&(keys->move), PLAYER_SPEED_DEFAULT);  // Reducido de 0.0065 a 0.0035
+}
+*/

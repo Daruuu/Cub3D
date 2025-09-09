@@ -12,8 +12,15 @@ UNAME       := $(shell uname)
 # ===================== CONFIG EXTRA ===================== #
 MAKEFLAGS   += -j$(shell nproc)
 
+# ================== Flags ================== #
+PLAYER_SPEED_DEFAULT := 0.0045
+PLAYER_SPEED_BONUS   := 0.0085
+
+CFLAGS_MANDATORY	:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_DEFAULT)
+CFLAGS_BONUS		:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_BONUS)
+
 DEPDIR      := .deps
-DEPFLAGS    = -MMD -MP -MF $(DEPDIR)/$*.d  # <--- generate dependency files in .deps/
+DEP_FLAGS    = -MMD -MP -MF $(DEPDIR)/$*.d  # <--- generate dependency files in .deps/
 
 DEBUG   ?= 0
 SANITIZE?= 0
@@ -117,25 +124,40 @@ all: $(NAME)
 $(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
 	$(MAKE) -C $(PATH_MLX)
 	$(MAKE) -C $(PATH_DELAY)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
+	$(CC) $(CFLAGS_MANDATORY) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
+	#$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
 
-bonus: $(OBJS_CORE) $(OBJS_BONUS)
+bonus: $(NAME_BONUS)
+
+#bonus: $(OBJS_CORE) $(OBJS_BONUS)
+$(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
 	$(MAKE) -C $(PATH_MLX)
 	$(MAKE) -C $(PATH_DELAY)
-	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJS_CORE) $(OBJS_BONUS) $(FLAGS_BONUS)
+	$(CC) $(CFLAGS_BONUS) -o $(NAME_BONUS) $^ $(FLAGS_BONUS)
+	#$(CC) $(CFLAGS_BONUS) -o $(NAME_BONUS) $(OBJS_CORE) $(OBJS_BONUS) $(FLAGS_BONUS)
+	#$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJS_CORE) $(OBJS_BONUS) $(FLAGS_BONUS)
 
 # ===================== COMPILATION WITH DEPENDENCIES ===================== #
 %.o: %.c Makefile cub3D.h
 	@mkdir -p $(dir $@)                     # Crear carpeta para .o
 	@mkdir -p $(DEPDIR)/$(dir $<)          # Crear carpeta para .d
-	$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+	$(CC) $(CFLAGS_MANDATORY) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+	#$(CC) $(CFLAGS) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
 	#$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o $@ -D LINUX=true
+
+# Regla para bonus (se compila a _bonus.o para no chocar con mandatory)
+%_bonus.o: %.c Makefile cub3D.h
+	@mkdir -p $(dir $@)
+	@mkdir -p $(DEPDIR)/$(dir $<)
+	$(CC) $(CFLAGS_BONUS) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+
 
 # ===================== CLEAN ===================== #
 clean:
 	$(MAKE) -C $(PATH_MLX) clean
 	$(MAKE) -C $(PATH_DELAY) clean
 	$(RM) $(OBJS_CORE) $(OBJS_BONUS) $(OBJS_OPTIONAL)
+	$(RM) $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
 	$(RM) -r $(DEPDIR)
 
 fclean: clean

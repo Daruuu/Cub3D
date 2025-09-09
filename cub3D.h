@@ -35,21 +35,22 @@
 # include "include/bmp_partial_alligned_header.h"
 # include "include/cub_walls.h"
 
-#define  TITLE_WINDOWS "Cub3D Ana & Daru"
-# define COLOR_UNSET 0xDB000000
+#define  TITLE_WINDOWS			"Cub3D Ana & Daru"
+# define COLOR_UNSET			0xDB000000
 
-#define  FAIL_MLX "Failed to initialize mlx."
-# define ERROR_FORMAT "Cub is unproperly formated."
-# define ERROR_MAP_UNCLOSED "Map is not enclosed."
-# define ERROR_INVALID_DOOR_POS "Invalid door position."
-# define ERROR_FILE_TYPE   "Unknown file type."
-# define ERROR_USAGE_CUB       "Usage: cub3D [cub file]"
-
+#define  FAIL_MLX				"Failed to initialize mlx."
+# define ERROR_FORMAT			"Cub is unproperly formated."
+# define ERROR_MAP_UNCLOSED		"Map is not enclosed."
+# define ERROR_INVALID_DOOR_POS	"Invalid door position."
+# define ERROR_FILE_TYPE		"Unknown file type."
+# define ERROR_USAGE_CUB		"Usage: cub3D [cub file]"
 
 # define FPS60 16666
 # define FPS50 20000
 # define FPS_BONUS 25000	//	using this default
 # define FPS30 33333
+// # define PLAYER_SPEED_DEFAULT  0.0045
+// # define PLAYER_SPEED_BONUS 0.0085
 
 typedef struct s_vars
 {
