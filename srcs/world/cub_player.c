@@ -39,10 +39,11 @@ void	handle_keys(t_player *player, bool bonus)
 	float	ratio;
 
 	ratio = 0.88;
+	// Rotación: velocidad diferenciada por modo (normal/bonus)
 	if (player->keybinds.rotate_left && !player->keybinds.rotate_right)
-		player->motion_yaw -= 0.009;
+		player->motion_yaw -= ROTATION_SPEED;
 	else if (player->keybinds.rotate_right && !player->keybinds.rotate_left)
-		player->motion_yaw += 0.009;
+		player->motion_yaw += ROTATION_SPEED;
 	else
 		player->motion_yaw *= 0.895;
 	if (player->keybinds.rotate_up && bonus)
