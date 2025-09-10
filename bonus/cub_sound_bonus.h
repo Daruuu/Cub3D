@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdint.h>
-# include "../other/cub_sound.h"
+# include "../srcs/other/cub_sound.h"
 # include <bass.h>
 
 # define BASS_SAMPLE_LOOP		4

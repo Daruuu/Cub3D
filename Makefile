@@ -146,7 +146,6 @@ $(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
 	@mkdir -p $(DEPDIR)/$(dir $<)          # Crear carpeta para .d
 	$(CC) $(CFLAGS_MANDATORY) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
 	#$(CC) $(CFLAGS) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
-	#$(CC) $(CFLAGS) $(DEPFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o $@ -D LINUX=true
 
 # Regla para bonus (se compila a _bonus.o para no chocar con mandatory)
 %_bonus.o: %.c Makefile cub3D.h include/includes_cub.h
