@@ -1,4 +1,4 @@
-R 1080 1000
+R 400 500
 NO ./assets/brick_wall.xpm
 SO ./assets/terrain.xpm
 WE ./assets/parquet1.xpm
