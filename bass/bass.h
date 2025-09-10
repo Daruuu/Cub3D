@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bass.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:36:02 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:23:18 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/10 18:33:27 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASS_H
 # define BASS_H
+# include <stdint.h>
 
 bool		BASS_Free(void);
 bool		BASS_Init(int device, uint32_t freq, uint32_t flags, void *win, \

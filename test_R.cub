@@ -1,0 +1,13 @@
+R 1920 1080
+NO textures/wolfenstein/eagle.xpm
+SO textures/wolfenstein/bluestone.xpm
+WE textures/wolfenstein/colorstone.xpm
+EA textures/wolfenstein/greystone.xpm
+F 220,100,0
+C 225,30,0
+
+1111111111
+1000000001
+10R0000001
+1000000001
+1111111111

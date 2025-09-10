@@ -31,7 +31,7 @@ void	tearDown(void)
 int	main(void)
 {
 	UNITY_BEGIN();
-	char *path = "../maps/correct_maps/matrix.cub";
+	char *path = "../maps_and_textures/correct_maps/matrix.cub";
 	char	*file_map1d;
 	g_parser = init_struct_parser();
 	file_map1d = read_file_content(path, count_file_size(path));

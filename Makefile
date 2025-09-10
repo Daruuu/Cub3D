@@ -1,19 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dasalaza <dasalaza@student.42barcelona.    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/22 16:22:56 by anamedin          #+#    #+#              #
-#    Updated: 2025/05/30 14:42:52 by dasalaza         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # ===================== PROJECT CONFIG ===================== #
-
 NAME        = cub3D
-CC          = gcc
+NAME_BONUS	= cub3D_bonus
+CC          = cc
 RM          = rm -f
 
 CFLAGS      = -Wall -Wextra -Werror
@@ -21,187 +9,168 @@ DEBUGFLAGS  = -g -fsanitize=address
 
 UNAME       := $(shell uname)
 
-# Paths
+# ===================== CONFIG EXTRA ===================== #
+MAKEFLAGS   += -j$(shell nproc)
+
+# ================== Flags ================== #
+#PLAYER_SPEED_DEFAULT := 0.0045
+PLAYER_SPEED_DEFAULT := 0.0015
+PLAYER_SPEED_BONUS   := 0.0085
+
+#ROTATION_SPEED_DEFAULT := 0.0045
+ROTATION_SPEED_DEFAULT := 0.0010
+ROTATION_SPEED_BONUS   := 0.009
+
+CFLAGS_MANDATORY	:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_DEFAULT) -DROTATION_SPEED=$(ROTATION_SPEED_DEFAULT)
+CFLAGS_BONUS		:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_BONUS) -DROTATION_SPEED=$(ROTATION_SPEED_BONUS)
+
+DEPDIR      := .deps
+DEP_FLAGS    = -MMD -MP -MF $(DEPDIR)/$*.d  # <--- generate dependency files in .deps/
+
+DEBUG   ?= 0
+SANITIZE?= 0
+
+ifeq ($(DEBUG), 1)
+	CFLAGS += -g -DDEBUG
+endif
+
+ifeq ($(SANITIZE), 1)
+	CFLAGS += -fsanitize=address -fsanitize=undefined
+endif
+
+# ===================== PATHS ===================== #
+SRC_DIR		= srcs
 PATH_MLX    = mlx
-PATH_DELAY  = delay
+PATH_DELAY  = $(SRC_DIR)/delay
 PATH_BASS   = bass
 
 # ===================== SOURCES ===================== #
-
-# Core sources
+#	$(SRC_DIR)/render/cub_bitmap.c
 SRC_CORE = \
-	parser/cub_file.c \
-	parser/cub_map_parser.c \
-	parser/cub_map_setter.c \
-	parser/cub_parser.c \
-	parser/cub_setter.c \
-	pathfinder/cub_astar.c \
-	pathfinder/cub_node.c \
-	pathfinder/cub_node_helper.c \
-	pathfinder/cub_path.c \
-	pathfinder/cub_pathfinder.c \
-	pathfinder/cub_star_cardinal.c \
-	render/cub_bitmap.c \
-	render/cub_blur.c \
-	render/cub_floor.c \
-	render/cub_hud.c \
-	render/cub_minimap.c \
-	render/cub_raycast.c \
-	render/cub_raycast2.c \
-	render/cub_raycast3.c \
-	render/cub_texture.c \
-	render/cub_xquartz_layer.c \
-	sprites/cub_doors.c \
-	sprites/cub_goomba.c \
-	sprites/cub_sprite_list.c \
-	sprites/cub_sprites.c \
-	utils/cub_checker.c \
-	utils/cub_cleaner.c \
-	utils/cub_error.c \
-	utils/cub_keybinds.c \
-	utils/cub_line_reader.c \
-	utils/cub_line_reader_helper.c \
-	utils/cub_rot.c \
-	utils/cub_setup.c \
-	utils/cub_utils.c \
-	utils/cub_utils2.c \
-	utils/cub_utils3.c \
-	utils/cub_utils4.c \
-	utils/cub_utils5.c \
-	utils/cub_vec.c \
-	utils/cub_vec2.c \
-	world/cub_cardinal.c \
-	world/cub_collide.c \
-	world/cub_map.c \
-	world/cub_player.c \
-	world/cub_portal.c \
-	world/cub_portal2.c \
-	world/cub_portal_list.c \
+	$(SRC_DIR)/parser/cub_file.c \
+	$(SRC_DIR)/parser/cub_map_parser.c \
+	$(SRC_DIR)/parser/cub_map_setter.c \
+	$(SRC_DIR)/parser/cub_parser.c \
+	$(SRC_DIR)/parser/cub_setter.c \
+	$(SRC_DIR)/pathfinder/cub_astar.c \
+	$(SRC_DIR)/pathfinder/cub_node.c \
+	$(SRC_DIR)/pathfinder/cub_node_helper.c \
+	$(SRC_DIR)/pathfinder/cub_path.c \
+	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
+	$(SRC_DIR)/pathfinder/cub_star_cardinal.c \
+	$(SRC_DIR)/render/cub_blur.c \
+	$(SRC_DIR)/render/raycast_engine.c \
+	$(SRC_DIR)/render/raycast_collision.c \
+	$(SRC_DIR)/render/raycast_dda.c \
+	$(SRC_DIR)/render/render_floor.c \
+	$(SRC_DIR)/render/render_textures.c \
+	$(SRC_DIR)/render/cub_hud.c \
+	$(SRC_DIR)/render/cub_minimap.c \
+	$(SRC_DIR)/render/cub_xquartz_layer.c \
+	$(SRC_DIR)/sprites/cub_doors.c \
+	$(SRC_DIR)/sprites/cub_goomba.c \
+	$(SRC_DIR)/sprites/cub_sprite_list.c \
+	$(SRC_DIR)/sprites/cub_sprites.c \
+	$(SRC_DIR)/utils/cub_checker.c \
+	$(SRC_DIR)/utils/cub_cleaner.c \
+	$(SRC_DIR)/utils/cub_error.c \
+	$(SRC_DIR)/utils/cub_keybinds.c \
+	$(SRC_DIR)/utils/cub_line_reader.c \
+	$(SRC_DIR)/utils/cub_line_reader_helper.c \
+	$(SRC_DIR)/utils/cub_rot.c \
+	$(SRC_DIR)/utils/cub_setup.c \
+	$(SRC_DIR)/utils/cub_utils.c \
+	$(SRC_DIR)/utils/cub_utils2.c \
+	$(SRC_DIR)/utils/cub_utils3.c \
+	$(SRC_DIR)/utils/cub_utils4.c \
+	$(SRC_DIR)/utils/cub_utils5.c \
+	$(SRC_DIR)/utils/cub_vec.c \
+	$(SRC_DIR)/utils/cub_vec2.c \
+	$(SRC_DIR)/world/cub_cardinal.c \
+	$(SRC_DIR)/world/cub_collide.c \
+	$(SRC_DIR)/world/cub_map.c \
+	$(SRC_DIR)/world/cub_player.c \
+	$(SRC_DIR)/world/cub_portal.c \
+	$(SRC_DIR)/world/cub_portal2.c \
+	$(SRC_DIR)/world/portal_list.c \
 	main.c
 
-# Bonus sources
 SRC_BONUS = \
 	bonus/cub_sound_bonus.c \
 	bonus/cub_other_bonus.c
 
-# Non-bonus sources (alternative to bonus)
 SRC_OPTIONAL = \
-	other/cub_other.c \
-	other/cub_sound.c
+	$(SRC_DIR)/other/cub_other.c \
+	$(SRC_DIR)/other/cub_sound.c
 
-# ===================== HEADERS ===================== #
+# ===================== OBJECTS ===================== #
+OBJS_CORE     = ${SRC_CORE:.c=.o}
+OBJS_BONUS    = ${SRC_BONUS:.c=.o}
+OBJS_OPTIONAL = ${SRC_OPTIONAL:.c=.o}
 
-HDR_FILES = \
-	bonus/cub_sound_bonus.h \
-	delay/libdelay.h \
-	include/bmp_partial_alligned_header.h \
-	include/cub_cardinal_enum.h \
-	include/cub_floor_render.h \
-	include/cub_keybinds_struct.h \
-	include/cub_mouseover_struct.h \
-	include/cub_player_struct.h \
-	include/cub_portal_struct.h \
-	include/cub_raycast_struct.h \
-	include/cub_sprite_struct.h \
-	include/cub_sprite_type.h \
-	include/cub_walls.h \
-	main.h \
-	other/cub_sound.h \
-	parser/cub_file.h \
-	parser/cub_map_parser.h \
-	parser/cub_map_setter.h \
-	parser/cub_parser.h \
-	parser/cub_setter.h \
-	pathfinder/cub_astar.h \
-	pathfinder/cub_path.h \
-	pathfinder/cub_pathfinder.h \
-	pathfinder/cub_star_cardinal.h \
-	pathfinder/cub_node.h \
-	render/cub_bitmap.h \
-	render/cub_blur.h \
-	render/cub_floor.h \
-	render/cub_hud.h \
-	render/cub_minimap.h \
-	render/cub_raycast.h \
-	render/cub_texture.h \
-	render/cub_xquartz_layer.h \
-	sprites/cub_doors.h \
-	sprites/cub_goomba.h \
-	sprites/cub_sprite_list.h \
-	sprites/cub_sprites.h \
-	utils/cub_checker.h \
-	utils/cub_cleaner.h \
-	utils/cub_error.h \
-	utils/cub_keybinds.h \
-	utils/cub_rot.h \
-	utils/cub_setup.h \
-	utils/cub_utils.h \
-	utils/cub_vec.h \
-	utils/cub_line_reader.h \
-	world/cub_cardinal.h \
-	world/cub_collide.h \
-	world/cub_map.h \
-    world/cub_player.h \
-    world/cub_portal.h \
-    world/cub_portal_list.h \
-    cub.h
-
-    # ===================== OBJECTS ===================== #
-
-OBJS_CORE      = ${SRC_CORE:.c=.o}
-OBJS_BONUS     = ${SRC_BONUS:.c=.o}
-OBJS_OPTIONAL  = ${SRC_OPTIONAL:.c=.o}
+# ===================== DEPENDENCIES (.d files) ===================== #
+DEPS_CORE     = $(SRC_CORE:.c=.d)
+DEPS_BONUS    = $(SRC_BONUS:.c=.d)
+DEPS_OPTIONAL = $(SRC_OPTIONAL:.c=.d)
+DEPS          = $(DEPS_CORE) $(DEPS_BONUS) $(DEPS_OPTIONAL)
 
 # ===================== FLAGS ===================== #
-
-#FLAGS_BASE = -I$(PATH_MLX) -L$(PATH_MLX) -lmlx -lm -lXext -lX11 \
-#			 -Wl,-rpath=./$(PATH_BASS)/,-rpath=./$(PATH_MLX)/,-rpath=./$(PATH_DELAY)/
-
 FLAGS_BASE = -I$(PATH_MLX) -L$(PATH_MLX) -lmlx -lm -lXext -lX11 \
 			 -I$(PATH_DELAY) -L$(PATH_DELAY) -ldelay \
 			 -Wl,-rpath=./$(PATH_BASS)/,-rpath=./$(PATH_MLX)/,-rpath=./$(PATH_DELAY)/
-
-
-FLAGS_DEBUG = $(FLAGS_BASE) $(DEBUGFLAGS)
 
 FLAGS_BONUS = -I$(PATH_BASS) -L$(PATH_BASS) -lbass \
 			  -I$(PATH_DELAY) -L$(PATH_DELAY) -ldelay \
 			  $(FLAGS_BASE)
 
-    # ===================== RULES ===================== #
-
+# ===================== RULES ===================== #
 all: $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -c $< -o ${<:.c=.o} -D LINUX=true
-
-#$(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
-#		make -C $(PATH_MLX)
-#		$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
-
 $(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
-		make -C $(PATH_MLX)
-		make -C $(PATH_DELAY)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
+	$(MAKE) -C $(PATH_MLX)
+	$(MAKE) -C $(PATH_DELAY)
+	$(CC) $(CFLAGS_MANDATORY) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
 
-bonus: $(OBJS_CORE) $(OBJS_BONUS)
-		make -C $(PATH_MLX)
-		make -C $(PATH_DELAY)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS_CORE) $(OBJS_BONUS) $(FLAGS_BONUS)
+bonus: $(NAME_BONUS)
 
+$(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
+	$(MAKE) -C $(PATH_MLX)
+	$(MAKE) -C $(PATH_DELAY)
+	$(CC) $(CFLAGS_BONUS) -o $(NAME_BONUS) $^ $(FLAGS_BONUS)
+
+# ===================== COMPILATION WITH DEPENDENCIES ===================== #
+%.o: %.c Makefile cub3D.h include/includes_cub.h
+	@mkdir -p $(dir $@)                     # Crear carpeta para .o
+	@mkdir -p $(DEPDIR)/$(dir $<)          # Crear carpeta para .d
+	$(CC) $(CFLAGS_MANDATORY) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+
+# Regla para bonus (se compila a _bonus.o para no chocar con mandatory)
+%_bonus.o: %.c Makefile cub3D.h include/includes_cub.h
+	@mkdir -p $(dir $@)
+	@mkdir -p $(DEPDIR)/$(dir $<)
+	$(CC) $(CFLAGS_BONUS) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+
+
+# ===================== CLEAN ===================== #
 clean:
-		make -C $(PATH_MLX) clean
-		make -C $(PATH_DELAY) clean
-		$(RM) $(OBJS_CORE) $(OBJS_BONUS) $(OBJS_OPTIONAL)
+	$(MAKE) -C $(PATH_MLX) clean
+	$(MAKE) -C $(PATH_DELAY) clean
+	$(RM) $(OBJS_CORE) $(OBJS_BONUS) $(OBJS_OPTIONAL)
+	$(RM) $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
+	$(RM) -r $(DEPDIR)
 
 fclean: clean
-		make -C $(PATH_DELAY) fclean
-		$(RM) $(NAME)
+	$(MAKE) -C $(PATH_DELAY) fclean
+	$(RM) $(NAME) $(NAME_BONUS)
 
 re: fclean all
 
 norm:
-	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL) $(HDR_FILES)"
-	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL) $(HDR_FILES)
+	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL)" main.c cub3D.h include/includes_cub.h
+	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL) main.c cub3D.h include/includes_cub.h
 
-.PHONY: bonus all clean fclean re norm
+# ===================== INCLUDE DEPENDENCIES ===================== #
+# Incluir todos los archivos .d generados en .deps
+-include $(DEPS)
+
+.PHONY: all clean fclean re bonus norm

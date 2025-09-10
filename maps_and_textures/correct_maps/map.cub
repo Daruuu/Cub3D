@@ -1,0 +1,26 @@
+R  800 600
+
+SO maps_and_textures/textures/mossy.xpm
+NO maps_and_textures/textures/greystone.xpm
+WE maps_and_textures/textures/wood.xpm
+EA  maps_and_textures/textures/redbrick.xpm
+S   maps_and_textures/textures/barrel.xpm
+
+F 56,                 79, 88
+
+C 153,          76,       120
+
+11111111111111
+10000000000001
+12001000000021
+10001000100001
+10000000000001
+12020202020021
+10000000000001
+10000000000001
+12000000000021
+100000N0000001
+11111111111111
+
+
+

@@ -25,9 +25,9 @@
 
 # Shared objects (inc. Windows DLLs)
 *.dll
-*.so
+#*.so
 *.so.*
-*.dylib
+#*.dylib
 
 # Executables
 *.exe

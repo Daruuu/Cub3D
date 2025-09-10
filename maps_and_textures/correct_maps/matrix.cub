@@ -1,0 +1,24 @@
+R 800 600
+
+EA maps_and_textures/textures/matrix.xpm
+SO maps_and_textures/textures/matrix.xpm
+NO maps_and_textures/textures/matrix.xpm
+WE maps_and_textures/textures/matrix.xpm
+S   maps_and_textures/textures/barrel.xpm
+
+F 0,0,5
+C 0,0,120
+
+111111111111111111111111111111
+1111100S000000000000011001
+100010000000000000000011001
+111111111111111111111111111
+
+
+
+
+
+
+
+
+

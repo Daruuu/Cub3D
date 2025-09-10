@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_other_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:18:11 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 18:56:13 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/10 17:38:07 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 18:22:02 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
