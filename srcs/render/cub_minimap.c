@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_minimap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:27:10 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:20:34 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:07:10 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_astar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:23:18 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/30 23:37:55 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:04:10 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

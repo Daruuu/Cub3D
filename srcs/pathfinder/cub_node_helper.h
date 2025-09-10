@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_node_helper.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 12:45:04 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 12:46:15 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/08 12:45:04 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:05:05 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

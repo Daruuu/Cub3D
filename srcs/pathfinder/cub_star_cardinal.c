@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_star_cardinal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 12:56:09 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:05:41 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

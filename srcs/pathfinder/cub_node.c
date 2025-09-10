@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_node.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:23:33 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/31 22:30:30 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:04:31 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

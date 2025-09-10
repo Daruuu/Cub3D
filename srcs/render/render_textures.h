@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_texture.h                                      :+:      :+:    :+:   */
+/*   render_textures.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:28:12 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 09:28:12 by yamir            ###   ########.fr       */
+/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_TEXTURE_H
-# define CUB_TEXTURE_H
+#ifndef RENDER_TEXTURES_H
+# define RENDER_TEXTURES_H
 
 # include "../cub3D.h"
 # include "../utils/cub_cleaner.h"
