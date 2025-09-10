@@ -43,6 +43,7 @@ PATH_DELAY  = $(SRC_DIR)/delay
 PATH_BASS   = $(SRC_DIR)/bass
 
 # ===================== SOURCES ===================== #
+#	$(SRC_DIR)/render/cub_bitmap.c
 SRC_CORE = \
 	$(SRC_DIR)/parser/cub_file.c \
 	$(SRC_DIR)/parser/cub_map_parser.c \
@@ -55,7 +56,6 @@ SRC_CORE = \
 	$(SRC_DIR)/pathfinder/cub_path.c \
 	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
 	$(SRC_DIR)/pathfinder/cub_star_cardinal.c \
-	$(SRC_DIR)/render/cub_bitmap.c \
 	$(SRC_DIR)/render/cub_blur.c \
 	$(SRC_DIR)/render/cub_floor.c \
 	$(SRC_DIR)/render/cub_hud.c \

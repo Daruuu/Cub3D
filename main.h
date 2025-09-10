@@ -6,7 +6,7 @@
 /*   By: yamir <yamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 09:36:02 by yamir             #+#    #+#             */
-/*   Updated: 2025/09/08 16:51:50 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 13:29:15 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "srcs/render/cub_raycast.h"
 # include "srcs/render/cub_floor.h"
 # include "srcs/render/cub_hud.h"
-# include "srcs/render/cub_bitmap.h"
 
 # include "srcs/parser/cub_file.h"
 # include "srcs/pathfinder/cub_pathfinder.h"

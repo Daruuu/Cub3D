@@ -24,16 +24,7 @@
 # include "srcs/world/cub_map.h"
 # include "srcs/utils/cub_line_reader.h"
 # include "srcs/other/cub_sound.h"
-# include "include/cub_sprite_type.h"
-# include "include/cub_cardinal_enum.h"
-# include "include/cub_keybinds_struct.h"
-# include "include/cub_sprite_struct.h"
-# include "include/cub_player_struct.h"
-# include "include/cub_raycast_struct.h"
-# include "include/cub_mouseover_struct.h"
-# include "include/cub_floor_render.h"
-# include "include/bmp_partial_alligned_header.h"
-# include "include/cub_walls.h"
+# include "include/includes_cub.h"
 
 #define  TITLE_WINDOWS			"Cub3D Ana & Daru"
 # define COLOR_UNSET			0xDB000000
