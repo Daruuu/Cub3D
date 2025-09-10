@@ -85,6 +85,8 @@ typedef struct s_vars
 	unsigned long	delay;
 }					t_vars;
 
-int					render_next_frame(t_vars *vars);
+int		render_next_frame(t_vars *vars);
+int		get_delay(bool startnow, int min, bool mac);
+void	set_bonus(bool *bonus);
 
 #endif

@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:09:39 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:57:53 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_FLOOR_H
-# define CUB_FLOOR_H
+#ifndef RENDER_FLOOR_H
+# define RENDER_FLOOR_H
 
 # include "../cub3D.h"
 

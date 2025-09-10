@@ -6,13 +6,21 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/10 13:04:41 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:25:56 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "cub3D.h"
 #include "mlx/mlx.h"
+#include "srcs/parser/cub_file.h"
+#include "srcs/pathfinder/cub_pathfinder.h"
+#include "srcs/render/cub_hud.h"
+#include "srcs/render/render_floor.h"
+#include "srcs/utils/cub_checker.h"
+#include "srcs/utils/cub_error.h"
 #include "srcs/utils/cub_keybinds.h"
+#include "srcs/utils/cub_setup.h"
+#include "srcs/world/cub_player.h"
 
 /**
 * Updates the game world state:
@@ -21,7 +29,6 @@
 * Manages timing and delays if bonus mode is enabled.
 * Updates player motion and sprite rendering.
 * Refreshes pathfinding logic for enemies/objects.
-* 16666 : 60 FPS
  */
 
 void	update_world(t_vars *vars)
@@ -131,16 +138,10 @@ void	load_args(int argc, char **argv, t_vars *vars)
 }
 
 /**
-* Initializes default values and bonus mode.
-* Sets up the graphics library (mlx).
 * Loads arguments and validates configuration.
 * Prepares rendering and checks save mode.
 * Creates the game window, starts ambient sound if available.
-* Hooks input events (keypress, key release, exit).
-* Runs the main game loop with frame rendering.
- * @param argc
- * @param argv
- * @return
+
  */
 int	main(int argc, char **argv)
 {

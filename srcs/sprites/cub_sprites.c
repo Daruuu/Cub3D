@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_sprites.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpujades <cpujades@student.42barcel>       +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:29:22 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 01:14:23 by cpujades         ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:14:44 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

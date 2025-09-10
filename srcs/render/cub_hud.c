@@ -6,13 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:06:51 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:59:33 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_hud.h"
-// #include "mlx.h"
-# include "../mlx/mlx.h"
+#include "../mlx/mlx.h"
 
 /*
 ** Draws the minimap and it's background shadow / blur

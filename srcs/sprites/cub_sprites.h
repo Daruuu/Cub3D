@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_sprites.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:29:44 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:35:50 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:18:22 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

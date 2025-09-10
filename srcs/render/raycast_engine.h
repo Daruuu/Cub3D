@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:12:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:09:20 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:00:19 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_RAYCAST_H
-# define CUB_RAYCAST_H
+#ifndef RAYCAST_ENGINE_H
+# define RAYCAST_ENGINE_H
 
 # include "../cub3D.h"
 # include "../world/cub_cardinal.h"

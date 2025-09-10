@@ -21,7 +21,7 @@ include_directories(
         ${CMAKE_SOURCE_DIR}/utils
         ${CMAKE_SOURCE_DIR}/world
         ${CMAKE_SOURCE_DIR}/mlx
-        main.h
+        testing/main.h
         cub3D.h
 )
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_goomba.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:28:51 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:41:27 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:13:58 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

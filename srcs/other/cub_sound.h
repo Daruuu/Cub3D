@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_sound.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:21:54 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:35:11 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:53:59 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

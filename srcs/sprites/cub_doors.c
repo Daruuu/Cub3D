@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_doors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:28:35 by yamir             #+#    #+#             */
-/*   Updated: 2025/05/28 19:40:40 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 16:13:09 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
