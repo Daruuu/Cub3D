@@ -40,7 +40,7 @@ endif
 SRC_DIR		= srcs
 PATH_MLX    = mlx
 PATH_DELAY  = $(SRC_DIR)/delay
-PATH_BASS   = $(SRC_DIR)/bass
+PATH_BASS   = bass
 
 # ===================== SOURCES ===================== #
 #	$(SRC_DIR)/render/cub_bitmap.c
@@ -90,7 +90,7 @@ SRC_CORE = \
 	$(SRC_DIR)/world/cub_player.c \
 	$(SRC_DIR)/world/cub_portal.c \
 	$(SRC_DIR)/world/cub_portal2.c \
-	$(SRC_DIR)/world/cub_portal_list.c \
+	$(SRC_DIR)/world/portal_list.c \
 	main.c
 
 SRC_BONUS = \
@@ -169,8 +169,8 @@ fclean: clean
 re: fclean all
 
 norm:
-	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL)"
-	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL)
+	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL)" main.c cub3D.h include/includes_cub.h
+	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL) main.c cub3D.h include/includes_cub.h
 
 # ===================== INCLUDE DEPENDENCIES ===================== #
 # Incluir todos los archivos .d generados en .deps

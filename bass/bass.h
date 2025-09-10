@@ -6,12 +6,13 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 14:13:38 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:33:27 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASS_H
 # define BASS_H
+# include <stdint.h>
 
 bool		BASS_Free(void);
 bool		BASS_Init(int device, uint32_t freq, uint32_t flags, void *win, \

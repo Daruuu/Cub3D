@@ -26,10 +26,9 @@
 # include "srcs/other/cub_sound.h"
 # include "include/includes_cub.h"
 
-#define  TITLE_WINDOWS			"Cub3D Ana & Daru"
+# define TITLE_WINDOWS			"Cub3D Ana & Daru"
 # define COLOR_UNSET			0xDB000000
-
-#define  FAIL_MLX				"Failed to initialize mlx."
+# define FAIL_MLX				"Failed to initialize mlx."
 # define ERROR_FORMAT			"Cub is unproperly formated."
 # define ERROR_MAP_UNCLOSED		"Map is not enclosed."
 # define ERROR_INVALID_DOOR_POS	"Invalid door position."

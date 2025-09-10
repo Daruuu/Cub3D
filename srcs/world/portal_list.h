@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_portal_list.h                                  :+:      :+:    :+:   */
+/*   portal_list.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 01:10:03 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/10 17:38:28 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/10 18:36:23 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_PORTAL_LIST_H
-# define CUB_PORTAL_LIST_H
+#ifndef PORTAL_LIST_H
+# define PORTAL_LIST_H
 
 # include "../cub3D.h"
 # include "cub_cardinal.h"

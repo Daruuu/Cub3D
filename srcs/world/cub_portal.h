@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 # include "cub_cardinal.h"
-# include "cub_portal_list.h"
+# include "portal_list.h"
 # include <stdlib.h>
 
 bool		create_portal(t_vars *vars, int x, int y, t_cardinal card);

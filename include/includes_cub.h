@@ -6,12 +6,12 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 13:30:39 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/10 13:42:49 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:30:49 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDES_CUB_H
-#define INCLUDES_CUB_H
+# define INCLUDES_CUB_H
 
 # include "../srcs/utils/cub_vec.h"
 # include "../srcs/utils/cub_rot.h"

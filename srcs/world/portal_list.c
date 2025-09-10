@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_portal_list.h"
+#include "portal_list.h"
 
 t_portal_render	*make_portal_render(t_shape line, float offset)
 {
