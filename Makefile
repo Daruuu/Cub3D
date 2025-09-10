@@ -57,13 +57,13 @@ SRC_CORE = \
 	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
 	$(SRC_DIR)/pathfinder/cub_star_cardinal.c \
 	$(SRC_DIR)/render/cub_blur.c \
-	$(SRC_DIR)/render/cub_floor.c \
+	$(SRC_DIR)/render/raycast_engine.c \
+	$(SRC_DIR)/render/raycast_collision.c \
+	$(SRC_DIR)/render/raycast_dda.c \
+	$(SRC_DIR)/render/render_floor.c \
+	$(SRC_DIR)/render/render_textures.c \
 	$(SRC_DIR)/render/cub_hud.c \
 	$(SRC_DIR)/render/cub_minimap.c \
-	$(SRC_DIR)/render/cub_raycast.c \
-	$(SRC_DIR)/render/cub_raycast2.c \
-	$(SRC_DIR)/render/cub_raycast3.c \
-	$(SRC_DIR)/render/cub_texture.c \
 	$(SRC_DIR)/render/cub_xquartz_layer.c \
 	$(SRC_DIR)/sprites/cub_doors.c \
 	$(SRC_DIR)/sprites/cub_goomba.c \

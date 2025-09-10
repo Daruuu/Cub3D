@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:45:29 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:49:48 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "cub_vec.h"
 # include "../cub3D.h"
-# include "../render/cub_raycast.h"
+# include "../render/raycast_engine.h"
 # include "cub_cleaner.h"
 # include <stdbool.h>
 

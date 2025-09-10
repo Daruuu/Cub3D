@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 00:47:17 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:40:07 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	handle_keys(t_player *player, bool bonus)
 	float	ratio;
 
 	ratio = 0.88;
-	// Rotación: velocidad diferenciada por modo (normal/bonus)
 	if (player->keybinds.rotate_left && !player->keybinds.rotate_right)
 		player->motion_yaw -= ROTATION_SPEED;
 	else if (player->keybinds.rotate_right && !player->keybinds.rotate_left)

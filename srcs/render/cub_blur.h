@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_blur.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  yaramire < yaramire@student.42barcelon    +#+  +:+       +#+        */
+/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 09:26:33 by yamir             #+#    #+#             */
-/*   Updated: 2025/06/01 19:35:33 by  yaramire        ###   ########.fr       */
+/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/10 15:10:03 by dasalaza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_blur
 	int			kernel_size;
 }				t_blur;
 
-t_img			make_blur(t_img *data, void *mlx, bool yb);
 t_blur			make_blur_struct(void *mlx, t_img orig, t_shape shape);
 t_img			make_blur_opt(t_blur blur, bool yb);
 
