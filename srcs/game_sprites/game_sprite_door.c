@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_doors.c                                        :+:      :+:    :+:   */
+/*   game_sprite_door.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:13:09 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 16:27:01 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_doors.h"
+#include "game_sprite_door.h"
 
 /*
 ** My doors are a little hacky, they reuse the sprite maths, for the begining

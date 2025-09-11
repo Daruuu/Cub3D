@@ -68,10 +68,10 @@ SRC_CORE = main.c \
 	$(SRC_DIR)/render/cub_hud.c \
 	$(SRC_DIR)/render/cub_minimap.c \
 	$(SRC_DIR)/render/cub_xquartz_layer.c \
-	$(SRC_DIR)/sprites/cub_doors.c \
-	$(SRC_DIR)/sprites/cub_goomba.c \
-	$(SRC_DIR)/sprites/cub_sprite_list.c \
-	$(SRC_DIR)/sprites/cub_sprites.c \
+	$(SRC_DIR)/game_sprites/game_sprite_door.c \
+	$(SRC_DIR)/game_sprites/game_sprite_enemy.c \
+	$(SRC_DIR)/game_sprites/game_sprite_manager.c \
+	$(SRC_DIR)/game_sprites/game_sprite_renderer.c \
 	$(SRC_DIR)/utils/cub_checker.c \
 	$(SRC_DIR)/utils/cub_cleaner.c \
 	$(SRC_DIR)/utils/cub_error.c \

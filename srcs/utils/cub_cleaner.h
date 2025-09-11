@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:44:33 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:19:57 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB_CLEANER_H
 
 # include "../cub3D.h"
-# include "../sprites/cub_sprites.h"
+# include "../game_sprites/game_sprite_renderer.h"
 # include "cub_line_reader.h"
 
 void	destroy_img(t_vars *vars, t_img *img);

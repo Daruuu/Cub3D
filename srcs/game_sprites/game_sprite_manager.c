@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_sprite_list.c                                  :+:      :+:    :+:   */
+/*   game_sprite_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:14:21 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:17:21 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_sprite_list.h"
+#include "game_sprite_manager.h"
 
 /*
 ** Swaps chained list pointers, used in the sprite_sort function

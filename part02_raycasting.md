@@ -40,7 +40,7 @@ Entender cómo funciona el motor de **raycasting** y el proceso de **renderizado
 
 ### 5. Archivos de sprites *(opcional para raycasting básico)*
 - **srcs/sprites/cub_sprites.h** → headers de sprites
-- **srcs/sprites/cub_sprites.c** → sistema de sprites
+- **srcs/sprites/game_sprite_renderer.c** → sistema de sprites
 
 ---
 

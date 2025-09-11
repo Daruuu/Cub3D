@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_goomba.c                                       :+:      :+:    :+:   */
+/*   game_sprite_enemy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 15:57:18 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:22:29 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_goomba.h"
+#include "game_sprite_enemy.h"
 
 void	refresh_path(t_sprite *curr, t_vars *vars, int maxtries)
 {

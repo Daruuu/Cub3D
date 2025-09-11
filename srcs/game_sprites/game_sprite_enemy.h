@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_sprites.h                                      :+:      :+:    :+:   */
+/*   game_sprite_enemy.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 14:46:28 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 16:27:11 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_SPRITES_H
-# define CUB_SPRITES_H
+#ifndef GAME_SPRITE_ENEMY_H
+# define GAME_SPRITE_ENEMY_H
 
 # include "../cub3D.h"
 # include "../game/game_collision.h"
-# include "cub_sprite_list.h"
-# include "cub_doors.h"
-# include "cub_goomba.h"
+# include "game_sprite_manager.h"
+# include "game_sprite_door.h"
 
-typedef struct s_sprite_r
-{
-	t_shape		draw;
-	t_vec		v;
-	t_vec		offset;
-	int			color;
-	t_vecd		pos;
-	double		dist;
-	double		sprite_angle;
-	double		view_dist;
-	float		dim;
-}				t_sprite_r;
-
-void			draw_sprites(t_vars *vars, bool skip);
+void	handle_goomba(t_sprite *curr, t_vars *vars);
 
 #endif

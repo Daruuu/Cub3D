@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 15:36:33 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:20:41 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../cub3D.h"
 # include "../game/game_player.h"
 # include "../utils/cub_error.h"
-# include "../sprites/cub_sprites.h"
+# include "../game_sprites/game_sprite_renderer.h"
 
 int		set_player(t_vars *vars, char c, t_vec p);
 int		set_sprite(t_vars *vars, char c, t_vec p);

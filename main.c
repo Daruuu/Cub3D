@@ -6,14 +6,13 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 15:59:09 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:18:42 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "mlx/mlx.h"
 #include "srcs/parser/parser_file_loader.h"
-// #include "srcs/pathfinder/cub_pathfinder.h"
 #include "srcs/render/cub_hud.h"
 #include "srcs/render/render_floor.h"
 #include "srcs/utils/cub_checker.h"
