@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_hud.h                                          :+:      :+:    :+:   */
+/*   render_hud.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,8 +14,8 @@
 # define CUB_HUD_H
 
 # include "../cub3D.h"
-# include "cub_minimap.h"
-# include "cub_xquartz_layer.h"
+# include "render_minimap.h"
+# include "render_macos_layer.h"
 
 void	draw_hud(t_vars *vars);
 void	draw_death(t_vars *vars);

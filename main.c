@@ -13,7 +13,7 @@
 #include "cub3D.h"
 #include "mlx/mlx.h"
 #include "srcs/parser/parser_file_loader.h"
-#include "srcs/render/cub_hud.h"
+#include "srcs/render/render_hud.h"
 #include "srcs/render/render_floor.h"
 #include "srcs/utils/cub_checker.h"
 #include "srcs/utils/cub_error.h"

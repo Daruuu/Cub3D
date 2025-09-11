@@ -19,7 +19,7 @@ Entender cómo funciona el motor de **raycasting** y el proceso de **renderizado
 - **srcs/render/cub_texture.c** → gestión de texturas
 - **srcs/render/cub_floor.h** → headers del suelo
 - **srcs/render/cub_floor.c** → renderizado del suelo
-- **srcs/render/cub_hud.h** → headers del HUD
+- **srcs/render/render_hud.h** → headers del HUD
 - **srcs/render/cub_hud.c** → interfaz de usuario (HUD)
 
 ### 3. Archivos de utilidades de renderizado

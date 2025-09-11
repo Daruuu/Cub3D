@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_xquartz_layer.c                                :+:      :+:    :+:   */
+/*   render_macos_layer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:08:27 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 19:07:31 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_xquartz_layer.h"
-
+#include "render_macos_layer.h"
 #include "../mlx/mlx.h"
 
-int	put_alpha_window(t_vars *vars, t_img *img, int x, int y)
+int	render_mac_os_image(t_vars *vars, t_img *img, int x, int y)
 {
 	int		b;
 	int		color;

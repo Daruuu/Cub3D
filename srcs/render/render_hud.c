@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_hud.c                                          :+:      :+:    :+:   */
+/*   render_hud.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:59:33 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 18:38:10 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_hud.h"
-#include "../mlx/mlx.h"
+#include "render_hud.h"
 
 /*
 ** Draws the minimap and it's background shadow / blur
@@ -35,7 +34,7 @@ void	draw_hud(t_vars *vars)
 	rect(&(vars->img), shape, 0x00B22D17);
 	make_blur_opt(vars->blur, false);
 	draw_minimap(vars);
-	put_alpha_window(vars, &vars->dash, 0,
+	render_mac_os_image(vars, &vars->dash, 0,
 		vars->resy - vars->dash.height - (1));
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->blur.dest.img,
 		vars->blur.shape.x, vars->blur.shape.y);
@@ -104,7 +103,7 @@ void	render_hand(t_vars *vars)
 			+ vars->player.pos.z * 14;
 	pos.x = 3 + sin(vars->time / 4.8 + 56) * 3 * vars->bob \
 			- vars->player.motion_yaw * 200;
-	put_alpha_window(vars, &vars->gun, vars->resx \
+	render_mac_os_image(vars, &vars->gun, vars->resx \
 	- vars->gun.width + pos.x, vars->resy - vars->gun.height + pos.y);
 }
 
@@ -123,11 +122,11 @@ void	draw_skybox(t_vars *vars)
 	}
 	pos.y = vars->player.pitch * 2 - vars->resy / 2 + 2;
 	pos.x = fmod(-vars->player.yaw / 2 * vars->resx, vars->resx * 3.14);
-	put_alpha_window(vars, &(vars->skybox), pos.x, pos.y);
+	render_mac_os_image(vars, &(vars->skybox), pos.x, pos.y);
 	if (pos.x > 0)
-		put_alpha_window(vars, &(vars->skybox), \
+		render_mac_os_image(vars, &(vars->skybox), \
 		pos.x - vars->skybox.width + 4, pos.y);
 	if (pos.x < 0 && pos.x + vars->skybox.width > 0)
-		put_alpha_window(vars, &(vars->skybox), \
+		render_mac_os_image(vars, &(vars->skybox), \
 		pos.x + vars->skybox.width - 4, pos.y);
 }

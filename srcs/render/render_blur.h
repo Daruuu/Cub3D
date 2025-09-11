@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_blur.h                                         :+:      :+:    :+:   */
+/*   render_blur.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/10 15:10:03 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 18:41:37 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_BLUR_H
-# define CUB_BLUR_H
+#ifndef RENDER_BLUR_H
+# define RENDER_BLUR_H
 
 # include "../utils/cub_utils.h"
 

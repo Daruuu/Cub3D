@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_minimap.c                                      :+:      :+:    :+:   */
+/*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:07:10 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:35:48 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_minimap.h"
+#include "render_minimap.h"
 
 /*
 ** Draws a cube, used by the minimap drawer: draw_minimap()

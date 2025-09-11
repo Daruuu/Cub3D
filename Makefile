@@ -59,15 +59,15 @@ SRC_CORE = main.c \
 	$(SRC_DIR)/parser/parser_map_setter.c \
 	$(SRC_DIR)/parser/parser_main.c \
 	$(SRC_DIR)/parser/parser_setter.c \
-	$(SRC_DIR)/render/cub_blur.c \
+	$(SRC_DIR)/render/render_blur.c \
 	$(SRC_DIR)/render/raycast_engine.c \
 	$(SRC_DIR)/render/raycast_collision.c \
 	$(SRC_DIR)/render/raycast_dda.c \
 	$(SRC_DIR)/render/render_floor.c \
 	$(SRC_DIR)/render/render_textures.c \
-	$(SRC_DIR)/render/cub_hud.c \
-	$(SRC_DIR)/render/cub_minimap.c \
-	$(SRC_DIR)/render/cub_xquartz_layer.c \
+	$(SRC_DIR)/render/render_hud.c \
+	$(SRC_DIR)/render/render_minimap.c \
+	$(SRC_DIR)/render/render_macos_layer.c \
 	$(SRC_DIR)/game_sprites/game_sprite_door.c \
 	$(SRC_DIR)/game_sprites/game_sprite_enemy.c \
 	$(SRC_DIR)/game_sprites/game_sprite_manager.c \

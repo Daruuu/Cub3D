@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_xquartz_layer.h                                :+:      :+:    :+:   */
+/*   render_minimap.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:08:40 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 18:36:42 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_XQUARTZ_LAYER_H
-# define CUB_XQUARTZ_LAYER_H
+#ifndef RENDER_MINIMAP_H
+# define RENDER_MINIMAP_H
 
-# include "../utils/cub_utils.h"
 # include "../cub3D.h"
 
-int		put_alpha_window(t_vars *vars, t_img *img, int x, int y);
+void	draw_minimap(t_vars *vars);
+void	draw_minidot(t_vars *vars);
 
 #endif
