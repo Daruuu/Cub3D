@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_map_parser.h                                   :+:      :+:    :+:   */
+/*   parser_setter.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:29:03 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 15:34:31 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_MAP_PARSER_H
-# define CUB_MAP_PARSER_H
+#ifndef PARSER_SETTER_H
+# define PARSER_SETTER_H
 
 # include "../cub3D.h"
-# include "cub_map_setter.h"
-# include "../utils/cub_error.h"
 
-t_vec	get_map_size(t_line *start);
-int		set_map(t_vars *vars, char c, t_vec p);
-void	handle_door_rotation(t_vars *vars);
-bool	is_map_valid(t_map *map);
+void	set_resolution(t_vars *vars, char *input);
+void	set_texture(t_img *img, t_vars *vars, char *path);
+void	set_color(t_vars *vars, int *val, char *input);
+void	set_sound(uint32_t *s, t_vars *vars, char *path);
 
 #endif

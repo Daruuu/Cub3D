@@ -16,6 +16,7 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <math.h>
+# include "mlx/mlx.h"
 
 # include "srcs/utils/cub_vec.h"
 # include "srcs/utils/cub_rot.h"

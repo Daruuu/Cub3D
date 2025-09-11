@@ -48,11 +48,11 @@ PATH_BASS   = bass
 # ===================== SOURCES ===================== #
 #	$(SRC_DIR)/render/cub_bitmap.c
 SRC_CORE = main.c \
-	$(SRC_DIR)/parser/cub_file.c \
-	$(SRC_DIR)/parser/cub_map_parser.c \
-	$(SRC_DIR)/parser/cub_map_setter.c \
-	$(SRC_DIR)/parser/cub_parser.c \
-	$(SRC_DIR)/parser/cub_setter.c \
+	$(SRC_DIR)/parser/parser_file_loader.c \
+	$(SRC_DIR)/parser/parser_map_parser.c \
+	$(SRC_DIR)/parser/parser_map_setter.c \
+	$(SRC_DIR)/parser/parser_main.c \
+	$(SRC_DIR)/parser/parser_setter.c \
 	$(SRC_DIR)/pathfinder/cub_astar.c \
 	$(SRC_DIR)/pathfinder/cub_node.c \
 	$(SRC_DIR)/pathfinder/cub_node_helper.c \

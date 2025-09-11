@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_map_setter.c                                   :+:      :+:    :+:   */
+/*   parser_map_setter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:29:31 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:36:11 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_map_setter.h"
+#include "parser_map_setter.h"
 
 int	set_player(t_vars *vars, char c, t_vec p)
 {

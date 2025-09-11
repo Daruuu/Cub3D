@@ -10,19 +10,19 @@ Entender cómo se cargan y procesan los archivos `.cub`.
 ### 1. Archivos principales
 - **main.c** (líneas 122-138) → `load_args()`
 - **srcs/parser/cub_file.h** → headers del parser
-- **srcs/parser/cub_file.c** → carga principal de archivos
+- **srcs/parser/parser_file_loader.c** → carga principal de archivos
 - **srcs/parser/cub_parser.h** → headers del parser de argumentos
-- **srcs/parser/cub_parser.c** → parseo de argumentos
+- **srcs/parser/parser_main.c** → parseo de argumentos
 
 ### 2. Archivos de configuración
 - **srcs/parser/cub_setter.h** → headers de configuración
-- **srcs/parser/cub_setter.c** → configuración de valores
+- **srcs/parser/parser_setter.c** → configuración de valores
 - **srcs/parser/cub_map_setter.h** → headers de configuración del mapa
-- **srcs/parser/cub_map_setter.c** → configuración específica del mapa
+- **srcs/parser/parser_map_setter.c** → configuración específica del mapa
 
 ### 3. Archivos de parseo del mapa
 - **srcs/parser/cub_map_parser.h** → headers del parser del mapa
-- **srcs/parser/cub_map_parser.c** → parseo del mapa
+- **srcs/parser/parser_map_parser.c** → parseo del mapa
 
 ### 4. Archivos de utilidades (necesarios para parsing)
 - **srcs/utils/cub_line_reader.h** → lectura de líneas
@@ -44,14 +44,14 @@ Entender cómo se cargan y procesan los archivos `.cub`.
 ``` c
 1. main.c (load_args)
    ↓
-2. cub_file.c (load_f)
+2. parser_file_loader.c (load_f)
    ↓
-3. cub_parser.c (read_argument)
+3. parser_main.c (read_argument)
    ↓
-4. cub_setter.c (configuración)
+4. parser_setter.c (configuración)
    ↓
-5. cub_map_parser.c (parseo del mapa)
+5. parser_map_parser.c (parseo del mapa)
    ↓
-6. cub_map_setter.c (configuración del mapa)
+6. parser_map_setter.c (configuración del mapa)
 
 ``` 

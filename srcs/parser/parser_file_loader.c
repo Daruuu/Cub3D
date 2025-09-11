@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_file.c                                         :+:      :+:    :+:   */
+/*   parser_file_loader.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:11:16 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:28:19 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_file.h"
+#include "parser_file_loader.h"
 
 int	load_map(t_vars *vars, t_line *file)
 {

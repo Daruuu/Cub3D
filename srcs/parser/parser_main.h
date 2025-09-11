@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_file.h                                         :+:      :+:    :+:   */
+/*   parser_main.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:28:44 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 15:32:18 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_FILE_H
-# define CUB_FILE_H
+#ifndef PARSER_MAIN_H
+# define PARSER_MAIN_H
 
-# include "../utils/cub_error.h"
-# include "cub_parser.h"
-# include "cub_map_parser.h"
 # include "../cub3D.h"
+# include "../render/render_textures.h"
 
-int	load_f(char *filepath, t_vars *vars);
+bool	read_argument_sounds(t_vars *vars, t_line *file);
+bool	read_argument_custom(t_vars *vars, t_line *file);
+bool	read_argument(t_vars *vars, t_line *file);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_parser.c                                       :+:      :+:    :+:   */
+/*   parser_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_parser.h"
-#include "cub_setter.h"
+#include "parser_main.h"
+#include "parser_setter.h"
 
 char	*read_arg(char *s1, char *s2, char **ret)
 {
