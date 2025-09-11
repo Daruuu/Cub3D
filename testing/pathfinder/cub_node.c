@@ -19,16 +19,11 @@
 
 t_node	*make_node(t_node *parent, t_vec end, t_vec pos)
 {
-	t_node	*elem;
-
-	elem = (t_node *) malloc (sizeof (t_node));
-	if (!elem)
-		return (NULL);
-	elem->pos = pos;
-	elem->parent = parent;
-	elem->next = NULL;
-	elem->square_dist = square_dist2i(end, pos);
-	return (elem);
+	(void)parent;
+	(void)end;
+	(void)pos;
+	// Implementación vacía - creación de nodos deshabilitada temporalmente
+	return (NULL);
 }
 
 /*

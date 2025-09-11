@@ -17,7 +17,7 @@
 # include "../game/game_collision.h"
 # include "cub_sprite_list.h"
 # include "cub_doors.h"
-# include "../pathfinder/cub_astar.h"
+// # include "../pathfinder/cub_astar.h"
 
 void	handle_goomba(t_sprite *curr, t_vars *vars);
 

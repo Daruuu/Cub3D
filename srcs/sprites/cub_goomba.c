@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:13:58 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:57:18 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	refresh_path(t_sprite *curr, t_vars *vars, int maxtries)
 {
-	t_vec	startp;
-	t_vec	endp;
-	t_vec	*new;
 
+	(void) maxtries;
+	(void) curr;
+	(void) vars;
+}
+	/*
+	// t_vec	startp;
+	// t_vec	endp;
+	// t_vec	*new;
 	startp.x = floor(curr->pos.x);
 	startp.y = floor(curr->pos.y);
 	endp.x = floor(vars->player.pos.x);
@@ -30,7 +35,7 @@ void	refresh_path(t_sprite *curr, t_vars *vars, int maxtries)
 		curr->path = new;
 		curr->path_index = 0;
 	}
-}
+*/
 
 t_vec3d	get_next_move(t_sprite *curr, t_vars *vars)
 {

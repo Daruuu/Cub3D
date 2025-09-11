@@ -47,18 +47,18 @@ PATH_BASS   = bass
 
 # ===================== SOURCES ===================== #
 #	$(SRC_DIR)/render/cub_bitmap.c
+#	$(SRC_DIR)/pathfinder/cub_astar.c \
+#	$(SRC_DIR)/pathfinder/cub_node.c \
+#	$(SRC_DIR)/pathfinder/cub_node_helper.c \
+#	$(SRC_DIR)/pathfinder/cub_path.c \
+#	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
+#	$(SRC_DIR)/pathfinder/cub_star_cardinal.c
 SRC_CORE = main.c \
 	$(SRC_DIR)/parser/parser_file_loader.c \
 	$(SRC_DIR)/parser/parser_map_parser.c \
 	$(SRC_DIR)/parser/parser_map_setter.c \
 	$(SRC_DIR)/parser/parser_main.c \
 	$(SRC_DIR)/parser/parser_setter.c \
-	$(SRC_DIR)/pathfinder/cub_astar.c \
-	$(SRC_DIR)/pathfinder/cub_node.c \
-	$(SRC_DIR)/pathfinder/cub_node_helper.c \
-	$(SRC_DIR)/pathfinder/cub_path.c \
-	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
-	$(SRC_DIR)/pathfinder/cub_star_cardinal.c \
 	$(SRC_DIR)/render/cub_blur.c \
 	$(SRC_DIR)/render/raycast_engine.c \
 	$(SRC_DIR)/render/raycast_collision.c \

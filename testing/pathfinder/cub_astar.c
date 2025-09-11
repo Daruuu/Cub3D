@@ -109,27 +109,10 @@ void	clear_list(t_astar *star, t_node *a, t_node *b, t_node *goal)
 
 t_vec	*astar(t_map *map, t_vec start, t_vec end, unsigned int maxtries)
 {
-	t_astar	star;
-	t_vec	*path;
-
-	star.closed_map = make_closedmap(map->size.x * map->size.y);
-	if (!is_valid(map, start) || !is_valid(map, end) || !(star.closed_map))
-		return (NULL);
-	star.start_pos = start;
-	star.end_pos = end;
-	star.list_open = make_node(NULL, end, start);
-	star.list_closed = NULL;
-	star.goal = NULL;
-	star.map = map;
-	while (maxtries--)
-	{
-		if (!star.list_open)
-			break ;
-		add_neighbors(&star, star.list_open);
-		if (star.goal)
-			break ;
-	}
-	path = make_path(star.goal);
-	clear_list(&star, star.list_open, star.list_closed, star.goal);
-	return (path);
+	(void)map;
+	(void)start;
+	(void)end;
+	(void)maxtries;
+	// Implementación vacía - algoritmo A* deshabilitado temporalmente
+	return (NULL);
 }

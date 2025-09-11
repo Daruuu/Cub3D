@@ -80,6 +80,7 @@ endif()
 # ===== EXECUTABLE: cub3d =========== #
 add_executable(cub3d ${SRC_FILES}
         include/includes_cub.h
+        srcs/game/game_player.c
 )
 
 #add_dependencies(cub3d libmlx libft)

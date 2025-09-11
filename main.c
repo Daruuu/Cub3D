@@ -6,14 +6,14 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 15:27:22 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:59:09 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "mlx/mlx.h"
 #include "srcs/parser/parser_file_loader.h"
-#include "srcs/pathfinder/cub_pathfinder.h"
+// #include "srcs/pathfinder/cub_pathfinder.h"
 #include "srcs/render/cub_hud.h"
 #include "srcs/render/render_floor.h"
 #include "srcs/utils/cub_checker.h"
@@ -43,11 +43,11 @@ void	update_world(t_vars *vars)
 			draw_sprites(vars, true);
 			vars->time++;
 			vars->delay -= FPS_BONUS;
-			refresh_pathfinding(vars);
+			// refresh_pathfinding(vars);
 		}
 	}
 	update_motion(&(vars->player), vars);
-	refresh_pathfinding(vars);
+	// refresh_pathfinding(vars);
 }
 
 /**
