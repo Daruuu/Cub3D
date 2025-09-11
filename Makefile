@@ -1,33 +1,41 @@
 # ===================== PROJECT CONFIG ===================== #
 NAME        = cub3D
 NAME_BONUS	= cub3D_bonus
+
 CC          = cc
 RM          = rm -f
+AR          = ar rcs
 
+# Compiler flags
 CFLAGS      = -Wall -Wextra -Werror
-DEBUGFLAGS  = -g -fsanitize=address
+DEBUGFLAGS  = -g -fsanitize=address -fsanitize=undefined
 HEADERS		= cub3D.h include/includes_cub.h
 
+# Detect OS
 UNAME       := $(shell uname)
 
 # ===================== CONFIG EXTRA ===================== #
+# Parallel compilation
 MAKEFLAGS   += -j$(shell nproc)
 
-# ================== Flags ================== #
-#PLAYER_SPEED_DEFAULT := 0.0045
+# ===================== GAME CONFIGURATION ===================== #
+# Player speeds
 PLAYER_SPEED_DEFAULT := 0.0015
 PLAYER_SPEED_BONUS   := 0.0085
 
-#ROTATION_SPEED_DEFAULT := 0.0045
+# Rotation speeds  
 ROTATION_SPEED_DEFAULT := 0.0010
 ROTATION_SPEED_BONUS   := 0.009
 
+# Build configuration flags
 CFLAGS_MANDATORY	:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_DEFAULT) -DROTATION_SPEED=$(ROTATION_SPEED_DEFAULT)
 CFLAGS_BONUS		:= $(CFLAGS) -DPLAYER_SPEED=$(PLAYER_SPEED_BONUS) -DROTATION_SPEED=$(ROTATION_SPEED_BONUS)
 
+# ===================== DEPENDENCY MANAGEMENT ===================== #
 DEPDIR      := .deps
 DEP_FLAGS    = -MMD -MP -MF $(DEPDIR)/$*.d  # <--- generate dependency files in .deps/
 
+# Debug and sanitize options
 DEBUG   ?= 0
 SANITIZE?= 0
 
@@ -36,7 +44,7 @@ ifeq ($(DEBUG), 1)
 endif
 
 ifeq ($(SANITIZE), 1)
-	CFLAGS += -fsanitize=address -fsanitize=undefined
+	CFLAGS += $(DEBUGFLAGS)
 endif
 
 # ===================== PATHS ===================== #
@@ -44,6 +52,15 @@ SRC_DIR		= srcs
 PATH_MLX    = mlx
 PATH_DELAY  = $(SRC_DIR)/delay
 PATH_BASS   = bass
+INCLUDE_DIR = include
+
+# Include directories
+INCLUDES    = -I$(PATH_MLX) -I$(PATH_BASS) -I$(INCLUDE_DIR) \
+			  -I$(SRC_DIR)/parser -I$(SRC_DIR)/pathfinder \
+			  -I$(SRC_DIR)/render -I$(SRC_DIR)/utils \
+			  -I$(SRC_DIR)/world -I$(SRC_DIR)/other \
+			  -I$(SRC_DIR)/game -I$(SRC_DIR)/game_sprites \
+			  -I$(SRC_DIR)/sound
 
 # ===================== SOURCES ===================== #
 #	$(SRC_DIR)/render/cub_bitmap.c
@@ -134,63 +151,95 @@ DEPS_BONUS    = $(SRC_BONUS:.c=.d)
 DEPS_OPTIONAL = $(SRC_AUDIO:.c=.d)
 DEPS          = $(DEPS_CORE) $(DEPS_BONUS) $(DEPS_OPTIONAL)
 
-# ===================== FLAGS ===================== #
-FLAGS_BASE = -I$(PATH_MLX) -L$(PATH_MLX) -lmlx -lm -lXext -lX11 \
-			 -I$(PATH_DELAY) -L$(PATH_DELAY) -ldelay \
-			 -Wl,-rpath=./$(PATH_BASS)/,-rpath=./$(PATH_MLX)/,-rpath=./$(PATH_DELAY)/
+# ===================== LINKING FLAGS ===================== #
+# Base libraries and paths
+LDFLAGS_BASE = -L$(PATH_MLX) -L$(PATH_DELAY) \
+			   -Wl,-rpath=./$(PATH_BASS)/,-rpath=./$(PATH_MLX)/,-rpath=./$(PATH_DELAY)/
 
-FLAGS_BONUS = -I$(PATH_BASS) -L$(PATH_BASS) -lbass \
-			  -I$(PATH_DELAY) -L$(PATH_DELAY) -ldelay \
-			  $(FLAGS_BASE)
+# Library flags
+LIBS_BASE = -lmlx -lm -lXext -lX11 -ldelay
+LIBS_BONUS = -lbass
 
-# ===================== RULES ===================== #
+# Combined flags
+FLAGS_BASE = $(INCLUDES) $(LDFLAGS_BASE) $(LIBS_BASE)
+FLAGS_BONUS = $(INCLUDES) -I$(PATH_BASS) -L$(PATH_BASS) $(LDFLAGS_BASE) $(LIBS_BONUS) $(LIBS_BASE)
+
+# Default target
 all: $(NAME)
 
-$(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL)
-	$(MAKE) -C $(PATH_MLX)
-	$(MAKE) -C $(PATH_DELAY)
-	$(CC) $(CFLAGS_MANDATORY) -o $(NAME) $(OBJS_CORE) $(OBJS_OPTIONAL) $(FLAGS_BASE)
+# Build mandatory version
+$(NAME): $(OBJS_CORE) $(OBJS_OPTIONAL) | build-deps
+#	@echo "🔨 Building $(NAME)..."
+	$(CC) $(CFLAGS_MANDATORY) -o $@ $^ $(FLAGS_BASE)
+#	@echo "✅ $(NAME) built successfully!"
 
+# Build bonus version
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
-	$(MAKE) -C $(PATH_MLX)
-	$(MAKE) -C $(PATH_DELAY)
-	$(CC) $(CFLAGS_BONUS) -o $(NAME_BONUS) $^ $(FLAGS_BONUS)
+$(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o) | build-deps
+	#@echo "🔨 Building $(NAME_BONUS)..."
+	$(CC) $(CFLAGS_BONUS) -o $@ $^ $(FLAGS_BONUS)
+#	@echo "✅ $(NAME_BONUS) built successfully!"
 
-# ===================== COMPILATION WITH DEPENDENCIES ===================== #
+# Build dependencies
+build-deps:
+#	@echo "📦 Building dependencies..."
+	$(MAKE) -C $(PATH_MLX) > /dev/null 2>&1
+	$(MAKE) -C $(PATH_DELAY) > /dev/null 2>&1
+
+# ===================== COMPILATION RULES ===================== #
+# Compile mandatory objects
 %.o: %.c Makefile cub3D.h include/includes_cub.h
-	@mkdir -p $(dir $@)                     # Crear carpeta para .o
-	@mkdir -p $(DEPDIR)/$(dir $<)          # Crear carpeta para .d
-	$(CC) $(CFLAGS_MANDATORY) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
+	@mkdir -p $(dir $@)
+	@mkdir -p $(DEPDIR)/$(dir $<)
+	@echo "🔨 Compiling $<..."
+	$(CC) $(CFLAGS_MANDATORY) $(DEP_FLAGS) $(INCLUDES) -c $< -o $@ -D LINUX=true
 
-# Regla para bonus (se compila a _bonus.o para no chocar con mandatory)
+# Compile bonus objects
 %_bonus.o: %.c Makefile cub3D.h include/includes_cub.h
 	@mkdir -p $(dir $@)
 	@mkdir -p $(DEPDIR)/$(dir $<)
-	$(CC) $(CFLAGS_BONUS) $(DEP_FLAGS) -I$(PATH_MLX) -I$(PATH_BASS) -Iinclude -Iparser -Ipathfinder -Irender -Iutils -Iworld -Iother -c $< -o $@ -D LINUX=true
-
+	#@echo "🔨 Compiling $< (bonus)..."
+	$(CC) $(CFLAGS_BONUS) $(DEP_FLAGS) $(INCLUDES) -c $< -o $@ -D LINUX=true
 
 # ===================== CLEAN ===================== #
 clean:
+#	@echo "🧹 Cleaning object files..."
 	$(MAKE) -C $(PATH_MLX) clean
 	$(MAKE) -C $(PATH_DELAY) clean
 	$(RM) $(OBJS_CORE) $(OBJS_BONUS) $(OBJS_OPTIONAL)
 	$(RM) $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
 	$(RM) -r $(DEPDIR)
+#	@echo "✅ Clean completed!"
 
 fclean: clean
+#	@echo "🧹 Full cleaning..."
 	$(MAKE) -C $(PATH_DELAY) fclean
 	$(RM) $(NAME) $(NAME_BONUS)
+#	@echo "✅ Full clean completed!"
 
 re: fclean all
+#	@echo "🔄 Rebuilding everything..."
+	 @$(MAKE) all
 
 norm:
 	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_AUDIO)" main.c cub3D.h include/includes_cub.h
 	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_AUDIO) main.c cub3D.h include/includes_cub.h
 
-# ===================== INCLUDE DEPENDENCIES ===================== #
-# Incluir todos los archivos .d generados en .deps
+# ===================== UTILITY RULES ===================== #
+# Debug build
+debug:
+	@echo "🐛 Building debug version..."
+	@$(MAKE) DEBUG=1
+
+# Sanitize build
+sanitize:
+	@echo "🧹 Building sanitized version..."
+	@$(MAKE) SANITIZE=1
+
+# ===================== DEPENDENCY INCLUSION ===================== #
+# Include all generated .d files from .deps
 -include $(DEPS)
 
-.PHONY: all clean fclean re bonus norm
+# ===================== BUILD RULES ===================== #
+.PHONY: all bonus clean fclean re norm debug sanitize help
