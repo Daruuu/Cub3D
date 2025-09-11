@@ -36,7 +36,7 @@ Entender cómo funciona el motor de **raycasting** y el proceso de **renderizado
 - **srcs/world/cub_cardinal.h** → headers de direcciones
 - **srcs/world/game_directions.c** → implementación de direcciones
 - **srcs/world/cub_collide.h** → headers de colisiones
-- **srcs/world/cub_collide.c** → implementación de colisiones
+- **srcs/world/game_collision.c** → implementación de colisiones
 
 ### 5. Archivos de sprites *(opcional para raycasting básico)*
 - **srcs/sprites/cub_sprites.h** → headers de sprites

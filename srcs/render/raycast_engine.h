@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:12:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 17:00:19 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:49:02 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RAYCAST_ENGINE_H
 
 # include "../cub3D.h"
-# include "../world/cub_cardinal.h"
-# include "../world/cub_portal.h"
+# include "../game/game_directions.h"
+# include "../game/game_portal.h"
 # include "../utils/cub_vec.h"
 
 void			ray(t_vars *vars, t_img *img);

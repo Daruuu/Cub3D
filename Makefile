@@ -6,6 +6,7 @@ RM          = rm -f
 
 CFLAGS      = -Wall -Wextra -Werror
 DEBUGFLAGS  = -g -fsanitize=address
+HEADERS		= cub3D.h include/includes_cub.h
 
 UNAME       := $(shell uname)
 
@@ -46,7 +47,7 @@ PATH_BASS   = bass
 
 # ===================== SOURCES ===================== #
 #	$(SRC_DIR)/render/cub_bitmap.c
-SRC_CORE = \
+SRC_CORE = main.c \
 	$(SRC_DIR)/parser/cub_file.c \
 	$(SRC_DIR)/parser/cub_map_parser.c \
 	$(SRC_DIR)/parser/cub_map_setter.c \
@@ -86,32 +87,31 @@ SRC_CORE = \
 	$(SRC_DIR)/utils/cub_utils5.c \
 	$(SRC_DIR)/utils/cub_vec.c \
 	$(SRC_DIR)/utils/cub_vec2.c \
-	$(SRC_DIR)/world/cub_cardinal.c \
-	$(SRC_DIR)/world/cub_collide.c \
-	$(SRC_DIR)/world/cub_map.c \
-	$(SRC_DIR)/world/cub_player.c \
-	$(SRC_DIR)/world/cub_portal.c \
-	$(SRC_DIR)/world/cub_portal2.c \
-	$(SRC_DIR)/world/portal_list.c \
-	main.c
+	$(SRC_DIR)/game/game_directions.c \
+	$(SRC_DIR)/game/game_collision.c \
+	$(SRC_DIR)/game/game_map.c \
+	$(SRC_DIR)/game/game_player.c \
+	$(SRC_DIR)/game/game_portal.c \
+	$(SRC_DIR)/game/game_portal_advance.c \
+	$(SRC_DIR)/game/game_portal_render.c
 
 SRC_BONUS = \
 	bonus/cub_sound_bonus.c \
 	bonus/cub_other_bonus.c
 
-SRC_OPTIONAL = \
-	$(SRC_DIR)/other/cub_other.c \
-	$(SRC_DIR)/other/cub_sound.c
+SRC_AUDIO = \
+	$(SRC_DIR)/sound/bonus_features.c \
+	$(SRC_DIR)/sound/audio_system.c
 
 # ===================== OBJECTS ===================== #
 OBJS_CORE     = ${SRC_CORE:.c=.o}
 OBJS_BONUS    = ${SRC_BONUS:.c=.o}
-OBJS_OPTIONAL = ${SRC_OPTIONAL:.c=.o}
+OBJS_OPTIONAL = ${SRC_AUDIO:.c=.o}
 
 # ===================== DEPENDENCIES (.d files) ===================== #
 DEPS_CORE     = $(SRC_CORE:.c=.d)
 DEPS_BONUS    = $(SRC_BONUS:.c=.d)
-DEPS_OPTIONAL = $(SRC_OPTIONAL:.c=.d)
+DEPS_OPTIONAL = $(SRC_AUDIO:.c=.d)
 DEPS          = $(DEPS_CORE) $(DEPS_BONUS) $(DEPS_OPTIONAL)
 
 # ===================== FLAGS ===================== #
@@ -166,8 +166,8 @@ fclean: clean
 re: fclean all
 
 norm:
-	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL)" main.c cub3D.h include/includes_cub.h
-	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_OPTIONAL) main.c cub3D.h include/includes_cub.h
+	@echo "🔍 Norminette: $(SRC_CORE) $(SRC_BONUS) $(SRC_AUDIO)" main.c cub3D.h include/includes_cub.h
+	@norminette $(SRC_CORE) $(SRC_BONUS) $(SRC_AUDIO) main.c cub3D.h include/includes_cub.h
 
 # ===================== INCLUDE DEPENDENCIES ===================== #
 # Incluir todos los archivos .d generados en .deps

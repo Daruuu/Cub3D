@@ -50,7 +50,7 @@ bool	load_sound(uint32_t *s, char *path)
 	if (!loaded || *s)
 		return (false);
 	*s = BASS_StreamCreateFile(false, path, 0, 0, 0);
-	return (true);
+	return (*s != 0);
 }
 
 void	play_sound_alt(uint32_t s, bool play, bool loop)

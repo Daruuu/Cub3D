@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 00:29:52 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:44:40 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB_MAP_SETTER_H
 
 # include "../cub3D.h"
-# include "../world/cub_player.h"
+# include "../game/game_player.h"
 # include "../utils/cub_error.h"
 # include "../sprites/cub_sprites.h"
 

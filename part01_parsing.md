@@ -36,7 +36,7 @@ Entender cómo se cargan y procesan los archivos `.cub`.
 - **include/cub_player_struct.h** → estructura del jugador
 - **include/cub_sprite_struct.h** → estructura de sprites
 - **srcs/world/cub_map.h** → estructura del mapa
-- **srcs/world/cub_map.c** → implementación del mapa
+- **srcs/world/game_map.c** → implementación del mapa
 
 ---
 

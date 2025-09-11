@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:04:23 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:45:20 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "cub_path.h"
 # include "../utils/cub_vec.h"
 # include "../utils/cub_utils.h"
-# include "../world/cub_map.h"
+# include "../game/game_map.h"
 # include <unistd.h>
 
 typedef struct s_astar	t_astar;

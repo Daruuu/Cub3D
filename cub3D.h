@@ -21,7 +21,7 @@
 # include "srcs/utils/cub_rot.h"
 # include "srcs/utils/cub_utils.h"
 # include "srcs/render/cub_blur.h"
-# include "srcs/world/cub_map.h"
+# include "srcs/game/game_map.h"
 # include "srcs/utils/cub_line_reader.h"
 # include "srcs/sound/audio_system.h"
 # include "include/includes_cub.h"

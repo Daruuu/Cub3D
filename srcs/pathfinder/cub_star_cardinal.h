@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:05:54 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:44:07 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../utils/cub_vec.h"
 # include "cub_node.h"
-# include "../world/cub_map.h"
+# include "../game/game_map.h"
 # include <stdbool.h>
 # include <stdlib.h>
 # include <math.h>

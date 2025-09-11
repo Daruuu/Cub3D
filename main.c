@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/10 16:25:56 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:58:18 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "srcs/utils/cub_error.h"
 #include "srcs/utils/cub_keybinds.h"
 #include "srcs/utils/cub_setup.h"
-#include "srcs/world/cub_player.h"
+#include "srcs/game/game_player.h"
 
 /**
 * Updates the game world state:
