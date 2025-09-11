@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_sound.h                                        :+:      :+:    :+:   */
+/*   audio_system.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:53:59 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 21:16:42 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 21:49:19 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_SOUND_H
-# define CUB_SOUND_H
+#ifndef AUDIO_SYSTEM_H
+# define AUDIO_SYSTEM_H
 
 # include <stdbool.h>
 # include <stdio.h>

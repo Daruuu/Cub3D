@@ -6,10 +6,9 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 15:12:35 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:39:59 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "game_portal_render.h"
 

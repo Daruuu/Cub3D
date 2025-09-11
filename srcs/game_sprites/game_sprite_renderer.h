@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 16:16:29 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:45:24 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_SPRITES_RENDERER_H
-# define GAME_SPRITES_RENDERER_H
+#ifndef GAME_SPRITE_RENDERER_H
+# define GAME_SPRITE_RENDERER_H
 
 # include "../cub3D.h"
 # include "../game/game_collision.h"

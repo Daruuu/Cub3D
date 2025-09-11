@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 16:22:29 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:43:39 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	refresh_path(t_sprite *curr, t_game *game, int maxtries)
 {
-
 	(void) maxtries;
 	(void) curr;
 	(void) game;

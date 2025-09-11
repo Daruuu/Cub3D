@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 16:26:52 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:45:00 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_SPRITE_DOORS_H
-# define GAME_SPRITE_DOORS_H
+#ifndef GAME_SPRITE_DOOR_H
+# define GAME_SPRITE_DOOR_H
 
 # include "../cub3D.h"
 

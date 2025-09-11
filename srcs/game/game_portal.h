@@ -6,12 +6,12 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 14:55:46 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:42:33 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_PORTAL_H
-# define CUB_PORTAL_H
+#ifndef GAME_PORTAL_H
+# define GAME_PORTAL_H
 
 # include "../cub3D.h"
 # include "game_directions.h"

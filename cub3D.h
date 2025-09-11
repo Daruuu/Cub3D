@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dasalaza <dasalaza@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 21:37:01 by dasalaza          #+#    #+#             */
+/*   Updated: 2025/09/11 21:37:02 by dasalaza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -23,6 +35,20 @@
 # define ERROR_INVALID_DOOR_POS	"Invalid door position."
 # define ERROR_FILE_TYPE		"Unknown file type."
 # define ERROR_USAGE_CUB		"Usage: cub3D [cub file]"
+
+// ===================== PARSER ERROR MESSAGES ===================== //
+# define ERROR_DUPLICATE_RESOLUTION	"Duplicate resolution paramater."
+# define ERROR_PARSING_RESOLUTION	"Error parsing resolution."
+# define ERROR_DUPLICATE_TEXTURE		"Duplicate texture paramater."
+# define ERROR_FAILED_LOAD_TEXTURE	"Failed to load texture."
+# define ERROR_COLOR_SET_TWICE		"Color was set twice."
+# define ERROR_READING_COLOR		"Error reading color."
+# define ERROR_COULD_NOT_READ_AUDIO	"Could not read audio..."
+# define ERROR_COULD_NOT_LOAD_FILE	"Could not load file."
+# define ERROR_MAP_GRID_EMPTY		"Map grid is empty."
+# define ERROR_FAILED_INIT_MAP		"Failed to initialize map."
+# define ERROR_DUPLICATE_PLAYER		"Duplicate player in map."
+# define ERROR_DUPLICATE_PATHFINDER	"Duplicate pathfinder in map."
 
 # define FPS60 16666
 # define FPS50 20000

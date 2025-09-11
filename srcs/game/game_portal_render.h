@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 17:38:28 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 14:55:56 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:39:18 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PORTAL_LIST_H
-# define PORTAL_LIST_H
+#ifndef GAME_PORTAL_RENDER_H
+# define GAME_PORTAL_RENDER_H
 
 # include "../cub3D.h"
 # include "game_directions.h"

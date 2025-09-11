@@ -6,11 +6,11 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 19:52:52 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:46:12 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "parser_map_setter.h"
+#include "parser_map_setter.h"
 
 int	set_player(t_game *game, char c, t_vec p)
 {
@@ -27,7 +27,7 @@ int	set_player(t_game *game, char c, t_vec p)
 	else
 		return (0);
 	if (game->player.health != 0)
-		handle_error(game, "Duplicate player in map.", NULL);
+		handle_error(game, ERROR_DUPLICATE_PLAYER, NULL);
 	game->player = make_player();
 	game->player.pos.x = p.x + 0.50001;
 	game->player.pos.y = p.y + 0.50001;
@@ -76,7 +76,7 @@ int	set_pathfinder(t_game *game, char c, t_vec p)
 	if (game->bonus && c == 'P')
 	{
 		if (game->pathfinder.x != -1)
-			handle_error(game, "Duplicate pathfinder in map.", NULL);
+			handle_error(game, ERROR_DUPLICATE_PATHFINDER, NULL);
 		game->pathfinder = p;
 		return (1);
 	}

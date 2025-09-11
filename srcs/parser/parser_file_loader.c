@@ -44,7 +44,7 @@ int	load_f(char *filepath, t_game *game)
 	load_file(filepath, &(file), 0);
 	game->file = file;
 	if (!game->file)
-		handle_error(game, "Could not load file.", filepath);
+		handle_error(game, ERROR_COULD_NOT_LOAD_FILE, filepath);
 	while (file)
 	{
 		if (!file->line[0] || read_argument(game, file))
@@ -54,9 +54,9 @@ int	load_f(char *filepath, t_game *game)
 	}
 	size = get_map_size(file);
 	if (size.x == 0)
-		handle_error(game, "Map grid is empty.", NULL);
+		handle_error(game, ERROR_MAP_GRID_EMPTY, NULL);
 	game->map = make_empty(size);
 	if (!game->map.data)
-		handle_error(game, "Failed to initialize map.", NULL);
+		handle_error(game, ERROR_FAILED_INIT_MAP, NULL);
 	return (load_map(game, file));
 }

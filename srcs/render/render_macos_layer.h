@@ -6,12 +6,12 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 19:03:13 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:52:46 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_XQUARTZ_LAYER_H
-# define CUB_XQUARTZ_LAYER_H
+#ifndef RENDER_MACOS_LAYER_H
+# define RENDER_MACOS_LAYER_H
 
 # include "../utils/cub_utils.h"
 # include "../cub3D.h"
