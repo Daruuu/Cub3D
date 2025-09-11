@@ -64,7 +64,7 @@ if(BONUS)
 else()
     file(GLOB SRC_FILES
             main.c
-            srcs/other/*.c
+            srcs/sound/*.c
             srcs/delay/*.c
             srcs/parser/*.c
             srcs/pathfinder/*.c

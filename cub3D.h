@@ -23,7 +23,7 @@
 # include "srcs/render/cub_blur.h"
 # include "srcs/world/cub_map.h"
 # include "srcs/utils/cub_line_reader.h"
-# include "srcs/other/cub_sound.h"
+# include "srcs/sound/audio_system.h"
 # include "include/includes_cub.h"
 
 # define TITLE_WINDOWS			"Cub3D Ana & Daru"

@@ -1,27 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_other.c                                        :+:      :+:    :+:   */
+/*   audio_system.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 17:18:41 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 12:43:24 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include "audio_system.h"
 
-/*
-static int	get_delay(bool startnow, int min)
+void	init_sound_empty(t_sounds *sounds)
 {
-	(void)startnow;
-	(void)min;
-	return (0);
+	sounds->door = 0;
+	sounds->hurt = 0;
+	sounds->stomp = 0;
+	sounds->portal = 0;
+	sounds->heal = 0;
+	sounds->ambient = 0;
+	sounds->walk = 0;
 }
-*/
 
-void	set_bonus(bool *bonus)
+void	clear_sounds(t_sounds *sounds)
 {
-	*bonus = false;
+	(void)sounds;
+}
+
+bool	load_sound(uint32_t *s, char *path)
+{
+	(void)s;
+	(void)path;
+	return (false);
+}
+
+void	play_sound_alt(uint32_t s, bool play, bool loop)
+{
+	(void)s;
+	(void)play;
+	(void)loop;
+}
+
+void	play_sound(uint32_t s)
+{
+	(void)s;
 }

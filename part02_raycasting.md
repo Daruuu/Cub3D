@@ -34,7 +34,7 @@ Entender cómo funciona el motor de **raycasting** y el proceso de **renderizado
 - **include/cub_raycast_struct.h** → estructuras de raycasting
 - **include/cub_cardinal_enum.h** → direcciones cardinales
 - **srcs/world/cub_cardinal.h** → headers de direcciones
-- **srcs/world/cub_cardinal.c** → implementación de direcciones
+- **srcs/world/game_directions.c** → implementación de direcciones
 - **srcs/world/cub_collide.h** → headers de colisiones
 - **srcs/world/cub_collide.c** → implementación de colisiones
 

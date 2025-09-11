@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_sound.c                                        :+:      :+:    :+:   */
+/*   bonus_features.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:32 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/08 17:18:32 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:18:41 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_sound.h"
+#include <stdbool.h>
 
-void	init_sound_empty(t_sounds *sounds)
+/*
+static int	get_delay(bool startnow, int min)
 {
-	sounds->door = 0;
-	sounds->hurt = 0;
-	sounds->stomp = 0;
-	sounds->portal = 0;
-	sounds->heal = 0;
-	sounds->ambient = 0;
-	sounds->walk = 0;
+	(void)startnow;
+	(void)min;
+	return (0);
 }
+*/
 
-void	clear_sounds(t_sounds *sounds)
+void	set_bonus(bool *bonus)
 {
-	(void)sounds;
-}
-
-bool	load_sound(uint32_t *s, char *path)
-{
-	(void)s;
-	(void)path;
-	return (false);
-}
-
-void	play_sound_alt(uint32_t s, bool play, bool loop)
-{
-	(void)s;
-	(void)play;
-	(void)loop;
-}
-
-void	play_sound(uint32_t s)
-{
-	(void)s;
+	*bonus = false;
 }
