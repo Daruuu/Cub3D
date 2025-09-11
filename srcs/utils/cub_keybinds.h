@@ -48,9 +48,9 @@
 # endif
 
 void			set_keystate(t_keybinds *keybinds, int key, bool pressed);
-int				key_press(int keycode, t_vars *vars);
-int				key_lift(int keycode, t_vars *vars);
-void			update_keybinds(t_vars *vars);
+int				key_press(int keycode, t_game *game);
+int				key_lift(int keycode, t_game *game);
+void			update_keybinds(t_game *game);
 t_keybinds		make_keybinds(void);
 
 #endif

@@ -16,20 +16,20 @@
 ** Draws a cube, used by the minimap drawer: draw_minimap()
 */
 
-void	draw_rects(t_vec v, t_shape rec, t_vars *vars)
+void	draw_rects(t_vec v, t_shape rec, t_game *game)
 {
 	int	i;
 
-	if (map_get(&vars->map, v.x + (int)(vars->player.s_pos.x), v.y
-		+ (int)(vars->player.s_pos.y)))
-		rect(&(vars->blur.dest), rec, 0xA0143B6A);
+	if (map_get(&game->map, v.x + (int)(game->player.s_pos.x), v.y
+		+ (int)(game->player.s_pos.y)))
+		rect(&(game->blur.dest), rec, 0xA0143B6A);
 	i = 0;
-	while (vars->last_path && vars->last_path[i].x != -999)
+	while (game->last_path && game->last_path[i].x != -999)
 	{
-		if ((v.x + (int)(vars->player.s_pos.x)) == vars->last_path[i].x &&
-			(v.y + (int)(vars->player.s_pos.y)) == vars->last_path[i].y)
+		if ((v.x + (int)(game->player.s_pos.x)) == game->last_path[i].x &&
+			(v.y + (int)(game->player.s_pos.y)) == game->last_path[i].y)
 		{
-			rect(&(vars->blur.dest), rec, 0x300A0A1E);
+			rect(&(game->blur.dest), rec, 0x300A0A1E);
 		}
 		i++;
 	}
@@ -39,37 +39,37 @@ void	draw_rects(t_vec v, t_shape rec, t_vars *vars)
 ** Draws the actual minimap overlay to the blur buffer
 */
 
-void	draw_minimap(t_vars *vars)
+void	draw_minimap(t_game *game)
 {
 	t_vec	v;
 	t_shape	rec;
 
-	vars->player.s_pos.x -= (vars->player.s_pos.x - vars->player.pos.x) * 0.17;
-	vars->player.s_pos.y -= (vars->player.s_pos.y - vars->player.pos.y) * 0.17;
+	game->player.s_pos.x -= (game->player.s_pos.x - game->player.pos.x) * 0.17;
+	game->player.s_pos.y -= (game->player.s_pos.y - game->player.pos.y) * 0.17;
 	rec.width = 12;
 	rec.height = 12;
-	rec.x = -fabs(fmod(vars->player.s_pos.x, 1)) * rec.width;
+	rec.x = -fabs(fmod(game->player.s_pos.x, 1)) * rec.width;
 	v.x = -9;
 	while (++v.x <= 8)
 	{
 		v.y = -6;
-		rec.y = -fabs(fmod(vars->player.s_pos.y, 1)) * rec.height;
+		rec.y = -fabs(fmod(game->player.s_pos.y, 1)) * rec.height;
 		while (v.y <= 7)
 		{
-			draw_rects(v, rec, vars);
+			draw_rects(v, rec, game);
 			rec.y += rec.height + 1;
 			v.y++;
 		}
 		rec.x += rec.width + 1;
 	}
-	draw_minidot(vars);
+	draw_minidot(game);
 }
 
 /*
 ** Draws the player at the center of the map
 */
 
-void	draw_minidot(t_vars *vars)
+void	draw_minidot(t_game *game)
 {
 	t_shape	rec;
 	float	f;
@@ -80,11 +80,11 @@ void	draw_minidot(t_vars *vars)
 	while (f < 1)
 	{
 		f += 0.1f;
-		rec.x = 105 + (cos(vars->player.yaw) * f) * 10;
-		rec.y = 77 + (sin(vars->player.yaw) * f) * 10;
-		rect(&(vars->blur.dest), rec, 0xD02DF9FF);
+		rec.x = 105 + (cos(game->player.yaw) * f) * 10;
+		rec.y = 77 + (sin(game->player.yaw) * f) * 10;
+		rect(&(game->blur.dest), rec, 0xD02DF9FF);
 	}
 	rec.x = 104;
 	rec.y = 77;
-	rect(&(vars->blur.dest), rec, 0xFFFFFFFF);
+	rect(&(game->blur.dest), rec, 0xFFFFFFFF);
 }

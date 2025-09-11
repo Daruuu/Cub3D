@@ -12,62 +12,62 @@
 
 #include "cub_checker.h"
 
-void	check_textures_custom(t_vars *vars)
+void	check_textures_custom(t_game *game)
 {
-	if (!vars->skybox.img)
-		handle_warning(vars, "Missing skybox texture, using color instead.");
-	if (!vars->gun.img)
-		handle_warning(vars, "Missing gun texture, hiding it.");
-	if (!vars->dash.img)
-		handle_warning(vars, "Missing dashboard overlay texture, ignoring.");
-	if (!vars->floor.img)
-		handle_warning(vars, "Missing floor texture, using color instead.");
-	if (!vars->door_img.img)
-		handle_error(vars, "Missing door texture.", "DOOR [.xpm]");
-	if (!vars->portal.img)
-		handle_warning(vars, "Missing portal texture, disabling them.");
-	if (!vars->goomba_img.img)
-		handle_error(vars, "Missing goomba texture.", "GOOMBA [.xpm]");
-	if (!vars->health_img.img)
-		handle_error(vars, "Missing health kit texture.", "HK [.xpm]");
-	if (vars->walls.north.width != vars->portal.width || \
-		vars->walls.north.height != vars->portal.height || \
-		vars->walls.south.width != vars->portal.width || \
-		vars->walls.south.height != vars->portal.height || \
-		vars->walls.west.width != vars->portal.width || \
-		vars->walls.west.height != vars->portal.height || \
-		vars->walls.east.width != vars->portal.width || \
-		vars->walls.east.height != vars->portal.height)
-		handle_error(vars, "Portal and wall texture sizes differ!", NULL);
+	if (!game->skybox.img)
+		handle_warning(game, "Missing skybox texture, using color instead.");
+	if (!game->gun.img)
+		handle_warning(game, "Missing gun texture, hiding it.");
+	if (!game->dash.img)
+		handle_warning(game, "Missing dashboard overlay texture, ignoring.");
+	if (!game->floor.img)
+		handle_warning(game, "Missing floor texture, using color instead.");
+	if (!game->door_img.img)
+		handle_error(game, "Missing door texture.", "DOOR [.xpm]");
+	if (!game->portal.img)
+		handle_warning(game, "Missing portal texture, disabling them.");
+	if (!game->goomba_img.img)
+		handle_error(game, "Missing goomba texture.", "GOOMBA [.xpm]");
+	if (!game->health_img.img)
+		handle_error(game, "Missing health kit texture.", "HK [.xpm]");
+	if (game->walls.north.width != game->portal.width || \
+		game->walls.north.height != game->portal.height || \
+		game->walls.south.width != game->portal.width || \
+		game->walls.south.height != game->portal.height || \
+		game->walls.west.width != game->portal.width || \
+		game->walls.west.height != game->portal.height || \
+		game->walls.east.width != game->portal.width || \
+		game->walls.east.height != game->portal.height)
+		handle_error(game, "Portal and wall texture sizes differ!", NULL);
 }
 
-void	check_textures(t_vars *vars)
+void	check_textures(t_game *game)
 {
-	if (!vars->sprite_img.img)
-		handle_error(vars, "Missing sprite texture.", NULL);
-	if (!vars->walls.north.img)
-		handle_error(vars, "Missing north wall texture.", NULL);
-	if (!vars->walls.south.img)
-		handle_error(vars, "Missing south wall texture.", NULL);
-	if (!vars->walls.west.img)
-		handle_error(vars, "Missing west wall texture.", NULL);
-	if (!vars->walls.east.img)
-		handle_error(vars, "Missing east wall texture.", NULL);
+	if (!game->sprite_img.img)
+		handle_error(game, "Missing sprite texture.", NULL);
+	if (!game->walls.north.img)
+		handle_error(game, "Missing north wall texture.", NULL);
+	if (!game->walls.south.img)
+		handle_error(game, "Missing south wall texture.", NULL);
+	if (!game->walls.west.img)
+		handle_error(game, "Missing west wall texture.", NULL);
+	if (!game->walls.east.img)
+		handle_error(game, "Missing east wall texture.", NULL);
 }
 
-void	check_define(t_vars *vars)
+void	check_define(t_game *game)
 {
-	if (vars->resx <= 0 || vars->resy <= 0)
-		handle_error(vars, "Resolution not properly set.", NULL);
-	if (vars->resx > 5218 || vars->resy > 5218)
-		handle_error(vars, "Resolution too big for mlx...", NULL);
-	if ((unsigned int)(vars->top_color) == 0xDB000000)
-		handle_error(vars, "Ceeling color not set.", NULL);
-	if ((unsigned int)(vars->bottom_color) == 0xDB000000)
-		handle_error(vars, "Bottom color not set.", NULL);
-	if (vars->player.health == 0x0)
-		handle_error(vars, "Player not set.", NULL);
-	check_textures(vars);
-	if (vars->bonus)
-		check_textures_custom(vars);
+	if (game->resx <= 0 || game->resy <= 0)
+		handle_error(game, "Resolution not properly set.", NULL);
+	if (game->resx > 5218 || game->resy > 5218)
+		handle_error(game, "Resolution too big for mlx...", NULL);
+	if ((unsigned int)(game->top_color) == 0xDB000000)
+		handle_error(game, "Ceeling color not set.", NULL);
+	if ((unsigned int)(game->bottom_color) == 0xDB000000)
+		handle_error(game, "Bottom color not set.", NULL);
+	if (game->player.health == 0x0)
+		handle_error(game, "Player not set.", NULL);
+	check_textures(game);
+	if (game->bonus)
+		check_textures_custom(game);
 }

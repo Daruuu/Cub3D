@@ -18,9 +18,9 @@
 # include "../utils/cub_error.h"
 # include "../game_sprites/game_sprite_renderer.h"
 
-int		set_player(t_vars *vars, char c, t_vec p);
-int		set_sprite(t_vars *vars, char c, t_vec p);
-int		set_entity(t_vars *vars, char c, t_vec p);
-int		set_pathfinder(t_vars *vars, char c, t_vec p);
+int		set_player(t_game *game, char c, t_vec p);
+int		set_sprite(t_game *game, char c, t_vec p);
+int		set_entity(t_game *game, char c, t_vec p);
+int		set_pathfinder(t_game *game, char c, t_vec p);
 
 #endif

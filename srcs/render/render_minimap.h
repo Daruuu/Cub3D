@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 
-void	draw_minimap(t_vars *vars);
-void	draw_minidot(t_vars *vars);
+void	draw_minimap(t_game *game);
+void	draw_minidot(t_game *game);
 
 #endif

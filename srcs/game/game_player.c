@@ -88,23 +88,23 @@ bool	should_bob(t_player *player)
 	return (false);
 }
 
-void	update_render(t_player *player, t_vars *vars, bool bonus)
+void	update_render(t_player *player, t_game *game, bool bonus)
 {
 	player->render.x = player->pos.x;
 	player->render.y = player->pos.y;
 	player->render.z = player->pos.z;
 	if (should_bob(player) && bonus)
-		vars->bob = fmin(1, vars->bob + 0.04);
+		game->bob = fmin(1, game->bob + 0.04);
 	else
-		vars->bob = fmax(0, vars->bob - 0.04);
-	play_sound_alt(vars->sounds.walk, should_bob(player)
+		game->bob = fmax(0, game->bob - 0.04);
+	play_sound_alt(game->sounds.walk, should_bob(player)
 		&& player->render.z == 0 && !player->keybinds.jump, true);
 	if (player->keybinds.sneak && bonus)
 		player->render.z -= 0.05;
-	player->render.y += cos(vars->time / 6.0 + 34) * 0.01 * vars->bob;
-	player->render.x += sin(vars->time / 4.8 + 56) * 0.01 * vars->bob;
-	player->render.z += fabs(cos(vars->time / 7.5) * 0.03 * vars->bob);
-	if (map_get(&vars->map, floor(player->render.x), floor(player->render.y)))
+	player->render.y += cos(game->time / 6.0 + 34) * 0.01 * game->bob;
+	player->render.x += sin(game->time / 4.8 + 56) * 0.01 * game->bob;
+	player->render.z += fabs(cos(game->time / 7.5) * 0.03 * game->bob);
+	if (map_get(&game->map, floor(player->render.x), floor(player->render.y)))
 	{
 		player->render.x = player->pos.x;
 		player->render.y = player->pos.y;
@@ -120,9 +120,9 @@ void	update_render(t_player *player, t_vars *vars, bool bonus)
  * - Handles shooting cooldown.
  *
  * @param player Player state (position, motion, orientation).
- * @param vars   Game context (world, settings, bonus).
+ * @param game   Game context (world, settings, bonus).
  */
-void	update_motion(t_player *player, t_vars *vars)
+void	update_motion(t_player *player, t_game *game)
 {
 	double	cs;
 	double	sn;
@@ -133,17 +133,17 @@ void	update_motion(t_player *player, t_vars *vars)
 	sn = sin(player->yaw);
 	player->motion.x += move.x * cs - move.y * sn;
 	player->motion.y += move.y * cs + move.x * sn;
-	handle_keys(player, vars->bonus);
+	handle_keys(player, game->bonus);
 	player->motion.z *= 0.97;
 	player->motion_yaw *= 0.914;
 	player->motion_pitch *= 0.82;
-	collidex(vars, player);
-	collidey(vars, player);
+	collidex(game, player);
+	collidey(game, player);
 	player->pos.z = fmin(fmax(0, player->pos.z + player->motion.z - .078), .42);
-	update_render(player, vars, vars->bonus);
+	update_render(player, game, game->bonus);
 	player->yaw += player->motion_yaw;
-	player->pitch = fmin(vars->resy / 4 - 4, fmax(-vars->resy / 4, \
+	player->pitch = fmin(game->resy / 4 - 4, fmax(-game->resy / 4, \
 		player->pitch + player->motion_pitch));
-	if (vars->shoot > 0)
-		vars->shoot--;
+	if (game->shoot > 0)
+		game->shoot--;
 }

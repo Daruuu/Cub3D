@@ -13,37 +13,37 @@
 #include "parser_setter.h"
 #include "../utils/cub_error.h"
 
-void	set_resolution(t_vars *vars, char *input)
+void	set_resolution(t_game *game, char *input)
 {
 	int		i;
 	t_vec	size;
 
-	if (vars->resx != 0 || vars->resy != 0)
-		handle_error(vars, "Duplicate resolution paramater.", NULL);
+	if (game->resx != 0 || game->resy != 0)
+		handle_error(game, "Duplicate resolution paramater.", NULL);
 	i = 0;
 	while (input[i] >= '0' && input[i] <= '9')
-		vars->resx = vars->resx * 10 + (input[i++] - '0');
+		game->resx = game->resx * 10 + (input[i++] - '0');
 	while (input[i] == ' ')
 		i++;
 	while (input[i] >= '0' && input[i] <= '9')
-		vars->resy = vars->resy * 10 + (input[i++] - '0');
-	if (input[i] || (vars->resx <= 0 || vars->resy <= 0))
-		handle_error(vars, "Error parsing resolution.", input);
-	if (!vars->bmp)
+		game->resy = game->resy * 10 + (input[i++] - '0');
+	if (input[i] || (game->resx <= 0 || game->resy <= 0))
+		handle_error(game, "Error parsing resolution.", input);
+	if (!game->bmp)
 	{
-		mlx_get_screen_size(vars->mlx, &size.x, &size.y);
-		vars->resx = fmin(vars->resx, size.x);
-		vars->resy = fmin(vars->resy, size.y);
+		mlx_get_screen_size(game->mlx, &size.x, &size.y);
+		game->resx = fmin(game->resx, size.x);
+		game->resy = fmin(game->resy, size.y);
 	}
 }
 
-void	set_texture(t_img *img, t_vars *vars, char *path)
+void	set_texture(t_img *img, t_game *game, char *path)
 {
 	if (img->img)
-		handle_error(vars, "Duplicate texture paramater.", path);
-	*img = load_image(vars->mlx, path);
+		handle_error(game, "Duplicate texture paramater.", path);
+	*img = load_image(game->mlx, path);
 	if (!img->img)
-		handle_error(vars, "Failed to load texture.", path);
+		handle_error(game, "Failed to load texture.", path);
 }
 
 int	atoirgb(char **start, bool skip)
@@ -72,7 +72,7 @@ int	atoirgb(char **start, bool skip)
 	return (res);
 }
 
-void	set_color(t_vars *vars, int *val, char *input)
+void	set_color(t_game *game, int *val, char *input)
 {
 	int		r;
 	int		g;
@@ -81,21 +81,21 @@ void	set_color(t_vars *vars, int *val, char *input)
 
 	backup = input;
 	if ((unsigned int)*val != 0xDB000000)
-		handle_error(vars, "Color was set twice.", backup);
+		handle_error(game, "Color was set twice.", backup);
 	r = atoirgb(&input, true);
 	if (r == -1)
-		handle_error(vars, "Error reading color.", backup);
+		handle_error(game, "Error reading color.", backup);
 	g = atoirgb(&input, true);
 	if (g == -1)
-		handle_error(vars, "Error reading color.", backup);
+		handle_error(game, "Error reading color.", backup);
 	b = atoirgb(&input, false);
 	if (b == -1)
-		handle_error(vars, "Error reading color.", backup);
+		handle_error(game, "Error reading color.", backup);
 	*val = (r << 16) | (g << 8) | b;
 }
 
-void	set_sound(uint32_t *s, t_vars *vars, char *path)
+void	set_sound(uint32_t *s, t_game *game, char *path)
 {
 	if (!load_sound(s, path))
-		handle_error(vars, "Could not read audio...", path);
+		handle_error(game, "Could not read audio...", path);
 }

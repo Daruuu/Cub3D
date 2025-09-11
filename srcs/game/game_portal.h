@@ -18,11 +18,11 @@
 # include "game_portal_render.h"
 # include <stdlib.h>
 
-bool		create_portal(t_vars *vars, int x, int y, t_cardinal card);
-t_portal	*get_portal(t_vars *vars, int x, int y, t_cardinal card);
-t_portal	*get_empty_portal(t_vars *vars, int x, int y, t_cardinal card);
+bool		create_portal(t_game *game, int x, int y, t_cardinal card);
+t_portal	*get_portal(t_game *game, int x, int y, t_cardinal card);
+t_portal	*get_empty_portal(t_game *game, int x, int y, t_cardinal card);
 void		translate_portal(t_vecd *ref, t_cardinal card, t_portal *pt);
 void		translate_portal_3(t_vec3d *ref, t_cardinal card, t_portal *pt);
-void		handle_portal_creation(t_vars *vars);
+void		handle_portal_creation(t_game *game);
 
 #endif

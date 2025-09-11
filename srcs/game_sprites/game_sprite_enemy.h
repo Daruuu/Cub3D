@@ -18,6 +18,6 @@
 # include "game_sprite_manager.h"
 # include "game_sprite_door.h"
 
-void	handle_goomba(t_sprite *curr, t_vars *vars);
+void	handle_goomba(t_sprite *curr, t_game *game);
 
 #endif

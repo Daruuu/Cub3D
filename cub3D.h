@@ -28,10 +28,8 @@
 # define FPS50 20000
 # define FPS_BONUS 25000	//	using this default
 # define FPS30 33333
-// # define PLAYER_SPEED_DEFAULT  0.0045
-// # define PLAYER_SPEED_BONUS 0.0085
 
-typedef struct s_vars
+typedef struct s_game
 {
 	void			*mlx;
 	void			*win;
@@ -71,9 +69,9 @@ typedef struct s_vars
 	bool			bmp;
 	t_sounds		sounds;
 	unsigned long	delay;
-}					t_vars;
+}					t_game;
 
-int		render_next_frame(t_vars *vars);
+int		render_next_frame(t_game *game);
 int		get_delay(bool startnow, int min, bool mac);
 void	set_bonus(bool *bonus);
 

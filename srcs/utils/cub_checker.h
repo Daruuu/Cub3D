@@ -16,8 +16,8 @@
 # include "../cub3D.h"
 # include "cub_error.h"
 
-void	check_textures_custom(t_vars *vars);
-void	check_textures(t_vars *vars);
-void	check_define(t_vars *vars);
+void	check_textures_custom(t_game *game);
+void	check_textures(t_game *game);
+void	check_define(t_game *game);
 
 #endif

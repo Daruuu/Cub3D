@@ -18,9 +18,9 @@
 # include "game_map.h"
 # include "game_portal.h"
 
-bool	collide_object(t_vars *vars, double x, double y, t_sprite *goomba);
-void	collidex(t_vars *vars, t_player *player);
-void	collidey(t_vars *vars, t_player *player);
-void	add_nocollide(t_vars *vars, t_vecd *pos, t_vecd mov, t_sprite *s);
+bool	collide_object(t_game *game, double x, double y, t_sprite *goomba);
+void	collidex(t_game *game, t_player *player);
+void	collidey(t_game *game, t_player *player);
+void	add_nocollide(t_game *game, t_vecd *pos, t_vecd mov, t_sprite *s);
 
 #endif

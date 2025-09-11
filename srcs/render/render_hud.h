@@ -17,10 +17,10 @@
 # include "render_minimap.h"
 # include "render_macos_layer.h"
 
-void	draw_hud(t_vars *vars);
-void	draw_death(t_vars *vars);
-void	draw_cursor(t_vars *vars);
-void	render_hand(t_vars *vars);
-void	draw_skybox(t_vars *vars);
+void	draw_hud(t_game *game);
+void	draw_death(t_game *game);
+void	draw_cursor(t_game *game);
+void	render_hand(t_game *game);
+void	draw_skybox(t_game *game);
 
 #endif

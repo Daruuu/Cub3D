@@ -27,48 +27,48 @@ t_vec	get_collide_pos(t_trace trace)
 	return (pos);
 }
 
-int	check_colide(t_vars *vars, t_vec pos)
+int	check_colide(t_game *game, t_vec pos)
 {
-	return (map_get(&vars->map, pos.x, pos.y));
+	return (map_get(&game->map, pos.x, pos.y));
 }
 
-void	render_portal(t_shape line, float offset, t_vars *vars)
+void	render_portal(t_shape line, float offset, t_game *game)
 {
-	set_portal_strip(&(vars->img), line, &(vars->portal), offset);
+	set_portal_strip(&(game->img), line, &(game->portal), offset);
 }
 
-t_img	*get_texture(t_vars *vars, t_cardinal card)
+t_img	*get_texture(t_game *game, t_cardinal card)
 {
 	if (card == EAST)
-		return (&(vars->walls.north));
+		return (&(game->walls.north));
 	if (card == WEST)
-		return (&(vars->walls.south));
+		return (&(game->walls.south));
 	if (card == NORTH)
-		return (&(vars->walls.west));
-	return (&(vars->walls.east));
+		return (&(game->walls.west));
+	return (&(game->walls.east));
 }
 
 /*
 ** Does a simple raycast to get the mouseover block, used by the portal gun
 */
 
-t_mouseover	get_mouseover(t_vars *vars)
+t_mouseover	get_mouseover(t_game *game)
 {
 	t_trace		trace;
 	t_mouseover	over;
 
 	over.found = false;
-	trace.rot = make_rot(vars->player.yaw);
+	trace.rot = make_rot(game->player.yaw);
 	trace.ray = get_init_ray(&(trace.rot), \
-		vars->player.pos.x, vars->player.pos.y);
+		game->player.pos.x, game->player.pos.y);
 	trace.step = get_init_ray(&(trace.rot), 0, 0);
-	trace.ref.x = vars->player.pos.x;
-	trace.ref.y = vars->player.pos.y;
+	trace.ref.x = game->player.pos.x;
+	trace.ref.y = game->player.pos.y;
 	trace.i = 0;
 	while (trace.i < 15)
 	{
 		trace.pos = get_collide_pos(trace);
-		if (check_colide(vars, trace.pos))
+		if (check_colide(game, trace.pos))
 		{
 			over.card = get_cardinal(trace);
 			over.pos = trace.pos;

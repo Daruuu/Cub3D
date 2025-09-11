@@ -44,15 +44,15 @@ void	set_keystate(t_keybinds *keybinds, int key, bool pressed)
 ** Handles key presses and stuffed portal adding logic here too
 */
 
-int	key_press(int keycode, t_vars *vars)
+int	key_press(int keycode, t_game *game)
 {
-	set_keystate(&(vars->player.keybinds), keycode, true);
+	set_keystate(&(game->player.keybinds), keycode, true);
 	if (keycode == ESC)
-		clean_and_exit(0, vars);
-	if (keycode == MAKE_PORTAL && vars->portal.img)
+		clean_and_exit(0, game);
+	if (keycode == MAKE_PORTAL && game->portal.img)
 	{
 		return (0);
-		handle_portal_creation(vars);
+		handle_portal_creation(game);
 	}
 	return (0);
 }
@@ -61,9 +61,9 @@ int	key_press(int keycode, t_vars *vars)
 ** Handles key lifting
 */
 
-int	key_lift(int keycode, t_vars *vars)
+int	key_lift(int keycode, t_game *game)
 {
-	set_keystate(&(vars->player.keybinds), keycode, false);
+	set_keystate(&(game->player.keybinds), keycode, false);
 	return (0);
 }
 
@@ -97,11 +97,11 @@ t_keybinds	make_keybinds(void)
 ** - Bonus mode: Original faster movement (0.0085/0.0065)
 */
 
-void	update_keybinds(t_vars *vars)
+void	update_keybinds(t_game *game)
 {
 	t_keybinds	*keys;
 
-	keys = &(vars->player.keybinds);
+	keys = &(game->player.keybinds);
 	keys->move.x = 0;
 	if (!(keys->forwards && keys->backwards))
 	{

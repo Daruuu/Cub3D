@@ -37,6 +37,6 @@ typedef struct s_door_r
 	int			color;
 }				t_door_r;
 
-bool			draw_door(t_img *img, t_vars *vars, t_sprite s);
+bool			draw_door(t_img *img, t_game *game, t_sprite s);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "parser_file_loader.h"
 
-int	load_map(t_vars *vars, t_line *file)
+int	load_map(t_game *game, t_line *file)
 {
 	t_vec	p;
 
@@ -22,41 +22,41 @@ int	load_map(t_vars *vars, t_line *file)
 		p.x = 0;
 		while (p.x < file->size)
 		{
-			if (!set_map(vars, file->line[p.x], p))
-				handle_error(vars, ERROR_FORMAT, file->line);
+			if (!set_map(game, file->line[p.x], p))
+				handle_error(game, ERROR_FORMAT, file->line);
 			p.x++;
 		}
 		p.y++;
 		file = file->next;
 	}
-	if (!is_map_valid(&(vars->map)))
-		handle_error(vars, ERROR_MAP_UNCLOSED, NULL);
-	handle_door_rotation(vars);
+	if (!is_map_valid(&(game->map)))
+		handle_error(game, ERROR_MAP_UNCLOSED, NULL);
+	handle_door_rotation(game);
 	return (0);
 }
 
-int	load_f(char *filepath, t_vars *vars)
+int	load_f(char *filepath, t_game *game)
 {
 	t_line	*file;
 	t_vec	size;
 
 	file = NULL;
 	load_file(filepath, &(file), 0);
-	vars->file = file;
-	if (!vars->file)
-		handle_error(vars, "Could not load file.", filepath);
+	game->file = file;
+	if (!game->file)
+		handle_error(game, "Could not load file.", filepath);
 	while (file)
 	{
-		if (!file->line[0] || read_argument(vars, file))
+		if (!file->line[0] || read_argument(game, file))
 			file = file->next;
 		else
 			break ;
 	}
 	size = get_map_size(file);
 	if (size.x == 0)
-		handle_error(vars, "Map grid is empty.", NULL);
-	vars->map = make_empty(size);
-	if (!vars->map.data)
-		handle_error(vars, "Failed to initialize map.", NULL);
-	return (load_map(vars, file));
+		handle_error(game, "Map grid is empty.", NULL);
+	game->map = make_empty(size);
+	if (!game->map.data)
+		handle_error(game, "Failed to initialize map.", NULL);
+	return (load_map(game, file));
 }

@@ -16,8 +16,8 @@
 # include "../cub3D.h"
 # include "../render/render_textures.h"
 
-bool	read_argument_sounds(t_vars *vars, t_line *file);
-bool	read_argument_custom(t_vars *vars, t_line *file);
-bool	read_argument(t_vars *vars, t_line *file);
+bool	read_argument_sounds(t_game *game, t_line *file);
+bool	read_argument_custom(t_game *game, t_line *file);
+bool	read_argument(t_game *game, t_line *file);
 
 #endif

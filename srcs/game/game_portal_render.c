@@ -39,7 +39,7 @@ void	portal_render_pf(t_portal_render **begin_list, t_shape line,
 }
 
 void	portal_foreach_free(t_portal_render *begin_list,
-					void (*f)(t_shape, float, t_vars*), t_vars *vars)
+					void (*f)(t_shape, float, t_game*), t_game *game)
 {
 	t_portal_render	*last;
 	t_portal_render	*next;
@@ -47,7 +47,7 @@ void	portal_foreach_free(t_portal_render *begin_list,
 	last = begin_list;
 	while (last)
 	{
-		f(last->line, last->offset, vars);
+		f(last->line, last->offset, game);
 		next = last->next;
 		free(last);
 		last = next;

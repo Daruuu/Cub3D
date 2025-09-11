@@ -30,7 +30,7 @@ void	swap_sprite(t_sprite **prevnext, t_sprite *last)
 ** Sorts the sprites by distance to the player
 */
 
-void	sprite_sort(t_vars *vars, t_sprite **begin_list)
+void	sprite_sort(t_game *game, t_sprite **begin_list)
 {
 	t_sprite	*last;
 	t_sprite	*prev;
@@ -39,8 +39,8 @@ void	sprite_sort(t_vars *vars, t_sprite **begin_list)
 	last = *begin_list;
 	while (last && last->next)
 	{
-		if (square_dist(vars->player.pos, last->pos) < \
-			square_dist(vars->player.pos, last->next->pos))
+		if (square_dist(game->player.pos, last->pos) < \
+			square_dist(game->player.pos, last->next->pos))
 		{
 			if (prev == NULL)
 				swap_sprite(begin_list, last);

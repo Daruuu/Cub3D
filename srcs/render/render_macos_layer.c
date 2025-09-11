@@ -13,26 +13,26 @@
 #include "render_macos_layer.h"
 #include "../mlx/mlx.h"
 
-int	render_mac_os_image(t_vars *vars, t_img *img, int x, int y)
+int	render_mac_os_image(t_game *game, t_img *img, int x, int y)
 {
 	int		b;
 	int		color;
 	t_vec	p;
 
 	if (!LINUX)
-		return (mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y));
+		return (mlx_put_image_to_window(game->mlx, game->win, img->img, x, y));
 	y++;
 	p.y = fmax(0, -y);
-	while (p.y < img->height && y + p.y <= vars->resy)
+	while (p.y < img->height && y + p.y <= game->resy)
 	{
 		p.x = fmax(0, -x) - 1;
-		while (++p.x < img->width && x + p.x < vars->resx)
+		while (++p.x < img->width && x + p.x < game->resx)
 		{
 			color = get_pixel(img, p.x, p.y);
 			if ((color & 0xFF000000) == 0xFF000000)
 				continue ;
-			b = get_pixel(&vars->img, x + p.x, y + p.y);
-			set_pixel(&vars->img, x + p.x, y + p.y, blend_colors(b, color));
+			b = get_pixel(&game->img, x + p.x, y + p.y);
+			set_pixel(&game->img, x + p.x, y + p.y, blend_colors(b, color));
 		}
 		p.y++;
 	}

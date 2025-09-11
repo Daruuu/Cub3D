@@ -17,11 +17,11 @@
 # include "../game_sprites/game_sprite_renderer.h"
 # include "cub_line_reader.h"
 
-void	destroy_img(t_vars *vars, t_img *img);
-void	clean_images(t_vars *vars);
-void	clean_all(t_vars *vars);
-void	clean_and_exit(int code, t_vars *vars);
-int		clean_and_exit_z(t_vars *vars);
+void	destroy_img(t_game *game, t_img *img);
+void	clean_images(t_game *game);
+void	clean_all(t_game *game);
+void	clean_and_exit(int code, t_game *game);
+int		clean_and_exit_z(t_game *game);
 int		mlx_destroy_display(void *mlx_ptr);
 
 #endif

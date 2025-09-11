@@ -16,6 +16,6 @@
 # include "../cub3D.h"
 # include "cub_astar.h"
 
-void	refresh_pathfinding(t_vars *vars);
+void	refresh_pathfinding(t_game *game);
 
 #endif

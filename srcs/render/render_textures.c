@@ -16,17 +16,17 @@
 ** Creates the skybox t_img based on the screen size
 */
 
-t_img	make_skybox(t_vars *vars, t_img *img, char *path)
+t_img	make_skybox(t_game *game, t_img *img, char *path)
 {
 	t_img	temp;
 	t_img	skybox;
 	t_vec	p;
 	t_vec	of;
 
-	temp = load_image(vars->mlx, path);
+	temp = load_image(game->mlx, path);
 	if (!temp.img)
 		return (*img = temp);
-	skybox = make_image(vars->mlx, vars->resx * 3.14, vars->resy);
+	skybox = make_image(game->mlx, game->resx * 3.14, game->resy);
 	if (skybox.img)
 	{
 		p.x = -1;
@@ -41,7 +41,7 @@ t_img	make_skybox(t_vars *vars, t_img *img, char *path)
 			}
 		}
 	}
-	destroy_img(vars, &temp);
+	destroy_img(game, &temp);
 	return (*img = skybox);
 }
 
@@ -49,13 +49,13 @@ t_img	make_skybox(t_vars *vars, t_img *img, char *path)
 ** Creates the gun t_img overlay and makes it transparent
 */
 
-t_img	make_gun(t_vars *vars, t_img *img, char *path)
+t_img	make_gun(t_game *game, t_img *img, char *path)
 {
 	t_img	gun;
 	t_vec	p;
 	int		color;
 
-	gun = load_image(vars->mlx, path);
+	gun = load_image(game->mlx, path);
 	if (!gun.img)
 		return (*img = gun);
 	p.x = 0;
@@ -79,13 +79,13 @@ t_img	make_gun(t_vars *vars, t_img *img, char *path)
 ** its bytes to the left to make an alpha mask
 */
 
-t_img	make_dash(t_vars *vars, t_img *img, char *path)
+t_img	make_dash(t_game *game, t_img *img, char *path)
 {
 	t_img	dash;
 	t_vec	p;
 	int		color;
 
-	dash = load_image(vars->mlx, path);
+	dash = load_image(game->mlx, path);
 	p.x = 0;
 	while (p.x < dash.width)
 	{

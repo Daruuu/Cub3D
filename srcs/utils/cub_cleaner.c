@@ -13,63 +13,63 @@
 #include "cub_cleaner.h"
 #include "../mlx/mlx.h"
 
-void	destroy_img(t_vars *vars, t_img *img)
+void	destroy_img(t_game *game, t_img *img)
 {
 	if (img->img)
 	{
-		mlx_destroy_image(vars->mlx, img->img);
+		mlx_destroy_image(game->mlx, img->img);
 		img->img = NULL;
 	}
 }
 
-void	clean_images(t_vars *vars)
+void	clean_images(t_game *game)
 {
-	destroy_img(vars, &(vars->walls.north));
-	destroy_img(vars, &(vars->walls.south));
-	destroy_img(vars, &(vars->walls.west));
-	destroy_img(vars, &(vars->walls.east));
-	destroy_img(vars, &(vars->floor));
-	destroy_img(vars, &(vars->portal));
-	destroy_img(vars, &(vars->skybox));
-	destroy_img(vars, &(vars->gun));
-	destroy_img(vars, &(vars->dash));
-	destroy_img(vars, &(vars->sprite_img));
-	destroy_img(vars, &(vars->health_img));
-	destroy_img(vars, &(vars->goomba_img));
-	destroy_img(vars, &(vars->door_img));
-	destroy_img(vars, &(vars->img));
-	destroy_img(vars, &(vars->blur.dest));
-	destroy_img(vars, &(vars->blur.temp));
-	empty_sprites(&(vars->sprites));
+	destroy_img(game, &(game->walls.north));
+	destroy_img(game, &(game->walls.south));
+	destroy_img(game, &(game->walls.west));
+	destroy_img(game, &(game->walls.east));
+	destroy_img(game, &(game->floor));
+	destroy_img(game, &(game->portal));
+	destroy_img(game, &(game->skybox));
+	destroy_img(game, &(game->gun));
+	destroy_img(game, &(game->dash));
+	destroy_img(game, &(game->sprite_img));
+	destroy_img(game, &(game->health_img));
+	destroy_img(game, &(game->goomba_img));
+	destroy_img(game, &(game->door_img));
+	destroy_img(game, &(game->img));
+	destroy_img(game, &(game->blur.dest));
+	destroy_img(game, &(game->blur.temp));
+	empty_sprites(&(game->sprites));
 }
 
-void	clean_all(t_vars *vars)
+void	clean_all(t_game *game)
 {
-	clean_images(vars);
-	if (vars->win)
-		mlx_destroy_window(vars->mlx, vars->win);
+	clean_images(game);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
 	if (LINUX)
-		mlx_destroy_display(vars->mlx);
-	clear_map(&(vars->map));
-	clear_sounds(&(vars->sounds));
-	free_file(&vars->file);
-	if (vars->depth)
-		free(vars->depth);
-	if (vars->mlx)
-		free(vars->mlx);
-	if (vars->last_path)
-		free(vars->last_path);
+		mlx_destroy_display(game->mlx);
+	clear_map(&(game->map));
+	clear_sounds(&(game->sounds));
+	free_file(&game->file);
+	if (game->depth)
+		free(game->depth);
+	if (game->mlx)
+		free(game->mlx);
+	if (game->last_path)
+		free(game->last_path);
 }
 
-void	clean_and_exit(int code, t_vars *vars)
+void	clean_and_exit(int code, t_game *game)
 {
-	clean_all(vars);
-	vars = NULL;
+	clean_all(game);
+	game = NULL;
 	exit(code);
 }
 
-int	clean_and_exit_z(t_vars *vars)
+int	clean_and_exit_z(t_game *game)
 {
-	clean_and_exit(0, vars);
+	clean_and_exit(0, game);
 	return (0);
 }

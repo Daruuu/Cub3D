@@ -18,6 +18,6 @@
 # include "parser_map_parser.h"
 # include "../cub3D.h"
 
-int	load_f(char *filepath, t_vars *vars);
+int	load_f(char *filepath, t_game *game);
 
 #endif

@@ -15,8 +15,8 @@
 
 # include "../cub3D.h"
 
-void	setup_floor(t_vars *vars, t_floor_render *f);
-void	draw_floor(t_vars *vars);
-void	render_row_floor(t_vars *vars, t_floor_render *f);
+void	setup_floor(t_game *game, t_floor_render *f);
+void	draw_floor(t_game *game);
+void	render_row_floor(t_game *game, t_floor_render *f);
 
 #endif

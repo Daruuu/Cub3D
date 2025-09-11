@@ -18,8 +18,8 @@
 # include "../utils/cub_error.h"
 
 t_vec	get_map_size(t_line *start);
-int		set_map(t_vars *vars, char c, t_vec p);
-void	handle_door_rotation(t_vars *vars);
+int		set_map(t_game *game, char c, t_vec p);
+void	handle_door_rotation(t_game *game);
 bool	is_map_valid(t_map *map);
 
 #endif

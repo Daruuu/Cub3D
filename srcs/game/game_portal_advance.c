@@ -40,27 +40,27 @@ void	translate_portal_3(t_vec3d *ref, t_cardinal card, t_portal *pt)
 	}
 }
 
-void	handle_portal_creation(t_vars *vars)
+void	handle_portal_creation(t_game *game)
 {
 	t_mouseover	over;
 
-	over = get_mouseover(vars);
-	if (vars->first_portal && !vars->second_portal)
+	over = get_mouseover(game);
+	if (game->first_portal && !game->second_portal)
 	{
-		if (over.card != get_opposite(vars->first_portal->card))
+		if (over.card != get_opposite(game->first_portal->card))
 		{
-			free(vars->first_portal);
-			vars->first_portal = NULL;
+			free(game->first_portal);
+			game->first_portal = NULL;
 		}
 	}
-	if (vars->first_portal && vars->second_portal)
+	if (game->first_portal && game->second_portal)
 	{
-		free(vars->first_portal);
-		free(vars->second_portal);
-		vars->first_portal = NULL;
-		vars->second_portal = NULL;
+		free(game->first_portal);
+		free(game->second_portal);
+		game->first_portal = NULL;
+		game->second_portal = NULL;
 	}
 	if (over.found)
-		if (create_portal(vars, over.pos.x, over.pos.y, over.card))
-			vars->shoot = 50;
+		if (create_portal(game, over.pos.x, over.pos.y, over.card))
+			game->shoot = 50;
 }

@@ -12,7 +12,7 @@
 
 # include "parser_map_setter.h"
 
-int	set_player(t_vars *vars, char c, t_vec p)
+int	set_player(t_game *game, char c, t_vec p)
 {
 	int	val;
 
@@ -26,58 +26,58 @@ int	set_player(t_vars *vars, char c, t_vec p)
 		val = 3;
 	else
 		return (0);
-	if (vars->player.health != 0)
-		handle_error(vars, "Duplicate player in map.", NULL);
-	vars->player = make_player();
-	vars->player.pos.x = p.x + 0.50001;
-	vars->player.pos.y = p.y + 0.50001;
-	vars->player.s_pos.x = vars->player.pos.x;
-	vars->player.s_pos.y = vars->player.pos.y;
-	vars->player.yaw = M_PI / 2.0 * val;
+	if (game->player.health != 0)
+		handle_error(game, "Duplicate player in map.", NULL);
+	game->player = make_player();
+	game->player.pos.x = p.x + 0.50001;
+	game->player.pos.y = p.y + 0.50001;
+	game->player.s_pos.x = game->player.pos.x;
+	game->player.s_pos.y = game->player.pos.y;
+	game->player.yaw = M_PI / 2.0 * val;
 	return (1);
 }
 
-int	set_sprite(t_vars *vars, char c, t_vec p)
+int	set_sprite(t_game *game, char c, t_vec p)
 {
 	t_vecd		pos;
 
 	pos.x = p.x + 0.5;
 	pos.y = p.y + 0.5;
 	if (c == '2')
-		sprite_pf(&(vars->sprites), pos, OBJ, &(vars->sprite_img));
-	else if (vars->bonus && c == 'D')
+		sprite_pf(&(game->sprites), pos, OBJ, &(game->sprite_img));
+	else if (game->bonus && c == 'D')
 	{
 		pos.x = p.x;
 		pos.y = p.y;
-		sprite_pf(&(vars->sprites), pos, DOOR, &(vars->door_img));
+		sprite_pf(&(game->sprites), pos, DOOR, &(game->door_img));
 	}
 	else
 		return (0);
 	return (1);
 }
 
-int	set_entity(t_vars *vars, char c, t_vec p)
+int	set_entity(t_game *game, char c, t_vec p)
 {
 	t_vecd		pos;
 
 	pos.x = p.x + 0.5;
 	pos.y = p.y + 0.5;
-	if (vars->bonus && c == 'G')
-		sprite_pf(&(vars->sprites), pos, GOOMBA, &(vars->goomba_img));
-	else if (vars->bonus && c == 'H')
-		sprite_pf(&(vars->sprites), pos, HEALTH, &(vars->health_img));
+	if (game->bonus && c == 'G')
+		sprite_pf(&(game->sprites), pos, GOOMBA, &(game->goomba_img));
+	else if (game->bonus && c == 'H')
+		sprite_pf(&(game->sprites), pos, HEALTH, &(game->health_img));
 	else
 		return (0);
 	return (1);
 }
 
-int	set_pathfinder(t_vars *vars, char c, t_vec p)
+int	set_pathfinder(t_game *game, char c, t_vec p)
 {
-	if (vars->bonus && c == 'P')
+	if (game->bonus && c == 'P')
 	{
-		if (vars->pathfinder.x != -1)
-			handle_error(vars, "Duplicate pathfinder in map.", NULL);
-		vars->pathfinder = p;
+		if (game->pathfinder.x != -1)
+			handle_error(game, "Duplicate pathfinder in map.", NULL);
+		game->pathfinder = p;
 		return (1);
 	}
 	return (0);

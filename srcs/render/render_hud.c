@@ -16,43 +16,43 @@
 ** Draws the minimap and it's background shadow / blur
 */
 
-void	draw_hud(t_vars *vars)
+void	draw_hud(t_game *game)
 {
 	t_shape	shape;
 
-	if (!vars->dash.img || vars->resx < 420 || vars->resy < 230)
+	if (!game->dash.img || game->resx < 420 || game->resy < 230)
 		return ;
 	shape.width = 210;
 	shape.height = 15;
 	shape.x = 20;
-	shape.y = vars->resy - 35;
-	rect(&(vars->img), shape, 0);
-	shape.width = 210 * vars->player.health;
-	rect(&(vars->img), shape, 0x00CD3D24);
+	shape.y = game->resy - 35;
+	rect(&(game->img), shape, 0);
+	shape.width = 210 * game->player.health;
+	rect(&(game->img), shape, 0x00CD3D24);
 	shape.height = 5;
 	shape.y += 10;
-	rect(&(vars->img), shape, 0x00B22D17);
-	make_blur_opt(vars->blur, false);
-	draw_minimap(vars);
-	render_mac_os_image(vars, &vars->dash, 0,
-		vars->resy - vars->dash.height - (1));
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->blur.dest.img,
-		vars->blur.shape.x, vars->blur.shape.y);
+	rect(&(game->img), shape, 0x00B22D17);
+	make_blur_opt(game->blur, false);
+	draw_minimap(game);
+	render_mac_os_image(game, &game->dash, 0,
+		game->resy - game->dash.height - (1));
+	mlx_put_image_to_window(game->mlx, game->win, game->blur.dest.img,
+		game->blur.shape.x, game->blur.shape.y);
 }
 
 /*
 ** Draws the gameover screen, which shows up when you die
 */
 
-void	draw_death(t_vars *vars)
+void	draw_death(t_game *game)
 {
-	if (vars->player.health == -1000)
+	if (game->player.health == -1000)
 		return ;
-	fill_img(vars->img, 0x50BE3F3B, 0, vars->img.height);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	mlx_string_put(vars->mlx, vars->win, vars->img.width / 2 - 45,
-		vars->img.height / 2 - 10, 0x00FFFFFF, "GAME OVER");
-	vars->player.health = -1000;
+	fill_img(game->img, 0x50BE3F3B, 0, game->img.height);
+	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	mlx_string_put(game->mlx, game->win, game->img.width / 2 - 45,
+		game->img.height / 2 - 10, 0x00FFFFFF, "GAME OVER");
+	game->player.health = -1000;
 }
 
 /*
@@ -60,73 +60,73 @@ void	draw_death(t_vars *vars)
 ** warning: absolute hacky values
 */
 
-void	draw_cursor(t_vars *vars)
+void	draw_cursor(t_game *game)
 {
 	t_shape	shape;
 	int		color;
 
-	if (!vars->gun.img)
+	if (!game->gun.img)
 		return ;
-	color = color_dim(0xFFFFFF, 1 - fmin(vars->shoot, 40) / 40.0) | 0xBB << 24;
+	color = color_dim(0xFFFFFF, 1 - fmin(game->shoot, 40) / 40.0) | 0xBB << 24;
 	shape.width = 1;
 	shape.height = 4;
-	shape.x = (vars->resx - 30) / 2 + 1;
-	shape.y = (vars->resy - 30) / 2 - 2;
-	rect(&(vars->img), shape, color);
+	shape.x = (game->resx - 30) / 2 + 1;
+	shape.y = (game->resy - 30) / 2 - 2;
+	rect(&(game->img), shape, color);
 	shape.x += 28;
-	rect(&(vars->img), shape, color);
+	rect(&(game->img), shape, color);
 	shape.x -= 16;
 	shape.width = 4;
 	shape.height = 1;
 	shape.y -= 13;
-	rect(&(vars->img), shape, color);
+	rect(&(game->img), shape, color);
 	shape.y += 28;
-	rect(&(vars->img), shape, color);
+	rect(&(game->img), shape, color);
 	shape.y -= 14;
 	shape.x += 1;
 	shape.width = 2;
 	shape.height = 2;
-	rect(&(vars->img), shape, color);
+	rect(&(game->img), shape, color);
 }
 
 /*
 ** Renders the portal gun in your hand, matching your view bobbing
 */
 
-void	render_hand(t_vars *vars)
+void	render_hand(t_game *game)
 {
 	t_vec	pos;
 
-	if (!vars->gun.img || vars->resx < 420)
+	if (!game->gun.img || game->resx < 420)
 		return ;
-	pos.y = 3 + cos(vars->time / 4.0 + 34) * 3 * vars->bob \
-			+ vars->player.pos.z * 14;
-	pos.x = 3 + sin(vars->time / 4.8 + 56) * 3 * vars->bob \
-			- vars->player.motion_yaw * 200;
-	render_mac_os_image(vars, &vars->gun, vars->resx \
-	- vars->gun.width + pos.x, vars->resy - vars->gun.height + pos.y);
+	pos.y = 3 + cos(game->time / 4.0 + 34) * 3 * game->bob \
+			+ game->player.pos.z * 14;
+	pos.x = 3 + sin(game->time / 4.8 + 56) * 3 * game->bob \
+			- game->player.motion_yaw * 200;
+	render_mac_os_image(game, &game->gun, game->resx \
+	- game->gun.width + pos.x, game->resy - game->gun.height + pos.y);
 }
 
-void	draw_skybox(t_vars *vars)
+void	draw_skybox(t_game *game)
 {
 	t_vec	pos;
 
-	if (vars->skybox.img && !LINUX)
-		fill_img(vars->img, 0xFF000000, 0, fmax(0, vars->img.height / 2 + \
-			vars->player.pitch * 2 + 1));
-	else if (!vars->skybox.img)
+	if (game->skybox.img && !LINUX)
+		fill_img(game->img, 0xFF000000, 0, fmax(0, game->img.height / 2 + \
+			game->player.pitch * 2 + 1));
+	else if (!game->skybox.img)
 	{
-		fill_img(vars->img, vars->top_color, 0, fmax(0, vars->img.height / 2 + \
-			vars->player.pitch * 2 + 1));
+		fill_img(game->img, game->top_color, 0, fmax(0, game->img.height / 2 + \
+			game->player.pitch * 2 + 1));
 		return ;
 	}
-	pos.y = vars->player.pitch * 2 - vars->resy / 2 + 2;
-	pos.x = fmod(-vars->player.yaw / 2 * vars->resx, vars->resx * 3.14);
-	render_mac_os_image(vars, &(vars->skybox), pos.x, pos.y);
+	pos.y = game->player.pitch * 2 - game->resy / 2 + 2;
+	pos.x = fmod(-game->player.yaw / 2 * game->resx, game->resx * 3.14);
+	render_mac_os_image(game, &(game->skybox), pos.x, pos.y);
 	if (pos.x > 0)
-		render_mac_os_image(vars, &(vars->skybox), \
-		pos.x - vars->skybox.width + 4, pos.y);
-	if (pos.x < 0 && pos.x + vars->skybox.width > 0)
-		render_mac_os_image(vars, &(vars->skybox), \
-		pos.x + vars->skybox.width - 4, pos.y);
+		render_mac_os_image(game, &(game->skybox), \
+		pos.x - game->skybox.width + 4, pos.y);
+	if (pos.x < 0 && pos.x + game->skybox.width > 0)
+		render_mac_os_image(game, &(game->skybox), \
+		pos.x + game->skybox.width - 4, pos.y);
 }

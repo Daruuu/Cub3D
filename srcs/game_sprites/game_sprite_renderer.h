@@ -32,6 +32,6 @@ typedef struct s_sprite_r
 	float		dim;
 }				t_sprite_r;
 
-void			draw_sprites(t_vars *vars, bool skip);
+void			draw_sprites(t_game *game, bool skip);
 
 #endif

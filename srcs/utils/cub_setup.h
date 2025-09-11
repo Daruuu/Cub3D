@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 
-void	init_void(t_vars *vars);
-void	init_default(t_vars *vars);
+void	init_void(t_game *game);
+void	init_default(t_game *game);
 
 #endif

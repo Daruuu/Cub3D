@@ -20,12 +20,12 @@
 ** rotate them by 90deg.
 */
 
-void	setup_door(t_door_r *dr, t_vars *vars, t_sprite *s)
+void	setup_door(t_door_r *dr, t_game *game, t_sprite *s)
 {
 	dr->rotated = s->dead;
 	dr->inverted = false;
-	dr->pos.x = s->pos.x - vars->player.render.x;
-	dr->pos.y = s->pos.y - vars->player.render.y;
+	dr->pos.x = s->pos.x - game->player.render.x;
+	dr->pos.y = s->pos.y - game->player.render.y;
 	if (dr->rotated)
 	{
 		dr->pos.x += 0.5;
@@ -42,15 +42,15 @@ void	setup_door(t_door_r *dr, t_vars *vars, t_sprite *s)
 	}
 	dr->dist = distance(dr->pos);
 	dr->end_dist = distance(dr->end);
-	dr->sprite_angle = atan2(dr->pos.y, dr->pos.x) - vars->player.yaw;
-	dr->end_angle = atan2(dr->end.y, dr->end.x) - vars->player.yaw;
-	dr->view_dist = vars->resx * vars->fov;
+	dr->sprite_angle = atan2(dr->pos.y, dr->pos.x) - game->player.yaw;
+	dr->end_angle = atan2(dr->end.y, dr->end.x) - game->player.yaw;
+	dr->view_dist = game->resx * game->fov;
 }
 
-void	setup_door_draw(t_door_r *dr, t_vars *vars)
+void	setup_door_draw(t_door_r *dr, t_game *game)
 {
-	dr->draw.x = vars->resx / 2 + (tan(dr->sprite_angle)) * dr->view_dist;
-	dr->draw.width = (vars->resx / 2 + (tan(dr->end_angle)) * dr->view_dist)
+	dr->draw.x = game->resx / 2 + (tan(dr->sprite_angle)) * dr->view_dist;
+	dr->draw.width = (game->resx / 2 + (tan(dr->end_angle)) * dr->view_dist)
 		- dr->draw.x;
 	if (dr->draw.width < 0)
 	{
@@ -62,27 +62,27 @@ void	setup_door_draw(t_door_r *dr, t_vars *vars)
 	}
 }
 
-void	draw_door_line(t_door_r *dr, t_vars *vars, t_vec v, double linedist)
+void	draw_door_line(t_door_r *dr, t_game *game, t_vec v, double linedist)
 {
 	dr->draw.height = (dr->view_dist / (cos(dr->sprite_angle) * dr->dist) * \
 		(1 - dr->ratio2)) + (dr->view_dist / (cos(dr->end_angle) \
 		* dr->end_dist) * (dr->ratio2));
 	if (dr->draw.height <= 0)
 		return ;
-	dr->draw.y = (vars->resy - dr->draw.height + vars->player.pitch * 4) / 2;
-	dr->draw.y += dr->draw.height * vars->player.render.z;
+	dr->draw.y = (game->resy - dr->draw.height + game->player.pitch * 4) / 2;
+	dr->draw.y += dr->draw.height * game->player.render.z;
 	dr->offset.x = fmin(dr->ratio * dr->sprite->texture->width, \
 		dr->sprite->texture->width - 1);
 	while (++v.y < dr->draw.height && dr->draw.y + v.y < dr->img->height)
 	{
 		if (dr->draw.y + v.y < 0)
 			v.y = -dr->draw.y;
-		if (linedist >= vars->depth[dr->draw.x + v.x])
+		if (linedist >= game->depth[dr->draw.x + v.x])
 			continue ;
 		dr->offset.y = fmin(v.y / (double)dr->draw.height \
 			* dr->sprite->texture->height, dr->sprite->texture->height - 1);
 		dr->dim = 1 - fmin(1, (dr->dist - 1) / 9);
-		if (!vars->should_dim)
+		if (!game->should_dim)
 			dr->dim = 1;
 		dr->color = get_pixel(dr->sprite->texture, dr->offset.x, dr->offset.y);
 		if (dr->color != 0)
@@ -91,7 +91,7 @@ void	draw_door_line(t_door_r *dr, t_vars *vars, t_vec v, double linedist)
 	}
 }
 
-void	draw_door_sprite(t_door_r *dr, t_vars *vars)
+void	draw_door_sprite(t_door_r *dr, t_game *game)
 {
 	t_vec	v;
 
@@ -101,8 +101,8 @@ void	draw_door_sprite(t_door_r *dr, t_vars *vars)
 	{
 		if (dr->draw.x + v.x < 0)
 			v.x = -dr->draw.x;
-		dr->curr_angle = atan2(((dr->draw.x + v.x) / (double)vars->resx) - 0.5, \
-			vars->fov);
+		dr->curr_angle = atan2(((dr->draw.x + v.x) / (double)game->resx) - 0.5, \
+			game->fov);
 		dr->ratio2 = v.x / (double)dr->draw.width;
 		dr->ratio = get_angdist(dr->sprite_angle, dr->curr_angle) / \
 			get_angdist(dr->sprite_angle, dr->end_angle);
@@ -115,7 +115,7 @@ void	draw_door_sprite(t_door_r *dr, t_vars *vars)
 			dr->end.y += dr->ratio;
 		else
 			dr->end.x += dr->ratio;
-		draw_door_line(dr, vars, v, distance(dr->end));
+		draw_door_line(dr, game, v, distance(dr->end));
 	}
 }
 
@@ -123,19 +123,19 @@ void	draw_door_sprite(t_door_r *dr, t_vars *vars)
 ** Calls all my splitted drawing functions... (norm)
 */
 
-bool	draw_door(t_img *img, t_vars *vars, t_sprite s)
+bool	draw_door(t_img *img, t_game *game, t_sprite s)
 {
 	t_door_r	dr;
 
-	setup_door(&dr, vars, &s);
-	if (dr.dist > vars->render_distance)
+	setup_door(&dr, game, &s);
+	if (dr.dist > game->render_distance)
 		return (false);
 	if (fabs(get_angdist(dr.sprite_angle, 0)) > M_PI / 2 || \
 		fabs(get_angdist(dr.end_angle, 0)) > M_PI / 2)
 		return (true);
-	setup_door_draw(&dr, vars);
+	setup_door_draw(&dr, game);
 	dr.sprite = &s;
 	dr.img = img;
-	draw_door_sprite(&dr, vars);
+	draw_door_sprite(&dr, game);
 	return (1);
 }

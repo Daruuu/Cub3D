@@ -15,9 +15,9 @@
 
 # include "../cub3D.h"
 
-void	set_resolution(t_vars *vars, char *input);
-void	set_texture(t_img *img, t_vars *vars, char *path);
-void	set_color(t_vars *vars, int *val, char *input);
-void	set_sound(uint32_t *s, t_vars *vars, char *path);
+void	set_resolution(t_game *game, char *input);
+void	set_texture(t_img *img, t_game *game, char *path);
+void	set_color(t_game *game, int *val, char *input);
+void	set_sound(uint32_t *s, t_game *game, char *path);
 
 #endif

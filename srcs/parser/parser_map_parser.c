@@ -27,7 +27,7 @@ t_vec	get_map_size(t_line *start)
 	return (size);
 }
 
-int	set_map(t_vars *vars, char c, t_vec p)
+int	set_map(t_game *game, char c, t_vec p)
 {
 	char	val;
 
@@ -35,40 +35,40 @@ int	set_map(t_vars *vars, char c, t_vec p)
 		val = MAP_AIR;
 	else if (c == '1')
 		val = MAP_BLOCK;
-	else if (set_sprite(vars, c, p))
+	else if (set_sprite(game, c, p))
 		val = MAP_NOENTRY;
-	else if (set_entity(vars, c, p) || set_player(vars, c, p))
+	else if (set_entity(game, c, p) || set_player(game, c, p))
 		val = MAP_AIR;
-	else if (set_player(vars, c, p) || set_pathfinder(vars, c, p))
+	else if (set_player(game, c, p) || set_pathfinder(game, c, p))
 		val = MAP_AIR;
 	else if (c == ' ')
 		val = MAP_EMPTY;
 	else
 		return (0);
-	map_set(&vars->map, p.x, p.y, val);
+	map_set(&game->map, p.x, p.y, val);
 	return (1);
 }
 
-void	handle_door_rotation(t_vars *vars)
+void	handle_door_rotation(t_game *game)
 {
 	t_sprite	*curr;
 	t_vec		pos;
 
-	curr = vars->sprites;
+	curr = game->sprites;
 	while (curr)
 	{
 		if (curr->kind == DOOR)
 		{
 			pos.x = (int)curr->pos.x;
 			pos.y = (int)curr->pos.y;
-			if (map_get(&(vars->map), pos.x - 1, pos.y) \
-			&& map_get(&(vars->map), pos.x + 1, pos.y))
+			if (map_get(&(game->map), pos.x - 1, pos.y) \
+			&& map_get(&(game->map), pos.x + 1, pos.y))
 				curr->dead = false;
-			else if (map_get(&(vars->map), pos.x, pos.y - 1)
-				&& map_get(&(vars->map), pos.x, pos.y + 1))
+			else if (map_get(&(game->map), pos.x, pos.y - 1)
+				&& map_get(&(game->map), pos.x, pos.y + 1))
 				curr->dead = true;
 			else
-				handle_error(vars, ERROR_INVALID_DOOR_POS, NULL);
+				handle_error(game, ERROR_INVALID_DOOR_POS, NULL);
 		}
 		curr = curr->next;
 	}

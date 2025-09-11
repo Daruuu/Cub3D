@@ -18,7 +18,7 @@ static void	puterr(char *string)
 	write(1, string, stringlen(string));
 }
 
-void	handle_error(t_vars *vars, char *error, char *trace)
+void	handle_error(t_game *game, char *error, char *trace)
 {
 	int	mid;
 
@@ -38,11 +38,11 @@ void	handle_error(t_vars *vars, char *error, char *trace)
 		puterr("'");
 	}
 	puterr("\n");
-	clean_all(vars);
+	clean_all(game);
 	exit(0);
 }
 
-void	handle_warning(t_vars *c, char *error)
+void	handle_warning(t_game *c, char *error)
 {
 	int	mid;
 

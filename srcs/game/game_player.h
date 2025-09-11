@@ -20,7 +20,7 @@
 # include "game_portal.h"
 
 t_player	make_player(void);
-void		update_motion(t_player *player, t_vars *vars);
+void		update_motion(t_player *player, t_game *game);
 bool		should_bob(t_player *player);
 
 #endif

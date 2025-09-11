@@ -30,23 +30,23 @@
 * Refreshes pathfinding logic for enemies/objects.
  */
 
-void	update_world(t_vars *vars)
+void	update_world(t_game *game)
 {
-	update_keybinds(vars);
-	if (vars->bonus)
+	update_keybinds(game);
+	if (game->bonus)
 	{
 		get_delay(true, FPS_BONUS, !LINUX);
-		while (vars->delay > FPS_BONUS)
+		while (game->delay > FPS_BONUS)
 		{
-			update_motion(&(vars->player), vars);
-			draw_sprites(vars, true);
-			vars->time++;
-			vars->delay -= FPS_BONUS;
-			// refresh_pathfinding(vars);
+			update_motion(&(game->player), game);
+			draw_sprites(game, true);
+			game->time++;
+			game->delay -= FPS_BONUS;
+			// refresh_pathfinding(game);
 		}
 	}
-	update_motion(&(vars->player), vars);
-	// refresh_pathfinding(vars);
+	update_motion(&(game->player), game);
+	// refresh_pathfinding(game);
 }
 
 /**
@@ -58,30 +58,30 @@ void	update_world(t_vars *vars)
 * Syncs with the display before returning.
  */
 
-int	render_next_frame(t_vars *vars)
+int	render_next_frame(t_game *game)
 {
-	if (vars->player.health <= 0)
-		draw_death(vars);
+	if (game->player.health <= 0)
+		draw_death(game);
 	else
 	{
-		update_world(vars);
-		draw_floor(vars);
-		if (!vars->bmp)
-			draw_skybox(vars);
-		ray(vars, &(vars->img));
-		draw_sprites(vars, false);
-		if (!vars->bmp)
+		update_world(game);
+		draw_floor(game);
+		if (!game->bmp)
+			draw_skybox(game);
+		ray(game, &(game->img));
+		draw_sprites(game, false);
+		if (!game->bmp)
 		{
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-			draw_cursor(vars);
-			draw_hud(vars);
-			render_hand(vars);
+			mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+			draw_cursor(game);
+			draw_hud(game);
+			render_hand(game);
 		}
-		if (vars->bonus)
-			vars->delay += get_delay(false, FPS_BONUS, !LINUX);
-		vars->time++;
+		if (game->bonus)
+			game->delay += get_delay(false, FPS_BONUS, !LINUX);
+		game->time++;
 	}
-	mlx_do_sync(vars->mlx);
+	mlx_do_sync(game->mlx);
 	return (0);
 }
 
@@ -92,29 +92,29 @@ int	render_next_frame(t_vars *vars)
 * Configures render distance and lighting based on bonus mode and assets.
 * Allocates the depth buffer.
 * Initializes the blur effect for rendering.
- * @param vars
+ * @param game
  */
-void	setup_render(t_vars *vars)
+void	setup_render(t_game *game)
 {
 	t_shape	shape;
 
-	vars->fov = (double)vars->resy / (double)vars->resx;
-	vars->cam_width = (1 / (cos(atan2(-0.5, vars->fov))));
-	vars->img = make_image(vars->mlx, vars->resx, vars->resy);
-	if (!vars->bonus || ((!vars->floor.img && vars->bottom_color != 0) \
-		|| (!vars->skybox.img && vars->top_color != 0)))
+	game->fov = (double)game->resy / (double)game->resx;
+	game->cam_width = (1 / (cos(atan2(-0.5, game->fov))));
+	game->img = make_image(game->mlx, game->resx, game->resy);
+	if (!game->bonus || ((!game->floor.img && game->bottom_color != 0) \
+		|| (!game->skybox.img && game->top_color != 0)))
 	{
-		vars->should_dim = false;
-		vars->render_distance = 50;
+		game->should_dim = false;
+		game->render_distance = 50;
 	}
-	vars->depth = malloc(sizeof(double) * vars->resx);
-	if (!vars->depth)
-		handle_error(vars, "Failed to allocate depth buffer.", NULL);
+	game->depth = malloc(sizeof(double) * game->resx);
+	if (!game->depth)
+		handle_error(game, "Failed to allocate depth buffer.", NULL);
 	shape.width = 210;
 	shape.height = 150;
 	shape.x = 20;
-	shape.y = vars->resy - shape.height - 45;
-	vars->blur = make_blur_struct(vars->mlx, vars->img, shape);
+	shape.y = game->resy - shape.height - 45;
+	game->blur = make_blur_struct(game->mlx, game->img, shape);
 }
 
 /**
@@ -124,16 +124,16 @@ void	setup_render(t_vars *vars)
 * Verifies file extension and loads map configuration.
 * Raises errors for invalid input.
  */
-void	load_args(int argc, char **argv, t_vars *vars)
+void	load_args(int argc, char **argv, t_game *game)
 {
 	if (argc == 2)
 	{
 		if (!check_iscub(argv[1]))
-			handle_error(vars, ERROR_FILE_TYPE, argv[1]);
-		load_f(argv[1], vars);
+			handle_error(game, ERROR_FILE_TYPE, argv[1]);
+		load_f(argv[1], game);
 	}
 	else
-		handle_error(vars, ERROR_USAGE_CUB, NULL);
+		handle_error(game, ERROR_USAGE_CUB, NULL);
 }
 
 /**
@@ -144,23 +144,23 @@ void	load_args(int argc, char **argv, t_vars *vars)
  */
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
+	t_game	game;
 
-	init_default(&vars);
-	set_bonus(&(vars.bonus));
-	vars.mlx = mlx_init();
-	if (!vars.mlx)
-		handle_error(&vars, FAIL_MLX, NULL);
-	load_args(argc, argv, &vars);
-	check_define(&vars);
-	setup_render(&vars);
-	vars.win = mlx_new_window(vars.mlx, vars.resx, vars.resy, TITLE_WINDOWS);
-	if (vars.sounds.ambient)
-		play_sound_alt(vars.sounds.ambient, true, true);
-	mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
-	mlx_hook(vars.win, 3, 1L << 1, key_lift, &vars);
-	mlx_hook(vars.win, 33, 1L << 17, clean_and_exit_z, &vars);
-	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
-	mlx_loop(vars.mlx);
+	init_default(&game);
+	set_bonus(&(game.bonus));
+	game.mlx = mlx_init();
+	if (!game.mlx)
+		handle_error(&game, FAIL_MLX, NULL);
+	load_args(argc, argv, &game);
+	check_define(&game);
+	setup_render(&game);
+	game.win = mlx_new_window(game.mlx, game.resx, game.resy, TITLE_WINDOWS);
+	if (game.sounds.ambient)
+		play_sound_alt(game.sounds.ambient, true, true);
+	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
+	mlx_hook(game.win, 3, 1L << 1, key_lift, &game);
+	mlx_hook(game.win, 33, 1L << 17, clean_and_exit_z, &game);
+	mlx_loop_hook(game.mlx, render_next_frame, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }

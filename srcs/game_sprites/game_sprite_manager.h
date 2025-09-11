@@ -16,7 +16,7 @@
 # include "../cub3D.h"
 
 void		swap_sprite(t_sprite **prevnext, t_sprite *last);
-void		sprite_sort(t_vars *vars, t_sprite **begin_list);
+void		sprite_sort(t_game *game, t_sprite **begin_list);
 t_sprite	*make_sprite(t_vecd pos, t_sprite_k kind, t_img *img);
 t_sprite	*sprite_pf(t_sprite **begin_list, t_vecd pos,
 				t_sprite_k kind, t_img *img);

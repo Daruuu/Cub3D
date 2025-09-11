@@ -12,8 +12,8 @@
 
 #include "cub_pathfinder.h"
 
-void	refresh_pathfinding(t_vars *vars)
+void	refresh_pathfinding(t_game *game)
 {
-	(void)vars;
+	(void)game;
 	// Implementación vacía - pathfinding deshabilitado temporalmente
 }

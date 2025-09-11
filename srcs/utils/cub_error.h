@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 
-void	handle_error(t_vars *vars, char *error, char *trace);
-void	handle_warning(t_vars *vars, char *error);
+void	handle_error(t_game *game, char *error, char *trace);
+void	handle_warning(t_game *game, char *error);
 
 #endif
