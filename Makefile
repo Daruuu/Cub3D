@@ -53,12 +53,20 @@ PATH_BASS   = bass
 #	$(SRC_DIR)/pathfinder/cub_path.c \
 #	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
 #	$(SRC_DIR)/pathfinder/cub_star_cardinal.c
-SRC_CORE = main.c \
+# ===================== SOURCES BY FOLDER ===================== #
+# Main entry point
+SRC_MAIN = main.c
+
+# Parser sources
+SRC_PARSER = \
 	$(SRC_DIR)/parser/parser_file_loader.c \
 	$(SRC_DIR)/parser/parser_map_parser.c \
 	$(SRC_DIR)/parser/parser_map_setter.c \
 	$(SRC_DIR)/parser/parser_main.c \
-	$(SRC_DIR)/parser/parser_setter.c \
+	$(SRC_DIR)/parser/parser_setter.c
+
+# Render engine sources
+SRC_RENDER = \
 	$(SRC_DIR)/render/render_blur.c \
 	$(SRC_DIR)/render/raycast_engine.c \
 	$(SRC_DIR)/render/raycast_collision.c \
@@ -67,11 +75,17 @@ SRC_CORE = main.c \
 	$(SRC_DIR)/render/render_textures.c \
 	$(SRC_DIR)/render/render_hud.c \
 	$(SRC_DIR)/render/render_minimap.c \
-	$(SRC_DIR)/render/render_macos_layer.c \
+	$(SRC_DIR)/render/render_macos_layer.c
+
+# Game sprites sources
+SRC_SPRITES = \
 	$(SRC_DIR)/game_sprites/game_sprite_door.c \
 	$(SRC_DIR)/game_sprites/game_sprite_enemy.c \
 	$(SRC_DIR)/game_sprites/game_sprite_manager.c \
-	$(SRC_DIR)/game_sprites/game_sprite_renderer.c \
+	$(SRC_DIR)/game_sprites/game_sprite_renderer.c
+
+# Utils sources
+SRC_UTILS = \
 	$(SRC_DIR)/utils/cub_checker.c \
 	$(SRC_DIR)/utils/cub_cleaner.c \
 	$(SRC_DIR)/utils/cub_error.c \
@@ -86,7 +100,10 @@ SRC_CORE = main.c \
 	$(SRC_DIR)/utils/cub_utils4.c \
 	$(SRC_DIR)/utils/cub_utils5.c \
 	$(SRC_DIR)/utils/cub_vec.c \
-	$(SRC_DIR)/utils/cub_vec2.c \
+	$(SRC_DIR)/utils/cub_vec2.c
+
+# Game logic sources
+SRC_GAME = \
 	$(SRC_DIR)/game/game_directions.c \
 	$(SRC_DIR)/game/game_collision.c \
 	$(SRC_DIR)/game/game_map.c \
@@ -94,6 +111,9 @@ SRC_CORE = main.c \
 	$(SRC_DIR)/game/game_portal.c \
 	$(SRC_DIR)/game/game_portal_advance.c \
 	$(SRC_DIR)/game/game_portal_render.c
+
+# Combined core sources
+SRC_CORE = $(SRC_MAIN) $(SRC_PARSER) $(SRC_RENDER) $(SRC_SPRITES) $(SRC_UTILS) $(SRC_GAME)
 
 SRC_BONUS = \
 	bonus/cub_sound_bonus.c \
