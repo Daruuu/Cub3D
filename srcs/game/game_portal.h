@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_map.h                                          :+:      :+:    :+:   */
+/*   cub_portal.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 01:08:27 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:55:46 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_MAP_H
-# define CUB_MAP_H
+#ifndef CUB_PORTAL_H
+# define CUB_PORTAL_H
 
-# define MAP_EMPTY 10
-# define MAP_AIR 0
-# define MAP_BLOCK 1
-# define MAP_NOENTRY 4
-
+# include "../cub3D.h"
+# include "game_directions.h"
+# include "game_portal_render.h"
 # include <stdlib.h>
-# include "../utils/cub_vec.h"
 
-typedef struct s_map
-{
-	t_vec			size;
-	int				buf_size;
-	unsigned char	*data;
-}					t_map;
+bool		create_portal(t_vars *vars, int x, int y, t_cardinal card);
+t_portal	*get_portal(t_vars *vars, int x, int y, t_cardinal card);
+t_portal	*get_empty_portal(t_vars *vars, int x, int y, t_cardinal card);
+void		translate_portal(t_vecd *ref, t_cardinal card, t_portal *pt);
+void		translate_portal_3(t_vec3d *ref, t_cardinal card, t_portal *pt);
+void		handle_portal_creation(t_vars *vars);
 
-t_map				make_empty(t_vec size);
-void				map_set(t_map *map, int x, int y, int value);
-int					map_get(t_map *map, int x, int y);
-int					map_get_val(t_map *map, int x, int y);
-void				clear_map(t_map *map);
 #endif

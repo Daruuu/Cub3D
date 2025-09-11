@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_collide.h                                      :+:      :+:    :+:   */
+/*   game_collision.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 18:47:33 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/09 01:07:18 by dasalaza         ###   ########.fr       */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 14:39:50 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_COLLIDE_H
-# define CUB_COLLIDE_H
+#ifndef GAME_COLLISION_H
+# define GAME_COLLISION_H
 
 # include "../utils/cub_vec.h"
 # include "../utils/cub_keybinds.h"
-# include "cub_map.h"
-# include "cub_portal.h"
+# include "game_map.h"
+# include "game_portal.h"
 
 bool	collide_object(t_vars *vars, double x, double y, t_sprite *goomba);
 void	collidex(t_vars *vars, t_player *player);
