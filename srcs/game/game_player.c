@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/12 12:19:22 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:33:08 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,12 @@ void	update_render(t_player *player, t_game *game, bool bonus)
 		&& player->render.z == 0 && !player->keybinds.jump, true);
 	if (player->keybinds.sneak && bonus)
 		player->render.z -= SNEAK_HEIGHT_OFFSET;
-	player->render.y += cos(game->time / BOB_Y_FREQUENCY + BOB_Y_PHASE) * BOB_Y_AMPLITUDE * game->bob;
-	player->render.x += sin(game->time / BOB_X_FREQUENCY + BOB_X_PHASE) * BOB_X_AMPLITUDE * game->bob;
-	player->render.z += fabs(cos(game->time / BOB_Z_FREQUENCY) * BOB_Z_AMPLITUDE * game->bob);
+	player->render.y += cos(game->time / BOB_Y_FREQUENCY + BOB_Y_PHASE) \
+		* BOB_Y_AMPLITUDE * game->bob;
+	player->render.x += sin(game->time / BOB_X_FREQUENCY + BOB_X_PHASE) \
+		* BOB_X_AMPLITUDE * game->bob;
+	player->render.z += fabs(cos(game->time / BOB_Z_FREQUENCY) \
+		* BOB_Z_AMPLITUDE * game->bob);
 	if (map_get(&game->map, floor(player->render.x), floor(player->render.y)))
 	{
 		player->render.x = player->pos.x;

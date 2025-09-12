@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/12 13:02:13 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:41:41 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ void	render_row_floor(t_game *game, t_floor_render *f)
 {
 	if (f->row_len < 0)
 	{
-		fill_img(game->img, 0x0, game->resy - f->s.y - 2, game->resy - f->s.y);
+		fill_img(game->img, 0x0, game->resy - f->s.y - 2, \
+			game->resy - f->s.y);
 		f->s.y += 2;
 		return ;
 	}
 	f->s.x = 0;
 	while (f->s.x < game->resx)
 	{
-		f->tex.x = normalize_fractional_part(f->start_pos.x) * game->floor.width;
-		f->tex.y = normalize_fractional_part(f->start_pos.y) * game->floor.height;
+		f->tex.x = normalz_fractional_part(f->start_pos.x) * game->floor.width;
+		f->tex.y = normalz_fractional_part(f->start_pos.y) * game->floor.height;
 		f->color = get_pixel(&(game->floor), (int)f->tex.x, (int)f->tex.y);
-		f->dim = 1 - fmin(1, square_dist(game->player.render, f->start_pos) \
-			/ 81);
+		f->dim = 1 - fmin(1, \
+			square_dist(game->player.render, f->start_pos) / 81);
 		set_big_pixel(&(game->img), f->s.x, game->resy - f->s.y - 2,
 			color_dim(f->color, f->dim));
 		f->start_pos.x += f->step.x;

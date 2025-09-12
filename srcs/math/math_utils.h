@@ -18,13 +18,13 @@
 # include <math.h>
 
 // ===================== ANGULAR CALCULATIONS ===================== //
-double			calculate_angular_distance(double angle_a, double angle_b);
+double			calc_angular_distance(double angle_a, double angle_b);
 
 // ===================== VALUE MANIPULATION ===================== //
 void			swap_double_values(double *value_a, double *value_b);
 
 // ===================== FRACTIONAL OPERATIONS ===================== //
-double			normalize_fractional_part(double value);
+double			normalz_fractional_part(double value);
 
 // ===================== INTERPOLATION FUNCTIONS ===================== //
 double			smooth_ease_in_out_interpolation(double t);

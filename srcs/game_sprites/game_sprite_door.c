@@ -6,19 +6,11 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/12 13:01:28 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:37:31 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_sprite_door.h"
-
-/*
-** My doors are a little hacky, they reuse the sprite maths, for the begining
-** and the end of the door, I then make a linear transition between the two
-** heights. That's all you need to know...
-** Code is a bit messy because of the norm and the fact i have to
-** rotate them by 90deg.
-*/
 
 void	setup_door(t_door_r *dr, t_game *game, t_sprite *s)
 {
@@ -104,11 +96,12 @@ void	draw_door_sprite(t_door_r *dr, t_game *game)
 		dr->curr_angle = atan2(((dr->draw.x + v.x) / (double)game->resx) - 0.5, \
 			game->fov);
 		dr->ratio2 = v.x / (double)dr->draw.width;
-		dr->ratio = calculate_angular_distance(dr->sprite_angle, dr->curr_angle) / \
-			calculate_angular_distance(dr->sprite_angle, dr->end_angle);
+		dr->ratio = calc_angular_distance(dr->sprite_angle, dr->curr_angle) / \
+			calc_angular_distance(dr->sprite_angle, dr->end_angle);
 		if (dr->inverted)
 			dr->ratio = 1 - dr->ratio;
-		if (smooth_ease_in_out_interpolation(dr->sprite->last_hurt / 25.0) > dr->ratio * 2)
+		if (smooth_ease_in_out_interpolation(dr->sprite->last_hurt / 25.0) > \
+			dr->ratio * 2)
 			continue ;
 		dr->end = dr->pos;
 		if (dr->rotated)
@@ -130,8 +123,8 @@ bool	draw_door(t_img *img, t_game *game, t_sprite s)
 	setup_door(&dr, game, &s);
 	if (dr.dist > game->render_distance)
 		return (false);
-	if (fabs(calculate_angular_distance(dr.sprite_angle, 0)) > M_PI / 2 || \
-		fabs(calculate_angular_distance(dr.end_angle, 0)) > M_PI / 2)
+	if (fabs(calc_angular_distance(dr.sprite_angle, 0)) > M_PI / 2 || \
+		fabs(calc_angular_distance(dr.end_angle, 0)) > M_PI / 2)
 		return (true);
 	setup_door_draw(&dr, game);
 	dr.sprite = &s;

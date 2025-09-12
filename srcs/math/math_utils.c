@@ -22,7 +22,7 @@
  * @param angle_b Second angle in radians
  * @return Angular distance in radians
  */
-double	calculate_angular_distance(double angle_a, double angle_b)
+double	calc_angular_distance(double angle_a, double angle_b)
 {
 	return (atan2(sin(angle_a - angle_b), cos(angle_a - angle_b)));
 }
@@ -50,7 +50,7 @@ void	swap_double_values(double *value_a, double *value_b)
  * @param value The input value
  * @return Normalized fractional part in range [0, 1)
  */
-double	normalize_fractional_part(double value)
+double	normalz_fractional_part(double value)
 {
 	double	fractional_part;
 
