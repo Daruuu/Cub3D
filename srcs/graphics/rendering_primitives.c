@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 22:00:00 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 22:00:00 by dasalaza         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:44:33 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	set_strip(t_img *data, t_shape shape, int color)
 		*(unsigned int *)dst = color;
 	}
 }
+/**
+* Use: Rendering textured walls in raycasting
+*/
 
 void	set_img_strip(t_img *data, t_shape shape, float offset)
 {
@@ -117,6 +120,9 @@ void	e_portal_strip(t_img *data, t_shape shape, t_img *tex, float offset)
 	}
 }
 
+/**
+ * uses to render hud and minimap
+ */
 void	rect(t_img *data, t_shape shape, int color)
 {
 	int	i;

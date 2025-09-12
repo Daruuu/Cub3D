@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:58:56 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:02:13 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	render_row_floor(t_game *game, t_floor_render *f)
 	f->s.x = 0;
 	while (f->s.x < game->resx)
 	{
-		f->tex.x = modabs(f->start_pos.x) * game->floor.width;
-		f->tex.y = modabs(f->start_pos.y) * game->floor.height;
+		f->tex.x = normalize_fractional_part(f->start_pos.x) * game->floor.width;
+		f->tex.y = normalize_fractional_part(f->start_pos.y) * game->floor.height;
 		f->color = get_pixel(&(game->floor), (int)f->tex.x, (int)f->tex.y);
 		f->dim = 1 - fmin(1, square_dist(game->player.render, f->start_pos) \
 			/ 81);

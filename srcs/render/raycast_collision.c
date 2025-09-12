@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:12:44 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/10 16:08:49 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:15:44 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_img	*get_texture(t_game *game, t_cardinal card)
 }
 
 /*
-** Does a simple raycast to get the mouseover block, used by the portal gun
+ * bonus (not implemented)
+ * Does a simple raycast to get the mouseover block, used by the portal gun
 */
 
 t_mouseover	get_mouseover(t_game *game)

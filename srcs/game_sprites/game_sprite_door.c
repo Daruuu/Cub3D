@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 16:27:01 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 13:01:28 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	setup_door(t_door_r *dr, t_game *game, t_sprite *s)
 	if (dr->rotated)
 	{
 		dr->pos.x += 0.5;
-		dr->pos.y -= ease_in_out(s->last_hurt / 25.0);
+		dr->pos.y -= smooth_ease_in_out_interpolation(s->last_hurt / 25.0);
 		dr->end.x = dr->pos.x;
 		dr->end.y = dr->pos.y + 1;
 	}
 	else
 	{
 		dr->pos.y += 0.5;
-		dr->pos.x -= ease_in_out(s->last_hurt / 25.0);
+		dr->pos.x -= smooth_ease_in_out_interpolation(s->last_hurt / 25.0);
 		dr->end.x = dr->pos.x + 1;
 		dr->end.y = dr->pos.y;
 	}
@@ -56,8 +56,8 @@ void	setup_door_draw(t_door_r *dr, t_game *game)
 	{
 		dr->draw.x += dr->draw.width;
 		dr->draw.width *= -1;
-		swap_d(&dr->sprite_angle, &dr->end_angle);
-		swap_d(&dr->dist, &dr->end_dist);
+		swap_double_values(&dr->sprite_angle, &dr->end_angle);
+		swap_double_values(&dr->dist, &dr->end_dist);
 		dr->inverted = true;
 	}
 }
@@ -104,11 +104,11 @@ void	draw_door_sprite(t_door_r *dr, t_game *game)
 		dr->curr_angle = atan2(((dr->draw.x + v.x) / (double)game->resx) - 0.5, \
 			game->fov);
 		dr->ratio2 = v.x / (double)dr->draw.width;
-		dr->ratio = get_angdist(dr->sprite_angle, dr->curr_angle) / \
-			get_angdist(dr->sprite_angle, dr->end_angle);
+		dr->ratio = calculate_angular_distance(dr->sprite_angle, dr->curr_angle) / \
+			calculate_angular_distance(dr->sprite_angle, dr->end_angle);
 		if (dr->inverted)
 			dr->ratio = 1 - dr->ratio;
-		if (ease_in_out(dr->sprite->last_hurt / 25.0) > dr->ratio * 2)
+		if (smooth_ease_in_out_interpolation(dr->sprite->last_hurt / 25.0) > dr->ratio * 2)
 			continue ;
 		dr->end = dr->pos;
 		if (dr->rotated)
@@ -130,8 +130,8 @@ bool	draw_door(t_img *img, t_game *game, t_sprite s)
 	setup_door(&dr, game, &s);
 	if (dr.dist > game->render_distance)
 		return (false);
-	if (fabs(get_angdist(dr.sprite_angle, 0)) > M_PI / 2 || \
-		fabs(get_angdist(dr.end_angle, 0)) > M_PI / 2)
+	if (fabs(calculate_angular_distance(dr.sprite_angle, 0)) > M_PI / 2 || \
+		fabs(calculate_angular_distance(dr.end_angle, 0)) > M_PI / 2)
 		return (true);
 	setup_door_draw(&dr, game);
 	dr.sprite = &s;

@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 22:00:00 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/12 03:17:43 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:29:54 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	color_add(int color, int current, float ratio)
 	b = (current & 0xff) + (int)((color & 0xff) * ratio);
 	return (r << 16 | g << 8 | b);
 }
+
+/**
+ * light color
+ */
 
 int	color_dim(int color, float ratio)
 {

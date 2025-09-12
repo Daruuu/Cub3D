@@ -132,6 +132,7 @@ SRC_RENDER = \
 # Math sources
 SRC_MATH = \
 	$(SRC_DIR)/math/vector_math.c \
+	$(SRC_DIR)/math/vector_math_utils.c \
 	$(SRC_DIR)/math/math_utils.c \
 	$(SRC_DIR)/math/rotation_math.c
 

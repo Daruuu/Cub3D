@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/11 21:41:31 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 12:19:22 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,38 @@ t_player	make_player(void)
 	return (player);
 }
 
+/**
+ * Handles player key inputs to update rotation, pitch, jump, sneak, and motion.
+ * Applies speed modifiers and damping based on active keybinds and bonus mode.
+ */
 void	handle_keys(t_player *player, bool bonus)
 {
 	float	ratio;
 
-	ratio = 0.88;
+	ratio = FRICTION_BASE_RATIO;
 	if (player->keybinds.rotate_left && !player->keybinds.rotate_right)
 		player->motion_yaw -= ROTATION_SPEED;
 	else if (player->keybinds.rotate_right && !player->keybinds.rotate_left)
 		player->motion_yaw += ROTATION_SPEED;
 	else
-		player->motion_yaw *= 0.895;
+		player->motion_yaw *= FRICTION_ROTATION_YAW;
 	if (player->keybinds.rotate_up && bonus)
-		player->motion_pitch += 4;
+		player->motion_pitch += PITCH_ROTATION_SPEED;
 	if (player->keybinds.rotate_down && bonus)
-		player->motion_pitch -= 4;
-	if (player->keybinds.jump && player->pos.z <= 0.0001 && bonus)
-		player->motion.z = 0.128;
+		player->motion_pitch -= PITCH_ROTATION_SPEED;
+	if (player->keybinds.jump && player->pos.z <= GROUND_LIMIT && bonus)
+		player->motion.z = JUMP_IMPULSE;
 	if (player->keybinds.sneak && bonus)
-		ratio *= 0.67;
-	else if (player->pos.z > 0.001)
-		ratio = 0.9;
+		ratio *= SPEED_SNEAK_MODIFIER;
+	else if (player->pos.z > AIR_LIMIT)
+		ratio = SPEED_AIR_MODIFIER;
 	player->motion.x *= ratio;
 	player->motion.y *= ratio;
 }
 
 bool	should_bob(t_player *player)
 {
-	if (player->pos.z >= 0.0001)
+	if (player->pos.z >= GROUND_LIMIT)
 		return (false);
 	if (player->keybinds.sneak)
 		return (false);
@@ -82,16 +86,16 @@ void	update_render(t_player *player, t_game *game, bool bonus)
 	player->render.y = player->pos.y;
 	player->render.z = player->pos.z;
 	if (should_bob(player) && bonus)
-		game->bob = fmin(1, game->bob + 0.04);
+		game->bob = fmin(1, game->bob + BOB_SPEED_INCREASE);
 	else
-		game->bob = fmax(0, game->bob - 0.04);
+		game->bob = fmax(0, game->bob - BOB_SPEED_DECREASE);
 	play_sound_alt(game->sounds.walk, should_bob(player)
 		&& player->render.z == 0 && !player->keybinds.jump, true);
 	if (player->keybinds.sneak && bonus)
-		player->render.z -= 0.05;
-	player->render.y += cos(game->time / 6.0 + 34) * 0.01 * game->bob;
-	player->render.x += sin(game->time / 4.8 + 56) * 0.01 * game->bob;
-	player->render.z += fabs(cos(game->time / 7.5) * 0.03 * game->bob);
+		player->render.z -= SNEAK_HEIGHT_OFFSET;
+	player->render.y += cos(game->time / BOB_Y_FREQUENCY + BOB_Y_PHASE) * BOB_Y_AMPLITUDE * game->bob;
+	player->render.x += sin(game->time / BOB_X_FREQUENCY + BOB_X_PHASE) * BOB_X_AMPLITUDE * game->bob;
+	player->render.z += fabs(cos(game->time / BOB_Z_FREQUENCY) * BOB_Z_AMPLITUDE * game->bob);
 	if (map_get(&game->map, floor(player->render.x), floor(player->render.y)))
 	{
 		player->render.x = player->pos.x;
