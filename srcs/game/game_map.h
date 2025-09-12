@@ -19,7 +19,7 @@
 # define MAP_NOENTRY 4
 
 # include <stdlib.h>
-# include "../utils/cub_vec.h"
+# include "../math/vector_math.h"
 
 typedef struct s_map
 {

@@ -12,6 +12,8 @@
 
 #include "input_handler.h"
 #include "../math/vector_math.h"
+#include "../parser/parser_memory_cleanup.h"
+#include "../game/game_portal.h"
 
 void	set_keystate(t_keybinds *keybinds, int key, bool pressed)
 {

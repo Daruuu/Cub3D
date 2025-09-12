@@ -12,6 +12,7 @@
 
 #include "parser_main.h"
 #include "parser_setter.h"
+#include "../file_loader/string_utils.h"
 
 char	*read_arg(char *s1, char *s2, char **ret)
 {

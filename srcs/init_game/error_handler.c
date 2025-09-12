@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "error_handler.h"
-#include "../io/string_utils.h"
+#include "../file_loader/string_utils.h"
+#include <unistd.h>
+#include "../parser/parser_memory_cleanup.h"
 
 static void	puterr(char *string)
 {

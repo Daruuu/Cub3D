@@ -13,8 +13,8 @@
 #ifndef GAME_PLAYER_H
 # define GAME_PLAYER_H
 
-# include "../utils/cub_vec.h"
-# include "../utils/cub_keybinds.h"
+# include "../math/vector_math.h"
+# include "../input/input_handler.h"
 # include "game_map.h"
 # include "game_collision.h"
 # include "game_portal.h"

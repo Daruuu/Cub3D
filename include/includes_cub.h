@@ -13,9 +13,10 @@
 #ifndef INCLUDES_CUB_H
 # define INCLUDES_CUB_H
 
-# include "../srcs/utils/cub_vec.h"
-# include "../srcs/utils/cub_rot.h"
-# include "../srcs/utils/cub_utils.h"
+# include "../srcs/math/vector_math.h"
+# include "../srcs/math/rotation_math.h"
+# include "../srcs/graphics/image_operations.h"
+# include "../srcs/input/input_handler.h"
 
 typedef enum e_cardinal
 {
@@ -40,21 +41,6 @@ typedef struct s_floor_render
 	double			dim;
 	double			ang;
 }					t_floor_render;
-
-typedef struct s_keybinds
-{
-	bool			forwards;
-	bool			backwards;
-	bool			left;
-	bool			right;
-	bool			rotate_left;
-	bool			rotate_right;
-	bool			rotate_up;
-	bool			rotate_down;
-	bool			jump;
-	bool			sneak;
-	t_vecd			move;
-}					t_keybinds;
 
 typedef struct s_mouseover
 {

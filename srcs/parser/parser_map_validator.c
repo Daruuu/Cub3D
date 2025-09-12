@@ -23,6 +23,7 @@
 /* ************************************************************************** */
 
 #include "parser_map_validator.h"
+#include "../init_game/error_handler.h"
 
 void	check_textures_custom(t_game *game)
 {

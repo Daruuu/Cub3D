@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 # include "../game/game_player.h"
-# include "../utils/cub_error.h"
+# include "../init_game/error_handler.h"
 # include "../game_sprites/game_sprite_renderer.h"
 
 int		set_player(t_game *game, char c, t_vec p);

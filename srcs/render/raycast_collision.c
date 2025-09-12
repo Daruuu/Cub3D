@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "raycast_engine.h"
+#include "../graphics/rendering_primitives.h"
 
 t_vec	get_collide_pos(t_trace trace)
 {

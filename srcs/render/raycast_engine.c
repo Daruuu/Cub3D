@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "raycast_engine.h"
+#include "../graphics/rendering_primitives.h"
 #include "includes_cub.h"
 
 t_ray	get_init_ray(t_rot *rot, double x, double y)

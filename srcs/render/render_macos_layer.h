@@ -13,7 +13,7 @@
 #ifndef RENDER_MACOS_LAYER_H
 # define RENDER_MACOS_LAYER_H
 
-# include "../utils/cub_utils.h"
+# include "../graphics/image_operations.h"
 # include "../cub3D.h"
 
 int		render_mac_os_image(t_game *game, t_img *img, int x, int y);

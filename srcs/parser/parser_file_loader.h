@@ -13,7 +13,7 @@
 #ifndef PARSER_FILE_LOADER_H
 # define PARSER_FILE_LOADER_H
 
-# include "../utils/cub_error.h"
+# include "../init_game/error_handler.h"
 # include "parser_main.h"
 # include "parser_map_parser.h"
 # include "../cub3D.h"

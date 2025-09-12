@@ -16,7 +16,7 @@
 # include "../cub3D.h"
 # include "../game/game_directions.h"
 # include "../game/game_portal.h"
-# include "../utils/cub_vec.h"
+# include "../math/vector_math.h"
 
 void			ray(t_game *game, t_img *img);
 t_vec			get_collide_pos(t_trace trace);

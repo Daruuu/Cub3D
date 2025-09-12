@@ -16,6 +16,9 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
+// Forward declaration
+typedef struct s_game t_game;
+
 // System initialization functions
 void			init_void(t_game *game);
 void			init_default(t_game *game);

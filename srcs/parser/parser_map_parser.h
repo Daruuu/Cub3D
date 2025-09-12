@@ -15,7 +15,7 @@
 
 # include "../cub3D.h"
 # include "parser_map_setter.h"
-# include "../utils/cub_error.h"
+# include "../init_game/error_handler.h"
 
 t_vec	get_map_size(t_line *start);
 int		set_map(t_game *game, char c, t_vec p);

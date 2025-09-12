@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "parser_memory_cleanup.h"
+#include "../game_sprites/game_sprite_manager.h"
 
 void	destroy_img(t_game *game, t_img *img)
 {

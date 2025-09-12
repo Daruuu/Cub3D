@@ -18,6 +18,8 @@
 # include "game_sprite_manager.h"
 # include "game_sprite_door.h"
 # include "game_sprite_enemy.h"
+# include "../graphics/color_operations.h"
+# include "../math/vector_math.h"
 
 typedef struct s_sprite_r
 {

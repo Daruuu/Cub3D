@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "render_hud.h"
+#include "../graphics/rendering_primitives.h"
+#include "../graphics/color_operations.h"
 
 /*
 ** Draws the minimap and it's background shadow / blur

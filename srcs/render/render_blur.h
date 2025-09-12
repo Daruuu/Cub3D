@@ -13,7 +13,7 @@
 #ifndef RENDER_BLUR_H
 # define RENDER_BLUR_H
 
-# include "../utils/cub_utils.h"
+# include "../graphics/image_operations.h"
 
 typedef struct s_blur
 {

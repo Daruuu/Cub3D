@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "render_macos_layer.h"
+#include "../graphics/color_operations.h"
 #include "../mlx/mlx.h"
 
 int	render_mac_os_image(t_game *game, t_img *img, int x, int y)

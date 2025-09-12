@@ -14,6 +14,9 @@
 # define GAME_SPRITE_DOOR_H
 
 # include "../cub3D.h"
+# include "../math/math_utils.h"
+# include "../math/vector_math.h"
+# include "../graphics/color_operations.h"
 
 typedef struct s_door_r
 {

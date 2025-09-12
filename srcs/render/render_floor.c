@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "render_floor.h"
+#include "../graphics/rendering_primitives.h"
+#include "../graphics/color_operations.h"
+#include "../math/math_utils.h"
 
 /*
 ** Renders a single floor row, called by setup_floor() which setups the

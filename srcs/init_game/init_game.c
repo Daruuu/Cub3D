@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "init_game.h"
+#include "../cub3D.h"
+#include "../sound/audio_system.h"
 
 void	init_void(t_game *game)
 {

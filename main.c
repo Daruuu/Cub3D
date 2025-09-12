@@ -16,10 +16,11 @@
 #include "srcs/render/render_hud.h"
 #include "srcs/render/render_floor.h"
 #include "srcs/parser/parser_map_validator.h"
-#include "srcs/utils/cub_error.h"
-#include "srcs/utils/cub_keybinds.h"
-#include "srcs/utils/cub_setup.h"
+#include "srcs/init_game/error_handler.h"
+#include "srcs/input/input_handler.h"
+#include "srcs/init_game/init_game.h"
 #include "srcs/game/game_player.h"
+#include "srcs/file_loader/check_file_map.h"
 
 /**
 * Updates the game world state:

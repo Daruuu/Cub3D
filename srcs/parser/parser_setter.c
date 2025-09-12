@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "parser_setter.h"
-#include "../utils/cub_error.h"
+#include "../init_game/error_handler.h"
 
 void	set_resolution(t_game *game, char *input)
 {

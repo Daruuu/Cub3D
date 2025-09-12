@@ -16,6 +16,9 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
+// Forward declaration
+typedef struct s_game t_game;
+
 // Error handling functions
 void			handle_error(t_game *game, char *error, char *trace);
 void			handle_warning(t_game *c, char *error);

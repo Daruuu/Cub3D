@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "render_minimap.h"
+#include "../graphics/rendering_primitives.h"
 
 /*
 ** Draws a cube, used by the minimap drawer: draw_minimap()

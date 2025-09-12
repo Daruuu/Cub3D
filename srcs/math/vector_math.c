@@ -12,6 +12,29 @@
 
 #include "vector_math.h"
 
+// Vector normalization and length calculations
+void	normalize(t_vecd *vec, double scale)
+{
+	double	len;
+
+	len = sqrt(vec->x * vec->x + vec->y * vec->y);
+	if (len > 0)
+	{
+		vec->x = (vec->x / len) * scale;
+		vec->y = (vec->y / len) * scale;
+	}
+}
+
+double	calc_sqrtlen(t_vecd v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y));
+}
+
+double	distance(t_vecd v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y));
+}
+
 double	distancemid2(t_vecd start, t_vecd end)
 {
 	end.x -= start.x + 0.5;

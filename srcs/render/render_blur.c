@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "render_blur.h"
+#include "../graphics/color_operations.h"
 
 /*
 ** Applys the kernel to each pixel

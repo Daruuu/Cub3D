@@ -14,7 +14,7 @@
 # define RENDER_TEXTURES_H
 
 # include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
+# include "../parser/parser_memory_cleanup.h"
 
 t_img	make_skybox(t_game *game, t_img *img, char *path);
 t_img	make_gun(t_game *game, t_img *img, char *path);
