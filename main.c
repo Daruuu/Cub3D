@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 22:27:05 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:41:15 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ void	update_world(t_game *game)
 
 /**
 * Renders one frame of the game:
-* If the player is dead, shows the death screen.
-* Otherwise, updates the world, draws floor, skybox, walls (raycasting),
+* Otherwise, updates the game, draws floor, skybox, walls (raycasting),
 * sprites, HUD, cursor, and hand.
 * Handles saving mode (--save) and frame timing for bonus mode.
 * Syncs with the display before returning.
