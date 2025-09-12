@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_textures.h                                  :+:      :+:    :+:   */
+/*   vector_math_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 23:35:02 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 23:37:48 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_TEXTURES_H
-# define RENDER_TEXTURES_H
+#include "vector_math.h"
 
-# include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
+void	normalize(t_vecd *vec, double scale)
+{
+	double	len;
 
-t_img	make_skybox(t_game *game, t_img *img, char *path);
-t_img	make_gun(t_game *game, t_img *img, char *path);
-t_img	make_dash(t_game *game, t_img *img, char *path);
+	len = sqrt(vec->x * vec->x + vec->y * vec->y);
+	if (len < 0.0001)
+	{
+		vec->x = 0;
+		vec->y = 0;
+		return ;
+	}
+	vec->x /= len;
+	vec->y /= len;
+	vec->x *= scale;
+	vec->y *= scale;
+}
 
-#endif
+double	calc_sqrtlen(t_vecd v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y));
+}
+
+double	distance(t_vecd v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y));
+}

@@ -4,11 +4,11 @@ NAME_BONUS	= cub3D_bonus
 
 CC          = cc
 RM          = rm -f
-AR          = ar rcs
+#AR          = ar rcs
 
 # Compiler flags
 CFLAGS      = -Wall -Wextra -Werror
-DEBUGFLAGS  = -g -fsanitize=address -fsanitize=undefined
+DEBUG_FLAGS  = -g -fsanitize=address -fsanitize=undefined
 HEADERS		= cub3D.h include/includes_cub.h
 
 # Detect OS
@@ -44,7 +44,7 @@ ifeq ($(DEBUG), 1)
 endif
 
 ifeq ($(SANITIZE), 1)
-	CFLAGS += $(DEBUGFLAGS)
+	CFLAGS += $(DEBUG_FLAGS)
 endif
 
 # ===================== PATHS ===================== #
@@ -60,77 +60,86 @@ INCLUDES    = -I$(PATH_MLX) -I$(PATH_BASS) -I$(INCLUDE_DIR) \
 			  -I$(SRC_DIR)/render -I$(SRC_DIR)/utils \
 			  -I$(SRC_DIR)/world -I$(SRC_DIR)/other \
 			  -I$(SRC_DIR)/game -I$(SRC_DIR)/game_sprites \
-			  -I$(SRC_DIR)/sound
+			  -I$(SRC_DIR)/sound \
+			  -I$(SRC_DIR)/graphics -I$(SRC_DIR)/math \
+			  -I$(SRC_DIR)/io -I$(SRC_DIR)/input -I$(SRC_DIR)/system
 
-# ===================== SOURCES ===================== #
-#	$(SRC_DIR)/render/cub_bitmap.c
-#	$(SRC_DIR)/pathfinder/cub_astar.c \
-#	$(SRC_DIR)/pathfinder/cub_node.c \
-#	$(SRC_DIR)/pathfinder/cub_node_helper.c \
-#	$(SRC_DIR)/pathfinder/cub_path.c \
-#	$(SRC_DIR)/pathfinder/cub_pathfinder.c \
-#	$(SRC_DIR)/pathfinder/cub_star_cardinal.c
 # ===================== SOURCES BY FOLDER ===================== #
 # Main entry point
 SRC_MAIN = main.c
 
-# Parser sources
-SRC_PARSER = \
-	$(SRC_DIR)/parser/parser_file_loader.c \
-	$(SRC_DIR)/parser/parser_map_parser.c \
-	$(SRC_DIR)/parser/parser_map_setter.c \
-	$(SRC_DIR)/parser/parser_main.c \
-	$(SRC_DIR)/parser/parser_setter.c
-
-# Render engine sources
-SRC_RENDER = \
-	$(SRC_DIR)/render/render_blur.c \
-	$(SRC_DIR)/render/raycast_engine.c \
-	$(SRC_DIR)/render/raycast_collision.c \
-	$(SRC_DIR)/render/raycast_dda.c \
-	$(SRC_DIR)/render/render_floor.c \
-	$(SRC_DIR)/render/render_textures.c \
-	$(SRC_DIR)/render/render_hud.c \
-	$(SRC_DIR)/render/render_minimap.c \
-	$(SRC_DIR)/render/render_macos_layer.c
-
-# Game sprites sources
-SRC_SPRITES = \
-	$(SRC_DIR)/game_sprites/game_sprite_door.c \
-	$(SRC_DIR)/game_sprites/game_sprite_enemy.c \
-	$(SRC_DIR)/game_sprites/game_sprite_manager.c \
-	$(SRC_DIR)/game_sprites/game_sprite_renderer.c
-
-# Utils sources
-SRC_UTILS = \
-	$(SRC_DIR)/utils/cub_checker.c \
-	$(SRC_DIR)/utils/cub_cleaner.c \
-	$(SRC_DIR)/utils/cub_error.c \
-	$(SRC_DIR)/utils/cub_keybinds.c \
-	$(SRC_DIR)/utils/cub_line_reader.c \
-	$(SRC_DIR)/utils/cub_line_reader_helper.c \
-	$(SRC_DIR)/utils/cub_rot.c \
-	$(SRC_DIR)/utils/cub_setup.c \
-	$(SRC_DIR)/utils/cub_utils.c \
-	$(SRC_DIR)/utils/cub_utils2.c \
-	$(SRC_DIR)/utils/cub_utils3.c \
-	$(SRC_DIR)/utils/cub_utils4.c \
-	$(SRC_DIR)/utils/cub_utils5.c \
-	$(SRC_DIR)/utils/cub_vec.c \
-	$(SRC_DIR)/utils/cub_vec2.c
+# IO sources
+SRC_FILE_LOADER = \
+	$(SRC_DIR)/file_loader/check_file_map.c \
+	$(SRC_DIR)/file_loader/load_file.c \
+	$(SRC_DIR)/file_loader/load_file_helper.c \
+	$(SRC_DIR)/file_loader/string_utils.c
 
 # Game logic sources
 SRC_GAME = \
-	$(SRC_DIR)/game/game_directions.c \
 	$(SRC_DIR)/game/game_collision.c \
+	$(SRC_DIR)/game/game_directions.c \
 	$(SRC_DIR)/game/game_map.c \
 	$(SRC_DIR)/game/game_player.c \
 	$(SRC_DIR)/game/game_portal.c \
 	$(SRC_DIR)/game/game_portal_advance.c \
 	$(SRC_DIR)/game/game_portal_render.c
 
-# Combined core sources
-SRC_CORE = $(SRC_MAIN) $(SRC_PARSER) $(SRC_RENDER) $(SRC_SPRITES) $(SRC_UTILS) $(SRC_GAME)
+# Game sprites sources
+SRC_GAME_SPRITES = \
+	$(SRC_DIR)/game_sprites/game_sprite_door.c \
+	$(SRC_DIR)/game_sprites/game_sprite_enemy.c \
+	$(SRC_DIR)/game_sprites/game_sprite_manager.c \
+	$(SRC_DIR)/game_sprites/game_sprite_renderer.c
+
+# Graphics sources
+SRC_GRAPHICS = \
+	$(SRC_DIR)/graphics/color_operations.c \
+	$(SRC_DIR)/graphics/image_operations.c \
+	$(SRC_DIR)/graphics/rendering_primitives.c
+
+# System sources
+SRC_INIT_GAME = \
+	$(SRC_DIR)/init_game/error_handler.c \
+	$(SRC_DIR)/init_game/init_game.c
+
+# Input sources
+SRC_INPUT = \
+	$(SRC_DIR)/input/input_handler.c
+
+# Parser sources
+SRC_PARSER = \
+	$(SRC_DIR)/parser/parser_file_loader.c \
+	$(SRC_DIR)/parser/parser_main.c \
+	$(SRC_DIR)/parser/parser_map_parser.c \
+	$(SRC_DIR)/parser/parser_map_setter.c \
+	$(SRC_DIR)/parser/parser_map_validator.c \
+	$(SRC_DIR)/parser/parser_memory_cleanup.c \
+	$(SRC_DIR)/parser/parser_setter.c
+
+# Render engine sources
+SRC_RENDER = \
+	$(SRC_DIR)/render/raycast_collision.c \
+	$(SRC_DIR)/render/raycast_dda.c \
+	$(SRC_DIR)/render/raycast_engine.c \
+	$(SRC_DIR)/render/render_blur.c \
+	$(SRC_DIR)/render/render_floor.c \
+	$(SRC_DIR)/render/render_hud.c \
+	$(SRC_DIR)/render/render_macos_layer.c \
+	$(SRC_DIR)/render/render_minimap.c \
+	$(SRC_DIR)/render/render_textures.c
+
+# Math sources
+SRC_MATH = \
+	$(SRC_DIR)/math/vector_math.c \
+	$(SRC_DIR)/math/math_utils.c \
+	$(SRC_DIR)/math/rotation_math.c
+
+# Combined core sources (LEGACY STRUCTURE)
+SRC_CORE = $(SRC_MAIN) \
+	$(SRC_FILE_LOADER) $(SRC_GAME) $(SRC_GAME_SPRITES) $(SRC_GRAPHICS) \
+	$(SRC_INIT_GAME) $(SRC_INPUT) $(SRC_MATH) \
+	$(SRC_PARSER) $(SRC_RENDER)
 
 SRC_BONUS = \
 	bonus/cub_sound_bonus.c \

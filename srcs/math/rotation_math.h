@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_textures.h                                  :+:      :+:    :+:   */
+/*   rotation_math.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 22:48:18 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 23:11:55 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_TEXTURES_H
-# define RENDER_TEXTURES_H
+#ifndef ROTATION_MATH_H
+# define ROTATION_MATH_H
 
-# include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
+# include <stdbool.h>
+# include <stdlib.h>
+# include <math.h>
 
-t_img	make_skybox(t_game *game, t_img *img, char *path);
-t_img	make_gun(t_game *game, t_img *img, char *path);
-t_img	make_dash(t_game *game, t_img *img, char *path);
+typedef struct s_rot
+{
+	double	angle;
+	double	cos;
+	double	sin;
+}				t_rot;
+
+// Rotation utilities
+t_rot			make_rot(double angle);
 
 #endif

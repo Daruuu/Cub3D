@@ -18,12 +18,20 @@
 # include <math.h>
 # include "mlx/mlx.h"
 
+// ===================== NEW MODULAR STRUCTURE (TEMPORARILY DISABLED) ===================== //
+// # include "srcs/graphics/graphics_includes.h"
+// # include "srcs/math/math_includes.h"
+// # include "srcs/file_loader/io_includes.h"
+// # include "srcs/input/input_handler.h"
+// # include "srcs/init_game/system_includes.h"
+
+// ===================== LEGACY INCLUDES (CURRENTLY ACTIVE) ===================== //
 # include "srcs/utils/cub_vec.h"
 # include "srcs/utils/cub_rot.h"
 # include "srcs/utils/cub_utils.h"
 # include "srcs/render/render_blur.h"
 # include "srcs/game/game_map.h"
-# include "srcs/utils/cub_line_reader.h"
+#include "srcs/file_loader/load_file.h"
 # include "srcs/sound/audio_system.h"
 # include "include/includes_cub.h"
 

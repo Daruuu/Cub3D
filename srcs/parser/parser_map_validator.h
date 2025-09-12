@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_textures.h                                  :+:      :+:    :+:   */
+/*   parser_map_validator.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 23:18:55 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/12 00:22:38 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef RENDER_TEXTURES_H
-# define RENDER_TEXTURES_H
+#ifndef PARSER_MAP_VALIDATOR_H
+# define PARSER_MAP_VALIDATOR_H
 
 # include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
 
-t_img	make_skybox(t_game *game, t_img *img, char *path);
-t_img	make_gun(t_game *game, t_img *img, char *path);
-t_img	make_dash(t_game *game, t_img *img, char *path);
+void	check_textures_custom(t_game *game);
+void	check_textures(t_game *game);
+void	check_define(t_game *game);
 
 #endif

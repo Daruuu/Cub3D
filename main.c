@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 18:48:54 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 16:18:42 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 22:27:05 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "srcs/parser/parser_file_loader.h"
 #include "srcs/render/render_hud.h"
 #include "srcs/render/render_floor.h"
-#include "srcs/utils/cub_checker.h"
+#include "srcs/parser/parser_map_validator.h"
 #include "srcs/utils/cub_error.h"
 #include "srcs/utils/cub_keybinds.h"
 #include "srcs/utils/cub_setup.h"
@@ -42,11 +42,9 @@ void	update_world(t_game *game)
 			draw_sprites(game, true);
 			game->time++;
 			game->delay -= FPS_BONUS;
-			// refresh_pathfinding(game);
 		}
 	}
 	update_motion(&(game->player), game);
-	// refresh_pathfinding(game);
 }
 
 /**

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_textures.h                                  :+:      :+:    :+:   */
+/*   parser_memory_cleanup.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 23:18:55 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/12 00:30:48 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_TEXTURES_H
-# define RENDER_TEXTURES_H
+#ifndef PARSER_MEMORY_CLEANUP_H
+# define PARSER_MEMORY_CLEANUP_H
 
 # include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
 
-t_img	make_skybox(t_game *game, t_img *img, char *path);
-t_img	make_gun(t_game *game, t_img *img, char *path);
-t_img	make_dash(t_game *game, t_img *img, char *path);
+void	destroy_img(t_game *game, t_img *img);
+void	clean_images(t_game *game);
+void	clean_all(t_game *game);
+void	clean_and_exit(int code, t_game *game);
+int		clean_and_exit_z(t_game *game);
+int		mlx_destroy_display(void *mlx_ptr);
 
 #endif

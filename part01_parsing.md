@@ -26,11 +26,11 @@ Entender cómo se cargan y procesan los archivos `.cub`.
 
 ### 4. Archivos de utilidades (necesarios para parsing)
 - **srcs/utils/cub_line_reader.h** → lectura de líneas
-- **srcs/utils/cub_line_reader.c** → implementación de lectura
+- **srcs/utils/load_file.c** → implementación de lectura
 - **srcs/utils/cub_error.h** → manejo de errores
 - **srcs/utils/cub_error.c** → implementación de errores
-- **srcs/utils/cub_checker.h** → validaciones
-- **srcs/utils/cub_checker.c** → implementación de validaciones
+- **srcs/utils/parser_map_validator.h** → validaciones
+- **srcs/utils/parser_map_validator.c** → implementación de validaciones
 
 ### 5. Archivos de estructuras (necesarios)
 - **include/cub_player_struct.h** → estructura del jugador

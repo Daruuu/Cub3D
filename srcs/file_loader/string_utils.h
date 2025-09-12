@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_textures.h                                  :+:      :+:    :+:   */
+/*   string_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 15:13:44 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/10 16:10:32 by anamedin         ###   ########.fr       */
+/*   Created: 2025/09/11 22:48:37 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 23:42:45 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_TEXTURES_H
-# define RENDER_TEXTURES_H
+#ifndef STRING_UTILS_H
+# define STRING_UTILS_H
 
-# include "../cub3D.h"
-#include "../parser/cub_cleaner.h"
+# include <stdlib.h>
 
-t_img	make_skybox(t_game *game, t_img *img, char *path);
-t_img	make_gun(t_game *game, t_img *img, char *path);
-t_img	make_dash(t_game *game, t_img *img, char *path);
+// String manipulation functions
+int				stringlen(char *string);
+void			truncate_str(char *s);
+int				bad_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
