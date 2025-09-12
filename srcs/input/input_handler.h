@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 22:00:00 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 23:47:35 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 03:12:40 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../math/vector_math.h"
 
 // Forward declaration
-typedef struct s_game t_game;
+typedef struct s_game	t_game;
 
 // Key definitions
 # if (LINUX)

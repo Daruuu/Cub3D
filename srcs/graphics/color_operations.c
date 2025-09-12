@@ -6,7 +6,7 @@
 /*   By: dasalaza <dasalaza@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 22:00:00 by dasalaza          #+#    #+#             */
-/*   Updated: 2025/09/11 23:07:54 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 03:17:43 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,18 @@ int	blend_colors(int o, int n)
 	g = (int)(((o & 0xff00) >> 8) * (1 - a) + ((n & 0xff00) >> 8) * a);
 	b = (int)((o & 0xff) * (1 - a) + (n & 0xff) * a);
 	return (0 << 24 | r << 16 | g << 8 | b);
+}
+
+/**
+ * move from image_operations.c
+ */
+void	fill_img(t_img img, int c, int start, int stop)
+{
+	int	*bytes;
+	int	*end;
+
+	end = (void *)img.addr + stop * img.line_length;
+	bytes = (int *)((void *)img.addr + start * img.line_length);
+	while (bytes < end)
+		*bytes++ = c;
 }

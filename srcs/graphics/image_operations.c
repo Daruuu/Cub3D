@@ -66,14 +66,3 @@ t_img	load_image(void *mlx, char *path)
 	img.pixel_len = img.bits_per_pixel / 8;
 	return (img);
 }
-
-void	fill_img(t_img img, int c, int start, int stop)
-{
-	int	*bytes;
-	int	*end;
-
-	end = (void *)img.addr + stop * img.line_length;
-	bytes = (int *)((void *)img.addr + start * img.line_length);
-	while (bytes < end)
-		*bytes++ = c;
-}

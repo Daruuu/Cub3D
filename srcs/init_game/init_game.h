@@ -6,7 +6,7 @@
 /*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 22:48:59 by anamedin          #+#    #+#             */
-/*   Updated: 2025/09/12 00:00:01 by anamedin         ###   ########.fr       */
+/*   Updated: 2025/09/12 03:12:05 by anamedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 // Forward declaration
-typedef struct s_game t_game;
+typedef struct s_game	t_game;
 
 // System initialization functions
 void			init_void(t_game *game);

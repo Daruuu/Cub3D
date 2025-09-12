@@ -18,13 +18,13 @@
 # include <math.h>
 # include "mlx/mlx.h"
 
-// ===================== LEGACY INCLUDES (CURRENTLY ACTIVE) ===================== //
+// ===================== LEGACY INCLUDES (CURRENTLY ACTIVE) ================ //
 # include "srcs/math/vector_math.h"
 # include "srcs/math/rotation_math.h"
 # include "srcs/graphics/image_operations.h"
 # include "srcs/render/render_blur.h"
 # include "srcs/game/game_map.h"
-#include "srcs/file_loader/load_file.h"
+# include "srcs/file_loader/load_file.h"
 # include "srcs/sound/audio_system.h"
 # include "include/includes_cub.h"
 
