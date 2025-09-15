@@ -1,0 +1,125 @@
+# ===================== PROJECT CONFIG ===================== #
+NAME        = cub3D
+NAME_BONUS	= cub3D_bonus
+
+CC          = cc
+RM          = rm -f
+
+# ===================== COMPILER FLAGS ===================== #
+CFLAGS      = -Wall -Wextra -Werror
+DEBUG_FLAGS = -g -fsanitize=address -fsanitize=undefined
+
+# ===================== PATHS ===================== #
+SRC_DIR     = src
+INCLUDE_DIR = include
+PATH_MLX    = mlx
+PATH_DELAY  = $(SRC_DIR)/delay
+PATH_BASS   = bass
+
+# ===================== INCLUDES ===================== #
+INCLUDES    = -I$(INCLUDE_DIR) -I$(PATH_MLX) -I$(PATH_BASS) \
+              -I$(SRC_DIR)/math -I$(SRC_DIR)/graphics \
+              -I$(SRC_DIR)/game -I$(SRC_DIR)/parser \
+              -I$(SRC_DIR)/render -I$(SRC_DIR)/input \
+              -I$(SRC_DIR)/utils -I$(SRC_DIR)/core
+
+# ===================== SOURCES ===================== #
+SRC_CORE = \
+    main.c \
+    $(SRC_DIR)/core/init_game.c \
+    $(SRC_DIR)/core/error_handler.c \
+    $(SRC_DIR)/math/vector_math.c \
+    $(SRC_DIR)/math/rotation_math.c \
+    $(SRC_DIR)/math/math_utils.c \
+    $(SRC_DIR)/graphics/image_operations.c \
+    $(SRC_DIR)/graphics/color_operations.c \
+    $(SRC_DIR)/graphics/rendering_primitives.c \
+    $(SRC_DIR)/game/game_player.c \
+    $(SRC_DIR)/game/game_map.c \
+    $(SRC_DIR)/game/game_collision.c \
+    $(SRC_DIR)/parser/parser_main.c \
+    $(SRC_DIR)/parser/parser_file_loader.c \
+    $(SRC_DIR)/render/raycast_engine.c \
+    $(SRC_DIR)/render/render_textures.c \
+    $(SRC_DIR)/input/input_handler.c
+
+SRC_BONUS = \
+    bonus/cub_sound_bonus.c \
+    bonus/cub_other_bonus.c \
+    $(SRC_DIR)/sound/audio_system.c
+
+# ===================== OBJECTS ===================== #
+OBJS_CORE     = ${SRC_CORE:.c=.o}
+OBJS_BONUS    = ${SRC_BONUS:.c=.o}
+
+# ===================== LIBRARIES ===================== #
+LDFLAGS = -L$(PATH_MLX) -L$(PATH_DELAY) -L$(PATH_BASS)
+LIBS    = -lmlx -lm -lXext -lX11 -ldelay -lbass
+
+# ===================== BUILD RULES ===================== #
+all: $(NAME)
+
+$(NAME): $(OBJS_CORE)
+	@echo "🔨 Building $(NAME)..."
+	$(MAKE) -C $(PATH_MLX) > /dev/null 2>&1
+	$(MAKE) -C $(PATH_DELAY) > /dev/null 2>&1
+	$(CC) $(CFLAGS) -o $@ $^ $(INCLUDES) $(LDFLAGS) $(LIBS)
+	@echo "✅ $(NAME) built successfully!"
+
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
+	@echo "🔨 Building $(NAME_BONUS)..."
+	$(MAKE) -C $(PATH_MLX) > /dev/null 2>&1
+	$(MAKE) -C $(PATH_DELAY) > /dev/null 2>&1
+	$(CC) $(CFLAGS) -DPLAYER_SPEED=0.0085 -DROTATION_SPEED=0.009 -o $@ $^ $(INCLUDES) $(LDFLAGS) $(LIBS)
+	@echo "✅ $(NAME_BONUS) built successfully!"
+
+# ===================== COMPILATION RULES ===================== #
+%.o: %.c Makefile
+	@mkdir -p $(dir $@)
+	@echo "🔨 Compiling $<..."
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+%_bonus.o: %.c Makefile
+	@mkdir -p $(dir $@)
+	@echo "🔨 Compiling $< (bonus)..."
+	$(CC) $(CFLAGS) -DPLAYER_SPEED=0.0085 -DROTATION_SPEED=0.009 $(INCLUDES) -c $< -o $@
+
+# ===================== CLEAN ===================== #
+clean:
+	@echo "🧹 Cleaning object files..."
+	$(MAKE) -C $(PATH_MLX) clean
+	$(MAKE) -C $(PATH_DELAY) clean
+	$(RM) $(OBJS_CORE) $(OBJS_BONUS) $(OBJS_CORE:.o=_bonus.o) $(OBJS_BONUS:.o=_bonus.o)
+	@echo "✅ Clean completed!"
+
+fclean: clean
+	@echo "🧹 Full cleaning..."
+	$(MAKE) -C $(PATH_DELAY) fclean
+	$(RM) $(NAME) $(NAME_BONUS)
+	@echo "✅ Full clean completed!"
+
+re: fclean all
+
+# ===================== UTILITY RULES ===================== #
+debug:
+	@echo "🐛 Building debug version..."
+	@$(MAKE) CFLAGS="$(CFLAGS) $(DEBUG_FLAGS)"
+
+norm:
+	@echo "🔍 Running norminette..."
+	@norminette $(SRC_CORE) $(SRC_BONUS) main.c $(INCLUDE_DIR)/*.h
+
+help:
+	@echo "Available targets:"
+	@echo "  all      - Build mandatory version"
+	@echo "  bonus    - Build bonus version"
+	@echo "  clean    - Remove object files"
+	@echo "  fclean   - Remove all generated files"
+	@echo "  re       - Rebuild everything"
+	@echo "  debug    - Build with debug flags"
+	@echo "  norm     - Run norminette"
+	@echo "  help     - Show this help"
+
+.PHONY: all bonus clean fclean re debug norm help
