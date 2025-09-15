@@ -118,7 +118,7 @@ int	mlx_destroy_image(void *mlx_ptr, void *img_ptr);
 int	mlx_destroy_display(void *mlx_ptr);
 
 /*
-**  generic hook system for all events, and minilibX functions that
+**  generic hook init_game for all events, and minilibX functions that
 **    can be hooked. Some macro and defines from X11/X.h are needed here.
 */
 

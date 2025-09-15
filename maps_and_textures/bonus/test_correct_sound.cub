@@ -1,0 +1,35 @@
+R 800 600
+
+F 0,0,0
+C 0,0,0
+
+NO ./assets/brick_wall.xpm
+WE ./assets/brick_wall.xpm
+SO ./assets/brick_wall.xpm
+EA ./assets/brick_wall.xpm
+S ./assets/gimp_logo.xpm
+
+HK ./assets/healthkit.xpm
+PORTAL ./assets/portal.xpm
+DOOR ./assets/warn_door.xpm
+GOOMBA ./assets/goomba.xpm
+SKYBOX ./assets/sky_sun.xpm
+FLOOR ./assets/parquet1.xpm
+DASH ./assets/dash.xpm
+GUN ./assets/shotgun_c.xpm
+
+S_DOOR ./assets/door.mp3
+S_HURT ./assets/hurt.mp3
+S_STOMP ./assets/stomp.mp3
+S_PORTAL ./assets/portal.mp3
+S_HEAL ./assets/heal.mp3
+S_AMBIENT ./assets/background.mp3
+S_WALK ./assets/walk.mp3
+
+111111111111111
+10000000D000W01
+1D1110111011001
+100010100010011
+100010100010001
+102000000000001
+111111111111111

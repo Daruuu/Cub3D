@@ -64,7 +64,7 @@ if(BONUS)
 else()
     file(GLOB SRC_FILES
             main.c
-            srcs/other/*.c
+            srcs/sound/*.c
             srcs/delay/*.c
             srcs/parser/*.c
             srcs/pathfinder/*.c
@@ -80,6 +80,8 @@ endif()
 # ===== EXECUTABLE: cub3d =========== #
 add_executable(cub3d ${SRC_FILES}
         include/includes_cub.h
+        srcs/game/game_player.c
+        srcs/game/game_directions.c
 )
 
 #add_dependencies(cub3d libmlx libft)

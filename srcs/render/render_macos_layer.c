@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_macos_layer.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anamedin <anamedin@student.42barcelona.c>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 12:43:24 by anamedin          #+#    #+#             */
+/*   Updated: 2025/09/11 19:07:31 by anamedin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "render_macos_layer.h"
+#include "../graphics/color_operations.h"
+#include "../mlx/mlx.h"
+
+int	render_mac_os_image(t_game *game, t_img *img, int x, int y)
+{
+	int		b;
+	int		color;
+	t_vec	p;
+
+	if (!LINUX)
+		return (mlx_put_image_to_window(game->mlx, game->win, img->img, x, y));
+	y++;
+	p.y = fmax(0, -y);
+	while (p.y < img->height && y + p.y <= game->resy)
+	{
+		p.x = fmax(0, -x) - 1;
+		while (++p.x < img->width && x + p.x < game->resx)
+		{
+			color = get_pixel(img, p.x, p.y);
+			if ((color & 0xFF000000) == 0xFF000000)
+				continue ;
+			b = get_pixel(&game->img, x + p.x, y + p.y);
+			set_pixel(&game->img, x + p.x, y + p.y, blend_colors(b, color));
+		}
+		p.y++;
+	}
+	return (0);
+}

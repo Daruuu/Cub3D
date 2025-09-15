@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "raycast_engine.h"
+#include "../graphics/rendering_primitives.h"
 #include "includes_cub.h"
 
 t_ray	get_init_ray(t_rot *rot, double x, double y)
@@ -64,20 +65,20 @@ double	tex_offset(t_trace trace)
 ** and some other stuff like the texture offset for it etc...
 */
 
-void	setup_line(t_vars *vars, t_trace *tr)
+void	setup_line(t_game *game, t_trace *tr)
 {
 	tr->card = get_cardinal(*tr);
 	tr->len = fmin(tr->ray.ln_cos, tr->ray.ln_sin);
-	vars->depth[tr->line.x] = fmin(tr->len, vars->depth[tr->line.x]);
-	tr->line.height = vars->resy / (tr->len * cos(tr->newa));
-	tr->line.y = (vars->resy - tr->line.height) / 2;
-	tr->line.y += vars->player.pitch * 2;
-	tr->line.y += tr->line.height * vars->player.render.z;
+	game->depth[tr->line.x] = fmin(tr->len, game->depth[tr->line.x]);
+	tr->line.height = game->resy / (tr->len * cos(tr->newa));
+	tr->line.y = (game->resy - tr->line.height) / 2;
+	tr->line.y += game->player.pitch * 2;
+	tr->line.y += tr->line.height * game->player.render.z;
 	tr->line.dim = 1 - fmin(1, (tr->len - 1) / 9);
-	tr->line.img = get_texture(vars, tr->card);
+	tr->line.img = get_texture(game, tr->card);
 	tr->offset = tex_offset(*tr);
-	tr->pt = get_portal(vars, tr->pos.x, tr->pos.y, tr->card);
-	if (!vars->should_dim)
+	tr->pt = get_portal(game, tr->pos.x, tr->pos.y, tr->card);
+	if (!game->should_dim)
 		tr->line.dim = 1;
 }
 
@@ -86,12 +87,12 @@ void	setup_line(t_vars *vars, t_trace *tr)
 ** does hit
 */
 
-void	do_ray(t_vars *vars, t_trace *tr, t_img *img)
+void	do_ray(t_game *game, t_trace *tr, t_img *img)
 {
 	tr->pos = get_collide_pos(*tr);
-	if (check_colide(vars, tr->pos))
+	if (check_colide(game, tr->pos))
 	{
-		setup_line(vars, tr);
+		setup_line(game, tr);
 		if (tr->pt)
 		{
 			translate_portal(&(tr->ref), tr->card, tr->pt);
@@ -100,9 +101,9 @@ void	do_ray(t_vars *vars, t_trace *tr, t_img *img)
 			tr->i++;
 			return ;
 		}
-		tr->pt = get_empty_portal(vars, tr->pos.x, tr->pos.y, tr->card);
+		tr->pt = get_empty_portal(game, tr->pos.x, tr->pos.y, tr->card);
 		if (tr->pt)
-			e_portal_strip(img, tr->line, &(vars->portal), tr->offset);
+			e_portal_strip(img, tr->line, &(game->portal), tr->offset);
 		else
 			set_img_strip(img, tr->line, tr->offset);
 		tr->i += 99;
@@ -116,27 +117,27 @@ void	do_ray(t_vars *vars, t_trace *tr, t_img *img)
 ** Starts all the ray casting for every row on the screen
 */
 
-void	ray(t_vars *vars, t_img *img)
+void	ray(t_game *game, t_img *img)
 {
 	t_trace	trace;
 	int		max;
 
 	trace.line.width = 1;
 	trace.line.x = -1;
-	max = (int)(vars->render_distance * 1.41) + 1;
-	while (++trace.line.x < vars->resx)
+	max = (int)(game->render_distance * 1.41) + 1;
+	while (++trace.line.x < game->resx)
 	{
-		vars->depth[trace.line.x] = 999;
-		trace.newa = atan2((trace.line.x / (double)vars->resx) - .5, vars->fov);
-		trace.rot = make_rot(vars->player.yaw + trace.newa);
-		trace.ref.x = vars->player.render.x;
-		trace.ref.y = vars->player.render.y;
+		game->depth[trace.line.x] = 999;
+		trace.newa = atan2((trace.line.x / (double)game->resx) - .5, game->fov);
+		trace.rot = make_rot(game->player.yaw + trace.newa);
+		trace.ref.x = game->player.render.x;
+		trace.ref.y = game->player.render.y;
 		trace.ray = get_init_ray(&(trace.rot), trace.ref.x, trace.ref.y);
 		trace.step = get_init_ray(&(trace.rot), 0, 0);
 		trace.portal = NULL;
 		trace.i = 0;
 		while (trace.i < max)
-			do_ray(vars, &trace, img);
-		portal_foreach_free(trace.portal, &render_portal, vars);
+			do_ray(game, &trace, img);
+		portal_foreach_free(trace.portal, &render_portal, game);
 	}
 }
